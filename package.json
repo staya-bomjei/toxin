@@ -1,0 +1,11 @@
+{
+  "name": "toxin",
+  "version": "1.0.0",
+  "description": "Задание №2 из обучающей программы MetaLamp",
+  "main": "entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
