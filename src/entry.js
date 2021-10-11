@@ -1,3 +1,6 @@
+import './styles/normalize.css';
+import './styles/fonts.scss';
+
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
 }

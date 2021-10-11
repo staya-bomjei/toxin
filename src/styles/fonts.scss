@@ -1,0 +1,50 @@
+@mixin font($name, $style, $weight) {
+  $suffix: 'Regular';
+  @if $style == bold {
+    $suffix: 'Bold';
+  }
+  @font-face {
+    font-family: $name;
+    src: url('../assets/fonts/#{$name}-#{$suffix}.woff') format('woff'),
+      url('../assets/fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
+      url('../assets/fonts/#{$name}-#{$suffix}.svg') format('svg');
+    font-style: $style;
+    font-weight: $weight;
+  }
+}
+
+@include font('Montserrat', normal, 400);
+@include font('Montserrat', bold, 700);
+
+
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../assets/fonts/MaterialIcons-Regular.woff") format("woff"), 
+    url("../assets/fonts/MaterialIcons-Regular.ttf") format("truetype"), 
+    url("../assets/fonts/MaterialIcons-Regular.svg") format("svg");
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}

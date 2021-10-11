@@ -32,6 +32,13 @@ module.exports = (env) => {
     module: {
       rules: [
         {
+          test: /\.css$/i,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+          ],
+        },
+        {
           test: /\.s[ac]ss$/i,
           use: [
             MiniCssExtractPlugin.loader,
@@ -48,9 +55,9 @@ module.exports = (env) => {
         },
         {
           test: /\.(png|jpg|gif|ttf|woff|svg)$/i,
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
+          type: 'asset/resource',
+          generator: {
+            filename: './assets/[name].[hash][ext]',
           },
         },
       ],
