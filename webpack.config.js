@@ -1,8 +1,15 @@
+const fs = require('fs');
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
+const pages = fs.readdirSync(path.resolve(__dirname, 'src', 'pages'));
+const htmlPlugins = pages.map(page => new HTMLWebpackPlugin({
+  filename: `${page}.html`,
+  template: path.resolve(__dirname, 'src', 'pages', page, `${page}.pug`)
+}));
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'entry.js'),
@@ -13,10 +20,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
-    new HTMLWebpackPlugin({
-      filename: '[name].html',
-      template: path.resolve(__dirname, 'src', 'pepega', 'index.pug')
-    }),
+    ...htmlPlugins
   ],
   module: {
     rules: [

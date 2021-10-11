@@ -1,0 +1,1 @@
+import './test-page-1.scss';
