@@ -3,3 +3,7 @@ include ../../components/test-component-1/test-component-1
 
 p.p-page1 test-page-1
 +test-component-1(10)
+
+- let data = htmlWebpackPlugin.options.getData();
+- for (let pepego of data.pepegos)
+    p= `${pepego}`  

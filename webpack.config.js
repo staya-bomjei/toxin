@@ -7,6 +7,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = (env) => {
   const pages = fs.readdirSync(path.resolve(__dirname, 'src', 'pages'));
   const htmlPlugins = pages.map((page) => new HTMLWebpackPlugin({
+    getData: () => {
+      try {
+        return JSON.parse(fs.readFileSync(`./src/pages/${page}/data.json`, 'utf8'));
+      } catch (e) {
+        return {};
+      }
+    },
     filename: `${page}.html`,
     template: path.resolve(__dirname, 'src', 'pages', page, `${page}.pug`),
   }));
