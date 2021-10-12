@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.text-field {
+  @extend %default-text;
+  width: 320px;
+  color: rgba($dark, .25);
+  outline: none;
+  border: 1px solid rgba($dark, .25);
+  border-radius: 4px;
+  padding: 13px 15px;
+
+  &::placeholder {
+    color: rgba($dark, .25);
+  }
+
+  &:hover, &:focus, &_hovered {
+    color: rgba($dark, .75);
+    border: 1px solid rgba($dark, 0.5);
+  }
+}
