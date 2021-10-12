@@ -5,9 +5,9 @@
   }
   @font-face {
     font-family: $name;
-    src: url('../assets/fonts/#{$name}-#{$suffix}.woff') format('woff'),
-      url('../assets/fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
-      url('../assets/fonts/#{$name}-#{$suffix}.svg') format('svg');
+    src: url('Assets/fonts/#{$name}-#{$suffix}.woff') format('woff'),
+      url('Assets/fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
+      url('Assets/fonts/#{$name}-#{$suffix}.svg') format('svg');
     font-style: $style;
     font-weight: $weight;
   }
@@ -22,9 +22,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../assets/fonts/MaterialIcons-Regular.woff") format("woff"), 
-    url("../assets/fonts/MaterialIcons-Regular.ttf") format("truetype"), 
-    url("../assets/fonts/MaterialIcons-Regular.svg") format("svg");
+  src: url("Assets/fonts/MaterialIcons-Regular.woff") format("woff"), 
+    url("Assets/fonts/MaterialIcons-Regular.ttf") format("truetype"), 
+    url("Assets/fonts/MaterialIcons-Regular.svg") format("svg");
 }
 
 .material-icons {

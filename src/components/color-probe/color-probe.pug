@@ -1,0 +1,19 @@
+//- options: 
+//-   theme - выбранная тема для компонента (одно из: 'dark-100', 'dark-75', 'dark-50', 'dark-25', 'dark-5', 'purple', 'green')
+//-   colorName - название цвета (например 'Dark Color Shade 100%')
+//-   colorCode - код цвета (например '#1f2041') 
+mixin color-probe(options)
+  if !options 
+    - options = {};
+  -
+    const {theme, colorName, colorCode} = options;
+    let classes = ['color-probe'];
+    if (theme) {
+      classes.push(`color-probe_theme-${theme}`);
+    }
+     
+  div(class = classes)
+    .color-probe__box
+    .color-probe__text 
+      .color-probe__name= colorName
+      .color-probe__code= colorCode

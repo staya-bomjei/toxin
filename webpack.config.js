@@ -24,6 +24,11 @@ module.exports = (env) => {
       filename: '[name].js',
       path: path.resolve(__dirname, 'build'),
     },
+    resolve: {
+      alias: {
+        Assets: path.resolve(__dirname, 'src', 'assets'),
+      },
+    },
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin(),

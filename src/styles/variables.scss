@@ -1,0 +1,34 @@
+$dark: #1f2041;
+$purple: #bb9cff;
+$green: #6fcf97;
+$primary-gradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+$secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+
+%title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: $dark;
+}
+
+%item-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.1875rem;
+  color: $dark;
+}
+
+%label {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: $dark;
+  text-transform: uppercase;
+}
+
+%default-text {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: normal;
+  font-size: 0.875rem;
+  color: rgba($dark, .75);
+}

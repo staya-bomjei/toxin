@@ -1,0 +1,48 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.color-probe {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 1.1875rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: $dark;
+
+  &__box {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+  }
+
+  &__text {
+    margin-left: 40px;
+  }
+
+  &__name {
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  &__code {
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+}
+
+@mixin color-probe_theme($name, $color) {
+  .color-probe_theme-#{$name} {
+    .color-probe__box {
+      background-color: $color;
+    }
+  }
+}
+
+@include color-probe_theme('dark-100', $dark);
+@include color-probe_theme('dark-75', rgba($dark, .75));
+@include color-probe_theme('dark-50', rgba($dark, .50));
+@include color-probe_theme('dark-25', rgba($dark, .25));
+@include color-probe_theme('dark-5', rgba($dark, .05));
+@include color-probe_theme('purple', $purple);
+@include color-probe_theme('green', $green);

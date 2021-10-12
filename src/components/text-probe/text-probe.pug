@@ -1,0 +1,17 @@
+//- options:
+//-   theme - выбранная тема для компонента (одно из: 'title', 'item-title', 'label', 'default-text')
+//-   tag - название тэга (например 'H1', 'H2', 'H3', ...)
+//-   text - текст для примера отображения
+mixin text-probe(options)
+  if !options
+    - options = {}
+  -
+    const {theme, tag, text} = options;
+    let classes = ['text-probe'];
+    if (theme) {
+      classes.push(`text-probe_theme-${theme}`);
+    }
+  
+  div(class = classes)
+    .text-probe__tag= tag
+    .text-probe__text= text
