@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.bullet-list {
+  @extend %default-text;
+  line-height: 1.75rem;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  &__point {
+    padding-left: 20px;
+    text-indent: -20px;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba($dark, .25);
+      margin-right: 10px;
+    }
+  }
+}
