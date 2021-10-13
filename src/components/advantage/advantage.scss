@@ -2,10 +2,12 @@
 @import '../../styles/fonts.scss';
 
 .advantage {
-  @extend %default-text;
-  display: flex;
-  justify-content: left;
-  align-items: flex-start;
+  &__content {
+    @extend %default-text;
+    display: flex;
+    justify-content: left;
+    align-items: flex-start; 
+  }
 
   &__icon {
     background: $primary-gradient;
@@ -20,5 +22,10 @@
 
   &__title {
     font-weight: bold;
+  }
+
+  &__underline {
+    border: none;
+    border-top: 1px solid rgba($dark, .1);
   }
 }

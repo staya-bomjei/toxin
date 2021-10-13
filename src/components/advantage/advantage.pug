@@ -11,7 +11,9 @@ mixin advantage(options)
     const iconClasses = ['advantage__icon', 'material-icons', `md-${size}`];
   
   .advantage
-    div(class = iconClasses)= icon
-    .advantage__text-box
-      .advantage__title= title
-      .advantage__description= description
+    .advantage__content
+      div(class = iconClasses)= icon
+      .advantage__text-box
+        .advantage__title= title
+        .advantage__description= description
+    hr.advantage__underline
