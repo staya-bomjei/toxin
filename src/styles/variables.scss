@@ -8,6 +8,7 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
+  line-height: 1.8125rem;
   color: $dark;
 }
 
@@ -15,6 +16,7 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: bold;
   font-size: 1.1875rem;
+  line-height: 1.4375rem;
   color: $dark;
 }
 
@@ -22,6 +24,7 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: bold;
   font-size: 0.75rem;
+  line-height: 0.9375rem;
   color: $dark;
   text-transform: uppercase;
 }
@@ -30,5 +33,6 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: normal;
   font-size: 0.875rem;
+  line-height: 1.5rem;
   color: rgba($dark, .75);
 }

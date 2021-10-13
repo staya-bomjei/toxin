@@ -29,6 +29,11 @@ module.exports = (env) => {
         Assets: path.resolve(__dirname, 'src', 'assets'),
       },
     },
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
+    },
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin(),
