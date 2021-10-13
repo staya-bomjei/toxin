@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.rate-button {
+  display: flex;
+
+  &__star {
+    background: $primary-gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: initial;
+  }
+}
