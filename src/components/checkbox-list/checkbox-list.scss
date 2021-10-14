@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.checkbox-list {
+  &__button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  &__title {
+    @extend %label;
+  }
+
+  &__icon {
+    color: rgba($dark, .5);
+  }
+
+  &__content {
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+
+    & .checkbox:not(& .checkbox:last-of-type) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &_open {
+    .checkbox-list__icon {
+      transform: rotate(180deg);
+    }
+
+    .checkbox-list__content {
+      display: flex;
+    }
+  }
+}

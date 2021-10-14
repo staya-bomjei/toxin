@@ -1,0 +1,18 @@
+include ../checkbox/checkbox
+
+//- options
+//-   title - озоглавие всего листа
+//-   texts - массив строк для названия чекбоксов
+mixin checkbox-list(options) 
+  if !options
+    - options = {};
+  -
+    const { title = '', texts = [] } = options;
+  
+  .checkbox-list.js-checkbox-list
+    button.checkbox-list__button
+      span.checkbox-list__title= title
+      span.checkbox-list__icon.material-icons.md-24 expand_more
+    .checkbox-list__content
+      - for (let text of texts)
+        +checkbox({ text: text })
