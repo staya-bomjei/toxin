@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.like-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba($dark, .25);
+  padding: 0 4px;
+
+  &__counter {
+    flex-grow: 1;
+    @extend %default-text;
+    font-size: 0.625rem;
+    line-height: 0.761875rem;
+    text-align: center;
+    color:rgba($dark, .25);
+  }
+
+  &__icon {
+    flex-grow: 0;
+    color: rgba($dark, .25);
+  }
+
+  &_liked {
+    border-color: $purple;
+
+    .like-button__counter, .like-button__icon {
+      color: $purple;
+    }
+  }
+}
