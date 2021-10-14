@@ -1,0 +1,29 @@
+//- options:
+//-   isChecked - если true, то кнопка будет в состоянии checked
+//-   text - текст метки
+//-   rich - объект при передаче которого отоброжение чекбокса меняется на rich
+//-   rich: 
+//-     title - заголовок
+//-     text - текст метки, если не указан то будет взят options.text
+mixin checkbox(options)
+  if !options
+    - options = {};
+  -
+    let { isChecked, text, rich } = options;
+    const isRich = Boolean(rich);
+    let title;
+
+    if (isRich) {
+      text = ('text' in rich) ? rich.text : text;
+      title = ('title' in rich) ? rich.title : '';
+    }
+  
+  label.checkbox(class = (isRich) ? 'checkbox_rich' : '')
+    input.checkbox__input(type = 'checkbox')
+    span.checkbox__mark
+    - if (isRich)
+      span.checkbox__rich-container
+        span.checkbox__title= title
+        span.checkbox__text= text
+    - else
+      span.checkbox__text= text
