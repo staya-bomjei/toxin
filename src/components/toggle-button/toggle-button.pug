@@ -1,0 +1,13 @@
+//- options:
+//-   isChecked - если true, то кнопка будет в состоянии checked
+//-   text - текст кнопки
+mixin toggle-button(options)
+  if !options
+    - options = {};
+  -
+    const { isChecked = false, text = ''} = options;
+  
+  label.toggle-button
+    input.toggle-button__input(type = 'checkbox' checked = isChecked)
+    span.toggle-button__mark
+    span.toggle-button__text= text

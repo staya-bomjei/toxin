@@ -1,0 +1,56 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.toggle-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  cursor: pointer;
+  user-select: none;
+  $marker-width: 40px;
+  $marker-height: 20px;
+  $center-size: 12px;
+
+  &__input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  &__mark {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: $marker-height;
+    width: $marker-width;
+    border: 1px solid rgba($dark, .25);
+    border-radius: $marker-height;
+    box-sizing: border-box;
+
+    &::after {
+      content: "";
+      position: relative;
+      display: block;
+      left: 3px;
+      top: 3px;
+      width: $center-size;
+      height: $center-size;
+      border-radius: 50%;
+      background-color: rgba($dark, .25);
+    }
+  }
+
+  &__text {
+    @extend %default-text;
+    margin-left: 10px;
+  }
+
+  & &__input:checked ~ &__mark {
+    border-color: $purple;
+
+    &::after {
+      left: 23px;
+      background-image: $primary-gradient;
+    }
+  }
+}
