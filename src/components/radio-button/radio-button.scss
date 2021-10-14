@@ -1,0 +1,60 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.radio-button {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  cursor: pointer;
+  user-select: none;
+  $text-margin: 10px;
+  $marker-size: 20px;
+  $center-size: 14px;
+  $center-offset: ($marker-size - $center-size) / 2;
+
+  &__input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  &__mark {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: $marker-size;
+    width: $marker-size;
+    border: 1px solid rgba($dark, .25);
+    border-radius: 50%;
+
+    &::after {
+      content: "";
+      position: relative;
+      display: none;
+      left: $center-offset;
+      top: $center-offset;
+      width: $center-size;
+      height: $center-size;
+      border-radius: 50%;
+      background-image: $primary-gradient;
+    }
+  }
+
+  &__text {
+    @extend %default-text;
+    color: rgba($dark, .5);
+    margin-left: $text-margin;
+  }
+
+  & &__input:checked ~ &__text {
+    color: rgba($dark, .75);
+  }
+
+  & &__input:checked ~ &__mark {
+    border-color: $purple;
+
+    &::after {
+      display: block;
+    }
+  }
+}
