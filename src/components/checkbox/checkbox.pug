@@ -9,7 +9,7 @@ mixin checkbox(options)
   if !options
     - options = {};
   -
-    let { isChecked, text, rich } = options;
+    let { isChecked = false, text = '', rich } = options;
     const isRich = Boolean(rich);
     let title;
 
@@ -19,7 +19,7 @@ mixin checkbox(options)
     }
   
   label.checkbox(class = (isRich) ? 'checkbox_rich' : '')
-    input.checkbox__input(type = 'checkbox')
+    input.checkbox__input(type = 'checkbox' checked = isChecked)
     span.checkbox__mark
     - if (isRich)
       span.checkbox__rich-container
