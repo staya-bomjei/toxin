@@ -1,15 +1,15 @@
 //- options:
 //-   placeholder - текст, отображаемый когда инпут пуст и не в фокусе
-//-   modifier - модификатор блока (Допустимые значения: hovered)
+//-   isHovered - если true, то элемент всегда будет отображаться в состоянии hovered
 //-   isMasked - если true, то на инпут применяется маска ДД.ММ.ГГГГ
 mixin text-field(options)
   if !options
     - options = {};
   -
-    let { placeholder, modifier, isMasked } = options;
+    let { placeholder, isHovered = false, isMasked } = options;
     let classes = ['text-field'];
-    if (modifier) {
-      classes.push(`text-field_${modifier}`);
+    if (isHovered) {
+      classes.push(`text-field_hovered`);
     }
     if (isMasked) {
       classes.push(`text-field_masked`);
