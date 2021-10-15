@@ -3,11 +3,12 @@
 //-   size - размер иконки (допустимые значения: 18, 24, 36, 48)
 //-   title - заголовок преимущества
 //-   description - описание преимущества
+//-   hasUnderline - если true, то под компонентом появится подчеркивание
 mixin advantage(options)
   if !options
     - options = {};
   -
-    const { icon, size, title, description } = options;
+    const { icon, size = 48, title = '', description = '', hasUnderline = false } = options;
     const iconClasses = ['advantage__icon', 'material-icons', `md-${size}`];
   
   .advantage
@@ -16,4 +17,5 @@ mixin advantage(options)
       .advantage__text-box
         .advantage__title= title
         .advantage__description= description
-    hr.advantage__underline
+    - if (hasUnderline)
+      hr.advantage__underline
