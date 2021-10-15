@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.comment {
+  @extend %default-text;
+  display: grid;
+  $icon-size: 48px;
+  grid-template-columns: $icon-size 1fr;
+  column-gap: 10px;
+  row-gap: 12px;
+
+  &__user-image {
+    width: $icon-size;
+    height: $icon-size;
+    clip-path: circle(50%);
+  }
+  
+  &__user-name {
+    font-weight: bold;
+  }
+
+  &__like-button {
+    justify-self: center;
+  }
+}

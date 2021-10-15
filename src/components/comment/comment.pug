@@ -1,0 +1,23 @@
+include ../like-button/like-button
+
+//- options:
+//-   text - текст комментария
+//-   userName - имя пользователя
+//-   date - дата публикации комментария, строка в формате 'YYYY-MM-DDTHH:mm:ss.sssZ'
+//-   userImage - путь к картинке для профиля пользователя (папка ./img этого компонента)
+//-   likes - количество поставленных лайков
+mixin comment(options)
+  if !options
+    - options = {};
+  -
+    const { text = '', userName = '', date, userImage = 'default.png', likes = 0 } = options;
+    const { timeAgo } = require('../../components/comment/time-ago.js');
+
+  .comment
+    img.comment__user-image(src = require('../../components/comment/img/' + userImage) alt = 'image')
+    .comment__user-info
+      .comment__user-name= userName
+      .comment__user-time-ago= timeAgo(date)
+    .comment__like-button
+      +like-button({ count: likes })
+    .comment__text= text
