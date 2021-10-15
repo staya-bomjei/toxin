@@ -2,21 +2,22 @@
 //-   placeholder - текст, отображаемый когда инпут пуст и не в фокусе
 //-   isHovered - если true, то элемент всегда будет отображаться в состоянии hovered
 //-   isMasked - если true, то на инпут применяется маска ДД.ММ.ГГГГ
+//-   isSubscription - если true, то у text field появляется стрелочка справа
 mixin text-field(options)
   if !options
     - options = {};
   -
-    let { placeholder, isHovered = false, isMasked } = options;
+    let { placeholder, isHovered = false, isMasked = false, isSubscription = false } = options;
     let classes = ['text-field'];
     if (isHovered) {
       classes.push(`text-field_hovered`);
     }
-    if (isMasked) {
-      classes.push(`text-field_masked`);
-      placeholder = 'ДД.ММ.ГГГГ';
+    if (isSubscription) {
+      classes.push(`text-field_subscription`);
+      classes.push(`material-icons.md-48`);
     }
-    
-  input(
-    class = classes
-    placeholder = placeholder
-  )
+  
+  label(class = classes)
+    input.text-field__input(class = (isMasked) ? `text-field_masked` : '' placeholder = placeholder)
+    - if (isSubscription)
+      span.text-field__icon.material-icons.md-24 arrow_forward

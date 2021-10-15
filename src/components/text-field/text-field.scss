@@ -2,20 +2,53 @@
 @import '../../styles/fonts.scss';
 
 .text-field {
-  @extend %default-text;
   width: 320px;
-  color: rgba($dark, .25);
-  outline: none;
-  border: 1px solid rgba($dark, .25);
-  border-radius: 4px;
-  padding: 13px 15px;
+  display: inline-block;
+  box-sizing: border-box;
 
-  &::placeholder {
+  &__input {
+    @extend %default-text;
+    width: 100%;
     color: rgba($dark, .25);
+    outline: none;
+    border: 1px solid rgba($dark, .25);
+    border-radius: 4px;
+    padding: 11px 14px 7px 14px;
+    margin: 0;
+
+    &::placeholder {
+      color: rgba($dark, .25);
+    }
+
+    &:hover, &:focus {
+      border: 1px solid rgba($dark, 0.5);
+      color: rgba($dark, .75);
+    }
   }
 
-  &:hover, &:focus, &_hovered {
-    color: rgba($dark, .75);
-    border: 1px solid rgba($dark, 0.5);
+
+  &_hovered {
+    .text-field__input {
+      border: 1px solid rgba($dark, 0.5);
+      color: rgba($dark, .75);
+    }
+  }
+
+  &_subscription {
+    .text-field__input {
+      padding-right: 48px;
+    }
+    
+    .text-field__icon {
+      position: relative;
+      top: -34px;
+      left: 89%;
+      cursor: pointer;
+      user-select: none;
+      background: $primary-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: initial;
+    }
   }
 }
