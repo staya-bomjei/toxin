@@ -1,0 +1,23 @@
+//- options:
+//-   text - текст кнопки
+//-   isBordered - если true, то вокруг кнопки появляется рамка
+//-   isFilled - если true, то вокруг кнопки появляется заливка
+mixin button(options)
+  if !options
+    - options = {};
+  -
+    const { text = 'click me', isBordered = false, isFilled = false, isArrow = false } = options;
+    let classes = [];
+    if (isBordered) {
+      classes.push('button_bordered');
+    }
+    if (isFilled) {
+      classes.push('button_filled');
+    }
+    if (isArrow) {
+      classes.push('button_arrow');
+    }
+  
+  .button(class = classes)= text
+    - if (isArrow)
+      span.button__icon.material-icons.md-24 arrow_forward
