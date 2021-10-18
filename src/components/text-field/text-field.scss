@@ -4,6 +4,7 @@
 .text-field {
   width: 320px;
   display: inline-block;
+  position: relative;
   box-sizing: border-box;
 
   &__input {
@@ -40,9 +41,9 @@
     }
     
     .text-field__icon {
-      position: relative;
-      top: -34px;
-      left: 89%;
+      position: absolute;
+      top: 10px;
+      right: 10px;
       cursor: pointer;
       user-select: none;
       background: $primary-gradient;
