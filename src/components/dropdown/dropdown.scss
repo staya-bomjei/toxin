@@ -1,0 +1,106 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.dropdown {
+  box-sizing: border-box;
+  position: relative;
+  $border-radius: 4px;
+  $button-size: 30px;
+  width: 266px;
+
+  &__dropdown {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid rgba($dark, .25);
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__text {
+    @extend %default-text;
+    padding: 11px 14px 7px 14px;
+  }
+
+  &__icon {
+    align-self: center;
+    margin-right: 9px;
+    color:rgba($dark, .75);
+  }
+
+  &__content {
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    z-index: 1000;
+    width: 100%;
+    background-color: white;
+    border: 1px solid rgba($dark, .5);
+    border-top: none;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  &__row {
+    @extend %label;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 14px;
+    padding: 6px 6px 0 14px;
+
+    &:last-of-type {
+      padding-bottom: 6px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 92px;
+  }
+
+  &__button-minus, &__button-plus {
+    @extend %default-text;
+    flex-shrink: 0;
+    font-size: 1.125rem;
+    line-height: $button-size;
+    color:rgba($dark, .25);
+    text-align: center;
+    width: $button-size;
+    height: $button-size;
+    border: 1px solid rgba($dark, .25);
+    border-radius: 50%;
+    user-select: none;
+  }
+
+  &__count {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  &__button-minus_active, &__button-plus_active {
+    color: rgba($dark, .5);
+    border-color: rgba($dark, .5);
+    cursor: pointer;
+  }
+
+  &_expanded {
+    .dropdown__dropdown {
+      border-color: rgba($dark, .5);
+    }
+    
+    .dropdown__content {
+      display: block;
+    }
+
+    .dropdown__icon {
+      transform: rotate(180deg);
+    }
+  }
+}

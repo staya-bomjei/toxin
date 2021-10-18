@@ -1,0 +1,23 @@
+//- options:
+//-   placeholder - placeholder дропдауна
+//-   rows - массив объектов
+//-   rows[0].title - заголовок строки
+//-   rows[0].current - выбранное значение для строки
+mixin dropdown(options)
+  if !options
+    - options = {};
+  -
+    const { placeholder = '', rows = [], max_len = 10 } = options;
+
+  .dropdown.js-dropdown(data-placeholder = placeholder, data-max-len = max_len)
+    .dropdown__dropdown
+      .dropdown__text= placeholder
+      .dropdown__icon.material-icons.md-24 expand_more
+    .dropdown__content
+      - for (let row of rows)
+        .dropdown__row
+          .dropdown__title= row.title
+          .dropdown__buttons
+            .dropdown__button-minus(class = (row.current !== 0) ? 'dropdown__button-minus_active' : '') -
+            .dropdown__count= row.current
+            .dropdown__button-plus.dropdown__button-plus_active +
