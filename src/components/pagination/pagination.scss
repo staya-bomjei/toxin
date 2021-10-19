@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.pagination {
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+  }
+
+  %button {
+    flex-shrink: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  &__to-left-button, &__to-right-button {
+    @extend %button;
+    color: white;
+    background: $secondary-gradient;
+  }
+
+  &__control-button {
+    @extend %button;
+    @extend %label;
+    font-weight: normal;
+    color: rgba($dark, .5);
+
+    &_current {
+      color: white;
+      background: $primary-gradient;
+    }
+  }
+
+  &__text {
+    @extend %default-text;
+    text-align: center;
+  }
+}
