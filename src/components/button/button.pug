@@ -1,13 +1,21 @@
 //- options:
 //-   text - текст кнопки
+//-   mix - строка, или массив строк, позволяет добавить определённый класс к кнопке
 //-   isBordered - если true, то вокруг кнопки появляется рамка
 //-   isFilled - если true, то вокруг кнопки появляется заливка
 mixin button(options)
   if !options
     - options = {};
   -
-    const { text = 'click me', isBordered = false, isFilled = false, isArrow = false } = options;
+    const { text = 'click me', isBordered = false, isFilled = false, isArrow = false, mix } = options;
     let classes = [];
+    if (mix) {
+      if (Array.isArray(mix)) {
+        classes.concat(mix);
+      } else {
+        classes.push(mix);
+      }
+    }
     if (isBordered) {
       classes.push('button_bordered');
     }
