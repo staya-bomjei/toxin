@@ -1,23 +1,45 @@
+include ../button/button
+
 //- options:
 //-   placeholder - placeholder дропдауна
 //-   rows - массив объектов
 //-   rows[0].title - заголовок строки
 //-   rows[0].current - выбранное значение для строки
+//-   rows[0].countables - массив, содержащий три формы заголовка rows[0].title (например: ['кровать', 'кровати', 'кроватей'])
+//-   isSummator - если true, то dropdown будет в режиме сумматора, так же rows[] теперь игнорирует countables
+//-   countables - массив, передаваемый вместе с isSummator, он содержит три формы подсчитываемого в dropdown 
 mixin dropdown(options)
   if !options
     - options = {};
   -
-    const { placeholder = '', rows = [], max_len = 10 } = options;
+    const { placeholder = '', rows = [], max_len = 10, isSummator = false, countables = [] } = options;
+    let classes = [];
+    if (isSummator) {
+      classes.push('dropdown_summator');
+    }
 
-  .dropdown.js-dropdown(data-placeholder = placeholder, data-max-len = max_len)
+  .dropdown.js-dropdown(
+    class = classes 
+    data-placeholder = placeholder
+    data-max-len = max_len
+    data-countables = (isSummator) ? countables : none
+    )
     .dropdown__dropdown
       .dropdown__text= placeholder
       .dropdown__icon.material-icons.md-24 expand_more
     .dropdown__content
       - for (let row of rows)
-        .dropdown__row
+        .dropdown__row(data-row-countables = (isSummator) ? none : row.countables)
           .dropdown__title= row.title
           .dropdown__buttons
             .dropdown__button-minus(class = (row.current !== 0) ? 'dropdown__button-minus_active' : '') -
             .dropdown__count= row.current
             .dropdown__button-plus.dropdown__button-plus_active +
+      - if (isSummator)
+        .dropdown__control-buttons
+          .dropdown__clear-button
+            +button({ text: 'очистить'})
+          .dropdown__accept-button
+            +button({ text: 'принять'})
+
+          

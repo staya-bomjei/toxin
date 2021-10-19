@@ -6,18 +6,27 @@ class Dropdown {
     this.$component = $component;
     this.$dropdown = $($component).find('.dropdown__dropdown');
     this.$text = $($component).find('.dropdown__text');
-    this.rows = this.getRows();
     this.placeholder = $($component).attr('data-placeholder');
     this.max_len = $($component).attr('data-max-len');
+    this.isSummator = $($component).hasClass('dropdown_summator');
+    if (this.isSummator) {
+      this.countables = JSON.parse($($component).attr('data-countables'));
+      this.$clear = $($component).find('.dropdown__clear-button');
+      this.$accept = $($component).find('.dropdown__accept-button');
+    }
+    this.rows = this.getRows();
+    this.updateClearButtonVisability();
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
     $(this.$dropdown).on('click', (event) => this.onDropdownClick(event));
+    $(this.$clear).on('click', () => this.onClearButtonClick());
+    $(this.$accept).on('click', (event) => this.onAcceptButtonClick(event));
 
     this.rows.forEach((row) => {
-      $(row.$minus).on('click', (event) => this.onMinusClick(event));
-      $(row.$plus).on('click', (event) => this.onPlusClick(event));
+      $(row.$minus).on('click', () => this.onMinusClick(row.$minus, row.$count));
+      $(row.$plus).on('click', () => this.onPlusClick(row.$minus, row.$count));
     });
   }
 
@@ -33,16 +42,19 @@ class Dropdown {
     const rows = Array.from(this.$component.find('.dropdown__row'));
 
     return rows.map(($row) => {
-      const $title = $($row).find('.dropdown__title');
-      const $minus = $($row).find('.dropdown__button-minus');
-      const $count = $($row).find('.dropdown__count');
-      const $plus = $($row).find('.dropdown__button-plus');
+      const resultObject = {
+        $minus: $($row).find('.dropdown__button-minus'),
+        $count: $($row).find('.dropdown__count'),
+        $plus: $($row).find('.dropdown__button-plus'),
+      };
+
+      if (this.isSummator) return resultObject;
+
+      const countables = JSON.parse($($row).attr('data-row-countables'));
 
       return {
-        $title,
-        $minus,
-        $count,
-        $plus,
+        countables,
+        ...resultObject,
       };
     });
   }
@@ -52,9 +64,7 @@ class Dropdown {
     this.updateText();
   }
 
-  onMinusClick(event) {
-    const $minus = event.target;
-    const $count = $($minus).siblings('.dropdown__count');
+  onMinusClick($minus, $count) {
     const count = Number($count.html());
 
     if (count === 0) return;
@@ -63,25 +73,58 @@ class Dropdown {
     $count.html(count - 1);
 
     this.updateText();
+    this.updateClearButtonVisability();
   }
 
-  onPlusClick(event) {
-    const $plus = event.target;
-    const $count = $($plus).siblings('.dropdown__count');
+  onPlusClick($minus, $count) {
     const count = Number($count.html());
 
     if (count === 0) {
-      const $minus = $($plus).siblings('.dropdown__button-minus');
       $($minus).addClass('dropdown__button-minus_active');
     }
 
     $count.html(count + 1);
 
     this.updateText();
+    this.updateClearButtonVisability();
+  }
+
+  onClearButtonClick() {
+    this.rows.forEach((row) => {
+      $(row.$minus).removeClass('dropdown__button-minus_active');
+      row.$count.html('0');
+    });
+    this.updateText();
+    this.updateClearButtonVisability();
+  }
+
+  onAcceptButtonClick() {
+    $(this.$component).removeClass('dropdown_expanded');
   }
 
   sumAllCounts() {
     return this.rows.reduce((sum, row) => sum + Number(row.$count.html()), 0);
+  }
+
+  static choiceCountable(count, countables) {
+    if (count === 1) {
+      return countables[0];
+    }
+
+    if (count > 10 && count < 20) {
+      return countables[2];
+    }
+
+    switch (count % 10) {
+      case 1:
+        return countables[0];
+      case 2:
+      case 3:
+      case 4:
+        return countables[1];
+      default:
+        return countables[2];
+    }
   }
 
   getSentence() {
@@ -90,8 +133,7 @@ class Dropdown {
         const count = Number(row.$count.html());
         if (count === 0) return '';
 
-        const title = row.$title.html();
-        return `${count} ${title}`;
+        return `${count} ${Dropdown.choiceCountable(count, row.countables)}`;
       })
       .filter((string) => string !== '')
       .join(', ');
@@ -100,8 +142,21 @@ class Dropdown {
   updateText() {
     if (this.sumAllCounts() === 0) {
       this.setText(this.placeholder);
+    } else if (this.isSummator) {
+      const sum = this.sumAllCounts();
+      this.setText(`${sum} ${Dropdown.choiceCountable(sum, this.countables)}`);
     } else {
       this.setText(this.getSentence());
+    }
+  }
+
+  updateClearButtonVisability() {
+    if (!this.isSummator) return;
+
+    if (this.sumAllCounts() === 0) {
+      this.$clear.hide();
+    } else {
+      this.$clear.show();
     }
   }
 }

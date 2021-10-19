@@ -31,9 +31,9 @@
   }
 
   &__content {
+    box-sizing: border-box;
     display: none;
     position: absolute;
-    box-sizing: border-box;
     z-index: 1000;
     width: 100%;
     background-color: white;
@@ -41,6 +41,7 @@
     border-top: none;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
+    padding: 7px 7px 7px 15px;
   }
 
   &__row {
@@ -49,11 +50,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-left: 14px;
-    padding: 6px 6px 0 14px;
 
-    &:last-of-type {
-      padding-bottom: 6px;
+    &:not(:last-of-type) {
+      margin-bottom: 7px;
     }
   }
 
@@ -67,6 +66,7 @@
 
   &__button-minus, &__button-plus {
     @extend %default-text;
+    box-sizing: border-box;
     flex-shrink: 0;
     font-size: 1.125rem;
     line-height: $button-size;
@@ -88,6 +88,26 @@
     color: rgba($dark, .5);
     border-color: rgba($dark, .5);
     cursor: pointer;
+  }
+
+  &__control-buttons {
+    padding-top: 12px;
+    padding-bottom: 7px;
+
+    .dropdown__clear-button {
+      float: left;
+    }
+
+    .dropdown__accept-button {
+      float: right;
+    }
+
+    // collapse fix
+    &::after {
+      content: '';
+      clear: both;
+      display: block;
+    }
   }
 
   &_expanded {
