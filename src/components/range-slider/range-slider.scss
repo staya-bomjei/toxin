@@ -1,0 +1,94 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.range-slider {
+  margin: 10px;
+  width: 266px;
+
+  ::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &__info {
+    margin-bottom: 20px;
+
+    ::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
+  &__title {
+    @extend %label;
+    float: left;
+  }
+
+  &__output {
+    @extend %label;
+    float: right;
+    font-weight: normal;
+    color:rgba($dark, .50);
+  }
+
+  &__slider {
+    position: relative;
+    height: 14px;
+  }
+
+  &__range {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+
+    &::-webkit-slider-thumb {
+      pointer-events: all;
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  &__track {
+    box-sizing: border-box;
+    width: 100%;
+    height: 6px;
+    outline: none;
+    border: 1px solid rgba($dark, .25);
+    border-radius: 3px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  &__track-inner {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border-radius: 3px;
+    width: 0;
+    height: 6px;
+    background: $secondary-gradient;
+  }
+
+  &__thumb {
+    box-sizing: content-box;
+    width: 12px;
+    height: 12px;
+    background: $secondary-gradient;
+    outline: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+    pointer-events: none;
+  }
+}
