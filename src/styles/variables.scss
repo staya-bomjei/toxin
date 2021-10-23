@@ -36,3 +36,21 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
   line-height: 1.5rem;
   color: rgba($dark, .75);
 }
+
+%material-icons { 
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
