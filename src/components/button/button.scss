@@ -3,19 +3,19 @@
 
 .button {
   @extend %label;
-  color: $purple;
-  user-select: none;
-  cursor: pointer;
+  box-sizing: border-box;
   display: inline-block;
   text-align: center;
   align-items: center;
+  user-select: none;
+  cursor: pointer;
+  color: $purple;
 
   &:hover {
     color: rgba($dark, .5);
   }
 
   &_bordered {
-    box-sizing: border-box;
     border: double 2px transparent;
     border-radius: 22px;
     background-image: linear-gradient(white, white), $primary-gradient;
@@ -44,8 +44,11 @@
   &_arrow {
     position: relative;
     width: 100%;
-    
-    .button__icon {
+
+    &::after {
+      @extend %material-icons;
+      content: 'arrow_forward';
+      display: block;
       position: absolute;
       top: 10px;
       right: 10px;

@@ -1,31 +1,19 @@
 //- options:
 //-   text - текст кнопки
-//-   mix - строка, или массив строк, позволяет добавить определённый класс к кнопке
-//-   isBordered - если true, то вокруг кнопки появляется рамка
-//-   isFilled - если true, то вокруг кнопки появляется заливка
+//-   type - тип кнопки, допустимые значения: 'default' | 'border' | 'fill' | 'arrow'
+//-     'default' | undefined -  текстовая кнопка, без каких-либо примечательностей
+//-     'border' -  кнопка с рамкой
+//-     'fill' - кнопка с заливкой
+//-     'arrow' - кнопка со стрелкой
 mixin button(options)
   if !options
     - options = {};
   -
-    const { text = 'click me', isBordered = false, isFilled = false, isArrow = false, mix } = options;
-    let classes = [];
-    if (mix) {
-      if (Array.isArray(mix)) {
-        classes.concat(mix);
-      } else {
-        classes.push(mix);
-      }
-    }
-    if (isBordered) {
-      classes.push('button_bordered');
-    }
-    if (isFilled) {
-      classes.push('button_filled');
-    }
-    if (isArrow) {
-      classes.push('button_arrow');
-    }
+    const { text = 'click me', type = 'default' } = options;
+    const classes = [];
+
+    if (type === 'border') classes.push('button_bordered');
+    else if (type === 'fill') classes.push('button_filled');
+    else if (type === 'arrow') classes.push('button_arrow');
   
   .button(class = classes)= text
-    - if (isArrow)
-      span.button__icon.material-icons.md-24 arrow_forward
