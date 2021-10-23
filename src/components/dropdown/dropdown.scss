@@ -25,6 +25,8 @@
   }
 
   &__icon {
+    @extend %material-icons;
+    font-size: 24px;
     align-self: center;
     margin-right: 9px;
     color:rgba($dark, .75);
@@ -79,7 +81,7 @@
     user-select: none;
   }
 
-  &__count {
+  &__counter {
     flex-grow: 1;
     text-align: center;
   }
@@ -110,7 +112,7 @@
     }
   }
 
-  &_expanded {
+  &_open {
     .dropdown__dropdown {
       border-color: rgba($dark, .5);
     }

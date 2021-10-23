@@ -7,7 +7,7 @@ class Dropdown {
     this.$dropdown = $($component).find('.dropdown__dropdown');
     this.$text = $($component).find('.dropdown__text');
     this.placeholder = $($component).attr('data-placeholder');
-    this.max_len = $($component).attr('data-max-len');
+    this.maxLen = $($component).attr('data-max-len');
     this.isSummator = $($component).hasClass('dropdown_summator');
     if (this.isSummator) {
       this.countables = JSON.parse($($component).attr('data-countables'));
@@ -15,6 +15,7 @@ class Dropdown {
       this.$accept = $($component).find('.dropdown__accept-button');
     }
     this.rows = this.getRows();
+    this.updateText();
     this.updateClearButtonVisability();
     this.attachEventHandlers();
   }
@@ -25,15 +26,15 @@ class Dropdown {
     $(this.$accept).on('click', (event) => this.onAcceptButtonClick(event));
 
     this.rows.forEach((row) => {
-      $(row.$minus).on('click', () => this.onMinusClick(row.$minus, row.$count));
-      $(row.$plus).on('click', () => this.onPlusClick(row.$minus, row.$count));
+      $(row.$minus).on('click', () => this.onMinusClick(row.$minus, row.$counter));
+      $(row.$plus).on('click', () => this.onPlusClick(row.$minus, row.$counter));
     });
   }
 
   setText(string) {
-    let text = string.substring(0, this.max_len);
+    let text = string.substring(0, this.maxLen);
 
-    if (string.length > this.max_len) text += '...';
+    if (string.length > this.maxLen) text += '...';
 
     this.$text.html(text);
   }
@@ -44,7 +45,7 @@ class Dropdown {
     return rows.map(($row) => {
       const resultObject = {
         $minus: $($row).find('.dropdown__button-minus'),
-        $count: $($row).find('.dropdown__count'),
+        $counter: $($row).find('.dropdown__counter'),
         $plus: $($row).find('.dropdown__button-plus'),
       };
 
@@ -60,30 +61,30 @@ class Dropdown {
   }
 
   onDropdownClick() {
-    $(this.$component).toggleClass('dropdown_expanded');
+    $(this.$component).toggleClass('dropdown_open');
     this.updateText();
   }
 
-  onMinusClick($minus, $count) {
-    const count = Number($count.html());
+  onMinusClick($minus, $counter) {
+    const counter = Number($counter.html());
 
-    if (count === 0) return;
-    if (count === 1) $($minus).removeClass('dropdown__button-minus_active');
+    if (counter === 0) return;
+    if (counter === 1) $($minus).removeClass('dropdown__button-minus_active');
 
-    $count.html(count - 1);
+    $counter.html(counter - 1);
 
     this.updateText();
     this.updateClearButtonVisability();
   }
 
-  onPlusClick($minus, $count) {
-    const count = Number($count.html());
+  onPlusClick($minus, $counter) {
+    const counter = Number($counter.html());
 
-    if (count === 0) {
+    if (counter === 0) {
       $($minus).addClass('dropdown__button-minus_active');
     }
 
-    $count.html(count + 1);
+    $counter.html(counter + 1);
 
     this.updateText();
     this.updateClearButtonVisability();
@@ -92,7 +93,7 @@ class Dropdown {
   onClearButtonClick() {
     this.rows.forEach((row) => {
       $(row.$minus).removeClass('dropdown__button-minus_active');
-      row.$count.html('0');
+      row.$counter.html('0');
     });
     this.updateText();
     this.updateClearButtonVisability();
@@ -103,19 +104,19 @@ class Dropdown {
   }
 
   sumAllCounts() {
-    return this.rows.reduce((sum, row) => sum + Number(row.$count.html()), 0);
+    return this.rows.reduce((sum, row) => sum + Number(row.$counter.html()), 0);
   }
 
-  static choiceCountable(count, countables) {
-    if (count === 1) {
+  static choiceCountable(counter, countables) {
+    if (counter === 1) {
       return countables[0];
     }
 
-    if (count > 10 && count < 20) {
+    if (counter > 10 && counter < 20) {
       return countables[2];
     }
 
-    switch (count % 10) {
+    switch (counter % 10) {
       case 1:
         return countables[0];
       case 2:
@@ -130,10 +131,10 @@ class Dropdown {
   getSentence() {
     return this.rows
       .map((row) => {
-        const count = Number(row.$count.html());
-        if (count === 0) return '';
+        const counter = Number(row.$counter.html());
+        if (counter === 0) return '';
 
-        return `${count} ${Dropdown.choiceCountable(count, row.countables)}`;
+        return `${counter} ${Dropdown.choiceCountable(counter, row.countables)}`;
       })
       .filter((string) => string !== '')
       .join(', ');
