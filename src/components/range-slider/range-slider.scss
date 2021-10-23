@@ -5,7 +5,7 @@
   margin: 10px;
   width: 266px;
 
-  ::after {
+  &::after {
     content: '';
     display: block;
     clear: both;
@@ -14,14 +14,14 @@
   &__info {
     margin-bottom: 20px;
 
-    ::after {
+    &::after {
       content: '';
       display: block;
       clear: both;
     }
   }
 
-  &__title {
+  &__text {
     @extend %label;
     float: left;
   }
