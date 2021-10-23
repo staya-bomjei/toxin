@@ -16,11 +16,13 @@
     background-color: transparent;
   }
 
-  &__title {
+  &__text {
     @extend %label;
   }
 
   &__icon {
+    @extend %material-icons;
+    font-size: 24px;
     color: rgba($dark, .5);
   }
 
@@ -31,7 +33,7 @@
     justify-content: left;
     align-items: flex-start;
 
-    & .checkbox:not(& .checkbox:last-of-type) {
+    & .checkbox:not(:last-of-type) {
       margin-bottom: 10px;
     }
   }
