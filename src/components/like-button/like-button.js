@@ -15,10 +15,10 @@ class LikeButton {
 
   onClick() {
     if (this.isLiked()) {
-      this.setCount(this.getCount() - 1);
+      this.setCounter(this.getCounter() - 1);
       this.setIcon(false);
     } else {
-      this.setCount(this.getCount() + 1);
+      this.setCounter(this.getCounter() + 1);
       this.setIcon(true);
     }
     $(this.$component).toggleClass('like-button_liked');
@@ -36,11 +36,11 @@ class LikeButton {
     return this.$component.hasClass('like-button_liked');
   }
 
-  getCount() {
+  getCounter() {
     return Number(this.$counter.html());
   }
 
-  setCount(count) {
+  setCounter(count) {
     this.$counter.html(count);
   }
 }

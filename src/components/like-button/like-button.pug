@@ -1,13 +1,13 @@
 //- options:
 //-   isChecked - если true, то кнопка будет в состоянии checked, т.е. лайк уже поставлен
-//-   count - количество лайков
+//-   counter - количество лайков
 mixin like-button(options)
   if !options
     - options = {};
   -
-    const { isChecked = false, count = 0 } = options;
+    const { isChecked = false, counter = 0 } = options;
     const icon = (isChecked) ? 'favorite' : 'favorite_border';
 
-  .like-button.js-like-button(class = (isChecked) ? 'like-button_liked' : '')
-    .like-button__icon.material-icons.md-10= icon
-    .like-button__counter= count
+  .like-button.js-like-button(class = (isChecked) ? 'like-button_liked' : null)
+    .like-button__icon= icon
+    .like-button__counter= counter

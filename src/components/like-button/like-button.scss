@@ -25,6 +25,8 @@
   }
 
   &__icon {
+    @extend %material-icons;
+    font-size: 10px;
     flex-grow: 0;
     color: rgba($dark, .25);
   }
