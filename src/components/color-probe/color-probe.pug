@@ -6,13 +6,13 @@ mixin color-probe(options)
   if !options 
     - options = {};
   -
-    const {theme, colorName, colorCode} = options;
-    let classes = ['color-probe'];
+    const { theme, colorName, colorCode } = options;
+    let classes = [];
     if (theme) {
       classes.push(`color-probe_theme-${theme}`);
     }
      
-  div(class = classes)
+  .color-probe(class = classes)
     .color-probe__box
     .color-probe__text 
       .color-probe__name= colorName
