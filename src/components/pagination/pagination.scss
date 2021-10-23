@@ -21,12 +21,14 @@
   }
 
   &__to-left-button, &__to-right-button {
+    @extend %material-icons;
     @extend %button;
+    font-size: 24px;
     color: white;
     background: $secondary-gradient;
   }
 
-  &__control-button {
+  &__number-button {
     @extend %button;
     @extend %label;
     font-weight: normal;

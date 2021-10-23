@@ -7,58 +7,57 @@ class Pagination {
     this.$toLeftButton = $($component).find('.pagination__to-left-button');
     this.$toRightButton = $($component).find('.pagination__to-right-button');
     this.$text = $($component).find('.pagination__text');
-    this.controlButtons = Array.from($($component).find('.pagination__control-button'));
+    this.numberButtons = Array.from($($component).find('.pagination__number-button'));
     this.itemsCount = Number($($component).attr('data-items-count'));
     this.itemsPerPage = Number($($component).attr('data-items-per-page'));
     this.pagesCount = Math.ceil(this.itemsCount / this.itemsPerPage);
-    this.text = $($component).attr('data-text');
+    this.postfix = $($component).attr('data-postfix');
     this.current = 0;
-    this.update(1);
+    this.updateComponent(1);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
     $(this.$toLeftButton).on('click', () => this.onToLeftButtonClick());
     $(this.$toRightButton).on('click', () => this.onToRightButtonClick());
-    this.controlButtons.forEach(($button) => {
-      $($button).on('click', (event) => this.onControlButtonClick(event));
+    this.numberButtons.forEach(($button) => {
+      $($button).on('click', (event) => this.onNumberButtonClick(event));
     });
   }
 
   onToLeftButtonClick() {
-    this.update(this.current - 1);
+    this.updateComponent(this.current - 1);
   }
 
   onToRightButtonClick() {
-    this.update(this.current + 1);
+    this.updateComponent(this.current + 1);
   }
 
-  onControlButtonClick(event) {
+  onNumberButtonClick(event) {
     const text = $(event.target).html();
     if (text === '...') return;
-    this.update(Number(text));
+    this.updateComponent(Number(text));
   }
 
-  setControlButtonText(position, text) {
-    $(this.controlButtons[position]).html(text);
+  setNumberButtonText(position, text) {
+    $(this.numberButtons[position]).html(text);
   }
 
-  setControlButtonCurrent(position) {
-    $(this.controlButtons[position]).addClass('pagination__control-button_current');
+  setNumberButtonCurrent(position) {
+    $(this.numberButtons[position]).addClass('pagination__number-button_current');
   }
 
-  unsetControlButtonCurrent(position) {
-    $(this.controlButtons[position]).removeClass('pagination__control-button_current');
+  unsetNumberButtonCurrent(position) {
+    $(this.numberButtons[position]).removeClass('pagination__number-button_current');
   }
 
   updateButtons(position) {
-    for (let i = 0; i < this.controlButtons.length; i += 1) {
-      if ($(this.controlButtons[i]).html() === String(this.current)) {
-        this.unsetControlButtonCurrent(i);
+    for (let i = 0; i < this.numberButtons.length; i += 1) {
+      if ($(this.numberButtons[i]).html() === String(this.current)) {
+        this.unsetNumberButtonCurrent(i);
       }
     }
     this.current = position;
-
     switch (position) {
       case 1:
         this.$toLeftButton.hide();
@@ -74,16 +73,15 @@ class Pagination {
     }
 
     const pagination = Pagination.calcPagination(this.pagesCount, position);
-
     for (let i = 0; i < pagination.length; i += 1) {
-      this.setControlButtonText(i, pagination[i]);
-      $(this.controlButtons[i]).show();
+      this.setNumberButtonText(i, pagination[i]);
+      $(this.numberButtons[i]).show();
       if (pagination[i] === position) {
-        this.setControlButtonCurrent(i);
+        this.setNumberButtonCurrent(i);
       }
     }
-    for (let i = pagination.length; i < this.controlButtons.length; i += 1) {
-      $(this.controlButtons[i]).hide();
+    for (let i = pagination.length; i < this.numberButtons.length; i += 1) {
+      $(this.numberButtons[i]).hide();
     }
   }
 
@@ -99,10 +97,10 @@ class Pagination {
       over += 1;
       temp = Math.trunc(temp / 10);
     }
-    this.$text.html(`${from} – ${to} из ${temp * 10 ** (over - 1)}+ ${this.text}`);
+    this.$text.html(`${from} – ${to} из ${temp * 10 ** (over - 1)}+ ${this.postfix}`);
   }
 
-  update(position) {
+  updateComponent(position) {
     if (this.current === position) return;
 
     this.updateButtons(position);
