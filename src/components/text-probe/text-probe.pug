@@ -4,14 +4,14 @@
 //-   text - текст для примера отображения
 mixin text-probe(options)
   if !options
-    - options = {}
+    - options = {};
   -
-    const {theme, tag, text} = options;
-    let classes = ['text-probe'];
+    const { theme = 'title', tag = '', text = '' } = options;
+    let classes = [];
     if (theme) {
       classes.push(`text-probe_theme-${theme}`);
     }
   
-  div(class = classes)
+  .text-probe(class = classes)
     .text-probe__tag= tag
     .text-probe__text= text
