@@ -2,20 +2,20 @@
 @import '../../styles/fonts.scss';
 
 .text-field {
-  width: 320px;
+  box-sizing: border-box;
   display: inline-block;
   position: relative;
-  box-sizing: border-box;
+  width: 320px;
 
   &__input {
     @extend %default-text;
     width: 100%;
-    color: rgba($dark, .25);
     outline: none;
     border: 1px solid rgba($dark, .25);
     border-radius: 4px;
     padding: 11px 14px 7px 14px;
     margin: 0;
+    color: rgba($dark, .25);
 
     &::placeholder {
       color: rgba($dark, .25);
@@ -26,7 +26,6 @@
       color: rgba($dark, .75);
     }
   }
-
 
   &_hovered {
     .text-field__input {
@@ -41,6 +40,8 @@
     }
     
     .text-field__icon {
+      @extend %material-icons;
+      font-size: 24px;
       position: absolute;
       top: 10px;
       right: 10px;
