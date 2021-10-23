@@ -10,6 +10,8 @@
   }
 
   &__icon {
+    @extend %material-icons;
+    font-size: 48px;
     background: $primary-gradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
