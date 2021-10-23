@@ -1,19 +1,15 @@
 //- options:
-//-   count - количество звёздочек
-//-   rate - число рейтинга (не может быть больше count)
-//-   size - размер звёздочек (допустимые значения: 18, 24, 36, 48)
+//-   counter - количество звёздочек
+//-   rate - число рейтинга (не может быть больше counter)
 mixin rate-button(options)
   if !options
     - options = {};
   -
-    let { count = 5, rate = 0, size = 24} = options;
-    const starClasses = ['rate-button__star', 'material-icons', `md-${size}`];
-    if (rate > count) {
-      rate = count;
-    }
+    const { counter = 5, rate = 0 } = options;
 
   .rate-button.js-rate-button
-    - for (let i = 0; i < rate; i++)
-      div(class = starClasses) star
-    - for (let i = 0; i < count - rate; i++)
-      div(class = starClasses) star_border
+    - for (let i = 0; i < counter; i++)
+      - if (i < rate)
+        .rate-button__star star
+      - else
+        .rate-button__star star_border

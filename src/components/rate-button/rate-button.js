@@ -5,7 +5,7 @@ class RateButton {
   constructor($component) {
     this.$component = $component;
     this.stars = Array.from($($component).find('.rate-button__star'));
-    this.rate = 0;
+    this.rate = this.getRate();
     this.attachEventHandlers();
   }
 
@@ -38,19 +38,23 @@ class RateButton {
   }
 
   setStars(rate) {
-    this.stars.slice(0, rate + 1).forEach(($star) => {
+    this.stars.slice(0, rate).forEach(($star) => {
       $($star).html('star');
     });
   }
 
   setUnstars(rate) {
-    this.stars.slice(rate + 1).forEach(($star) => {
+    this.stars.slice(rate).forEach(($star) => {
       $($star).html('star_border');
     });
   }
 
   getStarRate($star) {
-    return this.stars.indexOf($star);
+    return this.stars.indexOf($star) + 1;
+  }
+
+  getRate() {
+    return this.stars.reduce((rate, $star) => rate + Number($($star).html() === 'star'), 0);
   }
 }
 

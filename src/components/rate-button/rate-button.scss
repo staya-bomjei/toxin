@@ -5,6 +5,8 @@
   display: flex;
 
   &__star {
+    @extend %material-icons;
+    font-size: 24px;
     cursor: pointer;
     user-select: none;
     background: $primary-gradient;
