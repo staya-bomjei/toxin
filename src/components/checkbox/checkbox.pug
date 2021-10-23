@@ -1,29 +1,20 @@
 //- options:
 //-   isChecked - если true, то кнопка будет в состоянии checked
 //-   text - текст метки
-//-   rich - объект при передаче которого отоброжение чекбокса меняется на rich
-//-   rich: 
-//-     title - заголовок
-//-     text - текст метки, если не указан то будет взят options.text
+//-   richTitle - необязательный параметр, если указан, то
+//-     отображение чекбокса меняется с добавлением заголовка richTitle
 mixin checkbox(options)
   if !options
     - options = {};
   -
-    let { isChecked = false, text = '', rich } = options;
-    const isRich = Boolean(rich);
-    let title;
-
-    if (isRich) {
-      text = ('text' in rich) ? rich.text : text;
-      title = ('title' in rich) ? rich.title : '';
-    }
+    const { isChecked = false, text = '', richTitle } = options;
   
-  label.checkbox(class = (isRich) ? 'checkbox_rich' : '')
+  label.checkbox(class = (richTitle !== undefined) ? 'checkbox_rich' : null)
     input.checkbox__input(type = 'checkbox' checked = isChecked)
     span.checkbox__mark
-    - if (isRich)
+    - if (richTitle !== undefined)
       span.checkbox__rich-container
-        span.checkbox__title= title
+        span.checkbox__title= richTitle
         span.checkbox__text= text
     - else
       span.checkbox__text= text
