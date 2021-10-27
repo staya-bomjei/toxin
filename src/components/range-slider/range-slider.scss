@@ -91,4 +91,11 @@
     transform: translate(0%, -50%);
     pointer-events: none;
   }
+
+  &__note {
+    @extend %label;
+    font-weight: normal;
+    color: rgba($dark, .5);
+    text-transform: none;
+  }
 }

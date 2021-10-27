@@ -3,13 +3,14 @@
 //-   max - максимальное значение в слайдере
 //-   values - массив из двух чисел, отвечает за предвыбор в слайдере
 //-   text - строка заголовка слайдера
+//-   note - строка заметки слайдера
 //-   postfix - строка, которая будет выведена после после подсчитанного слайдером значения 
 //-     (Например 1000Р - 2000Р, Р это postfix)
 mixin range-slider(options)
   if !options
     - options = {};
   -
-    let { min, max, step = 0.1, values, text = '', postfix = '' } = options;
+    let { min, max, step = 0.1, values, text = '', note = '', postfix = '' } = options;
     if (!values) {
       values = [min, max];
     }
@@ -27,3 +28,4 @@ mixin range-slider(options)
         .range-slider__track-inner
       .range-slider__thumb
       .range-slider__thumb
+    .range-slider__note= note
