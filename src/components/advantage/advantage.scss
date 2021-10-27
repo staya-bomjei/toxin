@@ -6,7 +6,8 @@
     @extend %default-text;
     display: flex;
     justify-content: left;
-    align-items: flex-start; 
+    align-items: flex-start;
+    margin: 20px 0;
   }
 
   &__icon {
@@ -29,5 +30,6 @@
   &__underline {
     border: none;
     border-top: 1px solid rgba($dark, .1);
+    margin: 0;
   }
 }
