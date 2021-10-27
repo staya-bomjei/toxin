@@ -1,5 +1,8 @@
 //- options:
+//-   title - заголовок компонента
+//-   condition - текст, показывающий в каком состоянии находится компонент
 //-   placeholder - текст, отображаемый когда инпут пуст и не в фокусе
+//-   value - текст, которым будет заполнен инпут по умолчанию
 //-   type - тип поля ввода, допустимые значения: 'default' | 'mask' | 'subscription'
 //-     'default' | undefined - обыкновенный инпут
 //-     'mask' - на инпут применяется маска ДД.ММ.ГГГГ
@@ -9,7 +12,7 @@ mixin text-field(options)
   if !options
     - options = {};
   -
-    let { placeholder, isHovered = false, type = 'default' } = options;
+    let { title = '', condition = '', placeholder = '', value = '', isHovered = false, type = 'default' } = options;
     let classes = [];
     if (type === 'mask') {
       classes.push('text-field_masked');
@@ -22,6 +25,11 @@ mixin text-field(options)
     }
 
   .text-field(class = classes)
-    input.text-field__input(class = (type === 'mask') ? 'js-text-field_masked' : null placeholder = placeholder)
-    - if (type === 'subscription')
-      span.text-field__icon arrow_forward
+    - if (title !== '' || condition !== '')
+      .text-field__info
+        .text-field__title= title
+        .text-field__condition= condition
+    .text-field__input-box
+      input.text-field__input(class = (type === 'mask') ? 'js-text-field_masked' : null placeholder = placeholder value = value)
+      - if (type === 'subscription')
+        span.text-field__icon arrow_forward
