@@ -8,6 +8,22 @@
   $button-size: 30px;
   width: 266px;
 
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    @extend %label;
+  }
+
+  &__condition {
+    @extend %label;
+    font-weight: normal;
+    color: rgba($dark, .5);
+  }
+
   &__dropdown {
     display: flex;
     flex-direction: row;
@@ -112,7 +128,7 @@
     }
   }
 
-  &_open {
+  &_open, &_expanded {
     .dropdown__dropdown {
       border-color: rgba($dark, .5);
     }
@@ -123,6 +139,12 @@
 
     .dropdown__icon {
       transform: rotate(180deg);
+    }
+  }
+
+  &_expanded {
+    .dropdown__content {
+      position: inherit;
     }
   }
 }

@@ -34,7 +34,7 @@ class Dropdown {
   setText(string) {
     let text = string.substring(0, this.maxLen);
 
-    if (string.length > this.maxLen) text += '...';
+    if (string.length >= this.maxLen) text += '...';
 
     this.$text.html(text);
   }

@@ -1,21 +1,30 @@
 include ../button/button
 
 //- options:
+//-   title - заголовок компонента
+//-   condition - текст, показывающий в каком состоянии находится компонент
 //-   placeholder - placeholder дропдауна
 //-   rows - массив объектов
 //-     rows[0].text - текст строки
 //-     rows[0].counter - значение счётчика этой строки
 //-     rows[0].countables - массив, содержащий три формы rows[0].text (например: ['кровать', 'кровати', 'кроватей'])
 //-   isSummator - если true, то dropdown будет в режиме сумматора, так же rows[] теперь игнорирует countables
+//-   isExpanded - если true, то dropdown будет всегда раскрыт
 //-   countables - массив, передаваемый вместе с isSummator, он содержит три формы подсчитываемого в dropdown 
 mixin dropdown(options)
   if !options
     - options = {};
   -
-    const { placeholder = '', rows = [], maxLen = 10, isSummator = false, countables = [] } = options;
+    const { 
+      title = '', condition = '', placeholder = '', rows = [], 
+      maxLen = 10, isSummator = false, isExpanded = false, countables = [],
+    } = options;
     let classes = [];
     if (isSummator) {
       classes.push('dropdown_summator');
+    }
+    if (isExpanded) {
+      classes.push('dropdown_expanded');
     }
 
   .dropdown.js-dropdown(
@@ -24,6 +33,10 @@ mixin dropdown(options)
     data-max-len = maxLen
     data-countables = (isSummator) ? countables : null
     )
+    - if (title !== '' || condition !== '')
+      .dropdown__info
+        .dropdown__title= title
+        .dropdown__condition= condition
     .dropdown__dropdown
       .dropdown__text= placeholder
       .dropdown__icon expand_more
