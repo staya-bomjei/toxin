@@ -3,16 +3,23 @@ include ../checkbox/checkbox
 //- options
 //-   text - озаглавие всего списка
 //-   list - массив объектов для инициализации чекбоксов
+//-   isOpen - если true, то список изначально будет раскрыт
+//-   isExpanded - если true, то список всегда будет раскрыт
 mixin checkbox-list(options) 
   if !options
     - options = {};
   -
-    const { text = '', list = [], isOpen = false } = options;
+    const { text = '', list = [], isOpen = false, isExpanded = false } = options;
+    let classes = [];
+    if (isOpen) {
+      classes.push('checkbox-list_open');
+    }
+    if (isExpanded) {
+      classes.push('checkbox-list_epxanded');
+    }
   
-  .checkbox-list.js-checkbox-list(class = (isOpen) ? 'checkbox-list_open' : null)
-    button.checkbox-list__button
-      span.checkbox-list__text= text
-      span.checkbox-list__icon expand_more
+  .checkbox-list.js-checkbox-list(class = classes)
+    button.checkbox-list__button= text
     .checkbox-list__content
       - for (let initObj of list)
         +checkbox(initObj)

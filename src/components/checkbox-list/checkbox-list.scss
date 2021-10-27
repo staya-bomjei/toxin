@@ -3,6 +3,7 @@
 
 .checkbox-list {
   &__button {
+    @extend %label;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,16 +15,13 @@
     margin-bottom: 15px;
     cursor: pointer;
     background-color: transparent;
-  }
 
-  &__text {
-    @extend %label;
-  }
-
-  &__icon {
-    @extend %material-icons;
-    font-size: 24px;
-    color: rgba($dark, .5);
+    &::after {
+      @extend %material-icons;
+      font-size: 24px;
+      color: rgba($dark, .5);
+      content: 'expand_more';
+    }
   }
 
   &__content {
@@ -38,13 +36,19 @@
     }
   }
 
-  &_open {
-    .checkbox-list__icon {
+  &_open, &_epxanded {
+    .checkbox-list__button::after {
       transform: rotate(180deg);
     }
 
     .checkbox-list__content {
       display: flex;
+    }
+  }
+
+  &_epxanded {
+    .checkbox-list__content {
+      position: inherit;
     }
   }
 }
