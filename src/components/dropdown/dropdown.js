@@ -21,6 +21,7 @@ class Dropdown {
   }
 
   attachEventHandlers() {
+    $(document).on('click', (event) => this.onOutOfComponentClick(event));
     $(this.$dropdown).on('click', (event) => this.onDropdownClick(event));
     $(this.$clear).on('click', () => this.onClearButtonClick());
     $(this.$accept).on('click', (event) => this.onAcceptButtonClick(event));
@@ -60,9 +61,15 @@ class Dropdown {
     });
   }
 
+  onOutOfComponentClick(event) {
+    if (!$(this.$component).is(event.target)
+    && $(this.$component).has(event.target).length === 0) {
+      $(this.$component).removeClass('dropdown_open');
+    }
+  }
+
   onDropdownClick() {
     $(this.$component).toggleClass('dropdown_open');
-    this.updateText();
   }
 
   onMinusClick($minus, $counter) {

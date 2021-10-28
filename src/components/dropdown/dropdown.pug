@@ -1,6 +1,7 @@
 include ../button/button
 
 //- options:
+//-   mix - класс, который будет добавлен к компоненту
 //-   title - заголовок компонента
 //-   condition - текст, показывающий в каком состоянии находится компонент
 //-   placeholder - placeholder дропдауна
@@ -10,21 +11,28 @@ include ../button/button
 //-     rows[0].countables - массив, содержащий три формы rows[0].text (например: ['кровать', 'кровати', 'кроватей'])
 //-   isSummator - если true, то dropdown будет в режиме сумматора, так же rows[] теперь игнорирует countables
 //-   isExpanded - если true, то dropdown будет всегда раскрыт
+//-   isEmpty - если true, то dropdown будет без контента
 //-   countables - массив, передаваемый вместе с isSummator, он содержит три формы подсчитываемого в dropdown 
 mixin dropdown(options)
   if !options
     - options = {};
   -
     const { 
-      title = '', condition = '', placeholder = '', rows = [], 
-      maxLen = 10, isSummator = false, isExpanded = false, countables = [],
+      mix, title = '', condition = '', placeholder = '', rows = [], maxLen = 100, 
+      isSummator = false, isExpanded = false, isEmpty = false, countables = [],
     } = options;
     let classes = [];
+    if (mix) {
+      classes.push(mix);
+    }
     if (isSummator) {
       classes.push('dropdown_summator');
     }
     if (isExpanded) {
       classes.push('dropdown_expanded');
+    }
+    if (isEmpty) {
+      classes.push('dropdown_empty');
     }
 
   .dropdown.js-dropdown(
@@ -33,24 +41,25 @@ mixin dropdown(options)
     data-max-len = maxLen
     data-countables = (isSummator) ? countables : null
     )
-    - if (title !== '' || condition !== '')
+    if title !== '' || condition !== ''
       .dropdown__info
         .dropdown__title= title
         .dropdown__condition= condition
     .dropdown__dropdown
       .dropdown__text= placeholder
       .dropdown__icon expand_more
-    .dropdown__content
-      - for (let row of rows)
-        .dropdown__row(data-row-countables = (isSummator) ? null : row.countables)
-          .dropdown__row-text= row.text
-          .dropdown__buttons
-            .dropdown__button-minus(class = (row.counter !== 0) ? 'dropdown__button-minus_active' : '') -
-            .dropdown__counter= row.counter
-            .dropdown__button-plus.dropdown__button-plus_active +
-      - if (isSummator)
-        .dropdown__control-buttons
-          .dropdown__clear-button
-            +button({ text: 'очистить'})
-          .dropdown__accept-button
-            +button({ text: 'принять'})
+    if !isEmpty
+      .dropdown__content
+        each row in rows
+          .dropdown__row(data-row-countables = (isSummator) ? null : row.countables)
+            .dropdown__row-text= row.text
+            .dropdown__buttons
+              .dropdown__button-minus(class = (row.counter !== 0) ? 'dropdown__button-minus_active' : '') -
+              .dropdown__counter= row.counter
+              .dropdown__button-plus.dropdown__button-plus_active +
+        if isSummator
+          .dropdown__control-buttons
+            .dropdown__clear-button
+              +button({ text: 'очистить'})
+            .dropdown__accept-button
+              +button({ text: 'принять'})
