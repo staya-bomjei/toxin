@@ -6,7 +6,7 @@
   position: relative;
   $border-radius: 4px;
   $button-size: 30px;
-  width: 100%;
+  width: 320px;
 
   &__info {
     display: flex;
@@ -24,28 +24,47 @@
     color: rgba($dark, .5);
   }
 
-  &__dropdown {
+  &__dropdowns {
+    &_split {
+      display: flex;
+
+      .dropdown__dropdown {
+        flex-grow: 1;
+        &:first-of-type {
+          margin-right: 10px;
+        }
+      }
+      
+    }
+  }
+
+  &__input-box {
+    position: relative;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     border: 1px solid rgba($dark, .25);
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
-    user-select: none;
     cursor: pointer;
+    padding: 11px 0 7px 14px;
   }
 
   &__text {
     @extend %default-text;
-    padding: 11px 14px 7px 14px;
+    text-transform: lowercase;
+    width: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
   }
 
   &__icon {
     @extend %material-icons;
     font-size: 24px;
-    align-self: center;
-    margin-right: 9px;
     color:rgba($dark, .75);
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 
   &__content {
@@ -60,6 +79,183 @@
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     padding: 7px 7px 7px 15px;
+
+    .air-datepicker {
+      border-radius: 4px;
+      border: 1px solid rgba($dark, .25);
+      box-shadow: none;
+      box-sizing: border-box;
+      width: 320px;
+      padding: 20px;
+    
+      &--pointer {
+        display: none;
+      }
+    
+      &-nav {
+        border: none;
+        padding: 0;
+        margin: 0;
+    
+        &--title {
+          @extend %item-title;
+        }
+    
+        &--action {
+          &[data-action='prev']::after, &[data-action='next']::after {
+            @extend %material-icons;
+            font-size: 24px;      
+            background: $primary-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: initial;
+          }
+        
+          &[data-action='prev']::after {
+            content: 'arrow_back';
+          }
+        
+          &[data-action='next']::after {
+            content: 'arrow_forward';
+          }
+        }
+      }
+    
+      &--content {
+        padding: 0px;
+      }
+    
+      &-body {
+        &--day-names {
+          grid-template-columns: repeat(7, 40px);
+          grid-auto-rows: 40px;
+          margin: 0;
+        }
+    
+        &--day-name {
+          @extend %label;
+          text-transform: capitalize;
+          color: $purple;
+          width: 40px;
+          height: 40px;
+        }
+    
+        &--cells {
+          &.-days- {
+            grid-template-columns: repeat(7, 40px);
+            grid-auto-rows: 40px;
+          }
+        }
+      }
+    
+      &-cell {
+        &.-day- {
+          @extend %label;
+          font-weight: normal;
+          text-transform: none;
+          color: rgba($dark, .5);
+    
+          &.-current- {
+            position: relative;
+            font-weight: bold;
+            color: white;
+    
+            &::after {
+              content: '';
+              position: absolute;
+              z-index: -1;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              background: $secondary-gradient;
+            }
+          }
+  
+          &.-other-month- {
+            color:rgba($dark, .25);
+          }
+    
+          &.-selected-, &.-selected-.-other-month- {
+            position: relative;
+            font-weight: bold;
+            color: white;
+            background: $primary-gradient-25;
+    
+            &::after {
+              content: '';
+              position: absolute;
+              z-index: -1;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              background: $primary-gradient;
+            }
+          }
+          
+          &.-range-from-, &.-range-to- {
+            border: none;
+            background: $primary-gradient-25;
+          }
+    
+          &.-range-from- {
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+          }
+    
+          &.-range-to- {
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+          }
+    
+          &.-in-range-, &.-in-range-.-other-month- {
+            background: $primary-gradient-25;
+    
+            &:not(.-current-) {
+              color: rgba($dark, .5);
+            }
+          }
+    
+          &.-focus- {
+            border: none;
+            background: $primary-gradient-25;
+    
+            &.-other-month- {
+              &.-in-range-, &.-selected- {
+                background: $primary-gradient-25;
+              }
+            }
+    
+            &:not(.-in-range-):not(.-selected-):not(.-range-from-):not(.-range-to-) {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    
+      &--buttons {
+        border: none;
+        padding: 0;
+        margin-top: 20px;
+      }
+    
+      &-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    
+      &-button {
+        @extend %label;
+        color: $purple;
+        padding: 0;
+        height: auto;
+    
+        &:hover {
+          background: initial;
+          color: rgba($dark, .5);
+        }
+      }
+    }
   }
 
   &__row {
@@ -128,8 +324,8 @@
     }
   }
 
-  &_open, &_expanded {
-    .dropdown__dropdown {
+  &_open, &_expanded, &_content-only {
+    .dropdown__input-box {
       border-color: rgba($dark, .5);
     }
     
@@ -142,15 +338,27 @@
     }
   }
 
-  &_expanded {
+  &_expanded, &_content-only {
     .dropdown__content {
       position: inherit;
     }
   }
 
-  &_empty {
-    .dropdown__dropdown {
+  &_datepicker {
+    .dropdown__input-box {
       border-radius: $border-radius;
+    }
+
+    .dropdown__content {
+      border: none;
+      padding: 0;
+      margin-top: 5px;
+    }
+  }
+
+  &_content-only {
+    .dropdown__info, .dropdown__dropdown {
+      display: none;
     }
   }
 }
