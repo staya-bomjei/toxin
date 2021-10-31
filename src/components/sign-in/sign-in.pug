@@ -1,0 +1,28 @@
+include ../text-field/text-field
+include ../radio-button/radio-button
+include ../toggle-button/toggle-button
+include ../button/button
+
+//- options:
+//-   title - строка заголовка формы
+mixin sign-in(options)
+  if !options
+    - options = {};
+  -
+    const { title = '' } = options;
+
+  .sign-up
+    .sign-up__row
+      h2.sign-up__title= title
+    .sign-up__row
+      +text-field({ placeholder: 'Email' })
+      +text-field({ placeholder: 'Пароль' })
+    .sign-up__row
+      +button({ text: 'войти', type: 'arrow' })
+    .sign-up__row.sign-up__has-account
+      .sign-up__label Уже есть аккаунт на Toxin
+      +button({ text: 'войти', type: 'border' })
+    
+
+
+    
