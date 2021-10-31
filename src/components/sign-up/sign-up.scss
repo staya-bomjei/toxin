@@ -1,0 +1,52 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.sign-up {
+  box-sizing: border-box;
+  width: 380px;
+  padding: 39px 29px 29px 29px;
+  border: 1px solid rgba(black, .12);
+  box-shadow: 0px 0px 25px rgba(black, .2);
+  border-radius: 4px;
+  background: white;
+  margin: 100px;
+
+  &__title {
+    @extend %title;
+  }
+
+  &__row {
+    &:not(:first-of-type) {
+      margin-top: 20px;
+    }
+
+    &:last-of-type {
+      margin-top: 30px;
+    }
+
+    .text-field:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__genders {
+    display: flex;
+
+    .radio-button:not(:last-of-type) {
+      margin-right: 20px;
+    }
+  }
+
+  &__has-account {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__label {
+    @extend %label;
+    text-transform: none;
+    font-weight: normal;
+    color: black;
+  }
+}
