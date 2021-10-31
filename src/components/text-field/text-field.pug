@@ -25,11 +25,11 @@ mixin text-field(options)
     }
 
   .text-field(class = classes)
-    - if (title !== '' || condition !== '')
+    if title !== '' || condition !== ''
       .text-field__info
         .text-field__title= title
         .text-field__condition= condition
     .text-field__input-box
       input.text-field__input(class = (type === 'mask') ? 'js-text-field_masked' : null placeholder = placeholder value = value)
-      - if (type === 'subscription')
+      if type === 'subscription'
         span.text-field__icon arrow_forward

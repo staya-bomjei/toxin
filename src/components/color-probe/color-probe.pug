@@ -6,13 +6,9 @@ mixin color-probe(options)
   if !options 
     - options = {};
   -
-    const { theme, colorName, colorCode } = options;
-    let classes = [];
-    if (theme) {
-      classes.push(`color-probe_theme-${theme}`);
-    }
+    const { theme = 'dark-100', colorName = '', colorCode = '' } = options;
      
-  .color-probe(class = classes)
+  .color-probe(class = `color-probe_theme-${theme}`)
     .color-probe__box
     .color-probe__text 
       .color-probe__name= colorName

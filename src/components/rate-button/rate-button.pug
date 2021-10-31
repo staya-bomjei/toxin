@@ -9,7 +9,7 @@ mixin rate-button(options)
 
   .rate-button.js-rate-button
     - for (let i = 0; i < counter; i++)
-      - if (i < rate)
+      if i < rate
         .rate-button__star star
-      - else
+      else
         .rate-button__star star_border

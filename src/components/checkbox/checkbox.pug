@@ -12,9 +12,9 @@ mixin checkbox(options)
   label.checkbox(class = (richTitle !== undefined) ? 'checkbox_rich' : null)
     input.checkbox__input(type = 'checkbox' checked = isChecked)
     span.checkbox__mark
-    - if (richTitle !== undefined)
+    if richTitle !== undefined
       span.checkbox__rich-container
         span.checkbox__title= richTitle
         span.checkbox__text= text
-    - else
+    else
       span.checkbox__text= text

@@ -10,5 +10,5 @@ mixin bullet-list(options)
   .bullet-list
     .bullet-list__title= title
     ul.bullet-list__list
-      - for (let point of points)
+      each point in points
         li.bullet-list__point= point
