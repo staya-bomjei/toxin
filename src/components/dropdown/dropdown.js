@@ -2,6 +2,7 @@ import './dropdown.scss';
 import 'air-datepicker/air-datepicker.css';
 import AirDatepicker from 'air-datepicker';
 import $ from 'jquery';
+import { ruLocale } from './ru';
 
 class Dropdown {
   constructor($component) {
@@ -135,20 +136,15 @@ class Dropdown {
     $(this.$component).removeClass('dropdown_open');
   }
 
-  static dateToString(date) {
-    const options = { day: 'numeric', month: 'short' };
-    return date.toLocaleDateString('ru', options).slice(0, -1);
-  }
-
   onCellSelect({ date, datepicker }) {
     if (this.isDatepicker() && this.isSplit) {
       const [first, second] = datepicker.selectedDates;
       if (datepicker.selectedDates.length === 1) {
-        $(this.texts[0]).val(Dropdown.dateToString(first));
+        $(this.texts[0]).val(first.toLocaleDateString('ru'));
         $(this.texts[1]).val('');
       } else if (datepicker.selectedDates.length === 2) {
-        $(this.texts[0]).val(Dropdown.dateToString(first));
-        $(this.texts[1]).val(Dropdown.dateToString(second));
+        $(this.texts[0]).val(first.toLocaleDateString('ru'));
+        $(this.texts[1]).val(second.toLocaleDateString('ru'));
       }
     }
     if (datepicker.selectedDates.length === 1
@@ -226,6 +222,7 @@ class Dropdown {
     const options = {
       ...additionalOptions,
       inline: true,
+      locale: ruLocale,
       altField: this.texts[0],
       altFieldDateFormat: 'd MMM',
       prevHtml: '',

@@ -6,7 +6,6 @@
   position: relative;
   $border-radius: 4px;
   $button-size: 30px;
-  width: 320px;
 
   &__info {
     display: flex;
@@ -31,10 +30,9 @@
       .dropdown__dropdown {
         flex-grow: 1;
         &:first-of-type {
-          margin-right: 10px;
+          margin-right: 20px;
         }
       }
-      
     }
   }
 
@@ -43,15 +41,13 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid rgba($dark, .25);
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    border-radius: $border-radius;
     cursor: pointer;
     padding: 11px 0 7px 14px;
   }
 
   &__text {
     @extend %default-text;
-    text-transform: lowercase;
     width: 100%;
     outline: none;
     border: none;
@@ -327,6 +323,8 @@
   &_open, &_expanded, &_content-only {
     .dropdown__input-box {
       border-color: rgba($dark, .5);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
     
     .dropdown__content {
