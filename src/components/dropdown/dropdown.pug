@@ -1,6 +1,7 @@
 include ../button/button
 
 //- options:
+//-   mix - класс, который будет добавлен к компоненту
 //-   title - заголовок компонента, должен быть массивом если isSplit true
 //-   condition - текст, показывающий в каком состоянии находится компонент, должен быть массивом если isSplit true
 //-   placeholder - строка placeholder дропдауна, должен быть массивом если isSplit true
@@ -27,11 +28,15 @@ mixin dropdown(options)
     - options = {};
   -
     const { 
-      title = '', condition = '', placeholder = '', rows = [], maxLen = 100, 
-      type = 'default', isExpanded = false, isEmpty = false, isRange = false,
-      isSplit = false, isContentOnly = false, countables = [], selected = [],
+      mix = false, title = '', condition = '', placeholder = '', rows = [], 
+      maxLen = 100, type = 'default', isExpanded = false, isEmpty = false,
+      isRange = false, isSplit = false, isContentOnly = false, countables = [], 
+      selected = [],
     } = options;
     let classes = [];
+    if (mix) {
+      classes.push(mix);
+    }
     if (type === 'summator') {
       classes.push('dropdown_summator');
     }
