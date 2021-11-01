@@ -7,7 +7,7 @@ mixin radio-button(options)
     - options = {};
   -
     const { isChecked = false, text = '', group = 'default'} = options;
-  
+
   label.radio-button
     input.radio-button__input(type = 'radio' name = group checked = isChecked)
     span.radio-button__mark
