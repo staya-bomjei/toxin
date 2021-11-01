@@ -17,6 +17,7 @@
   }
 
   &__mark {
+    box-sizing: border-box;
     flex-grow: 0;
     flex-shrink: 0;
     height: 20px;
@@ -25,15 +26,16 @@
     border-radius: 4px;
 
     &::after {
+      box-sizing: border-box;
       content: '';
       position: relative;
       display: none;
       left: 6px;
-      top: 3px;
+      top: 4px;
       width: 6px;
       height: 8px;
       border: solid;
-      border-width: 0px 3px 3px 0px;
+      border-width: 0px 2px 2px 0px;
       border-image: $primary-gradient 1;
       transform: rotate(45deg);
       border-image-repeat: stretch;
@@ -43,6 +45,7 @@
   &__text {
     @extend %default-text;
     color: rgba($dark, .5);
+    line-height: 1.125rem;
     margin-left: $text-margin;
   }
 
