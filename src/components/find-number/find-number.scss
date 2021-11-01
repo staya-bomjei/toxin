@@ -16,4 +16,8 @@
   &__title {
     @extend %title;
   }
+
+  &__find-button {
+    margin-top: 10px;
+  }
 }
