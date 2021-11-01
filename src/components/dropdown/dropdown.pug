@@ -1,28 +1,47 @@
 include ../button/button
 
 //- options:
+//-   title - заголовок компонента
+//-   condition - текст, показывающий в каком состоянии находится компонент
+//-   placeholder - строка placeholder дропдауна
+mixin dropdown__dropdown(options)
+  -
+    const { title, condition, placeholder } = options;
+
+  .dropdown__dropdown
+    .dropdown__info
+      .dropdown__title= title
+      .dropdown__condition= condition
+    .dropdown__input-box.js-dropdown__input-box
+      input.dropdown__text.js-dropdown__text(type = text placeholder = placeholder readonly = true)
+      .dropdown__icon expand_more
+
+//- options:
 //-   mix - класс, который будет добавлен к компоненту
 //-   title - заголовок компонента, должен быть массивом если isSplit true
 //-   condition - текст, показывающий в каком состоянии находится компонент, должен быть массивом если isSplit true
 //-   placeholder - строка placeholder дропдауна, должен быть массивом если isSplit true
+//-   maxLen - максимальное количество символов в инпуте, лишние будут отброшены
 //-   type - тип dropdown, допустимые значения: 'default' | 'summator' | 'datepicker'
 //-     'default' - обычный dropdown, при раскрытии появляется список со счётчиком для каждой строки,
 //-       при изменении любого счётчика в dropdown генерируется текст на основе счётчиков и rows[].countables;
-//-     'summator' - тот же 'default', за тем исключением, что имеются две кнопки 'очистить' и 'принять',
-//-       а так же текст в dropdown генерируется с помощью суммы всех счётчиков и на основе массива countables;
+//-     'summator' - тот же 'default', за тем исключением, что  текст в dropdown генерируется с помощью суммы 
+//-       всех счётчиков и на основе массива countables;
 //-     'datepicker' - при раскрытии такого dropdown появляется календарь, выбор даты которого записывается в
 //-       dropdown;
-//-   rows - массив объектов
+//-   rows - только для 'summator' | 'default', массив объектов
 //-     rows[0].text - текст строки
 //-     rows[0].counter - значение счётчика этой строки
-//-     rows[0].countables - массив, содержащий три формы rows[0].text (например: ['кровать', 'кровати', 'кроватей'])
-//-   isRange - если true, то в календаре у datepicker можно будет выбрать две даты 
-//-   isSplit - если true, то у range-datepicker одно поле будет разделено на два
+//-     rows[0].countables - только для 'default', массив, содержащий три формы rows[0].text (например: 
+//-       ['кровать', 'кровати', 'кроватей'])
+//-   isRange - только для 'datepicker', если true, то в календаре у datepicker можно будет выбрать две даты 
+//-   isSplit - только для 'datepicker', если true, то у range-datepicker одно поле будет разделено на два
+//-   selected - только для 'datepicker', массив дат в формате 'yyyy-mm-dd', которые будут выбраны изначально
 //-   isContentOnly - если true, то у dropdown будет виден только контент 
 //-   isExpanded - если true, то dropdown будет всегда раскрыт
-//-   isEmpty - если true, то dropdown будет без контента
-//-   countables - массив, содержащий три формы подсчитываемого в dropdown 
-//-   selected - массив дат в формате 'yyyy-mm-dd', которые будут выбраны изначально
+//-   hasControls - только для 'summator' | 'default', если true, то в разделе контента у dropdown появятся 
+//-     две кнопки 'очистить' и 'принять'
+//-   countables - только для 'summator', массив, содержащий три формы подсчитываемого в dropdown 
 //-   valueChanged - название триггера, который будет запускаться при изменении dropdown
 mixin dropdown(options)
   if !options
@@ -30,9 +49,9 @@ mixin dropdown(options)
   -
     const { 
       mix = false, title = '', condition = '', placeholder = '', rows = [], 
-      maxLen = 100, type = 'default', isExpanded = false, isEmpty = false,
+      maxLen = 100, type = 'default', isExpanded = false, hasControls = false, 
       isRange = false, isSplit = false, isContentOnly = false, countables = [], 
-      selected = [], valueChanged = 'data-value-changed',
+      selected = [], valueChanged = 'data-value-changed', 
     } = options;
     let classes = [];
     if (mix) {
@@ -47,9 +66,6 @@ mixin dropdown(options)
     if (isExpanded) {
       classes.push('dropdown_expanded');
     }
-    if (isEmpty) {
-      classes.push('dropdown_empty');
-    }
     if (isContentOnly) {
       classes.push('dropdown_content-only');
     }
@@ -60,40 +76,31 @@ mixin dropdown(options)
     data-value-changed = valueChanged
     data-max-len = maxLen
     data-type = type
+    data-has-controls = hasControls
     data-is-range = isRange
     data-is-split = isSplit
     data-selected = selected
     data-countables = (type === 'summator') ? countables : null
     )
-      
-    .dropdown__dropdowns(class = (isSplit) ? 'dropdown__dropdowns_split' : null)
-      .dropdown__dropdown
-        .dropdown__info
-          .dropdown__title= (isSplit) ? title[0] : title
-          .dropdown__condition= (isSplit) ? condition[0]: condition
-        .dropdown__input-box
-          input.dropdown__text(type = text placeholder = (isSplit) ? placeholder[0] : placeholder readonly = true)
-          .dropdown__icon expand_more
+
+    .dropdown__dropdowns.js-dropdown__dropdowns(class = (isSplit) ? 'dropdown__dropdowns_split' : null)
       if isSplit
-        .dropdown__dropdown
-          .dropdown__info
-            .dropdown__title= title[1]
-            .dropdown__condition= condition[1]
-          .dropdown__input-box
-            input.dropdown__text(type = text placeholder = placeholder[1] readonly = true)
-            .dropdown__icon expand_more
-    .dropdown__content
+        +dropdown__dropdown({ title: title[0], condition: condition[0], placeholder: placeholder[0] })
+        +dropdown__dropdown({ title: title[1], condition: condition[1], placeholder: placeholder[1] })
+      else
+        +dropdown__dropdown({ title, condition, placeholder })
+    .dropdown__content.js-dropdown__content
       if type !== 'datepicker'
         each row in rows
-          .dropdown__row(data-row-countables = (type === 'summator') ? null : row.countables)
+          .dropdown__row.js-dropdown__row(data-row-countables = (type === 'summator') ? null : row.countables)
             .dropdown__row-text= row.text
             .dropdown__buttons
-              .dropdown__button-minus(class = (row.counter !== 0) ? 'dropdown__button-minus_active' : '') -
-              .dropdown__counter= row.counter
-              .dropdown__button-plus.dropdown__button-plus_active +
-        if type === 'summator'
+              .dropdown__button-minus.js-dropdown__button-minus(class = (row.counter !== 0) ? 'dropdown__button-minus_active' : '') -
+              .dropdown__counter.js-dropdown__counter= row.counter
+              .dropdown__button-plus.js-dropdown__button-plus.dropdown__button-plus_active +
+        if hasControls
           .dropdown__control-buttons
-            .dropdown__clear-button
+            .dropdown__clear-button.js-dropdown__clear-button
               +button({ text: 'очистить'})
-            .dropdown__accept-button
+            .dropdown__accept-button.js-dropdown__accept-button
               +button({ text: 'принять'})

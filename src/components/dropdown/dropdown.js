@@ -6,75 +6,82 @@ import { ruLocale } from './ru';
 
 class Dropdown {
   constructor($component) {
+    this.placeholder = $component.attr('data-placeholder');
+    this.valueChanged = $component.attr('data-value-changed');
+    this.maxLen = Number($component.attr('data-max-len'));
+    const type = $component.attr('data-type');
+    this.isDatepicker = type === 'datepicker';
+    this.isSummator = type === 'summator';
+    this.hasControls = $component.attr('data-has-controls') !== undefined;
     this.$component = $component;
-    [this.$dropdowns] = $($component).find('.dropdown__dropdowns');
-    [this.$content] = $($component).find('.dropdown__content');
-    this.placeholder = $($component).attr('data-placeholder');
-    this.maxLen = $($component).attr('data-max-len');
-    this.type = $($component).attr('data-type');
-    this.valueChanged = $($component).attr('data-value-changed');
-    if (this.isDatepicker()) {
-      this.texts = $($component).find('.dropdown__text');
-      this.isSplit = $($component).attr('data-is-split') !== undefined;
-      const range = $($component).attr('data-is-range') !== undefined;
+    this.$dropdowns = $('.js-dropdown__dropdowns', $component);
+    this.$content = $('.js-dropdown__content', $component);
+
+    if (this.isDatepicker) {
+      this.texts = $('.js-dropdown__text', $component);
+      this.isSplit = $component.attr('data-is-split') !== undefined;
+      const range = $component.attr('data-is-range') !== undefined;
       this.datepicker = this.createCalendar({ range });
-      const selected = JSON.parse($($component).attr('data-selected'));
+      const selected = JSON.parse($component.attr('data-selected'));
       this.datepicker.selectDate(selected);
       $('button', this.datepicker.$buttons).attr('type', 'button');
     } else {
-      [this.$text] = $($component).find('.dropdown__text');
-      if (this.isSummator()) {
-        this.countables = JSON.parse($($component).attr('data-countables'));
-        this.$clear = $($component).find('.dropdown__clear-button');
-        this.$accept = $($component).find('.dropdown__accept-button');
+      this.$text = $('.js-dropdown__text', $component);
+
+      if (this.isSummator) {
+        this.countables = JSON.parse($component.attr('data-countables'));
         this.rows = this.getRows();
-        this.updateClearButtonVisability();
       } else {
         this.rows = this.getRows();
       }
+
       this.updateText();
+
+      if (this.hasControls) {
+        this.$clear = $component.find('.js-dropdown__clear-button');
+        this.$accept = $component.find('.js-dropdown__accept-button');
+        this.updateClearButtonVisability();
+      }
     }
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
     $(document).on('click', (event) => this.onOutOfComponentClick(event));
-    $(this.$dropdowns).on('click', (event) => this.onDropdownsClick(event));
+    this.$dropdowns.on('click', (event) => this.onDropdownsClick(event));
 
-    if (!this.isDatepicker()) {
-      if (this.isSummator()) {
-        $(this.$clear).on('click', () => this.onClearButtonClick());
-        $(this.$accept).on('click', (event) => this.onAcceptButtonClick(event));
+    if (!this.isDatepicker) {
+      if (this.hasControls) {
+        this.$clear.on('click', () => this.onClearButtonClick());
+        this.$accept.on('click', (event) => this.onAcceptButtonClick(event));
       }
+
       this.rows.forEach((row) => {
-        $(row.$minus).on('click', () => this.onMinusClick(row.$minus, row.$counter));
-        $(row.$plus).on('click', () => this.onPlusClick(row.$minus, row.$counter));
+        row.$minus.on('click', () => this.onMinusClick(row.$minus, row.$counter));
+        row.$plus.on('click', () => this.onPlusClick(row.$minus, row.$counter));
       });
     }
   }
 
   setText(string) {
     let text = string.substring(0, this.maxLen);
-
     if (string.length >= this.maxLen) text += '...';
-
-    $(this.$text).val(text);
+    this.$text.val(text);
   }
 
   getRows() {
-    const rows = Array.from(this.$component.find('.dropdown__row'));
+    const rows = Array.from($('.js-dropdown__row', this.$component));
 
-    return rows.map(($row) => {
+    return rows.map((row) => {
       const resultObject = {
-        $minus: $($row).find('.dropdown__button-minus'),
-        $counter: $($row).find('.dropdown__counter'),
-        $plus: $($row).find('.dropdown__button-plus'),
+        $minus: $(row).find('.js-dropdown__button-minus'),
+        $counter: $(row).find('.js-dropdown__counter'),
+        $plus: $(row).find('.js-dropdown__button-plus'),
       };
 
-      if (this.isSummator()) return resultObject;
+      if (this.isSummator) return resultObject;
 
-      const countables = JSON.parse($($row).attr('data-row-countables'));
-
+      const countables = JSON.parse($(row).attr('data-row-countables'));
       return {
         countables,
         ...resultObject,
@@ -83,16 +90,16 @@ class Dropdown {
   }
 
   onOutOfComponentClick(event) {
-    if (!this.$component.is(event.target)
-    && this.$component.has(event.target).length === 0) {
-      $(this.$component).removeClass('dropdown_open');
+    const { target } = event;
+    if (!this.$component.is(target) && this.$component.has(target).length === 0) {
+      this.$component.removeClass('dropdown_open');
     }
   }
 
   onDropdownsClick(event) {
     const $target = $(event.target);
-    if ($target.closest('.dropdown__input-box').length !== 0) {
-      $(this.$component).toggleClass('dropdown_open');
+    if ($target.closest('.js-dropdown__input-box').length !== 0) {
+      this.$component.toggleClass('dropdown_open');
     }
   }
 
@@ -100,12 +107,12 @@ class Dropdown {
     const counter = Number($counter.html());
 
     if (counter === 0) return;
-    if (counter === 1) $($minus).removeClass('dropdown__button-minus_active');
+    if (counter === 1) $minus.removeClass('dropdown__button-minus_active');
 
     $counter.html(counter - 1);
 
     this.updateText();
-    if (this.isSummator()) {
+    if (this.hasControls) {
       this.updateClearButtonVisability();
     }
   }
@@ -114,38 +121,48 @@ class Dropdown {
     const counter = Number($counter.html());
 
     if (counter === 0) {
-      $($minus).addClass('dropdown__button-minus_active');
+      $minus.addClass('dropdown__button-minus_active');
     }
 
     $counter.html(counter + 1);
 
     this.updateText();
-    if (this.isSummator()) {
+    if (this.hasControls) {
       this.updateClearButtonVisability();
     }
   }
 
   onClearButtonClick() {
     this.rows.forEach((row) => {
-      $(row.$minus).removeClass('dropdown__button-minus_active');
+      row.$minus.removeClass('dropdown__button-minus_active');
       row.$counter.html('0');
     });
+
     this.updateText();
     this.updateClearButtonVisability();
   }
 
+  onClearCalendarClick(dp) {
+    dp.clear();
+    if (this.isSplit) {
+      $(this.texts[1]).val('');
+    }
+  }
+
   onAcceptButtonClick() {
-    $(this.$component).removeClass('dropdown_open');
+    this.$component.removeClass('dropdown_open');
   }
 
   onCellSelect({ date, datepicker }) {
-    if (this.isDatepicker()) {
+    if (this.isDatepicker) {
       const [first, second] = datepicker.selectedDates;
+
       if (datepicker.selectedDates.length === 1) {
         if (this.isSplit) {
           $(this.texts[0]).val(first.toLocaleDateString('ru'));
           $(this.texts[1]).val('');
         }
+
         this.$component.attr('data-from', first.toLocaleDateString('en'));
         this.$component.attr('data-to', '');
       } else if (datepicker.selectedDates.length === 2) {
@@ -153,12 +170,13 @@ class Dropdown {
           $(this.texts[0]).val(first.toLocaleDateString('ru'));
           $(this.texts[1]).val(second.toLocaleDateString('ru'));
         }
+
         this.$component.attr('data-from', first.toLocaleDateString('en'));
         this.$component.attr('data-to', second.toLocaleDateString('en'));
       }
     }
-    if (datepicker.selectedDates.length === 1
-    && datepicker.selectedDates[0].getTime() === date.getTime()) {
+
+    if (datepicker.selectedDates.length === 1) {
       const year = date.getFullYear();
       const month = date.getMonth();
       const day = date.getDate();
@@ -170,6 +188,7 @@ class Dropdown {
         $selectedCell.addClass('-range-to-');
       }
     }
+
     $(document).trigger(this.valueChanged);
   }
 
@@ -202,6 +221,7 @@ class Dropdown {
     return this.rows
       .map((row) => {
         const counter = Number(row.$counter.html());
+
         if (counter === 0) return '';
 
         return `${counter} ${Dropdown.choiceCountable(counter, row.countables)}`;
@@ -215,11 +235,12 @@ class Dropdown {
 
     if (sum === 0) {
       this.setText(this.placeholder);
-    } else if (this.isSummator()) {
+    } else if (this.isSummator) {
       this.setText(`${sum} ${Dropdown.choiceCountable(sum, this.countables)}`);
     } else {
       this.setText(this.getSentence());
     }
+
     this.$component.attr('data-value', sum);
     $(document).trigger(this.valueChanged);
   }
@@ -251,7 +272,7 @@ class Dropdown {
       buttons: [
         {
           content: 'очистить',
-          onClick: (dp) => dp.clear(),
+          onClick: (dp) => this.onClearCalendarClick(dp),
         },
         {
           content: 'принять',
@@ -260,15 +281,7 @@ class Dropdown {
       ],
     };
 
-    return new AirDatepicker(this.$content, options);
-  }
-
-  isSummator() {
-    return this.type === 'summator';
-  }
-
-  isDatepicker() {
-    return this.type === 'datepicker';
+    return new AirDatepicker(this.$content[0], options);
   }
 }
 
