@@ -4,25 +4,30 @@ import $ from 'jquery';
 class RangeSlider {
   constructor($component) {
     this.$component = $component;
-    this.$output = $component.find('.range-slider__output');
-    [this.$range1, this.$range2] = $component.find('.range-slider__range');
-    this.$track = $component.find('.range-slider__track-inner');
-    [this.$thumb1, this.$thumb2] = $component.find('.range-slider__thumb');
     this.postfix = $component.attr('data-postfix');
     this.min = Number($component.attr('data-min'));
     this.max = Number($component.attr('data-max'));
-    this.setUpSliders($(this.$range1).attr('value'), $(this.$range2).attr('value'));
+    this.$output = $('.js-range-slider__output', $component);
+    this.$track = $('.js-range-slider__track-inner', $component);
+
+    const ranges = Array.from($('.js-range-slider__range', $component));
+    [this.$range1, this.$range2] = ranges.map((range) => $(range));
+
+    const thumbs = Array.from($('.js-range-slider__thumb', $component));
+    [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
+
+    this.setUpSliders(this.$range1.attr('value'), this.$range2.attr('value'));
     this.updateOutput();
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    $(this.$range1).on('input', (event) => this.updateSlider(event));
-    $(this.$range2).on('input', (event) => this.updateSlider(event));
+    this.$range1.on('input', (event) => this.updateSlider(event));
+    this.$range2.on('input', (event) => this.updateSlider(event));
   }
 
   updateSlider(event) {
-    const $range = event.target;
+    const $range = $(event.target);
     const value = Number(event.target.value);
     let { valueLeft, valueRight } = this.getValues();
 
@@ -42,17 +47,17 @@ class RangeSlider {
     const leftRange = Math.round(((this.max - this.min) * valueLeft) / 100 + this.min);
     const rightRange = Math.round(((this.max - this.min) * valueRight) / 100 + this.min);
 
-    $(this.$output).html(`${leftRange}${this.postfix} - ${rightRange}${this.postfix}`);
+    this.$output.html(`${leftRange}${this.postfix} - ${rightRange}${this.postfix}`);
   }
 
   isLeftValue($range) {
-    return $range === this.$range1;
+    return $range[0] === this.$range1[0];
   }
 
   getValues() {
     return {
-      valueLeft: Number($(this.$range1).attr('value')),
-      valueRight: Number($(this.$range2).attr('value')),
+      valueLeft: Number(this.$range1.attr('value')),
+      valueRight: Number(this.$range2.attr('value')),
     };
   }
 
@@ -63,18 +68,18 @@ class RangeSlider {
   }
 
   static setUpThumb(value, $range, $thumb) {
-    $($range).attr('value', value);
-    $($thumb).css('left', `${value}%`);
-    $($thumb).css('transform', `translate(-${value}%, -50%)`);
+    $range.attr('value', value);
+    $thumb.css('left', `${value}%`);
+    $thumb.css('transform', `translate(-${value}%, -50%)`);
   }
 
   setUpTrack(valueLeft, valueRight) {
     if (valueLeft > valueRight) {
-      $(this.$track).css('width', `${valueLeft - valueRight}%`);
-      $(this.$track).css('left', `${valueRight}%`);
+      this.$track.css('width', `${valueLeft - valueRight}%`);
+      this.$track.css('left', `${valueRight}%`);
     } else {
-      $(this.$track).css('width', `${valueRight - valueLeft}%`);
-      $(this.$track).css('left', `${valueLeft}%`);
+      this.$track.css('width', `${valueRight - valueLeft}%`);
+      this.$track.css('left', `${valueLeft}%`);
     }
   }
 }
