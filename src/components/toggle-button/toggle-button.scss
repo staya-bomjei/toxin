@@ -19,6 +19,7 @@
   }
 
   &__mark {
+    box-sizing: border-box;
     flex-grow: 0;
     flex-shrink: 0;
     height: $marker-height;
@@ -42,6 +43,7 @@
 
   &__text {
     @extend %default-text;
+    line-height: 20px;
     margin-left: 10px;
   }
 
