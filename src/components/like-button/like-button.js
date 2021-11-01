@@ -4,13 +4,13 @@ import $ from 'jquery';
 class LikeButton {
   constructor($component) {
     this.$component = $component;
-    this.$icon = $($component).find('.like-button__icon');
-    this.$counter = $($component).find('.like-button__counter');
+    this.$icon = $('.js-like-button__icon', $component);
+    this.$counter = $('.js-like-button__counter', $component);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    $(this.$component).on('click', () => this.onClick());
+    this.$component.on('click', () => this.onClick());
   }
 
   onClick() {
@@ -21,7 +21,7 @@ class LikeButton {
       this.setCounter(this.getCounter() + 1);
       this.setIcon(true);
     }
-    $(this.$component).toggleClass('like-button_liked');
+    this.$component.toggleClass('like-button_liked');
   }
 
   setIcon(isLiked) {

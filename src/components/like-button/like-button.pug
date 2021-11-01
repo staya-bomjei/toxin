@@ -9,5 +9,5 @@ mixin like-button(options)
     const icon = (isChecked) ? 'favorite' : 'favorite_border';
 
   .like-button.js-like-button(class = (isChecked) ? 'like-button_liked' : null)
-    .like-button__icon= icon
-    .like-button__counter= counter
+    .like-button__icon.js-like-button__icon= icon
+    .like-button__counter.js-like-button__counter= counter
