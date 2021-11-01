@@ -20,7 +20,7 @@
     cursor: pointer;
   }
 
-  &__to-left-button, &__to-right-button {
+  &__to-left, &__to-right {
     @extend %material-icons;
     @extend %button;
     font-size: 24px;
@@ -28,7 +28,7 @@
     background: $secondary-gradient;
   }
 
-  &__number-button {
+  &__number {
     @extend %button;
     @extend %label;
     font-weight: normal;

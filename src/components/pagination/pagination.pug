@@ -14,8 +14,8 @@ mixin pagination(options)
     data-postfix = postfix
   )
     .pagination__buttons
-      .pagination__to-left-button arrow_back
+      .pagination__to-left.js-pagination__to-left arrow_back
       - for (let i = 0; i < 7; i++)
-        .pagination__number-button
-      .pagination__to-right-button arrow_forward
-    .pagination__text
+        .pagination__number.js-pagination__number
+      .pagination__to-right.js-pagination__to-right arrow_forward
+    .pagination__text.js-pagination__text
