@@ -7,9 +7,6 @@ mixin rate-button(options)
   -
     const { counter = 5, rate = 0 } = options;
 
-  .rate-button.js-rate-button
+  .rate-button.js-rate-button(data-rate = rate)
     - for (let i = 0; i < counter; i++)
-      if i < rate
-        .rate-button__star star
-      else
-        .rate-button__star star_border
+      .rate-button__star.js-rate-button__star
