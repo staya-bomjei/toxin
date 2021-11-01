@@ -1,0 +1,86 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.reservation {
+  display: grid;
+  grid-row-gap: 20px;
+  box-sizing: border-box;
+  width: 380px;
+  padding: 39px 29px 29px 29px;
+  border: 1px solid rgba(black, .12);
+  box-shadow: 0px 0px 25px rgba(black, .2);
+  border-radius: 4px;
+  background: white;
+  margin: 0;
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__number {
+    @extend %title;
+    display: inline-block;
+  }
+
+  &__type {
+    @extend %label;
+    color: $purple;
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  &__price-info {
+    @extend %label;
+    text-transform: none;
+    font-weight: normal;
+    color: rgba(black, .5);
+  }
+
+  &__calculator {
+    @extend %default-text;
+    display: grid;
+    grid-template-columns: 1fr 20px 80px;
+    grid-row-gap: 10px;
+  }
+
+  &__rent {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  &__rent-total, &__discount-total, &__additional-total {
+    text-align: right;
+  }
+
+  &__i {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(black, .25);
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(black, .25);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+  }
+
+  &__total {
+    display: flex;
+    align-items: baseline;
+    margin-top: 10px;
+
+    & h3 {
+      @extend %item-title;
+    }
+  }
+
+  &__dashed-underline {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px dashed rgba(black, .25);
+  }
+}
