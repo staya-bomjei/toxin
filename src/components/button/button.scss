@@ -9,10 +9,17 @@
   align-items: center;
   user-select: none;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
   color: $purple;
 
   &:hover {
     color: rgba($dark, .5);
+  }
+
+  &_bordered, &_filled, &_arrow {
+    height: 44px;
+    min-width: 99px;
   }
 
   &_bordered {
@@ -21,7 +28,6 @@
     background-image: linear-gradient(white, white), $primary-gradient;
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    padding: 12px 18px 13px 18px;
 
     &:hover {
       color: $purple;    
@@ -33,7 +39,6 @@
     border-radius: 22px;
     background: $primary-gradient;
     color: white;
-    padding: 14px 21px 15px 19px;
 
     &:hover {
       color: white;

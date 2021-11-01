@@ -1,19 +1,26 @@
 //- options:
+//-   mix - класс, который будет добавлен к компоненту
 //-   text - текст кнопки
 //-   type - тип кнопки, допустимые значения: 'default' | 'border' | 'fill' | 'arrow'
-//-     'default' | undefined -  текстовая кнопка, без каких-либо примечательностей
-//-     'border' -  кнопка с рамкой
-//-     'fill' - кнопка с заливкой
-//-     'arrow' - кнопка со стрелкой
+//-     'default' | undefined -  текстовая кнопка, без каких-либо примечательностей;
+//-     'border' -  кнопка с рамкой;
+//-     'fill' - кнопка с заливкой;
+//-     'arrow' - кнопка со стрелкой;
+//-   htmlType - тип кнопки с точки зрения html, допустимые значения: 'button' | 'submit' | 'reset',
+//-     по умолчанию 'button'
 mixin button(options)
   if !options
     - options = {};
   -
-    const { text = 'click me', type = 'default' } = options;
+    const { mix, text = 'click me', type = 'default', htmlType = 'button' } = options;
     const classes = [];
+
+    if (mix !== undefined) {
+      classes.push(mix);
+    }
 
     if (type === 'border') classes.push('button_bordered');
     else if (type === 'fill') classes.push('button_filled');
     else if (type === 'arrow') classes.push('button_arrow');
-  
-  .button(class = classes)= text
+
+  button.button(class = classes type = htmlType)= text
