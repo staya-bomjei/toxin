@@ -12,6 +12,7 @@ class Dropdown {
     this.placeholder = $($component).attr('data-placeholder');
     this.maxLen = $($component).attr('data-max-len');
     this.type = $($component).attr('data-type');
+    this.valueChanged = $($component).attr('data-value-changed');
     if (this.isDatepicker()) {
       this.texts = $($component).find('.dropdown__text');
       this.isSplit = $($component).attr('data-is-split') !== undefined;
@@ -19,6 +20,7 @@ class Dropdown {
       this.datepicker = this.createCalendar({ range });
       const selected = JSON.parse($($component).attr('data-selected'));
       this.datepicker.selectDate(selected);
+      $('button', this.datepicker.$buttons).attr('type', 'button');
     } else {
       [this.$text] = $($component).find('.dropdown__text');
       if (this.isSummator()) {
@@ -137,16 +139,20 @@ class Dropdown {
   }
 
   onCellSelect({ date, datepicker }) {
-    if (this.isDatepicker() && this.isSplit) {
+    if (this.isDatepicker()) {
       const [first, second] = datepicker.selectedDates;
       if (datepicker.selectedDates.length === 1) {
-        $(this.texts[0]).val(first.toLocaleDateString('ru'));
-        $(this.texts[1]).val('');
+        if (this.isSplit) {
+          $(this.texts[0]).val(first.toLocaleDateString('ru'));
+          $(this.texts[1]).val('');
+        }
         this.$component.attr('data-from', first.toLocaleDateString('en'));
         this.$component.attr('data-to', '');
       } else if (datepicker.selectedDates.length === 2) {
-        $(this.texts[0]).val(first.toLocaleDateString('ru'));
-        $(this.texts[1]).val(second.toLocaleDateString('ru'));
+        if (this.isSplit) {
+          $(this.texts[0]).val(first.toLocaleDateString('ru'));
+          $(this.texts[1]).val(second.toLocaleDateString('ru'));
+        }
         this.$component.attr('data-from', first.toLocaleDateString('en'));
         this.$component.attr('data-to', second.toLocaleDateString('en'));
       }
@@ -164,6 +170,7 @@ class Dropdown {
         $selectedCell.addClass('-range-to-');
       }
     }
+    $(document).trigger(this.valueChanged);
   }
 
   sumAllCounts() {
@@ -204,14 +211,17 @@ class Dropdown {
   }
 
   updateText() {
-    if (this.sumAllCounts() === 0) {
+    const sum = this.sumAllCounts();
+
+    if (sum === 0) {
       this.setText(this.placeholder);
     } else if (this.isSummator()) {
-      const sum = this.sumAllCounts();
       this.setText(`${sum} ${Dropdown.choiceCountable(sum, this.countables)}`);
     } else {
       this.setText(this.getSentence());
     }
+    this.$component.attr('data-value', sum);
+    $(document).trigger(this.valueChanged);
   }
 
   updateClearButtonVisability() {

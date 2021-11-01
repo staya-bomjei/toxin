@@ -23,6 +23,7 @@ include ../button/button
 //-   isEmpty - если true, то dropdown будет без контента
 //-   countables - массив, содержащий три формы подсчитываемого в dropdown 
 //-   selected - массив дат в формате 'yyyy-mm-dd', которые будут выбраны изначально
+//-   valueChanged - название триггера, который будет запускаться при изменении dropdown
 mixin dropdown(options)
   if !options
     - options = {};
@@ -31,7 +32,7 @@ mixin dropdown(options)
       mix = false, title = '', condition = '', placeholder = '', rows = [], 
       maxLen = 100, type = 'default', isExpanded = false, isEmpty = false,
       isRange = false, isSplit = false, isContentOnly = false, countables = [], 
-      selected = [],
+      selected = [], valueChanged = 'data-value-changed',
     } = options;
     let classes = [];
     if (mix) {
@@ -56,6 +57,7 @@ mixin dropdown(options)
   .dropdown.js-dropdown(
     class = classes 
     data-placeholder = placeholder
+    data-value-changed = valueChanged
     data-max-len = maxLen
     data-type = type
     data-is-range = isRange
