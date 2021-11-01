@@ -4,16 +4,16 @@ import $ from 'jquery';
 class CheckboxList {
   constructor($component) {
     this.$component = $component;
-    this.$button = $($component).find('.checkbox-list__button');
+    this.$button = $('.js-checkbox-list__button', $component);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    $(this.$button).on('click', (event) => this.onButtonClick(event.target));
+    this.$button.on('click', (event) => this.onButtonClick(event.target));
   }
 
   onButtonClick() {
-    $(this.$component).toggleClass('checkbox-list_open');
+    this.$component.toggleClass('checkbox-list_open');
   }
 }
 

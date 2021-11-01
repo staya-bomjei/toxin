@@ -11,15 +11,16 @@ mixin checkbox-list(options)
   -
     const { text = '', list = [], isOpen = false, isExpanded = false } = options;
     let classes = [];
+
     if (isOpen) {
       classes.push('checkbox-list_open');
     }
     if (isExpanded) {
       classes.push('checkbox-list_epxanded');
     }
-  
+
   .checkbox-list.js-checkbox-list(class = classes)
-    button.checkbox-list__button= text
+    button.checkbox-list__button.js-checkbox-list__button(type = 'button')= text
     .checkbox-list__content
       each initObj in list
         +checkbox(initObj)
