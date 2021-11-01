@@ -142,9 +142,13 @@ class Dropdown {
       if (datepicker.selectedDates.length === 1) {
         $(this.texts[0]).val(first.toLocaleDateString('ru'));
         $(this.texts[1]).val('');
+        this.$component.attr('data-from', first.toLocaleDateString('en'));
+        this.$component.attr('data-to', '');
       } else if (datepicker.selectedDates.length === 2) {
         $(this.texts[0]).val(first.toLocaleDateString('ru'));
         $(this.texts[1]).val(second.toLocaleDateString('ru'));
+        this.$component.attr('data-from', first.toLocaleDateString('en'));
+        this.$component.attr('data-to', second.toLocaleDateString('en'));
       }
     }
     if (datepicker.selectedDates.length === 1
