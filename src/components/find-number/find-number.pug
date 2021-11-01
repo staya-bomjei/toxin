@@ -1,13 +1,8 @@
 include ../dropdown/dropdown
 include ../button/button
 
-//- options:
-//-   title - строка заголовка формы
-mixin find-number(options)
-  if !options
-    - options = {};
+mixin find-number()
   -
-    const { title = '' } = options;
     const rows = [
       { text: 'взрослые', counter: 0 },
       { text: 'дети', counter: 0 },
@@ -15,11 +10,7 @@ mixin find-number(options)
     ];
 
   form.find-number
-    .find-number__row
-      h2.find-number__title= title
-    .find-number__row
-      +dropdown({ title: ['прибытие', 'выезд'], placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], type: 'datepicker', isRange: true, isSplit: true})
-    .find-number__row
-      +dropdown({ title: 'гости', placeholder: 'Сколько гостей', rows, maxLen: 30, type: 'summator', countables: ['гость', 'гостя', 'гостей'] })
-    .find-number__row
-      +button({ text: 'подобрать номер', type: 'arrow' })
+    h2.find-number__title Найдём номера под ваши пожелания
+    +dropdown({ title: ['прибытие', 'выезд'], placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], type: 'datepicker', isRange: true, isSplit: true})
+    +dropdown({ title: 'гости', placeholder: 'Сколько гостей', rows, maxLen: 30, type: 'summator', countables: ['гость', 'гостя', 'гостей'] })
+    +button({ text: 'подобрать номер', type: 'arrow' })

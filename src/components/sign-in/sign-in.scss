@@ -1,7 +1,9 @@
 @import '../../styles/variables.scss';
 @import '../../styles/fonts.scss';
 
-.sign-up {
+.sign-in {
+  display: grid;
+  grid-row-gap: 20px;
   box-sizing: border-box;
   width: 380px;
   padding: 39px 29px 29px 29px;
@@ -9,24 +11,15 @@
   box-shadow: 0px 0px 25px rgba(black, .2);
   border-radius: 4px;
   background: white;
-  margin: 100px;
+  margin: 0;
 
   &__title {
     @extend %title;
   }
 
   &__row {
-    &:not(:first-of-type) {
-      margin-top: 20px;
-    }
-
-    &:last-of-type {
-      margin-top: 30px;
-    }
-
-    .text-field:not(:last-child) {
-      margin-bottom: 10px;
-    }
+    display: grid;
+    grid-row-gap: 10px;
   }
 
   &__genders {
@@ -41,6 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 10px;
   }
 
   &__label {

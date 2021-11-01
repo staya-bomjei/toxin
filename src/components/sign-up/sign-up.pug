@@ -3,35 +3,21 @@ include ../radio-button/radio-button
 include ../toggle-button/toggle-button
 include ../button/button
 
-//- options:
-//-   title - строка заголовка формы
-mixin sign-up(options)
-  if !options
-    - options = {};
-  -
-    const { title = '' } = options;
-
-  .sign-up
-    .sign-up__row
-      h2.sign-up__title= title
+mixin sign-up()
+  form.sign-up
+    h2.sign-up__title Регистрация аккаунта
     .sign-up__row
       +text-field({ placeholder: 'Имя' })
       +text-field({ placeholder: 'Фамилия' })
       .sign-up__genders
         +radio-button({ text: 'Мужчина', group: 'gender', isChecked: true })
         +radio-button({ text: 'Женщина', group: 'gender' })
-    .sign-up__row
-      +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
+    +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
     .sign-up__row
       +text-field({ title: 'данные для входа в сервис', placeholder: 'Email' })
       +text-field({ placeholder: 'Пароль' })
       +toggle-button({ text: 'Получать спецпредложения' })
-    .sign-up__row
-      +button({ text: 'перейти к оплате', type: 'arrow' })
-    .sign-up__row.sign-up__has-account
+    +button({ text: 'перейти к оплате', type: 'arrow' })
+    .sign-up__has-account
       .sign-up__label Уже есть аккаунт на Toxin
       +button({ text: 'войти', type: 'border' })
-    
-
-
-    
