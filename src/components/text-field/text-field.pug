@@ -1,12 +1,13 @@
 //- options:
+//-   mix - класс, который будет добавлен к компоненту
 //-   title - заголовок компонента
 //-   condition - текст, показывающий в каком состоянии находится компонент
 //-   placeholder - текст, отображаемый когда инпут пуст и не в фокусе
 //-   value - текст, которым будет заполнен инпут по умолчанию
 //-   type - тип поля ввода, допустимые значения: 'default' | 'mask' | 'subscription'
-//-     'default' | undefined - обыкновенный инпут
-//-     'mask' - на инпут применяется маска ДД.ММ.ГГГГ
-//-     'subscription' - у text field появляется стрелочка справа
+//-     'default' | undefined - обыкновенный инпут;
+//-     'mask' - на инпут применяется маска ДД.ММ.ГГГГ;
+//-     'subscription' - у text field появляется стрелочка справа;
 //-   isHovered - если true, то элемент всегда будет отображаться в состоянии hovered
 mixin text-field(options)
   if !options
@@ -14,6 +15,10 @@ mixin text-field(options)
   -
     let { title = '', condition = '', placeholder = '', value = '', isHovered = false, type = 'default' } = options;
     let classes = [];
+
+    if (mix !== undefined) {
+      classes.push(mix);
+    }
     if (type === 'mask') {
       classes.push('text-field_masked');
     }
