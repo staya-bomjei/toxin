@@ -1,0 +1,131 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.hotel-number {
+  width: 270px;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &__image-box {
+    position: relative;
+    height: 151px;
+    width: 100%;
+    overflow: hidden;
+
+    &:hover, &_hovered {
+      .hotel-number__to-left, .hotel-number__to-right {
+        display: flex;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    display: none;
+
+    &_selected {
+      display: block;
+    }
+  }
+
+  &__to-left, &__to-right {
+    height: 100%;
+    position: absolute;
+    user-select: none;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+
+    &__icon {
+      @extend %material-icons;
+      font-size: 24px;
+      padding: 10px;
+      color: white;
+    }
+  }
+
+  &__to-left {
+    left: 0;
+    background: linear-gradient(90deg, rgba(black, 0.5) 0%, rgba(black, 0) 99.99%, rgba(white, 0) 100%);
+
+    &__icon {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__to-right {
+    right: 0;
+    background: linear-gradient(-90deg, rgba(black, 0.5) 0%, rgba(black, 0) 99.99%, rgba(white, 0) 100%);
+
+    &__icon {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 7.5px;
+    height: 7.5px;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+      margin-right: 3.5px;
+    }
+
+    &_selected {
+      background-color: white;
+    }
+  }
+
+  &__info {
+    padding: 19px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__line-group {
+    @extend %default-text;
+    color: rgba($dark, .5);
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__n {
+    @extend %item-title;
+    font-size: .875rem;
+    line-height: 1.0625rem;
+  }
+
+  &__number {
+    @extend %item-title;
+  }
+
+  &__type {
+    @extend %label;
+    color: $purple;
+    display: inline-block;
+    margin-left: 1px;
+  }
+
+  &__underline {
+    border: none;
+    border-top: 1px solid rgba($dark, .1);
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
+}
