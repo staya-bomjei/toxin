@@ -35,12 +35,13 @@ mixin reservation(options)
     data-postfix = postfix
   )
     .reservation__info
-      .reservation__room-info
-        h2.reservation__number № #{number}
+      .reservation__line-group
+        h2.reservation__n №&nbsp;
+        h2.reservation__number= number
         span.reservation__type= type
-      span.reservation__price-info
+      span.reservation__price-info.reservation__line-group
         strong.reservation__price.js-reservation__price
-        span  в сутки
+        span &nbsp;в сутки
     +dropdown({ 
       mix: 'js-reservation__datepicker', title: ['прибытие', 'выезд'], 
       placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], type: 'datepicker', 

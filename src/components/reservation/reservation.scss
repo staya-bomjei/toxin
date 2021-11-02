@@ -19,9 +19,19 @@
     align-items: baseline;
   }
 
+  &__line-group {
+    display: flex;
+    align-items: baseline;
+  }
+
+  &__n {
+    @extend %item-title;
+    font-size: .875rem;
+    line-height: 1.0625rem;
+  }
+
   &__number {
     @extend %title;
-    display: inline-block;
   }
 
   &__type {
