@@ -1,11 +1,11 @@
 include ../like-button/like-button
 
-//- options:
-//-   text - текст комментария
-//-   userName - имя пользователя
-//-   date - дата публикации комментария, строка в формате 'YYYY-MM-DDTHH:mm:ss.sssZ'
-//-   userImage - путь к картинке для профиля пользователя (от папки ./img этого компонента)
-//-   likes - количество поставленных лайков
+//-
+  options.text - текст комментария
+  options.userName - имя пользователя
+  options.date - дата публикации комментария, строка в формате 'YYYY-MM-DDTHH:mm:ss.sssZ'
+  options.userImage - путь к картинке для профиля пользователя (от папки ./img этого компонента)
+  options.likes - количество поставленных лайков
 mixin comment(options)
   if !options
     - options = {};

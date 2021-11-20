@@ -1,16 +1,16 @@
 include ../dropdown/dropdown
 include ../button/button
 
-//- options:
-//-   number - номер отеля
-//-   type - тип отеля, например 'люкс'
-//-   price - строимость отеля за сутки
-//-   pricePerGuest - стоимость дополнительных услуг за одного гостя
-//-   discount - размер скидки
-//-   postfix - символ валяюты, по умолчанию '₽'
-//-   dpChanged - название триггера, который будет запускаться при изменении datepicker
-//-   guestsChanged - название триггера, который будет запускаться при изменении dropdown с гостями
-//-   selectedDates - массив выбранных дат, например: ['2021-10-25', '2021-10-30']
+//-
+  options.number - номер отеля
+  options.type - тип отеля (например, 'люкс')
+  options.price - строимость отеля за сутки
+  options.pricePerGuest - стоимость дополнительных услуг за одного гостя
+  options.discount - размер скидки
+  options.postfix - валяютный постфикс, по умолчанию '₽'
+  options.dpChanged - название триггера, который будет запускаться при изменении datepicker
+  options.guestsChanged - название триггера, который будет запускаться при изменении dropdown с гостями
+  options.selectedDates - массив выбранных дат (например, ['2021-10-25', '2021-10-30'])
 mixin reservation(options)
   if !options
     - options = {};

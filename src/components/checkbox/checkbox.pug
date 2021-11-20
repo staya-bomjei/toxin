@@ -1,8 +1,7 @@
-//- options:
-//-   isChecked - если true, то кнопка будет в состоянии checked
-//-   text - текст метки
-//-   richTitle - необязательный параметр, если указан, то
-//-     отображение чекбокса меняется с добавлением заголовка richTitle
+//-
+  options.isChecked - checked свойство кнопки
+  options.text - текст метки
+  options.?richTitle - если указан, то добавляется заголовок richTitle
 mixin checkbox(options)
   if !options
     - options = {};

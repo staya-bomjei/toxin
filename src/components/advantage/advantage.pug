@@ -1,14 +1,14 @@
-//- options:
-//-   icon - название иконки из material icons
-//-   title - заголовок преимущества
-//-   description - описание преимущества
-//-   hasUnderline - если true, то под компонентом появится подчеркивание
+//-
+  options.icon - название иконки из material icons
+  options.title - заголовок преимущества
+  options.description - описание преимущества
+  options.hasUnderline - если true, то под компонентом появится подчеркивание
 mixin advantage(options)
   if !options
     - options = {};
   -
     const { icon = '', title = '', description = '', hasUnderline = false } = options;
-  
+
   .advantage
     .advantage__content
       .advantage__icon= icon

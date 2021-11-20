@@ -1,7 +1,7 @@
-//- options:
-//-   theme - выбранная тема для компонента (одно из: 'title', 'item-title', 'label', 'default-text')
-//-   tag - название тэга (например 'H1', 'H2', 'H3', ...)
-//-   text - текст для примера отображения
+//-
+  options.theme - тема компонента: 'title' | 'item-title' | 'label' | 'default-text'
+  options.tag - название тэга (например, 'H1')
+  options.text - текст для примера отображения
 mixin text-probe(options)
   if !options
     - options = {};

@@ -1,22 +1,22 @@
 include ../rate-button/rate-button
 
-//- options:
-//-   images - массив изображений
-//-     images[0].path - путь к картинке для профиля пользователя (от папки ./img этого компонента)
-//-     images[0].width - ширина картинки
-//-     images[0].height - высота картинки
-//-     images[0].margin - массив отступов
-//-       images[0].margin[0] - отступ сверху
-//-       images[0].margin[1] - отступ справа
-//-       images[0].margin[2] - отступ снизу
-//-       images[0].margin[3] - отступ слева
-//-   selected - выбранное изображение
-//-   rate - оценка компонента
-//-   number - номер комнаты в отеле
-//-   price - стоимость номера за день
-//-   reviews - количество отзывов на номер
-//-   postfix - валютный постфикс, по умолчанию '₽'
-//-   type - тип номера, например 'люкс'
+//-
+  options.images - массив изображений
+  options.images[0].path - путь к картинке для профиля пользователя (от папки ./img этого компонента)
+  options.images[0].width - ширина картинки
+  options.images[0].height - высота картинки
+  options.images[0].margin - массив отступов
+  options.images[0].margin[0] - отступ сверху
+  options.images[0].margin[1] - отступ справа
+  options.images[0].margin[2] - отступ снизу
+  options.images[0].margin[3] - отступ слева
+  options.selected - выбранное изображение
+  options.rate - оценка компонента
+  options.number - номер комнаты в отеле
+  options.price - стоимость номера за день
+  options.reviews - количество отзывов на номер
+  options.postfix - валютный постфикс, по умолчанию '₽'
+  options.type - тип номера (например, 'люкс')
 mixin hotel-number(options)
   if !options
     - options = {};

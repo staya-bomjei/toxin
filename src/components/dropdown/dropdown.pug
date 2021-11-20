@@ -1,9 +1,9 @@
 include ../button/button
 
-//- options:
-//-   title - заголовок компонента
-//-   condition - текст, показывающий в каком состоянии находится компонент
-//-   placeholder - строка placeholder дропдауна
+//-
+  options.title - заголовок компонента
+  options.condition - текст, показывающий в каком состоянии находится компонент
+  options.placeholder - строка placeholder дропдауна
 mixin dropdown__dropdown(options)
   -
     const { title, condition, placeholder } = options;
@@ -16,33 +16,27 @@ mixin dropdown__dropdown(options)
       input.dropdown__text.js-dropdown__text(type = text placeholder = placeholder readonly = true)
       .dropdown__icon expand_more
 
-//- options:
-//-   mix - класс, который будет добавлен к компоненту
-//-   title - заголовок компонента, должен быть массивом если isSplit true
-//-   condition - текст, показывающий в каком состоянии находится компонент, должен быть массивом если isSplit true
-//-   placeholder - строка placeholder дропдауна, должен быть массивом если isSplit true
-//-   maxLen - максимальное количество символов в инпуте, лишние будут отброшены
-//-   type - тип dropdown, допустимые значения: 'default' | 'summator' | 'datepicker'
-//-     'default' - обычный dropdown, при раскрытии появляется список со счётчиком для каждой строки,
-//-       при изменении любого счётчика в dropdown генерируется текст на основе счётчиков и rows[].countables;
-//-     'summator' - тот же 'default', за тем исключением, что  текст в dropdown генерируется с помощью суммы 
-//-       всех счётчиков и на основе массива countables;
-//-     'datepicker' - при раскрытии такого dropdown появляется календарь, выбор даты которого записывается в
-//-       dropdown;
-//-   rows - только для 'summator' | 'default', массив объектов
-//-     rows[0].text - текст строки
-//-     rows[0].counter - значение счётчика этой строки
-//-     rows[0].countables - только для 'default', массив, содержащий три формы rows[0].text (например: 
-//-       ['кровать', 'кровати', 'кроватей'])
-//-   isRange - только для 'datepicker', если true, то в календаре у datepicker можно будет выбрать две даты 
-//-   isSplit - только для 'datepicker', если true, то у range-datepicker одно поле будет разделено на два
-//-   selected - только для 'datepicker', массив дат в формате 'yyyy-mm-dd', которые будут выбраны изначально
-//-   isContentOnly - если true, то у dropdown будет виден только контент 
-//-   isExpanded - если true, то dropdown будет всегда раскрыт
-//-   hasControls - только для 'summator' | 'default', если true, то в разделе контента у dropdown появятся 
-//-     две кнопки 'очистить' и 'принять'
-//-   countables - только для 'summator', массив, содержащий три формы подсчитываемого в dropdown 
-//-   valueChanged - название триггера, который будет запускаться при изменении dropdown
+//-
+  options.mix - класс, который будет добавлен к компоненту
+  options.title - заголовок компонента, должен быть массивом если isSplit true
+  options.condition - текст, показывающий в каком состоянии находится компонент, должен быть массивом если isSplit true
+  options.placeholder - строка placeholder дропдауна, должен быть массивом если isSplit true
+  options.maxLen - максимальное количество символов в инпуте, лишние будут отброшены
+  options.type - тип dropdown, допустимые значения: 'default' | 'summator' | 'datepicker'
+  options.rows - только для 'summator' | 'default', массив объектов
+  options.rows[0].text - текст строки
+  options.rows[0].counter - значение счётчика этой строки
+  options.rows[0].countables - только для 'default', массив, содержащий три формы rows[0].text 
+    (например: ['кровать', 'кровати', 'кроватей'])
+  options.hasControls - только для 'summator' | 'default', если true, то в разделе контента у dropdown появятся 
+    две кнопки 'очистить' и 'принять'
+  options.countables - только для 'summator', массив, содержащий три формы подсчитываемого в dropdown 
+  options.isRange - только для 'datepicker', если true, то в календаре у datepicker можно будет выбрать две даты 
+  options.isSplit - только для 'datepicker', если true, то у range-datepicker одно поле будет разделено на два
+  options.selected - только для 'datepicker', массив дат в формате 'yyyy-mm-dd', которые будут выбраны изначально
+  options.isContentOnly - если true, то у dropdown будет виден только контент 
+  options.isExpanded - если true, то dropdown будет всегда раскрыт
+  options.valueChanged - название триггера, который будет запускаться при изменении dropdown
 mixin dropdown(options)
   if !options
     - options = {};

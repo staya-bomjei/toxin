@@ -1,13 +1,8 @@
-//- options:
-//-   mix - класс, который будет добавлен к компоненту
-//-   text - текст кнопки
-//-   type - тип кнопки, допустимые значения: 'default' | 'border' | 'fill' | 'arrow'
-//-     'default' | undefined -  текстовая кнопка, без каких-либо примечательностей;
-//-     'border' -  кнопка с рамкой;
-//-     'fill' - кнопка с заливкой;
-//-     'arrow' - кнопка со стрелкой;
-//-   htmlType - тип кнопки с точки зрения html, допустимые значения: 'button' | 'submit' | 'reset',
-//-     по умолчанию 'button'
+//-
+  options.mix - класс, который будет добавлен к компоненту
+  options.text - текст кнопки
+  options.type - тип кнопки: 'default' | 'border' | 'fill' | 'arrow'
+  options.htmlType - html type свойство: 'button' | 'submit' | 'reset', по умолчанию 'button'
 mixin button(options)
   if !options
     - options = {};

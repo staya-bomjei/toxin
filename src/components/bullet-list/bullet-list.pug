@@ -1,12 +1,12 @@
-//- options:
-//-   title - заголовок компонента
-//-   points - массив текстов для пунктов списка
+//-
+  options.title - заголовок компонента
+  options.points - массив текстов для пунктов списка
 mixin bullet-list(options) 
   if !options
     - options = {};
   -
     const { title = '', points = [] } = options;
-  
+
   .bullet-list
     .bullet-list__title= title
     ul.bullet-list__list
