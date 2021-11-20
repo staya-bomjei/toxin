@@ -1,4 +1,4 @@
-import './styles/normalize.css';
+import 'normalize.css';
 import './styles/fonts.scss';
 
 function requireAll(requireContext) {
