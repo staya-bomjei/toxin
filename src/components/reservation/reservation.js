@@ -1,5 +1,6 @@
 import './reservation.scss';
 import $ from 'jquery';
+import { choiceCountable } from '../../scripts/utils';
 
 class Reservation {
   constructor($component) {
@@ -39,7 +40,7 @@ class Reservation {
     let rentString = '';
     rentString += this.toCurrency(this.price);
     rentString += ' x ';
-    rentString += `${days} ${this.choiceCountable(days)}`;
+    rentString += `${days} ${choiceCountable(days, this.countables)}`;
     this.$rent.html(rentString);
     this.$rentTotal.html(this.toCurrency(days * this.price));
     this.updateCalculator();
@@ -78,27 +79,6 @@ class Reservation {
 
   getGuests() {
     return Number(this.$guests.attr('data-value'));
-  }
-
-  choiceCountable(counter) {
-    if (counter === 1) {
-      return this.countables[0];
-    }
-
-    if (counter > 10 && counter < 20) {
-      return this.countables[2];
-    }
-
-    switch (counter % 10) {
-      case 1:
-        return this.countables[0];
-      case 2:
-      case 3:
-      case 4:
-        return this.countables[1];
-      default:
-        return this.countables[2];
-    }
   }
 }
 

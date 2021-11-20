@@ -11,13 +11,12 @@ mixin comment(options)
     - options = {};
   -
     const { text = '', userName = '', date, userImage = 'default.png', likes = 0 } = options;
-    const { timeAgo } = require('../../components/comment/time-ago.js');
+    const { timeAgo } = require('../../scripts/utils.js');
 
-  .comment
+  article.comment
     img.comment__user-image(src = require('../../components/comment/img/' + userImage) alt = 'image')
     .comment__user-info
       .comment__user-name= userName
       .comment__user-time-ago= timeAgo(date)
-    .comment__like-button
-      +like-button({ counter: likes })
+    +like-button({ mix: 'comment__like-button', counter: likes })
     .comment__text= text

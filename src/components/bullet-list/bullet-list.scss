@@ -2,30 +2,19 @@
 @import '../../styles/fonts.scss';
 
 .bullet-list {
-  $marker-padding: 20px;
-
-  &__title {
-    @extend %item-title;
-    text-indent: $marker-padding;
-  }
-
-  &__list {
-    @extend %default-text;
-    line-height: 1.75rem;
-    list-style: none;
-    margin-left: 0;
-    padding-left: 0;
-  }
+  @extend %default-text;
+  line-height: 1.75rem;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  $marker-size: 10px;
 
   &__point {
-    padding-left: $marker-padding;
-    text-indent: -$marker-padding;
-
     &::before {
       content: "";
       display: inline-block;
-      width: 10px;
-      height: 10px;
+      width: $marker-size;
+      height: $marker-size;
       border-radius: 50%;
       background-color: rgba($dark, .25);
       margin-right: 10px;

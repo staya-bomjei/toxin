@@ -16,17 +16,17 @@ class RangeSlider {
     const thumbs = Array.from($('.js-range-slider__thumb', $component));
     [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
 
-    this.setUpSliders(this.$range1.attr('value'), this.$range2.attr('value'));
+    this.setState(this.$range1.attr('value'), this.$range2.attr('value'));
     this.updateOutput();
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    this.$range1.on('input', (event) => this.updateSlider(event));
-    this.$range2.on('input', (event) => this.updateSlider(event));
+    this.$range1.on('input', (event) => this.onValueChange(event));
+    this.$range2.on('input', (event) => this.onValueChange(event));
   }
 
-  updateSlider(event) {
+  onValueChange(event) {
     const $range = $(event.target);
     const value = Number(event.target.value);
     let { valueLeft, valueRight } = this.getValues();
@@ -37,7 +37,7 @@ class RangeSlider {
       valueRight = value;
     }
 
-    this.setUpSliders(valueLeft, valueRight);
+    this.setState(valueLeft, valueRight);
     this.updateOutput();
   }
 
@@ -61,19 +61,19 @@ class RangeSlider {
     };
   }
 
-  setUpSliders(valueLeft, valueRight) {
-    RangeSlider.setUpThumb(valueLeft, this.$range1, this.$thumb1);
-    RangeSlider.setUpThumb(valueRight, this.$range2, this.$thumb2);
-    this.setUpTrack(valueLeft, valueRight);
+  setState(valueLeft, valueRight) {
+    RangeSlider.setThumb(valueLeft, this.$range1, this.$thumb1);
+    RangeSlider.setThumb(valueRight, this.$range2, this.$thumb2);
+    this.setTrack(valueLeft, valueRight);
   }
 
-  static setUpThumb(value, $range, $thumb) {
+  static setThumb(value, $range, $thumb) {
     $range.attr('value', value);
     $thumb.css('left', `${value}%`);
     $thumb.css('transform', `translate(-${value}%, -50%)`);
   }
 
-  setUpTrack(valueLeft, valueRight) {
+  setTrack(valueLeft, valueRight) {
     if (valueLeft > valueRight) {
       this.$track.css('width', `${valueLeft - valueRight}%`);
       this.$track.css('left', `${valueRight}%`);

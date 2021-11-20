@@ -1,22 +1,6 @@
 include ../button/button
 
 //-
-  options.title - заголовок компонента
-  options.condition - текст, показывающий в каком состоянии находится компонент
-  options.placeholder - строка placeholder дропдауна
-mixin dropdown__dropdown(options)
-  -
-    const { title, condition, placeholder } = options;
-
-  .dropdown__dropdown
-    .dropdown__info
-      .dropdown__title= title
-      .dropdown__condition= condition
-    .dropdown__input-box.js-dropdown__input-box
-      input.dropdown__text.js-dropdown__text(type = text placeholder = placeholder readonly = true)
-      .dropdown__icon expand_more
-
-//-
   options.mix - класс, который будет добавлен к компоненту
   options.title - заголовок компонента, должен быть массивом если isSplit true
   options.condition - текст, показывающий в каком состоянии находится компонент, должен быть массивом если isSplit true
@@ -45,9 +29,18 @@ mixin dropdown(options)
       mix = false, title = '', condition = '', placeholder = '', rows = [], 
       maxLen = 100, type = 'default', isExpanded = false, hasControls = false, 
       isRange = false, isSplit = false, isContentOnly = false, countables = [], 
-      selected = [], valueChanged = 'data-value-changed', 
+      selected = [], valueChanged, 
     } = options;
-    let classes = [];
+
+    let dropdowns = [{ title, condition, placeholder }];
+    if (isSplit) {
+      dropdowns = [
+        { title: title[0], condition: condition[0], placeholder: placeholder[0] },
+        { title: title[1], condition: condition[1], placeholder: placeholder[1] },
+      ];
+    }
+
+    const classes = [];
     if (mix) {
       classes.push(mix);
     }
@@ -78,11 +71,14 @@ mixin dropdown(options)
     )
 
     .dropdown__dropdowns.js-dropdown__dropdowns(class = (isSplit) ? 'dropdown__dropdowns_split' : null)
-      if isSplit
-        +dropdown__dropdown({ title: title[0], condition: condition[0], placeholder: placeholder[0] })
-        +dropdown__dropdown({ title: title[1], condition: condition[1], placeholder: placeholder[1] })
-      else
-        +dropdown__dropdown({ title, condition, placeholder })
+      each dropdown in dropdowns 
+        .dropdown__dropdown
+          .dropdown__info
+            .dropdown__title= dropdown.title
+            .dropdown__condition= dropdown.condition
+          .dropdown__input-box.js-dropdown__input-box
+            input.dropdown__text.js-dropdown__text(type = text placeholder = dropdown.placeholder readonly = true)
+            .dropdown__icon expand_more
     .dropdown__content.js-dropdown__content
       if type !== 'datepicker'
         each row in rows

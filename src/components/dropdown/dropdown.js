@@ -3,6 +3,7 @@ import 'air-datepicker/air-datepicker.css';
 import AirDatepicker from 'air-datepicker';
 import $ from 'jquery';
 import { ruLocale } from './ru';
+import { choiceCountable } from '../../scripts/utils';
 
 class Dropdown {
   constructor($component) {
@@ -12,7 +13,7 @@ class Dropdown {
     const type = $component.attr('data-type');
     this.isDatepicker = type === 'datepicker';
     this.isSummator = type === 'summator';
-    this.hasControls = $component.attr('data-has-controls') !== undefined;
+    this.hasControls = $component.has('data-has-controls') !== undefined;
     this.$component = $component;
     this.$dropdowns = $('.js-dropdown__dropdowns', $component);
     this.$content = $('.js-dropdown__content', $component);
@@ -20,8 +21,8 @@ class Dropdown {
     if (this.isDatepicker) {
       this.texts = $('.js-dropdown__text', $component);
       this.isSplit = $component.attr('data-is-split') !== undefined;
-      const range = $component.attr('data-is-range') !== undefined;
-      this.datepicker = this.createCalendar({ range });
+      this.isRange = $component.attr('data-is-range') !== undefined;
+      this.datepicker = this.createCalendar({ range: this.isRange });
       const selected = JSON.parse($component.attr('data-selected'));
       this.datepicker.selectDate(selected);
       $('button', this.datepicker.$buttons).attr('type', 'button');
@@ -63,35 +64,9 @@ class Dropdown {
     }
   }
 
-  setText(string) {
-    let text = string.substring(0, this.maxLen);
-    if (string.length >= this.maxLen) text += '...';
-    this.$text.val(text);
-  }
-
-  getRows() {
-    const rows = Array.from($('.js-dropdown__row', this.$component));
-
-    return rows.map((row) => {
-      const resultObject = {
-        $minus: $(row).find('.js-dropdown__button-minus'),
-        $counter: $(row).find('.js-dropdown__counter'),
-        $plus: $(row).find('.js-dropdown__button-plus'),
-      };
-
-      if (this.isSummator) return resultObject;
-
-      const countables = JSON.parse($(row).attr('data-row-countables'));
-      return {
-        countables,
-        ...resultObject,
-      };
-    });
-  }
-
   onOutOfComponentClick(event) {
     const { target } = event;
-    if (!this.$component.is(target) && this.$component.has(target).length === 0) {
+    if (this.$component.has(target).length === 0) {
       this.$component.removeClass('dropdown_open');
     }
   }
@@ -189,42 +164,47 @@ class Dropdown {
       }
     }
 
-    $(document).trigger(this.valueChanged);
+    this.triggerValueChanged();
+  }
+
+  setText(string) {
+    let text = string.substring(0, this.maxLen);
+    if (string.length >= this.maxLen) text += '...';
+    this.$text.val(text);
+  }
+
+  getRows() {
+    const rows = Array.from($('.js-dropdown__row', this.$component));
+
+    return rows.map((row) => {
+      const resultObject = {
+        $minus: $(row).find('.js-dropdown__button-minus'),
+        $counter: $(row).find('.js-dropdown__counter'),
+        $plus: $(row).find('.js-dropdown__button-plus'),
+      };
+
+      if (this.isSummator) return resultObject;
+
+      const countables = JSON.parse($(row).attr('data-row-countables'));
+      return {
+        countables,
+        ...resultObject,
+      };
+    });
   }
 
   sumAllCounts() {
     return this.rows.reduce((sum, row) => sum + Number(row.$counter.html()), 0);
   }
 
-  static choiceCountable(counter, countables) {
-    if (counter === 1) {
-      return countables[0];
-    }
-
-    if (counter > 10 && counter < 20) {
-      return countables[2];
-    }
-
-    switch (counter % 10) {
-      case 1:
-        return countables[0];
-      case 2:
-      case 3:
-      case 4:
-        return countables[1];
-      default:
-        return countables[2];
-    }
-  }
-
-  getSentence() {
+  calcDropdownValue() {
     return this.rows
       .map((row) => {
         const counter = Number(row.$counter.html());
 
         if (counter === 0) return '';
 
-        return `${counter} ${Dropdown.choiceCountable(counter, row.countables)}`;
+        return `${counter} ${choiceCountable(counter, row.countables)}`;
       })
       .filter((string) => string !== '')
       .join(', ');
@@ -236,13 +216,13 @@ class Dropdown {
     if (sum === 0) {
       this.setText(this.placeholder);
     } else if (this.isSummator) {
-      this.setText(`${sum} ${Dropdown.choiceCountable(sum, this.countables)}`);
+      this.setText(`${sum} ${choiceCountable(sum, this.countables)}`);
     } else {
-      this.setText(this.getSentence());
+      this.setText(this.calcDropdownValue());
     }
 
     this.$component.attr('data-value', sum);
-    $(document).trigger(this.valueChanged);
+    this.triggerValueChanged();
   }
 
   updateClearButtonVisability() {
@@ -282,6 +262,12 @@ class Dropdown {
     };
 
     return new AirDatepicker(this.$content[0], options);
+  }
+
+  triggerValueChanged() {
+    if (this.valueChanged) {
+      $(document).trigger(this.valueChanged);
+    }
   }
 }
 

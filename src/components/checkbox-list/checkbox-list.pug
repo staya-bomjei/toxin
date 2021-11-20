@@ -21,6 +21,7 @@ mixin checkbox-list(options)
 
   .checkbox-list.js-checkbox-list(class = classes)
     button.checkbox-list__button.js-checkbox-list__button(type = 'button')= text
-    .checkbox-list__content
+    ul.checkbox-list__list
       each initObj in list
-        +checkbox(initObj)
+        li.checkbox-list__item
+          +checkbox(initObj)

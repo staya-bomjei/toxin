@@ -1,19 +1,34 @@
 //-
-  options.isChecked - checked свойство кнопки
+  options.mix - класс, который будет добавлен к компоненту
+  options.isChecked - если true, то чекбокс будет в состоянии checked
   options.text - текст метки
-  options.?richTitle - если указан, то добавляется заголовок richTitle
+  options.richTitle - если указан, то добавляется заголовок richTitle
+  options.valueChanged - название триггера, который будет запускаться при изменении состояния
 mixin checkbox(options)
   if !options
     - options = {};
   -
-    const { isChecked = false, text = '', richTitle } = options;
+    const { mix, isChecked = false, text = '', richTitle, valueChanged } = options;
   
-  label.checkbox(class = (richTitle !== undefined) ? 'checkbox_rich' : null)
-    input.checkbox__input(type = 'checkbox' checked = isChecked)
-    span.checkbox__mark
-    if richTitle !== undefined
-      span.checkbox__rich-container
-        span.checkbox__title= richTitle
-        span.checkbox__text= text
+    const classes = [];
+    if (mix) {
+      classes.push(mix);
+    }
+    if (richTitle) {
+      classes.push('checkbox_rich');
+    }
+    if (isChecked) {
+      classes.push('checkbox_checked');
+    }
+
+  .checkbox.js-checkbox(
+    class = classes
+    data-value-changed = valueChanged
+  )
+    .checkbox__mark
+    if richTitle
+      .checkbox__rich-container
+        .checkbox__title= richTitle
+        .checkbox__text= text
     else
-      span.checkbox__text= text
+      .checkbox__text= text

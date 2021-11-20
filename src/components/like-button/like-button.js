@@ -16,20 +16,12 @@ class LikeButton {
   onClick() {
     if (this.isLiked()) {
       this.setCounter(this.getCounter() - 1);
-      this.setIcon(false);
+      this.$icon.html('favorite_border');
     } else {
       this.setCounter(this.getCounter() + 1);
-      this.setIcon(true);
+      this.$icon.html('favorite');
     }
     this.$component.toggleClass('like-button_liked');
-  }
-
-  setIcon(isLiked) {
-    if (isLiked) {
-      this.$icon.html('favorite');
-    } else {
-      this.$icon.html('favorite_border');
-    }
   }
 
   isLiked() {
@@ -40,8 +32,8 @@ class LikeButton {
     return Number(this.$counter.html());
   }
 
-  setCounter(count) {
-    this.$counter.html(count);
+  setCounter(counter) {
+    this.$counter.html(counter);
   }
 }
 

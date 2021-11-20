@@ -10,7 +10,7 @@ mixin button(options)
     const { mix, text = 'click me', type = 'default', htmlType = 'button' } = options;
     const classes = [];
 
-    if (mix !== undefined) {
+    if (mix) {
       classes.push(mix);
     }
 

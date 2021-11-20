@@ -4,143 +4,111 @@ import $ from 'jquery';
 class Pagination {
   constructor($component) {
     this.$component = $component;
-    this.itemsCount = Number($component.attr('data-items-count'));
+    this.itemsCounter = Number($component.attr('data-items-count'));
     this.itemsPerPage = Number($component.attr('data-items-per-page'));
-    this.pagesCount = Math.ceil(this.itemsCount / this.itemsPerPage);
+    this.pagesCounter = Math.ceil(this.itemsCounter / this.itemsPerPage);
     this.postfix = $component.attr('data-postfix');
+    this.buttons = Array.from($('.js-pagination__number', $component)).map((item) => $(item));
     this.$toLeft = $('.js-pagination__to-left', $component);
-    this.numberButtons = Array.from($('.js-pagination__number', $component));
     this.$toRight = $('.js-pagination__to-right', $component);
     this.$text = $('.js-pagination__text', $component);
-    this.current = 0;
-    this.updateComponent(1);
+    this.pageNumber = 0;
+    this.updateState(1);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    this.$toLeft.on('click', () => this.onToLeftButtonClick());
-    this.$toRight.on('click', () => this.onToRightButtonClick());
-    this.numberButtons.forEach((button) => {
-      $(button).on('click', (event) => this.onNumberButtonClick(event));
+    this.$toLeft.on('click', () => this.updateState(this.pageNumber - 1));
+    this.$toRight.on('click', () => this.updateState(this.pageNumber + 1));
+    this.buttons.forEach(($button) => {
+      $button.on('click', (event) => this.onNumberButtonClick(event));
     });
-  }
-
-  onToLeftButtonClick() {
-    this.updateComponent(this.current - 1);
-  }
-
-  onToRightButtonClick() {
-    this.updateComponent(this.current + 1);
   }
 
   onNumberButtonClick(event) {
     const text = $(event.target).html();
     if (text === '...') return;
-    this.updateComponent(Number(text));
+
+    this.updateState(Number(text));
   }
 
-  setNumberButtonText(position, text) {
-    $(this.numberButtons[position]).html(text);
-  }
-
-  setNumberButtonCurrent(position) {
-    $(this.numberButtons[position]).addClass('pagination__number_current');
-  }
-
-  unsetNumberButtonCurrent(position) {
-    $(this.numberButtons[position]).removeClass('pagination__number_current');
-  }
-
-  updateButtons(position) {
-    for (let i = 0; i < this.numberButtons.length; i += 1) {
-      if ($(this.numberButtons[i]).html() === String(this.current)) {
-        this.unsetNumberButtonCurrent(i);
+  setButtons(texts) {
+    this.buttons.forEach(($button, index) => {
+      if (index < texts.length) {
+        $button.html(texts[index]);
+        $button.show();
+      } else {
+        $button.hide();
       }
+    });
+  }
+
+  toggleButtonSelection(text) {
+    const $button = this.buttons.find(($btn) => $btn.html() === String(text));
+    if ($button) $button.toggleClass('pagination__number_current');
+  }
+
+  updateButtons(pageNumber) {
+    this.toggleButtonSelection(this.pageNumber);
+    this.setButtons(this.calcButtonsTexts(pageNumber));
+    this.toggleButtonSelection(pageNumber);
+
+    if (pageNumber === 1) {
+      this.$toLeft.hide();
+      this.$toRight.show();
+    } else if (pageNumber === this.pagesCounter) {
+      this.$toRight.hide();
+      this.$toLeft.show();
+    } else {
+      this.$toRight.show();
+      this.$toLeft.show();
     }
 
-    this.current = position;
-    switch (position) {
-      case 1:
-        this.$toLeft.hide();
-        this.$toRight.show();
-        break;
-      case this.pagesCount:
-        this.$toRight.hide();
-        this.$toLeft.show();
-        break;
-      default:
-        this.$toRight.show();
-        this.$toLeft.show();
-    }
-
-    const pagination = Pagination.calcPagination(this.pagesCount, position);
-    for (let i = 0; i < pagination.length; i += 1) {
-      this.setNumberButtonText(i, pagination[i]);
-      $(this.numberButtons[i]).show();
-
-      if (pagination[i] === position) {
-        this.setNumberButtonCurrent(i);
-      }
-    }
-    for (let i = pagination.length; i < this.numberButtons.length; i += 1) {
-      $(this.numberButtons[i]).hide();
-    }
+    this.pageNumber = pageNumber;
   }
 
   updateText(position) {
     const from = (position - 1) * this.itemsPerPage + 1;
-    let to = from + this.itemsPerPage;
+    const to = Math.min(from + this.itemsPerPage, this.itemsCounter);
+    const exp = Math.trunc(Math.log10(this.itemsCounter));
+    const base = Math.trunc(this.itemsCounter / exp);
 
-    if (to > this.itemsCount) {
-      to = this.itemsCount;
-    }
-
-    let over = 1;
-    let temp = this.itemsCount;
-    while (temp > 10) {
-      over += 1;
-      temp = Math.trunc(temp / 10);
-    }
-
-    this.$text.html(`${from} – ${to} из ${temp * 10 ** (over - 1)}+ ${this.postfix}`);
+    this.$text.html(`${from} – ${to} из ${base * 10 ** (exp - 1)}+ ${this.postfix}`);
   }
 
-  updateComponent(position) {
-    if (this.current === position) return;
+  updateState(pageNumber) {
+    if (this.pageNumber === pageNumber) return;
 
-    this.updateButtons(position);
-    this.updateText(position);
+    this.updateButtons(pageNumber);
+    this.updateText(pageNumber);
   }
 
-  static calcPagination(count, current) {
-    const aroundCurrent = [];
-    if (current === 1) {
-      for (let i = 1; i <= 3 && i <= count; i += 1) aroundCurrent.push(i);
-    } else if (current === count) {
-      for (let i = 1; i <= 3 && i <= count; i += 1) aroundCurrent.unshift(count - i + 1);
+  calcButtonsTexts(current, outer = 1) {
+    const texts = [];
+    const maxOuters = outer * 2 + 1;
+
+    if (current - outer <= 1) {
+      for (let i = 1; i <= this.pagesCounter && i <= maxOuters; i += 1) texts.push(i);
+    } else if (current + outer >= this.pagesCounter) {
+      for (let i = this.pagesCounter;
+        i >= 1 && i > this.pagesCounter - maxOuters; i -= 1) texts.unshift(i);
     } else {
-      aroundCurrent.push(current - 1, current, current + 1);
+      for (let i = current - outer; i <= current + outer; i += 1) texts.push(i);
     }
 
-    if (aroundCurrent.length < 3) return aroundCurrent;
-
-    const leftNumber = aroundCurrent[0];
-    const leftInterval = [];
-    if (leftNumber - 1 > 2) {
-      leftInterval.push(1, '...');
+    if (this.pagesCounter - texts[texts.length - 1] > 2) {
+      texts.push('...', this.pagesCounter);
     } else {
-      for (let i = 1; i < leftNumber; i += 1) leftInterval.push(i);
+      for (let i = texts[texts.length - 1] + 1; i <= this.pagesCounter; i += 1) texts.push(i);
     }
 
-    const rightNumber = aroundCurrent[2];
-    const rightInterval = [];
-    if (count - rightNumber > 2) {
-      rightInterval.push('...', count);
+    if (texts[0] - 1 > 2) {
+      texts.unshift(1, '...');
     } else {
-      for (let i = rightNumber + 1; i <= count; i += 1) rightInterval.push(i);
+      for (let i = texts[0] - 1; i >= 1; i -= 1) texts.unshift(i);
     }
 
-    return [...leftInterval, ...aroundCurrent, ...rightInterval];
+    return texts.map((item) => String(item));
   }
 }
 

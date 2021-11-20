@@ -189,6 +189,9 @@
               background: $primary-gradient;
             }
           }
+          &.-selected-:not(.-range-from-):not(.-range-to-) {
+            border-radius: 50%;
+          }
           
           &.-range-from-, &.-range-to- {
             border: none;
@@ -358,6 +361,9 @@
   }
 
   &_content-only {
+    .dropdown__content {
+      margin: 0;
+    }
     .dropdown__info, .dropdown__dropdown {
       display: none;
     }

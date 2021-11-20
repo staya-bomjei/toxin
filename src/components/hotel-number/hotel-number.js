@@ -4,12 +4,12 @@ import $ from 'jquery';
 class HotelNumber {
   constructor($component) {
     this.$component = $component;
-    this.selected = Number($component.attr('data-selected'));
+    this.index = Number($component.attr('data-selected'));
     this.price = Number($component.attr('data-price'));
     this.postfix = $component.attr('data-postfix');
 
-    this.images = Array.from($('.js-hotel-number__image', $component));
-    this.buttons = Array.from($('.js-hotel-number__button', $component));
+    this.images = Array.from($('.js-hotel-number__image', $component)).map((item) => $(item));
+    this.buttons = Array.from($('.js-hotel-number__button', $component)).map((item) => $(item));
 
     this.$toLeft = $('.js-hotel-number__to-left', $component);
     this.$toRight = $('.js-hotel-number__to-right', $component);
@@ -20,58 +20,51 @@ class HotelNumber {
 
   init() {
     this.$price.html(this.price.toLocaleString('ru') + this.postfix);
-    this.setSelected(this.selected);
+    this.selectImage(this.index);
   }
 
   attachEventHandlers() {
     this.$toLeft.on('click', () => this.onToLeftClick());
     this.$toRight.on('click', () => this.onToRightClick());
-    this.buttons.forEach((button) => {
-      $(button).on('click', (event) => this.onButtonClick(event));
+    this.buttons.forEach(($button) => {
+      $button.on('click', (event) => this.onButtonClick(event));
     });
   }
 
   onToLeftClick() {
-    let imageNumber = this.selected - 1;
-    if (imageNumber < 0) imageNumber = this.images.length - 1;
+    let index = this.index - 1;
+    if (index < 0) index = this.images.length - 1;
 
-    this.setSelected(imageNumber);
+    this.selectImage(index);
   }
 
   onToRightClick() {
-    let imageNumber = this.selected + 1;
-    if (imageNumber > this.images.length - 1) imageNumber = 0;
+    let index = this.index + 1;
+    if (index > this.images.length - 1) index = 0;
 
-    this.setSelected(imageNumber);
+    this.selectImage(index);
   }
 
   onButtonClick(event) {
-    const buttonNumber = this.buttons.indexOf(event.target);
-    this.setSelected(buttonNumber);
+    const buttonNumber = this.getButtonIndex(event.target);
+    this.selectImage(buttonNumber);
   }
 
   getButtonIndex(button) {
-    return this.buttons.indexOf(button);
+    return this.buttons.findIndex(($button) => $button.is(button));
   }
 
-  setSelected(selected) {
-    this.setImageSelected(selected);
-    this.setButtonSelected(selected);
-    this.selected = selected;
+  selectImage(index) {
+    this.setSelected(this.images, index, 'hotel-number__image_selected');
+    this.setSelected(this.buttons, index, 'hotel-number__button_selected');
+    this.index = index;
   }
 
-  setImageSelected(imageNumber) {
-    if (this.images.length === 0) return;
+  setSelected(array, index, modifier) {
+    if (array.length === 0) return;
 
-    $(this.images[this.selected]).removeClass('hotel-number__image_selected');
-    $(this.images[imageNumber]).addClass('hotel-number__image_selected');
-  }
-
-  setButtonSelected(buttonNumber) {
-    if (this.buttons.length === 0) return;
-
-    $(this.buttons[this.selected]).removeClass('hotel-number__button_selected');
-    $(this.buttons[buttonNumber]).addClass('hotel-number__button_selected');
+    array[this.index].removeClass(modifier);
+    array[index].addClass(modifier);
   }
 }
 

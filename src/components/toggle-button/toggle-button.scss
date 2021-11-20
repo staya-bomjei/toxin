@@ -5,18 +5,10 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  cursor: pointer;
   user-select: none;
   $marker-width: 40px;
   $marker-height: 20px;
   $center-size: 12px;
-
-  &__input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
 
   &__mark {
     box-sizing: border-box;
@@ -25,8 +17,8 @@
     height: $marker-height;
     width: $marker-width;
     border: 1px solid rgba($dark, .25);
-    border-radius: $marker-height;
-    box-sizing: border-box;
+    border-radius: $marker-height;  
+    cursor: pointer;
 
     &::after {
       content: "";
@@ -44,10 +36,11 @@
   &__text {
     @extend %default-text;
     line-height: 20px;
-    margin-left: 10px;
+    margin-left: 10px;  
+    cursor: pointer;
   }
 
-  & &__input:checked ~ &__mark {
+  &_checked &__mark {
     border-color: $purple;
 
     &::after {
