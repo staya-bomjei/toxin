@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --env development",
     "prod": "webpack --env production",
-    "start": "webpack-dev-server --env development --open"
+    "start": "webpack-dev-server --env development"
   },
   "author": "Denis Beschastnykh",
   "license": "ISC",

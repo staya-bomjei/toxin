@@ -1,0 +1,18 @@
+extends ../base/base
+
+block variables
+  -
+    const title = 'The Big Pepega';
+    const pages = [
+      'test-page',
+    ];
+
+block header
+
+block main
+  ul
+    each page in pages
+      li
+        a(href = `${page}.html`)= page
+
+block footer

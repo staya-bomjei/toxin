@@ -21,7 +21,7 @@ module.exports = (env) => {
   const baseConfig = {
     entry: path.resolve(__dirname, 'src', 'entry.js'),
     output: {
-      filename: '[name].js',
+      filename: (env.production) ? '[name].[hash].js' : '[name].js',
       path: path.resolve(__dirname, 'build'),
     },
     resolve: {
@@ -84,6 +84,7 @@ module.exports = (env) => {
     mode: 'development',
     devServer: {
       port: 4200,
+      open: '/index.html',
     },
     ...baseConfig,
   };
