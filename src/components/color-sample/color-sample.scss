@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 @import '../../styles/fonts.scss';
 
-.color-probe {
+.color-sample {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-size: 1.1875rem;
   display: flex;
@@ -13,6 +13,34 @@
     width: 70px;
     height: 70px;
     border-radius: 6px;
+    
+    &_dark-100 {
+      background-color: $dark;
+    }
+    
+    &_dark-75 {
+      background-color: rgba($dark, .75);
+    }
+    
+    &_dark-50 {
+      background-color: rgba($dark, .5);
+    }
+    
+    &_dark-25 {
+      background-color: rgba($dark, .25);
+    }
+    
+    &_dark-5 {
+      background-color: rgba($dark, .05);
+    }
+    
+    &_purple {
+      background-color: $purple;
+    }
+    
+    &_green {
+      background-color: $green;
+    }
   }
 
   &__text {
@@ -30,19 +58,3 @@
     font-weight: normal;
   }
 }
-
-@mixin color-probe_theme($name, $color) {
-  .color-probe_theme-#{$name} {
-    .color-probe__box {
-      background-color: $color;
-    }
-  }
-}
-
-@include color-probe_theme('dark-100', $dark);
-@include color-probe_theme('dark-75', rgba($dark, .75));
-@include color-probe_theme('dark-50', rgba($dark, .50));
-@include color-probe_theme('dark-25', rgba($dark, .25));
-@include color-probe_theme('dark-5', rgba($dark, .05));
-@include color-probe_theme('purple', $purple);
-@include color-probe_theme('green', $green);

@@ -2,12 +2,12 @@
   options.theme - тема компонента: 'title' | 'item-title' | 'label' | 'default-text'
   options.tag - название тэга (например, 'H1')
   options.text - текст для примера отображения
-mixin text-probe(options)
+mixin text-sample(options)
   if !options
     - options = {};
   -
     const { theme = 'title', tag = '', text = '' } = options;
   
-  .text-probe(class = `text-probe_theme-${theme}`)
-    .text-probe__tag= tag
-    .text-probe__text= text
+  .text-sample(class = `text-sample_theme-${theme}`)
+    .text-sample__tag= tag
+    .text-sample__text= text

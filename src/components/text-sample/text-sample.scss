@@ -1,0 +1,38 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.text-sample {
+  display: table-row;
+
+  &__tag {
+    display: table-cell;
+    text-align: right;
+    text-transform: capitalize;
+  }
+
+  &__text {
+    display: table-cell;
+    padding-left: 30px;
+  }
+
+  &__tag {
+    font-weight: normal;
+    color: rgba($dark, .25);
+  }
+
+  &_theme-title {
+    @extend %title;
+  }
+
+  &_theme-item-title {
+    @extend %item-title;
+  }
+
+  &_theme-label {
+    @extend %label;
+  }
+
+  &_theme-default-text {
+    @extend %default-text;
+  }
+}
