@@ -29,7 +29,8 @@
     }
   }
 
-  &__to-left, &__to-right {
+  &__to-left,
+  &__to-right {
     height: 100%;
     position: absolute;
     user-select: none;

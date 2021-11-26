@@ -100,7 +100,8 @@
         }
     
         &--action {
-          &[data-action='prev']::after, &[data-action='next']::after {
+          &[data-action='prev']::after,
+          &[data-action='next']::after {
             @extend %material-icons;
             font-size: 24px;      
             background: $primary-gradient;
@@ -173,7 +174,8 @@
             color:rgba($dark, .25);
           }
     
-          &.-selected-, &.-selected-.-other-month- {
+          &.-selected-,
+          &.-selected-.-other-month- {
             position: relative;
             font-weight: bold;
             color: white;
@@ -193,7 +195,8 @@
             border-radius: 50%;
           }
           
-          &.-range-from-, &.-range-to- {
+          &.-range-from-,
+          &.-range-to- {
             border: none;
             background: $primary-gradient-25;
           }
@@ -208,7 +211,8 @@
             border-bottom-right-radius: 50%;
           }
     
-          &.-in-range-, &.-in-range-.-other-month- {
+          &.-in-range-,
+          &.-in-range-.-other-month- {
             background: $primary-gradient-25;
     
             &:not(.-current-) {
@@ -221,7 +225,8 @@
             background: $primary-gradient-25;
     
             &.-other-month- {
-              &.-in-range-, &.-selected- {
+              &.-in-range-,
+              &.-selected- {
                 background: $primary-gradient-25;
               }
             }
@@ -279,7 +284,8 @@
     width: 92px;
   }
 
-  &__button-minus, &__button-plus {
+  &__button-minus,
+  &__button-plus {
     @extend %default-text;
     box-sizing: border-box;
     flex-shrink: 0;
@@ -299,7 +305,8 @@
     text-align: center;
   }
 
-  &__button-minus_active, &__button-plus_active {
+  &__button-minus_active,
+  &__button-plus_active {
     color: rgba($dark, .5);
     border-color: rgba($dark, .5);
     cursor: pointer;
@@ -325,7 +332,9 @@
     }
   }
 
-  &_open, &_expanded, &_content-only {
+  &_open,
+  &_expanded,
+  &_content-only {
     .dropdown__input-box {
       border-color: rgba($dark, .5);
       border-bottom-left-radius: 0;
@@ -341,7 +350,8 @@
     }
   }
 
-  &_expanded, &_content-only {
+  &_expanded,
+  &_content-only {
     .dropdown__content {
       position: inherit;
     }

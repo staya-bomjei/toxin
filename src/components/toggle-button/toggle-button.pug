@@ -10,12 +10,8 @@ mixin toggle-button(options)
     const { mix, isChecked = false, text = '', valueChanged } = options;
 
     const classes = [];
-    if (mix) {
-      classes.push(mix)
-    }
-    if (isChecked) {
-      classes.push('toggle-button_checked');
-    }
+    if (mix) classes.push(mix);
+    if (isChecked) classes.push('toggle-button_checked');
 
   .toggle-button.js-toggle-button(
     class = classes

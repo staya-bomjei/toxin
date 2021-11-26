@@ -41,21 +41,11 @@ mixin dropdown(options)
     }
 
     const classes = [];
-    if (mix) {
-      classes.push(mix);
-    }
-    if (type === 'summator') {
-      classes.push('dropdown_summator');
-    }
-    if (type === 'datepicker') {
-      classes.push('dropdown_datepicker');
-    }
-    if (isExpanded) {
-      classes.push('dropdown_expanded');
-    }
-    if (isContentOnly) {
-      classes.push('dropdown_content-only');
-    }
+    if (mix) classes.push(mix);
+    if (type === 'summator') classes.push('dropdown_summator');
+    else if (type === 'datepicker') classes.push('dropdown_datepicker');
+    if (isExpanded) classes.push('dropdown_expanded');
+    if (isContentOnly) classes.push('dropdown_content-only');
 
   .dropdown.js-dropdown(
     class = classes 

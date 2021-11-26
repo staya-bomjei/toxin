@@ -8,12 +8,9 @@ mixin button(options)
     - options = {};
   -
     const { mix, text = 'click me', type = 'default', htmlType = 'button' } = options;
+
     const classes = [];
-
-    if (mix) {
-      classes.push(mix);
-    }
-
+    if (mix) classes.push(mix);
     if (type === 'border') classes.push('button_bordered');
     else if (type === 'fill') classes.push('button_filled');
     else if (type === 'arrow') classes.push('button_arrow');

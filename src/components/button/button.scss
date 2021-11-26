@@ -17,7 +17,9 @@
     color: rgba($dark, .5);
   }
 
-  &_bordered, &_filled, &_arrow {
+  &_bordered,
+  &_filled,
+  &_arrow {
     height: 44px;
     min-width: 99px;
   }
@@ -35,7 +37,8 @@
     }
   }
 
-  &_filled, &_arrow {
+  &_filled,
+  &_arrow {
     border-radius: 22px;
     background: $primary-gradient;
     color: white;

@@ -41,14 +41,9 @@
       color: rgba($dark, .25);
     }
 
-    &:hover, &:focus {
-      border: 1px solid rgba($dark, 0.5);
-      color: rgba($dark, .75);
-    }
-  }
-
-  &_hovered {
-    .text-field__input {
+    &:hover,
+    &:focus,
+    &_hovered {
       border: 1px solid rgba($dark, 0.5);
       color: rgba($dark, .75);
     }

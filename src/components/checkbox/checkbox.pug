@@ -11,15 +11,9 @@ mixin checkbox(options)
     const { mix, isChecked = false, text = '', richTitle, valueChanged } = options;
   
     const classes = [];
-    if (mix) {
-      classes.push(mix);
-    }
-    if (richTitle) {
-      classes.push('checkbox_rich');
-    }
-    if (isChecked) {
-      classes.push('checkbox_checked');
-    }
+    if (mix) classes.push(mix);
+    if (richTitle) classes.push('checkbox_rich');
+    if (isChecked) classes.push('checkbox_checked');
 
   .checkbox.js-checkbox(
     class = classes

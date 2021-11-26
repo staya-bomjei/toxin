@@ -41,7 +41,8 @@
     list-style: none;
   }
 
-  &_open, &_epxanded {
+  &_open,
+  &_epxanded {
     .checkbox-list__button::after {
       transform: rotate(180deg);
     }

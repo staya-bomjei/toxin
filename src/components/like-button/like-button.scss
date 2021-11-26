@@ -34,7 +34,8 @@
   &_liked {
     border-color: $purple;
 
-    .like-button__counter, .like-button__icon {
+    .like-button__counter,
+    .like-button__icon {
       color: $purple;
     }
   }

@@ -60,7 +60,9 @@
     grid-column-end: 3;
   }
 
-  &__rent-total, &__discount-total, &__additional-total {
+  &__rent-total,
+  &__discount-total,
+  &__additional-total {
     text-align: right;
   }
 

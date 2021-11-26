@@ -11,20 +11,14 @@ mixin text-field(options)
     - options = {};
   -
     let { title = '', condition = '', placeholder = '', value = '', isHovered = false, type = 'default' } = options;
-    let classes = [];
 
-    if (mix !== undefined) {
-      classes.push(mix);
-    }
-    if (type === 'mask') {
-      classes.push('text-field_masked');
-    }
-    if (type === 'subscription') {
-      classes.push('text-field_subscription');
-    }
-    if (isHovered) {
-      classes.push('text-field_hovered');
-    }
+    const classes = [];
+    if (mix !== undefined) classes.push(mix);
+    if (type === 'subscription') classes.push('text-field_subscription');
+
+    const inputClasses = [];
+    if (isHovered) inputClasses.push('text-field__input_hovered');
+    if (type === 'mask') inputClasses.push('js-text-field__input_masked');
 
   .text-field(class = classes)
     if title !== '' || condition !== ''
@@ -32,6 +26,6 @@ mixin text-field(options)
         .text-field__title= title
         .text-field__condition= condition
     .text-field__input-box
-      input.text-field__input(class = (type === 'mask') ? 'js-text-field_masked' : null placeholder = placeholder value = value)
+      input.text-field__input(class = inputClasses placeholder = placeholder value = value)
       if type === 'subscription'
         span.text-field__icon arrow_forward
