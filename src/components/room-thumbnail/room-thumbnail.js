@@ -1,45 +1,44 @@
-import './hotel-number.scss';
+import './room-thumbnail.scss';
 import $ from 'jquery';
 
-class HotelNumber {
+class RoomThumbnail {
   constructor($component) {
     this.$component = $component;
-    this.index = Number($component.attr('data-selected'));
+    this.selected = Number($component.attr('data-selected'));
     this.price = Number($component.attr('data-price'));
-    this.postfix = $component.attr('data-postfix');
 
-    this.images = Array.from($('.js-hotel-number__image', $component)).map((item) => $(item));
-    this.buttons = Array.from($('.js-hotel-number__button', $component)).map((item) => $(item));
+    this.images = Array.from($('.js-room-thumbnail__image', $component)).map((item) => $(item));
+    this.buttons = Array.from($('.js-room-thumbnail__button', $component)).map((item) => $(item));
 
-    this.$toLeft = $('.js-hotel-number__to-left', $component);
-    this.$toRight = $('.js-hotel-number__to-right', $component);
-    this.$price = $('.js-hotel-number__price', $component);
+    this.$prev = $('.js-room-thumbnail__prev', $component);
+    this.$next = $('.js-room-thumbnail__next', $component);
+    this.$price = $('.js-room-thumbnail__price', $component);
     this.init();
     this.attachEventHandlers();
   }
 
   init() {
-    this.$price.html(this.price.toLocaleString('ru') + this.postfix);
-    this.selectImage(this.index);
+    this.$price.html(`${this.price.toLocaleString('ru')}₽`);
+    this.selectImage(this.selected);
   }
 
   attachEventHandlers() {
-    this.$toLeft.on('click', () => this.onToLeftClick());
-    this.$toRight.on('click', () => this.onToRightClick());
+    this.$prev.on('click', () => this.onPrevClick());
+    this.$next.on('click', () => this.onNextClick());
     this.buttons.forEach(($button) => {
       $button.on('click', (event) => this.onButtonClick(event));
     });
   }
 
-  onToLeftClick() {
-    let index = this.index - 1;
+  onPrevClick() {
+    let index = this.selected - 1;
     if (index < 0) index = this.images.length - 1;
 
     this.selectImage(index);
   }
 
-  onToRightClick() {
-    let index = this.index + 1;
+  onNextClick() {
+    let index = this.selected + 1;
     if (index > this.images.length - 1) index = 0;
 
     this.selectImage(index);
@@ -55,19 +54,19 @@ class HotelNumber {
   }
 
   selectImage(index) {
-    this.setSelected(this.images, index, 'hotel-number__image_selected');
-    this.setSelected(this.buttons, index, 'hotel-number__button_selected');
-    this.index = index;
+    this.setSelected(this.images, index, 'room-thumbnail__image_selected');
+    this.setSelected(this.buttons, index, 'room-thumbnail__button_selected');
+    this.selected = index;
   }
 
   setSelected(array, index, modifier) {
     if (array.length === 0) return;
 
-    array[this.index].removeClass(modifier);
+    array[this.selected].removeClass(modifier);
     array[index].addClass(modifier);
   }
 }
 
 $(() => {
-  $('.js-hotel-number').map((index, node) => new HotelNumber($(node)));
+  $('.js-room-thumbnail').map((index, node) => new RoomThumbnail($(node)));
 });

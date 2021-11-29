@@ -1,53 +1,60 @@
 @import '../../styles/variables.scss';
 @import '../../styles/fonts.scss';
 
-.hotel-number {
-  width: 270px;
+.room-thumbnail {
+  width: 100%;
   background-color: white;
   border-radius: 4px;
   overflow: hidden;
 
-  &__image-box {
+  &__carousel {
     position: relative;
-    height: 151px;
     width: 100%;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: minmax(9.5rem, 100%);
+    margin: 0;
 
     &:hover, &_hovered {
-      .hotel-number__to-left, .hotel-number__to-right {
+      .room-thumbnail__prev, .room-thumbnail__next {
         display: flex;
       }
     }
   }
 
   &__image {
-    position: absolute;
+    grid-column: 1 / 4;
+    grid-row: 1 / 1;
     display: none;
+    width: 100%;
+    z-index: 0;
 
     &_selected {
       display: block;
     }
   }
 
-  &__to-left,
-  &__to-right {
+  &__prev,
+  &__next {
+    z-index: 1;
     height: 100%;
-    position: absolute;
     user-select: none;
     cursor: pointer;
     display: none;
     align-items: center;
+    justify-content: center;
 
     &__icon {
       @extend %material-icons;
       font-size: 24px;
-      padding: 10px;
       color: white;
     }
   }
 
-  &__to-left {
-    left: 0;
+  &__prev {
+    grid-column: 1 / 2;
+    grid-row: 1 / 1;
     background: linear-gradient(90deg, rgba(black, 0.5) 0%, rgba(black, 0) 99.99%, rgba(white, 0) 100%);
 
     &__icon {
@@ -55,8 +62,9 @@
     }
   }
 
-  &__to-right {
-    right: 0;
+  &__next {
+    grid-column: 3 / 4;
+    grid-row: 1 / 1;
     background: linear-gradient(-90deg, rgba(black, 0.5) 0%, rgba(black, 0) 99.99%, rgba(white, 0) 100%);
 
     &__icon {
@@ -69,6 +77,7 @@
     position: absolute;
     right: 15px;
     bottom: 15px;
+    z-index: 2;
   }
 
   &__button {
@@ -98,9 +107,18 @@
     align-items: center;
   }
 
-  &__line-group {
+  &__number-info {
+    text-decoration: none;
+  }
+
+  &__price-per-day,
+  &__reviews {
     @extend %default-text;
     color: rgba($dark, .5);
+  }
+
+  &__number-info,
+  &__price-per-day {   
     display: flex;
     align-items: baseline;
   }

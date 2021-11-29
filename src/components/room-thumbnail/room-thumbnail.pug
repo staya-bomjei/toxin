@@ -3,64 +3,52 @@ include ../rate-button/rate-button
 //-
   options.images - массив изображений
   options.images[0].path - путь к картинке для профиля пользователя (от папки ./img этого компонента)
-  options.images[0].width - ширина картинки
-  options.images[0].height - высота картинки
-  options.images[0].margin - массив отступов
-  options.images[0].margin[0] - отступ сверху
-  options.images[0].margin[1] - отступ справа
-  options.images[0].margin[2] - отступ снизу
-  options.images[0].margin[3] - отступ слева
+  options.images[0].alt - текстовая альтернатива картинке
   options.selected - выбранное изображение
   options.rate - оценка компонента
   options.number - номер комнаты в отеле
   options.price - стоимость номера за день
   options.reviews - количество отзывов на номер
-  options.postfix - валютный постфикс, по умолчанию '₽'
   options.type - тип номера (например, 'люкс')
-mixin hotel-number(options)
+  options.href - ссылка
+mixin room-thumbnail(options)
   if !options
     - options = {};
   -
     const { 
       images = [], selected = 0, rate = 5, number = 0, price = 0, 
-      reviews = 0, postfix = '₽', type = '',
+      reviews = 0, type = '', href = 'error-page',
     } = options;
 
-  .hotel-number.js-hotel-number(
+  .room-thumbnail.js-room-thumbnail(
     data-selected = selected
     data-price = price
-    data-postfix = postfix
   )
-    .hotel-number__image-box
+    figure.room-thumbnail__carousel
       each image in images
-        img.hotel-number__image.js-hotel-number__image(
-          src = require('../../components/hotel-number/img/' + image.path) 
-          alt = 'image'
-          style = `
-            width: ${image.width}; 
-            height: ${image.height}; 
-            margin: ${image.margin[0]}px ${image.margin[1]}px ${image.margin[2]}px ${image.margin[3]}px;
-          `
+        img.room-thumbnail__image.js-room-thumbnail__image(
+          src = require(`../../components/room-thumbnail/img/${image.path}`)
+          alt = image.alt
         )
-      .hotel-number__to-left.js-hotel-number__to-left
-        span.hotel-number__to-left__icon expand_more
-      .hotel-number__to-right.js-hotel-number__to-right
-        span.hotel-number__to-right__icon expand_more
-      .hotel-number__buttons
+      .room-thumbnail__prev.js-room-thumbnail__prev
+        span.room-thumbnail__prev__icon expand_more
+      .room-thumbnail__next.js-room-thumbnail__next
+        span.room-thumbnail__next__icon expand_more
+      .room-thumbnail__buttons
         each image in images
-          .hotel-number__button.js-hotel-number__button
-    .hotel-number__info
-      .hotel-number__row
-        .hotel-number__line-group
-          h3.hotel-number__n №&nbsp;
-          h3.hotel-number__number= number
-          span.hotel-number__type= type
-        span.hotel-number__line-group
-          strong.hotel-number__price.js-hotel-number__price
+          .room-thumbnail__button.js-room-thumbnail__button
+    .room-thumbnail__info
+      .room-thumbnail__row
+        a.room-thumbnail__number-info(href = `${href}.html`)
+          span.room-thumbnail__n= '№'
+          span.room-thumbnail__number= number
+          span.room-thumbnail__type= type
+        .room-thumbnail__price-per-day
+          strong.room-thumbnail__price.js-room-thumbnail__price
           span &nbsp;в сутки
-      .hotel-number__underline
-      .hotel-number__row
+      .room-thumbnail__underline
+      .room-thumbnail__row
         +rate-button({ rate })
-        span.hotel-number__line-group
+        span.room-thumbnail__reviews
           strong= reviews
           span &nbsp;Отзывов
