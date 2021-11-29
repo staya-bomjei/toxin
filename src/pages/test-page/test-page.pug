@@ -1,0 +1,261 @@
+extends ../base/base
+
+include ../../components/advantage/advantage
+include ../../components/bullet-list/bullet-list
+include ../../components/button/button
+include ../../components/checkbox/checkbox
+include ../../components/checkbox-list/checkbox-list
+include ../../components/color-sample/color-sample
+include ../../components/comment/comment
+include ../../components/dropdown/dropdown
+include ../../components/find-number/find-number
+//- include ../../components/header/header
+include ../../components/room-thumbnail/room-thumbnail
+include ../../components/like-button/like-button
+include ../../components/pagination/pagination
+include ../../components/radio-button/radio-button
+include ../../components/range-slider/range-slider
+include ../../components/rate-button/rate-button
+include ../../components/reservation/reservation
+include ../../components/sign-in/sign-in
+include ../../components/sign-up/sign-up
+include ../../components/text-field/text-field
+include ../../components/text-sample/text-sample
+include ../../components/toggle-button/toggle-button
+
+block variables
+  -
+    const title = 'Тестовая страница';
+
+block main
+  
+  //- +advantage({ 
+  //-   icon: 'insert_emoticon',
+  //-   title: 'Комфорт',
+  //-   description: 'Шумопоглощающие стены',
+  //-   hasUnderline: true,
+  //- })
+  //- +advantage({ 
+  //-   icon: 'location_city',
+  //-   title: 'Удобство',
+  //-   description: 'Окно в каждой из спален',
+  //-   hasUnderline: true,
+  //- })
+  //- +advantage({
+  //-   icon: 'whatshot',
+  //-   title: 'Уют',
+  //-   description: 'Номер оснащен камином',
+  //- })
+
+  //- +bullet-list({
+  //-   points: [
+  //-     'Нельзя с питомцами', 
+  //-     'Без вечеринок и мероприятий', 
+  //-     'Время прибытия — после 13:00, а выезд до 12:00',
+  //-   ],
+  //- })
+
+  //- +button()
+  //- +button({ type: 'border' })
+  //- +button({ type: 'fill' })
+  //- +button({ type: 'arrow' })
+
+  //- +checkbox({ 
+  //-   isChecked: true,
+  //-   richTitle: 'Широкий коридор',
+  //-   text: 'Ширина коридоров в номере не менее 91 см.',
+  //- })
+  //- +checkbox({ isChecked: true, text: 'Можно курить' })
+
+  //- -
+  //-   const list = [
+  //-     { text: 'Завтрак' },
+  //-     { text: 'Письменный стол', isChecked: true },
+  //-     { text: 'Стул для кормления', isChecked: true },
+  //-     { text: 'Кроватка', isChecked: true },
+  //-     { text: 'Телевизор' },
+  //-     { text: 'Шампунь' },
+  //-   ];
+  //- +checkbox-list({ text: 'expandable checkbox list', list })
+  //- +checkbox-list({ text: 'expandable checkbox list2', isExpanded: true, list })
+
+  //- +color-sample({ theme: 'dark-100', colorName: 'dark shade 100%', colorCode: '#1f2041' })
+  //- +color-sample({ theme: 'dark-75', colorName: 'dark shade 75%', colorCode: '#1f2041' })
+  //- +color-sample({ theme: 'dark-50', colorName: 'dark shade 50%', colorCode: '#1f2041' })
+  //- +color-sample({ theme: 'dark-25', colorName: 'dark shade 25%', colorCode: '#1f2041' })
+  //- +color-sample({ theme: 'dark-5', colorName: 'dark shade 5%', colorCode: '#1f2041' })
+  //- +color-sample({ theme: 'purple', colorName: 'purple', colorCode: '#bc9cff' })
+  //- +color-sample({ theme: 'green', colorName: 'green', colorCode: '#6fcf97' })
+
+  //- - const text = 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.';
+  //- +comment({ userImage: 'img1.png', userName: 'Мурад Сарафанов', date: '2021-09-14', text, likes: 123})
+
+  //- -
+  //-   const rows1 = [
+  //-     { text: 'спальни', counter: 2, countables: ['спальня', 'спальни', 'спален'] },
+  //-     { text: 'кровати', counter: 2, countables: ['кровать', 'кровати', 'кроватей'] },
+  //-     { text: 'ванные комнаты', counter: 0, countables: ['ванная комната', 'ванных комнаты', 'ванных комнат'] },
+  //-   ];
+  //-   const rows2 = [
+  //-     { text: 'взрослые', counter: 0 },
+  //-     { text: 'дети', counter: 0 },
+  //-     { text: 'младенцы', counter: 0 },
+  //-   ];
+  //- +dropdown({ 
+  //-   title: 'dropdown', 
+  //-   condition: 'default', 
+  //-   placeholder: 'Сколько гостей', 
+  //-   rows: rows1, 
+  //- })
+  //- +dropdown({ 
+  //-   title: 'dropdown', 
+  //-   condition: 'default with controls', 
+  //-   placeholder: 'Сколько гостей', 
+  //-   rows: rows1,
+  //-   hasControls: true,
+  //- })
+  //- +dropdown({ 
+  //-   title: 'dropdown', 
+  //-   condition: 'summator', 
+  //-   placeholder: 'Сколько гостей', 
+  //-   rows: rows2, type: 'summator', 
+  //-   countables: ['гость', 'гостя', 'гостей'], 
+  //- })
+  //- +dropdown({ 
+  //-   title: 'dropdown', 
+  //-   condition: 'summator with controls', 
+  //-   placeholder: 'Сколько гостей', 
+  //-   rows: rows2, type: 'summator', 
+  //-   countables: ['гость', 'гостя', 'гостей'],
+  //-   hasControls: true,
+  //- })
+  //- +dropdown({ 
+  //-   title: 'dropdown', 
+  //-   condition: 'datepicker', 
+  //-   placeholder: 'ДД.ММ.ГГГГ', 
+  //-   type: 'datepicker', 
+  //-   selected: ['2021-11-25'],
+  //- })
+  //- +dropdown({ 
+  //-   title: 'dropdown', 
+  //-   condition: 'range datepicker', 
+  //-   placeholder: 'ДД.ММ.ГГГГ', 
+  //-   type: 'datepicker', 
+  //-   selected: ['2021-11-25', '2021-11-28'],
+  //-   isRange: true,
+  //- })
+  //- +dropdown({ 
+  //-   title: ['first', 'second'], 
+  //-   condition: ['split', 'range'], 
+  //-   placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], 
+  //-   type: 'datepicker', 
+  //-   selected: ['2021-11-25', '2021-11-28'],
+  //-   isRange: true,
+  //-   isSplit: true,
+  //- })
+  //- +dropdown({ 
+  //-   type: 'datepicker', 
+  //-   selected: ['2021-11-25'],
+  //-   isContentOnly: true,
+  //- })
+
+  //- +find-number()
+
+  -
+    const img1 = {
+      path: 'img1.png',
+      alt: 'img1',
+    }
+    const img2 = {
+      path: 'img2.png',
+      alt: 'img2',
+    }
+    const img3 = {
+      path: 'img3.png',
+      alt: 'img3',
+    }
+    const img4 = {
+      path: 'img4.png',
+      alt: 'img4',
+    }
+  +room-thumbnail({ 
+    number: 888, 
+    price: 9990, 
+    reviews: 145, 
+    type: 'люкс', 
+    images: [img1, img2, img3, img4],
+  })
+
+  //- +like-button({ isChecked: false, counter: 12 })
+  //- +like-button({ isChecked: true, counter: 122 })
+
+  //- +pagination({ itemsCount: 181, itemsPerPage: 12, postfix: 'вариантов аренды'})
+
+  //- +radio-button({ isChecked: false, text: 'Мужчина' })
+  //- +radio-button({ isChecked: true, text: 'Женщина' })
+
+  //- +range-slider({ min: 0, max: 15000, values: [5000, 10000], text: 'range slider', note: 'Стоимость за сутки пребывания в номере', postfix: '₽' })
+  //- +range-slider({ min: 1000, max: 2000, text: 'range spider', postfix: '₽' })
+
+  //- +rate-button({ counter: 5, rate: 0 })
+  //- +rate-button({ counter: 5, rate: 1 })
+
+  //- +reservation({ 
+  //-   number: '888', 
+  //-   type: 'люкс', 
+  //-   price: 9990, 
+  //-   discount: 2179, 
+  //-   pricePerGuest: 100, 
+  //-   selectedDates: ['2019-08-19', '2019-08-23'],
+  //- })
+
+  //- +sign-in()
+
+  //- +sign-up()
+
+  //- +text-field({ 
+  //-   title: 'masked text field', 
+  //-   placeholder: 'ДД.ММ.ГГГГ', 
+  //-   type: 'mask'
+  //- })
+  //- +text-field({ 
+  //-   title: 'subscription text field', 
+  //-   placeholder: 'Email', 
+  //-   type: 'subscription',
+  //- })
+  //- +text-field({ 
+  //-   title: 'text field', 
+  //-   condition: 'default', 
+  //-   placeholder: 'Email',
+  //- })
+  //- +text-field({ 
+  //-   title: 'text field', 
+  //-   condition: 'hover / focus', 
+  //-   placeholder: 'Email', 
+  //-   value: 'This is pretty awesome', 
+  //-   isHovered: true,
+  //- })
+
+  //- +text-sample({
+  //-   theme: 'title', 
+  //-   tag: 'h1', 
+  //-   text: 'This one is the sub-section or widget title',
+  //- })
+  //- +text-sample({ 
+  //-   theme: 'item-title', 
+  //-   tag: 'h2', 
+  //-   text: 'Next one is the item title inside widgets',
+  //- })
+  //- +text-sample({ 
+  //-   theme: 'label', 
+  //-   tag: 'h3', 
+  //-   text: 'This is a label or CTA text',
+  //- })
+  //- +text-sample({ 
+  //-   theme: 'default-text', 
+  //-   tag: 'body', 
+  //-   text: 'This is the body text which is used for most of the design, like paragraphs, lists, etc.',
+  //- })
+
+  //- +toggle-button({ isChecked: true, text: 'Получать спецпредложения'})
+  //- +toggle-button({ isChecked: true, text: 'Получать спецпредложения'})
