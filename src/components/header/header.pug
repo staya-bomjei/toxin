@@ -1,0 +1,36 @@
+include ../button/button
+include ../menu/menu
+
+//-
+  options.menuItems - массив элементов меню
+  options.menuItems[0].text - текст элемента меню
+  options.menuItems[0].href - ссылка
+  options.menuItems[0].isBold - если true, то элемент будет выделен толстым ширфтом
+  options.menuItems[0].submenu - массив подменю
+  options.loggedIn - если true, то будет отображено имя options.userName, иначе кнопки для входа и регистрации
+  options.userName - имя авторизованного пользователя
+mixin header(options)
+  if !options
+    - options = {};
+  
+  -
+    const { menuItems = [], loggedIn = false, userName } = options;
+  
+  .js-header.header
+    .header__inner-wrapper
+      a.header__home(href = 'index.html')
+        img.header__logo(
+          src = require('../../components/header/img/logo.svg')
+        )
+      button.js-header__burger.header__burger
+        span.header__burger-box
+      .js-header__info.header__info
+        .header__menu
+          +menu({ items: menuItems })
+        if loggedIn
+          .header__vertical-line
+          .header__user-name= userName
+        else
+          .header__buttons
+            +button({ text: 'войти', href: 'error-page', size: 'small', type: 'border' })
+            +button({ text: 'зарегистрироваться', href: 'error-page', size: 'small', type: 'fill' })
