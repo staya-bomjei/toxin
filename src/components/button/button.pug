@@ -1,18 +1,32 @@
 //-
   options.mix - класс, который будет добавлен к компоненту
   options.text - текст кнопки
-  options.type - тип кнопки: 'default' | 'border' | 'fill' | 'arrow'
+  options.type - тип отображения кнопки: 'default' | 'border' | 'fill' | 'arrow'
+  options.href - если указано, то кнопка будет ссылкой
+  options.size - размер кнопки: 'default' | 'small'
   options.htmlType - html type свойство: 'button' | 'submit' | 'reset', по умолчанию 'button'
 mixin button(options)
   if !options
     - options = {};
   -
-    const { mix, text = 'click me', type = 'default', htmlType = 'button' } = options;
+    const {
+      mix,
+      text = 'click me',
+      type = 'default',
+      href,
+      size = 'default',
+      htmlType = 'button'
+    } = options;
 
     const classes = [];
     if (mix) classes.push(mix);
+    if (size === 'default' && type !== 'default') classes.push('button_size-default');
+    else if (size === 'small') classes.push('button_size-small');
     if (type === 'border') classes.push('button_bordered');
     else if (type === 'fill') classes.push('button_filled');
     else if (type === 'arrow') classes.push('button_arrow');
 
-  button.button(class = classes type = htmlType)= text
+  if href
+    a.button(class = classes href = `${href}.html`)= text
+  else
+    button.button(class = classes type = htmlType)= text

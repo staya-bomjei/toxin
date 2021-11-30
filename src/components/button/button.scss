@@ -4,9 +4,7 @@
 .button {
   @extend %label;
   box-sizing: border-box;
-  display: inline-block;
-  text-align: center;
-  align-items: center;
+  text-decoration: none;
   user-select: none;
   cursor: pointer;
   border: none;
@@ -17,11 +15,22 @@
     color: rgba($dark, .5);
   }
 
-  &_bordered,
-  &_filled,
-  &_arrow {
-    height: 44px;
-    min-width: 99px;
+  &_size- {
+    &default {
+      padding: 14px 20px 15px 20px;
+      
+      &.button_bordered {
+        padding: 12px 18px 13px 18px;
+      }
+    }
+
+    &small {
+      padding: 9px 20px 10px 20px;
+
+      &.button_bordered {
+        padding: 7px 18px 8px 18px;
+      }
+    }
   }
 
   &_bordered {
