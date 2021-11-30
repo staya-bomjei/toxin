@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  $itemWidth: 80px;
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &__subitem > &__expand-more {
+    transform: rotate(-90deg);
+  }
+
+  &__subitem > &__submenu {
+    top: 0;
+    left: calc(100%);
+  }
+
+  &__item,
+  &__subitem {
+    display: flex;
+    position: relative;
+  }
+
+  &__item:hover,
+  &__subitem:hover {
+    & > .menu__submenu {
+      display: block;
+    }
+  }
+
+  &__link {
+    @extend %default-text;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &_bold {
+      font-weight: bold;
+      color: rgba($dark, .75);
+    }
+  }
+
+  &__submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: calc(100%);
+    position: absolute;
+    display: none;
+  }
+
+  &__expand-more {
+    @extend %material-icons;
+    font-size: 24px;
+    color: rgba($dark, .5);
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+  }
+}

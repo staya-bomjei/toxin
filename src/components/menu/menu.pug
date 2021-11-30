@@ -1,0 +1,26 @@
+//-
+  options.isSubmenu - если true, то будет создано подменю
+  options.items - массив элементов меню
+  options.items[0].text - текст элемента меню
+  options.items[0].href - ссылка
+  options.items[0].isBold - если true, то элемент будет выделен толстым ширфтом
+  options.items[0].submenu - массив подменю
+mixin menu(options)
+  if !options
+    - options = {};
+
+  -
+    const { isSubmenu = false, items = [] } = options;
+    const menuClass = (isSubmenu) ? 'menu__submenu' : 'menu';
+    const itemClass = (isSubmenu) ? 'menu__subitem' : 'menu__item';
+  
+  ul(class = menuClass)
+    each item in items
+        li(class = itemClass)
+          a.menu__link(
+            class = (item.isBold) ? 'menu__link_bold' : null
+            href = `${item.href}.html`
+          )= item.text
+          if item.submenu
+            span.menu__expand-more expand_more
+            +menu({ isSubmenu: true, items: item.submenu })
