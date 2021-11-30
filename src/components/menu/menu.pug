@@ -21,6 +21,7 @@ mixin menu(options)
             class = (item.isBold) ? 'menu__link_bold' : null
             href = `${item.href}.html`
           )= item.text
+            if item.submenu
+              span.menu__expand-more expand_more
           if item.submenu
-            span.menu__expand-more expand_more
             +menu({ isSubmenu: true, items: item.submenu })
