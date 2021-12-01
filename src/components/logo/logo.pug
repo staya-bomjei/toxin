@@ -1,0 +1,11 @@
+//-
+  options.href - ссылка, на которую ведёт лого
+mixin logo(options)
+  if !options
+    - options = {};
+
+  -
+    const { href = 'index' } = options;
+
+  a.logo(href = `${href}.html`)
+    img.logo__image(src = require('../../components/logo/img/logo.svg'))
