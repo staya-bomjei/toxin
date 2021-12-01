@@ -1,11 +1,13 @@
 //-
   options.href - ссылка, на которую ведёт лого
+  options.withText - если true, то лого будет отображено с текстом
 mixin logo(options)
   if !options
     - options = {};
 
   -
-    const { href = 'index' } = options;
+    const { href = 'index', withText = true } = options;
+    const path = (withText) ? 'logo.svg' : 'logo-without-text.svg';
 
   a.logo(href = `${href}.html`)
-    img.logo__image(src = require('../../components/logo/img/logo.svg'))
+    img.logo__image(src = require(`../../components/logo/img/${path}`))
