@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
+
+.colors-and-type {
+
+  &__logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 145px 158px 145px 150px;
+    background: dark;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__colors-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  &__texts-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 50px;
+    width: 436px;
+  }
+}
