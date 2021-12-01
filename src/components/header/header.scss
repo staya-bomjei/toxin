@@ -10,6 +10,13 @@
   $burgerSize: 40px;
   $burgerLineHeight: 40px / 7;
 
+  @media (max-width: $md) {
+    & {
+      padding: 20px;
+    }
+  }
+
+
   &__burger {
     width: $burgerSize;
     height: $burgerSize;
@@ -42,6 +49,13 @@
       .header__burger-box::after {
         bottom: 0;
         transform: rotateZ(-45deg);
+      }
+    }
+
+    @media (max-width: $md) {
+      & {
+        display: block;
+        justify-self: right;
       }
     }
   }
@@ -79,7 +93,17 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    min-width: 1160px;
+    max-width: 1160px;
+    width: 100%;
+
+    @media (max-width: $md) {
+      & {
+        width: 100%;
+        min-width: 0;
+        display: grid;
+        grid-template-columns: auto auto;
+      }
+    }
   }
 
   &__logo {
@@ -90,70 +114,64 @@
   &__info {
     display: flex;
     align-items: center;
+
+    @media (max-width: $md) {
+      & {
+        flex-direction: column;
+        grid-column: 1 / 3;
+        display: none;
+      }
+    }
   }
 
   &__vertical-line {
     height: 30px;
     margin-left: 20px;
     margin-right: 20px;
-    border-right: 1px solid rgba($dark, .1);
+    border-right: 1px solid rgba($dark, .1);  
+    
+    @media (max-width: $md) {
+      & {
+        height: 0;
+        width: 100%;
+        margin: 0px;
+        border-top: 1px solid rgba($dark, .1);
+      }
+    }
   }
 
   &__user-name {
     @extend %default-text;
+
+    @media (max-width: $md) {
+      & {
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
   }
 
   &__buttons {
     margin-left: 20px;
     display: grid;
     grid-template-columns: auto auto;
-    grid-column-gap: 20px;
+    grid-column-gap: 20px; 
+    
+    @media (max-width: $md) {
+      & {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        width: 100%;
+      }
+    }
   }
 
-  @media (max-width: $md) {
-    & {
-      padding: 20px;
-    }
-
-    &__burger {
-      display: block;
-      justify-self: right;
-    }
-
-    &__inner-wrapper {
-      width: 100%;
-      min-width: 0;
-      display: grid;
-      grid-template-columns: auto auto;
-    }
-
-    &__info {
-      flex-direction: column;
-      grid-column: 1 / 3;
-      display: none;
-    }
-
-    &__buttons {
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      width: 100%;
-    }
-    
-    &__vertical-line {
-      height: 0;
-      width: 100%;
-      margin: 0px;
-      border-top: 1px solid rgba($dark, .1);
-    }
-
-    &__menu {
-      width: 100%;
-    }
-
-    &__user-name {
-      text-align: center;
-      margin-top: 20px;
+  &__menu {
+    @media (max-width: $md) {
+      & {
+        width: 100%;
+      }
     }
   }
 }
