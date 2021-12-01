@@ -1,5 +1,6 @@
 include ../button/button
 include ../menu/menu
+include ../logo/logo
 
 //-
   options.menuItems - массив элементов меню
@@ -18,10 +19,8 @@ mixin header(options)
   
   .js-header.header
     .header__inner-wrapper
-      a.header__home(href = 'index.html')
-        img.header__logo(
-          src = require('../../components/header/img/logo.svg')
-        )
+      .header__home
+        +logo()
       button.js-header__burger.header__burger
         span.header__burger-box
       .js-header__info.header__info
