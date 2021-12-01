@@ -9,9 +9,12 @@ include ../../components/color-sample/color-sample
 include ../../components/comment/comment
 include ../../components/dropdown/dropdown
 include ../../components/find-number/find-number
-//- include ../../components/header/header
+include ../../components/header/header
+include ../../components/footer/footer
 include ../../components/room-thumbnail/room-thumbnail
 include ../../components/like-button/like-button
+include ../../components/logo/logo
+include ../../components/menu/menu
 include ../../components/pagination/pagination
 include ../../components/radio-button/radio-button
 include ../../components/range-slider/range-slider
@@ -161,33 +164,138 @@ block main
 
   //- +find-number()
 
-  -
-    const img1 = {
-      path: 'img1.png',
-      alt: 'img1',
-    }
-    const img2 = {
-      path: 'img2.png',
-      alt: 'img2',
-    }
-    const img3 = {
-      path: 'img3.png',
-      alt: 'img3',
-    }
-    const img4 = {
-      path: 'img4.png',
-      alt: 'img4',
-    }
-  +room-thumbnail({ 
-    number: 888, 
-    price: 9990, 
-    reviews: 145, 
-    type: 'люкс', 
-    images: [img1, img2, img3, img4],
-  })
+  //- -
+  //-   const img1 = {
+  //-     path: 'img1.png',
+  //-     alt: 'img1',
+  //-   }
+  //-   const img2 = {
+  //-     path: 'img2.png',
+  //-     alt: 'img2',
+  //-   }
+  //-   const img3 = {
+  //-     path: 'img3.png',
+  //-     alt: 'img3',
+  //-   }
+  //-   const img4 = {
+  //-     path: 'img4.png',
+  //-     alt: 'img4',
+  //-   }
+  //- +room-thumbnail({ 
+  //-   number: 888, 
+  //-   price: 9990, 
+  //-   reviews: 145, 
+  //-   type: 'люкс', 
+  //-   images: [img1, img2, img3, img4],
+  //- })
 
   //- +like-button({ isChecked: false, counter: 12 })
   //- +like-button({ isChecked: true, counter: 122 })
+
+  //- +logo()
+  //- +logo({ withText: false })
+
+  //- -
+  //-   const menuItems = [
+  //-     {
+  //-       text: 'О Нас',
+  //-       isBold: true,
+  //-       href: 'error-page',
+  //-     },
+  //-     {
+  //-       text: 'Услуги',
+  //-       href: 'error-page',
+  //-       submenu: [
+  //-         {
+  //-           text: 'Услуга 1',
+  //-           href: 'error-page',
+  //-         },
+  //-         {
+  //-           text: 'Услуга 2',
+  //-           href: 'error-page',
+  //-           submenu: [
+  //-             {
+  //-               text: 'Услуга 1',
+  //-               href: 'error-page',
+  //-             },
+  //-             {
+  //-               text: 'Услуга 2',
+  //-               href: 'error-page',
+  //-             },
+  //-             {
+  //-               text: 'Услуга 3',
+  //-               href: 'error-page',
+  //-             },
+  //-           ],
+  //-         },
+  //-         {
+  //-           text: 'Услуга 3',
+  //-           href: 'error-page',
+  //-         },
+  //-       ],
+  //-     },
+  //-     {
+  //-       text: 'Вакансии',
+  //-       href: 'error-page',
+  //-     },
+  //-     {
+  //-       text: 'Новости',
+  //-       href: 'error-page',
+  //-     },
+  //-     {
+  //-       text: 'Соглашения',
+  //-       href: 'error-page',
+  //-       submenu: [
+  //-         {
+  //-           text: 'Соглашение 1',
+  //-           href: 'error-page',
+  //-         },
+  //-         {
+  //-           text: 'Соглашение 2',
+  //-           href: 'error-page',
+  //-         },
+  //-         {
+  //-           text: 'Соглашение 3',
+  //-           href: 'error-page',
+  //-         },
+  //-       ],
+  //-     },
+  //-   ];
+  //- +menu({ items: menuItems })
+  //- +header({ menuItems, loggedIn: false })
+  //- +header({ menuItems, loggedIn: true, userName: 'Пепега Пепегович' })
+
+
+  //- -
+  //-   const footer_items = [
+  //-     {
+  //-       text: 'навигация',
+  //-       links: [
+  //-         { text: 'О нас', href: 'error-page' },
+  //-         { text: 'Новости', href: 'error-page' },
+  //-         { text: 'Служба поддержки', href: 'error-page' },
+  //-         { text: 'Услуги', href: 'error-page' },
+  //-       ]
+  //-     },
+  //-     {
+  //-       text: 'о нас',
+  //-       links: [
+  //-         { text: 'О сервисе', href: 'error-page' },
+  //-         { text: 'Наша команда', href: 'error-page' },
+  //-         { text: 'Вакансии', href: 'error-page' },
+  //-         { text: 'Инвесторы', href: 'error-page' },
+  //-       ]
+  //-     },
+  //-     {
+  //-       text: 'служба поддержки',
+  //-       links: [
+  //-         { text: 'Соглашения', href: 'error-page' },
+  //-         { text: 'Сообщества', href: 'error-page' },
+  //-         { text: 'Связь с нами', href: 'error-page' },
+  //-       ]
+  //-     },
+  //-   ];
+  //- +footer({ items: footer_items })
 
   //- +pagination({ itemsCount: 181, itemsPerPage: 12, postfix: 'вариантов аренды'})
 
