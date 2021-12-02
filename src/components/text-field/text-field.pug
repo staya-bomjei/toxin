@@ -1,5 +1,4 @@
 //-
-  options.mix - класс, который будет добавлен к компоненту
   options.title - заголовок компонента
   options.condition - текст, показывающий в каком состоянии находится компонент
   options.placeholder - placeholder текстового поля
@@ -9,23 +8,33 @@
 mixin text-field(options)
   if !options
     - options = {};
+
   -
-    let { title = '', condition = '', placeholder = '', value = '', isHovered = false, type = 'default' } = options;
+    const {
+      title = '',
+      condition = '',
+      placeholder = '',
+      value = '',
+      isHovered = false,
+      type = 'default'
+    } = options;
 
     const classes = [];
-    if (mix !== undefined) classes.push(mix);
+    if (isHovered) classes.push('text-field_hovered');
     if (type === 'subscription') classes.push('text-field_subscription');
 
-    const inputClasses = [];
-    if (isHovered) inputClasses.push('text-field__input_hovered');
-    if (type === 'mask') inputClasses.push('js-text-field__input_masked');
+    const inputClass = (type === 'mask') ? 'js-text-field__input' : null;
 
   .text-field(class = classes)
-    if title !== '' || condition !== ''
+    if title || condition
       .text-field__info
         .text-field__title= title
         .text-field__condition= condition
-    .text-field__input-box
-      input.text-field__input(class = inputClasses placeholder = placeholder value = value)
+    .text-field__input-wrapper
+      input.text-field__input(
+        class = inputClass
+        placeholder = placeholder
+        value = value
+      )
       if type === 'subscription'
         span.text-field__icon arrow_forward

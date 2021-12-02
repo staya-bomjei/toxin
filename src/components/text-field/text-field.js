@@ -4,7 +4,16 @@ import $ from 'jquery';
 
 $(
   () => {
-    const im = new Inputmask({ alias: 'datetime', inputFormat: 'dd.mm.yyyy', placeholder: '__.__.____' });
-    im.mask($('.js-text-field__input_masked'));
+    $('.js-text-field__input').each((index, node) => {
+      const $node = $(node);
+      const placeholder = $node.attr('placeholder');
+      const im = new Inputmask({
+        alias: 'datetime',
+        inputFormat: 'dd.mm.yyyy',
+        placeholder,
+      });
+
+      im.mask($node);
+    });
   },
 );
