@@ -26,7 +26,7 @@ function capitalize(string) {
 function buildSentence(counter, countables) {
   const countable = choiceCountable(counter, countables);
 
-  if (counter === 1) return capitalize(countable);
+  if (counter === 1) return `${capitalize(countable)} назад`;
 
   return `${counter} ${countable} назад`;
 }

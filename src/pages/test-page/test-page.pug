@@ -8,6 +8,7 @@ include ../../components/bullet-list/bullet-list
 include ../../components/checkbox/checkbox
 include ../../components/advantage/advantage
 include ../../components/like-button/like-button
+include ../../components/comment/comment
 
 block variables
   -
@@ -21,6 +22,7 @@ block variables
       checkboxes,
       advantages,
       likeButtons,
+      comments,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -80,4 +82,11 @@ block main
         .test-page__like-buttons-list
           each likeButton in likeButtons
             +like-button(likeButton)
+        hr.test-page__underline
+    if comments
+      .test-page__comments
+        h2.test-page__title Comments
+        .test-page__comments-list
+          each comment in comments
+            +comment({ ...comment, image: require(`./img/${comment.image}`) })
         hr.test-page__underline

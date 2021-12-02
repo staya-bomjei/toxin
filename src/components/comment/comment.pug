@@ -2,21 +2,30 @@ include ../like-button/like-button
 
 //-
   options.text - текст комментария
-  options.userName - имя пользователя
+  options.name - имя пользователя
   options.date - дата публикации комментария, строка в формате 'YYYY-MM-DDTHH:mm:ss.sssZ'
-  options.userImage - путь к картинке для профиля пользователя (от папки ./img этого компонента)
+  options.image - путь к картинке профиля (P.S. путь обязан быть получен вызовом require())
   options.likes - количество поставленных лайков
 mixin comment(options)
   if !options
     - options = {};
+
   -
-    const { text = '', userName = '', date, userImage = 'default.png', likes = 0 } = options;
+    const {
+      text = '',
+      name = '',
+      date,
+      image,
+      likes = 0
+    } = options;
+
     const { timeAgo } = require('../../scripts/utils.js');
 
   article.comment
-    img.comment__user-image(src = require('../../components/comment/img/' + userImage) alt = 'image')
+    img.comment__user-image(src = image alt = 'image')
     .comment__user-info
-      .comment__user-name= userName
+      .comment__user-name= name
       .comment__user-time-ago= timeAgo(date)
-    +like-button({ mix: 'comment__like-button', counter: likes })
+    .comment__like-button
+      +like-button({ counter: likes })
     .comment__text= text

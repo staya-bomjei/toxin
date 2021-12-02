@@ -1,20 +1,21 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .comment {
   @extend %default-text;
+
+  $icon-size: 3rem;
+
   display: grid;
-  $icon-size: 48px;
   grid-template-columns: $icon-size 1fr;
-  column-gap: 10px;
-  row-gap: 12px;
+  column-gap: 0.625rem;
+  row-gap: 0.75rem;
 
   &__user-image {
     width: $icon-size;
     height: $icon-size;
     clip-path: circle(50%);
   }
-  
+
   &__user-name {
     font-weight: bold;
   }

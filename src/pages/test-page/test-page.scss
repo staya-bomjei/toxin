@@ -61,4 +61,12 @@
     margin: 20px;
     width: 60px;
   }
+
+  &__comments-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    margin: 20px;
+    width: 700px;
+  }
 }
