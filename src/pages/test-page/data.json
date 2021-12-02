@@ -199,5 +199,14 @@
       "likes": 1337,
       "date": "2020-11-28"
     }
+  ],
+  "logos": [
+    {
+      "href": "index"
+    },
+    {
+      "href": "index",
+      "withText": false
+    }
   ]
 }

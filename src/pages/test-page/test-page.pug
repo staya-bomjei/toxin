@@ -9,6 +9,7 @@ include ../../components/checkbox/checkbox
 include ../../components/advantage/advantage
 include ../../components/like-button/like-button
 include ../../components/comment/comment
+include ../../components/logo/logo
 
 block variables
   -
@@ -23,6 +24,7 @@ block variables
       advantages,
       likeButtons,
       comments,
+      logos,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -89,4 +91,11 @@ block main
         .test-page__comments-list
           each comment in comments
             +comment({ ...comment, image: require(`./img/${comment.image}`) })
+        hr.test-page__underline
+    if logos
+      .test-page__logos
+        h2.test-page__title Logos
+        .test-page__logos-list
+          each logo in logos
+            +logo(logo)
         hr.test-page__underline

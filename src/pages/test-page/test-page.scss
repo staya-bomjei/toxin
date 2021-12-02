@@ -69,4 +69,11 @@
     margin: 20px;
     width: 700px;
   }
+
+  &__logos-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 10px;
+    margin: 20px;
+  }
 }
