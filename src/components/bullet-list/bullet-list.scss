@@ -1,23 +1,25 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .bullet-list {
-  @extend %default-text;
-  line-height: 1.75rem;
   list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-  $marker-size: 10px;
+  margin: 0;
+  padding: 0;
+
+  $marker-size: 0.625rem;
 
   &__point {
+    @extend %default-text;
+
+    line-height: 1.75rem;
+
     &::before {
-      content: "";
+      content: '';
       display: inline-block;
       width: $marker-size;
       height: $marker-size;
       border-radius: 50%;
-      background-color: rgba($dark, .25);
-      margin-right: 10px;
+      background-color: rgba($dark, 25%);
+      margin-right: 0.625rem;
     }
   }
 }

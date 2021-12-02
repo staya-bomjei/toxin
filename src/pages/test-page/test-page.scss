@@ -31,4 +31,11 @@
     margin: 20px;
     width: 400px;
   }
+
+  &__bullet-lists-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 50px;
+    margin: 20px;
+  }
 }

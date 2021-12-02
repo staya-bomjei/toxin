@@ -4,6 +4,7 @@ include ../../components/color-sample/color-sample
 include ../../components/text-sample/text-sample
 include ../../components/text-field/text-field
 include ../../components/button/button
+include ../../components/bullet-list/bullet-list
 
 block variables
   -
@@ -13,6 +14,7 @@ block variables
       textsSamples,
       textFields,
       buttons,
+      bulletLists,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -44,4 +46,11 @@ block main
         .test-page__buttons-list
           each button in buttons
             +button(button)
+        hr.test-page__underline
+    if bulletLists
+      .test-page__bullet-lists
+        h2.test-page__title Bullet Lists
+        .test-page__bullet-lists-list
+          each bulletList in bulletLists
+            +bullet-list(bulletList)
         hr.test-page__underline
