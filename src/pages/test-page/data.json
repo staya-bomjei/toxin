@@ -80,5 +80,44 @@
       "placeholder": "ДД.ММ.ГГГГ",
       "type": "mask"
     }
+  ],
+  "buttons": [
+    {},
+    {
+      "isHovered": true
+    },
+    {
+      "type": "fill"
+    },
+    {
+      "type": "fill",
+      "isHovered": true
+    },
+    {
+      "type": "border"
+    },
+    {
+      "type": "border",
+      "isHovered": true
+    },
+    {
+      "type": "arrow"
+    },
+    {
+      "type": "arrow",
+      "isHovered": true
+    },
+    {
+      "type": "fill",
+      "size": "small"
+    },
+    {
+      "type": "border",
+      "size": "small"
+    },
+    {
+      "type": "arrow",
+      "size": "small"
+    }
   ]
 }

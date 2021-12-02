@@ -3,14 +3,16 @@ extends ../base/base
 include ../../components/color-sample/color-sample
 include ../../components/text-sample/text-sample
 include ../../components/text-field/text-field
+include ../../components/button/button
 
 block variables
   -
     const title = 'Тестовая страница';
     const {
-      //- colorsSamples,
-      //- textsSamples,
+      colorsSamples,
+      textsSamples,
       textFields,
+      buttons,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -36,4 +38,10 @@ block main
           each textField in textFields
             +text-field(textField)
         hr.test-page__underline
-
+    if buttons
+      .test-page__buttons
+        h2.test-page__title Buttons
+        .test-page__buttons-list
+          each button in buttons
+            +button(button)
+        hr.test-page__underline

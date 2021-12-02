@@ -1,25 +1,26 @@
 //-
-  options.mix - класс, который будет добавлен к компоненту
   options.text - текст кнопки
   options.type - тип отображения кнопки: 'default' | 'border' | 'fill' | 'arrow'
   options.href - если указано, то кнопка будет ссылкой
   options.size - размер кнопки: 'default' | 'small'
   options.htmlType - html type свойство: 'button' | 'submit' | 'reset', по умолчанию 'button'
+  options.isHovered - если true, то кнопка будет всегда hovered
 mixin button(options)
   if !options
     - options = {};
+
   -
     const {
-      mix,
       text = 'click me',
       type = 'default',
       href,
       size = 'default',
-      htmlType = 'button'
+      htmlType = 'button',
+      isHovered = false
     } = options;
 
     const classes = [];
-    if (mix) classes.push(mix);
+    if (isHovered) classes.push('button_hovered');
     if (size === 'default' && type !== 'default') classes.push('button_size-default');
     else if (size === 'small') classes.push('button_size-small');
     if (type === 'border') classes.push('button_bordered');
