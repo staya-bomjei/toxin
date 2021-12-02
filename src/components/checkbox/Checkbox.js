@@ -1,6 +1,10 @@
 import './checkbox.scss';
 import $ from 'jquery';
 
+const CHECKBOX_SELECTOR = '.js-checkbox';
+const CHECKBOX_CLASS = 'checkbox';
+const CHECKBOX_CHECKED_CLASS = 'checkbox_checked';
+
 class Checkbox {
   constructor($component) {
     this.$component = $component;
@@ -13,9 +17,9 @@ class Checkbox {
   }
 
   handleComponentClick(event) {
-    if ($(event.target).hasClass('js-checkbox')) return;
+    if ($(event.target).hasClass(CHECKBOX_CLASS)) return;
 
-    this.$component.toggleClass('checkbox_checked');
+    this.$component.toggleClass(CHECKBOX_CHECKED_CLASS);
 
     this.triggerValueChanged();
   }
@@ -28,5 +32,5 @@ class Checkbox {
 }
 
 $(() => {
-  $('.js-checkbox').map((index, node) => new Checkbox($(node)));
+  $(CHECKBOX_SELECTOR).map((index, node) => new Checkbox($(node)));
 });
