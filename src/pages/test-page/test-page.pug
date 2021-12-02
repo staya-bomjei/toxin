@@ -7,6 +7,7 @@ include ../../components/button/button
 include ../../components/bullet-list/bullet-list
 include ../../components/checkbox/checkbox
 include ../../components/advantage/advantage
+include ../../components/like-button/like-button
 
 block variables
   -
@@ -19,6 +20,7 @@ block variables
       bulletLists,
       checkboxes,
       advantages,
+      likeButtons,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -71,4 +73,11 @@ block main
         .test-page__advantages-list
           each advantage in advantages
             +advantage(advantage)
+        hr.test-page__underline
+    if likeButtons
+      .test-page__like-buttons
+        h2.test-page__title Like Buttons
+        .test-page__like-buttons-list
+          each likeButton in likeButtons
+            +like-button(likeButton)
         hr.test-page__underline

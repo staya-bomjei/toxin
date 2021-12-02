@@ -1,31 +1,38 @@
 import './like-button.scss';
 import $ from 'jquery';
 
+const LIKE_BUTTON_SELECTOR = '.js-like-button';
+const ICON_SELECTOR = '.js-like-button__icon';
+const COUNTER_SELECTOR = '.js-like-button__counter';
+const ICON_LIKED = 'favorite';
+const ICON_UNLIKED = 'favorite_border';
+const BUTTON_LIKED_CLASS = 'like-button_liked';
+
 class LikeButton {
   constructor($component) {
     this.$component = $component;
-    this.$icon = $('.js-like-button__icon', $component);
-    this.$counter = $('.js-like-button__counter', $component);
+    this.$icon = $(ICON_SELECTOR, $component);
+    this.$counter = $(COUNTER_SELECTOR, $component);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    this.$component.on('click', () => this.onClick());
+    this.$component.on('click', () => this.handleComponentClick());
   }
 
-  onClick() {
+  handleComponentClick() {
     if (this.isLiked()) {
       this.setCounter(this.getCounter() - 1);
-      this.$icon.html('favorite_border');
+      this.$icon.html(ICON_UNLIKED);
     } else {
       this.setCounter(this.getCounter() + 1);
-      this.$icon.html('favorite');
+      this.$icon.html(ICON_LIKED);
     }
-    this.$component.toggleClass('like-button_liked');
+    this.$component.toggleClass(BUTTON_LIKED_CLASS);
   }
 
   isLiked() {
-    return this.$component.hasClass('like-button_liked');
+    return this.$component.hasClass(BUTTON_LIKED_CLASS);
   }
 
   getCounter() {
@@ -38,5 +45,5 @@ class LikeButton {
 }
 
 $(() => {
-  $('.js-like-button').map((index, node) => new LikeButton($(node)));
+  $(LIKE_BUTTON_SELECTOR).map((index, node) => new LikeButton($(node)));
 });

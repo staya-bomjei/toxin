@@ -5,5 +5,6 @@ import '../../components/button/button';
 import '../../components/bullet-list/bullet-list';
 import '../../components/checkbox/Checkbox';
 import '../../components/advantage/advantage';
+import '../../components/like-button/LikeButton';
 
 import './test-page.scss';

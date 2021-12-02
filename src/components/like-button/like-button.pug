@@ -1,17 +1,20 @@
 //-
-  options.mix - класс, который будет добавлен к компоненту
-  options.isChecked - если true, то кнопка будет в состоянии checked, т.е. лайк уже поставлен
+  options.isLiked - если true, то кнопка будет в состоянии checked, т.е. лайк уже поставлен
   options.counter - количество лайков, с учётом поставленного, если isChecked true
 mixin like-button(options)
   if !options
     - options = {};
-  -
-    const { mix, isChecked = false, counter = 0 } = options;
-    const icon = (isChecked) ? 'favorite' : 'favorite_border';
-    const classes = [];
 
-    if (mix) classes.push(mix);
-    if (isChecked) classes.push('like-button_liked');
+  -
+    const {
+      isLiked = false,
+      counter = 0
+    } = options;
+
+    const icon = (isLiked) ? 'favorite' : 'favorite_border';
+
+    const classes = [];
+    if (isLiked) classes.push('like-button_liked');
 
   .like-button.js-like-button(class = classes)
     .like-button__icon.js-like-button__icon= icon
