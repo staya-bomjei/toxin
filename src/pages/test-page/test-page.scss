@@ -15,4 +15,12 @@
     margin: 20px;
     width: 448px;
   }
+
+  &__texts-fields-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
+    margin: 20px;
+    width: 320px;
+  }
 }

@@ -57,5 +57,28 @@
       "tag": "body",
       "text": "This is the body text which is used for most of the design, like paragraphs, lists, etc."
     }
+  ],
+  "textFields": [
+    {
+      "title": "text field",
+      "condition": "default",
+      "placeholder": "Email"
+    },
+    {
+      "title": "text field",
+      "condition": "hover / focus",
+      "value": "This is pretty awesome",
+      "isHovered": true
+    },
+    {
+      "title": "subscription text field",
+      "placeholder": "Email",
+      "type": "subscription"
+    },
+    {
+      "title": "masked text field",
+      "placeholder": "ДД.ММ.ГГГГ",
+      "type": "mask"
+    }
   ]
 }

@@ -2,26 +2,38 @@ extends ../base/base
 
 include ../../components/color-sample/color-sample
 include ../../components/text-sample/text-sample
+include ../../components/text-field/text-field
 
 block variables
   -
     const title = 'Тестовая страница';
     const {
-      colorsSamples,
-      textsSamples,
+      //- colorsSamples,
+      //- textsSamples,
+      textFields,
     } = htmlWebpackPlugin.options.getData();
 
 block main
   .test-page
-    .test-page__colors-samples
-      h2.test-page__title Colors Samples
-      .test-page__colors-samples-list
-        each colorSample in colorsSamples
-          +color-sample(colorSample)
-      hr.test-page__underline
-    .test-page__texts-samples
-      h2.test-page__title Text Samples
-      .test-page__texts-samples-list
-        each textSample in textsSamples
-          +text-sample(textSample)
-      hr.test-page__underline
+    if colorsSamples
+      .test-page__colors-samples
+        h2.test-page__title Colors Samples
+        .test-page__colors-samples-list
+          each colorSample in colorsSamples
+            +color-sample(colorSample)
+        hr.test-page__underline
+    if textsSamples
+      .test-page__texts-samples
+        h2.test-page__title Text Samples
+        .test-page__texts-samples-list
+          each textSample in textsSamples
+            +text-sample(textSample)
+        hr.test-page__underline
+    if textFields
+      .test-page__text-fields
+        h2.test-page__title Text Fields
+        .test-page__texts-fields-list
+          each textField in textFields
+            +text-field(textField)
+        hr.test-page__underline
+
