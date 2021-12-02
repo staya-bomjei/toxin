@@ -1,9 +1,8 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .color-sample {
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  font-size: 1.1875rem;
+  @extend %item-title;
+
   display: flex;
   justify-content: left;
   align-items: center;
@@ -13,33 +12,35 @@
     width: 70px;
     height: 70px;
     border-radius: 6px;
-    
-    &_dark-100 {
-      background-color: $dark;
-    }
-    
-    &_dark-75 {
-      background-color: rgba($dark, .75);
-    }
-    
-    &_dark-50 {
-      background-color: rgba($dark, .5);
-    }
-    
-    &_dark-25 {
-      background-color: rgba($dark, .25);
-    }
-    
-    &_dark-5 {
-      background-color: rgba($dark, .05);
-    }
-    
-    &_purple {
-      background-color: $purple;
-    }
-    
-    &_green {
-      background-color: $green;
+
+    &_theme {
+      &-dark-100 {
+        background-color: $dark;
+      }
+
+      &-dark-75 {
+        background-color: rgba($dark, 75%);
+      }
+
+      &-dark-50 {
+        background-color: rgba($dark, 50%);
+      }
+
+      &-dark-25 {
+        background-color: rgba($dark, 25%);
+      }
+
+      &-dark-5 {
+        background-color: rgba($dark, 5%);
+      }
+
+      &-purple {
+        background-color: $purple;
+      }
+
+      &-green {
+        background-color: $green;
+      }
     }
   }
 

@@ -1,15 +1,21 @@
 //-
   options.theme - тема компонента: 'dark-100' | 'dark-75' | 'dark-50' | 'dark-25' | 'dark-5' | 'purple' | 'green'
-  options.colorName - название цвета (например, 'Dark Color Shade 100%')
-  options.colorCode - код цвета (например, '#1f2041') 
+  options.name - название цвета (например, 'Dark Shade 100%')
+  options.code - код цвета (например, '#1f2041') 
 mixin color-sample(options)
   if !options 
     - options = {};
+
   -
-    const { theme = 'dark-100', colorName = '', colorCode = '' } = options;
- 
+    const {
+      theme = 'dark-100',
+      name = '',
+      code = ''
+    } = options;
+    const boxTheme = `color-sample__box_theme-${theme}`;
+
   .color-sample
-    .color-sample__box(class = `color-sample__box_${theme}`)
+    .color-sample__box(class = boxTheme)
     .color-sample__text 
-      .color-sample__name= colorName
-      .color-sample__code= colorCode
+      .color-sample__name= name
+      .color-sample__code= code

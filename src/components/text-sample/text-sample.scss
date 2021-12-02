@@ -1,5 +1,4 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .text-sample {
   display: table-row;
@@ -8,6 +7,8 @@
     display: table-cell;
     text-align: right;
     text-transform: capitalize;
+    font-weight: normal;
+    color: rgba($dark, 25%);
   }
 
   &__text {
@@ -15,24 +16,21 @@
     padding-left: 30px;
   }
 
-  &__tag {
-    font-weight: normal;
-    color: rgba($dark, .25);
-  }
+  &_theme {
+    &-title {
+      @extend %title;
+    }
 
-  &_theme-title {
-    @extend %title;
-  }
+    &-item-title {
+      @extend %item-title;
+    }
 
-  &_theme-item-title {
-    @extend %item-title;
-  }
+    &-label {
+      @extend %label;
+    }
 
-  &_theme-label {
-    @extend %label;
-  }
-
-  &_theme-default-text {
-    @extend %default-text;
+    &-default-text {
+      @extend %default-text;
+    }
   }
 }

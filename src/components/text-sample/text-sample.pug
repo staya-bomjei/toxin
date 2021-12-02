@@ -5,9 +5,15 @@
 mixin text-sample(options)
   if !options
     - options = {};
+
   -
-    const { theme = 'title', tag = '', text = '' } = options;
-  
-  .text-sample(class = `text-sample_theme-${theme}`)
+    const {
+      theme = 'title',
+      tag = '',
+      text = ''
+    } = options;
+    const textTheme = `text-sample_theme-${theme}`;
+
+  .text-sample(class = textTheme)
     .text-sample__tag= tag
     .text-sample__text= text

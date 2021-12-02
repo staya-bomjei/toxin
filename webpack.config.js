@@ -24,11 +24,6 @@ module.exports = (env) => {
       filename: (env.production) ? '[name].[hash].js' : '[name].js',
       path: path.resolve(__dirname, 'build'),
     },
-    resolve: {
-      alias: {
-        Assets: path.resolve(__dirname, 'src', 'assets'),
-      },
-    },
     optimization: {
       splitChunks: {
         chunks: 'all',
@@ -84,7 +79,7 @@ module.exports = (env) => {
     mode: 'development',
     devServer: {
       port: 4200,
-      open: '/index.html',
+      open: '/test-page.html',
     },
     ...baseConfig,
   };

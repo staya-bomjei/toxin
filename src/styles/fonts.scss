@@ -1,28 +1,25 @@
-@mixin font($name, $style, $weight) {
+@mixin font($name, $style, $weight, $isBlock: false) {
   $suffix: 'Regular';
+
   @if $style == bold {
     $suffix: 'Bold';
   }
+
   @font-face {
     font-family: $name;
-    src: url('Assets/fonts/#{$name}-#{$suffix}.woff') format('woff'),
-      url('Assets/fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
-      url('Assets/fonts/#{$name}-#{$suffix}.svg') format('svg');
+    src:
+      url('../fonts/#{$name}-#{$suffix}.woff') format('woff'),
+      url('../fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
+      url('../fonts/#{$name}-#{$suffix}.svg') format('svg');
     font-style: $style;
     font-weight: $weight;
+
+    @if $isBlock {
+      font-display: block;
+    }
   }
 }
 
 @include font('Montserrat', normal, 400);
 @include font('Montserrat', bold, 700);
-
-
-@font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("Assets/fonts/MaterialIcons-Regular.woff") format("woff"), 
-    url("Assets/fonts/MaterialIcons-Regular.ttf") format("truetype"), 
-    url("Assets/fonts/MaterialIcons-Regular.svg") format("svg");
-}
+@include font('MaterialIcons', normal, 400, true);

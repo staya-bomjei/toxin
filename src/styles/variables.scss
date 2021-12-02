@@ -4,16 +4,15 @@ $sm: 769px;
 $md: 1025px;
 $lg: 1201px;
 $xl: 1440px;
-
 $dark: #1f2041;
 $purple: #bb9cff;
 $green: #6fcf97;
-$primary-gradient: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
-$primary-gradient-25: linear-gradient(180deg, #BC9CFF40 0%, #8BA4F940 100%);
-$secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+$primary-gradient: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+$primary-gradient-25: linear-gradient(180deg, #bc9cff40 0%, #8ba4f940 100%);
+$secondary-gradient: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
 
 %title {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   font-weight: bold;
   font-size: 1.5rem;
   line-height: 1.8125rem;
@@ -23,7 +22,7 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
 }
 
 %item-title {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   font-weight: bold;
   font-size: 1.1875rem;
   line-height: 1.4375rem;
@@ -33,7 +32,7 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
 }
 
 %label {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   font-weight: bold;
   font-size: 0.75rem;
   line-height: 0.9375rem;
@@ -42,15 +41,15 @@ $secondary-gradient: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
 }
 
 %default-text {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: Montserrat, Arial, sans-serif;
   font-weight: normal;
   font-size: 0.875rem;
   line-height: 1.5rem;
-  color: rgba($dark, .75);
+  color: rgba($dark, 75%);
 }
 
-%material-icons { 
-  font-family: "Material Icons";
+%material-icons {
+  font-family: MaterialIcons, sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;

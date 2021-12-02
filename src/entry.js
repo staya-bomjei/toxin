@@ -6,4 +6,3 @@ function requireAll(requireContext) {
 }
 
 requireAll(require.context('./pages', true, /\.js$/i));
-requireAll(require.context('./components', true, /\.js$/i));
