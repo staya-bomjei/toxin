@@ -6,6 +6,7 @@ include ../../components/text-field/text-field
 include ../../components/button/button
 include ../../components/bullet-list/bullet-list
 include ../../components/checkbox/checkbox
+include ../../components/advantage/advantage
 
 block variables
   -
@@ -17,6 +18,7 @@ block variables
       buttons,
       bulletLists,
       checkboxes,
+      advantages,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -57,9 +59,16 @@ block main
             +bullet-list(bulletList)
         hr.test-page__underline
     if checkboxes
-      .test-page__checkboxes-lists
+      .test-page__checkboxes
         h2.test-page__title Checkboxes
         .test-page__checkboxes-list
           each checkbox in checkboxes
             +checkbox(checkbox)
+        hr.test-page__underline
+    if advantages
+      .test-page__advantages
+        h2.test-page__title Advantages
+        .test-page__advantages-list
+          each advantage in advantages
+            +advantage(advantage)
         hr.test-page__underline

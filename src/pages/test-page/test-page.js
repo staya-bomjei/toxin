@@ -4,5 +4,6 @@ import '../../components/text-field/text-field';
 import '../../components/button/button';
 import '../../components/bullet-list/bullet-list';
 import '../../components/checkbox/Checkbox';
+import '../../components/advantage/advantage';
 
 import './test-page.scss';

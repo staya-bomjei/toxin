@@ -46,4 +46,11 @@
     margin: 20px;
     width: 255px;
   }
+
+  &__advantages-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 20px;
+    width: 255px;
+  }
 }
