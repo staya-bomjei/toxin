@@ -4,7 +4,8 @@ include ../like-button/like-button
   options.text - текст комментария
   options.name - имя пользователя
   options.date - дата публикации комментария, строка в формате 'YYYY-MM-DDTHH:mm:ss.sssZ'
-  options.image - путь к картинке профиля (P.S. путь обязан быть получен вызовом require())
+  options.image - путь к картинке профиля (путь должен быть до картинки уже собранного проекта,
+  добиться этого можно обернув путь к картинке в require)
   options.likes - количество поставленных лайков
 mixin comment(options)
   if !options
