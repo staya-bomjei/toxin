@@ -9,10 +9,10 @@ class Checkbox {
   }
 
   attachEventHandlers() {
-    this.$component.on('click', (event) => this.onClick(event));
+    this.$component.on('click', (event) => this.handleComponentClick(event));
   }
 
-  onClick(event) {
+  handleComponentClick(event) {
     if ($(event.target).hasClass('js-checkbox')) return;
 
     this.$component.toggleClass('checkbox_checked');

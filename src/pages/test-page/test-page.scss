@@ -38,4 +38,12 @@
     grid-gap: 50px;
     margin: 20px;
   }
+
+  &__checkboxes-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    margin: 20px;
+    width: 255px;
+  }
 }

@@ -1,74 +1,79 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .checkbox {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   user-select: none;
-  $text-margin: 10px;
+
+  $class: &;
+  $text-margin: 0.625rem;
 
   &__mark {
     box-sizing: border-box;
     cursor: pointer;
     flex-grow: 0;
     flex-shrink: 0;
-    height: 20px;
-    width: 20px;
-    border: 1px solid rgba($dark, .25);
-    border-radius: 4px;
+    height: 1.25rem;
+    width: 1.25rem;
+    border: 0.0625rem solid rgba($dark, 25%);
+    border-radius: 0.25rem;
 
     &::after {
       box-sizing: border-box;
       content: '';
       position: relative;
       display: none;
-      left: 6px;
-      top: 4px;
-      width: 6px;
-      height: 8px;
+      left: 0.375rem;
+      top: 0.25rem;
+      width: 0.375rem;
+      height: 0.5rem;
       border: solid;
-      border-width: 0px 2px 2px 0px;
+      border-width: 0 0.125rem 0.125rem 0;
       border-image: $primary-gradient 1;
       transform: rotate(45deg);
       border-image-repeat: stretch;
     }
   }
 
+  &__rich-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: $text-margin;
+  }
+
+  &__title {
+    @extend %default-text;
+
+    font-weight: bold;
+    margin-bottom: 0.3125rem;
+    cursor: pointer;
+  }
+
   &__text {
     @extend %default-text;
-    color: rgba($dark, .5);
+
+    color: rgba($dark, 50%);
     line-height: 1.125rem;
     margin-left: $text-margin;
     cursor: pointer;
   }
 
   &_rich {
-    .checkbox__rich-container {
-      display: flex;
-      flex-direction: column;
-      margin-left: $text-margin;
-    }
-
-    .checkbox__title {      
-      @extend %default-text;
-      font-weight: bold;
-      margin-bottom: 5px;
-      cursor: pointer;
-    }
-
-    .checkbox__text {
+    #{$class}__text {
       font-size: 0.75rem;
       line-height: 0.875rem;
       margin: 0;
     }
   }
 
-  &_checked &__mark {
-    border-color: $purple;
+  &_checked {
+    #{$class}__mark {
+      border-color: $purple;
 
-    &::after {
-      display: block;
+      &::after {
+        display: block;
+      }
     }
   }
 }

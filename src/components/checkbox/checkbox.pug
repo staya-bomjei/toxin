@@ -1,5 +1,4 @@
 //-
-  options.mix - класс, который будет добавлен к компоненту
   options.isChecked - если true, то чекбокс будет в состоянии checked
   options.text - текст метки
   options.richTitle - если указан, то добавляется заголовок richTitle
@@ -7,11 +6,16 @@
 mixin checkbox(options)
   if !options
     - options = {};
+
   -
-    const { mix, isChecked = false, text = '', richTitle, valueChanged } = options;
-  
+    const {
+      isChecked = false,
+      text = '',
+      richTitle,
+      valueChanged
+    } = options;
+
     const classes = [];
-    if (mix) classes.push(mix);
     if (richTitle) classes.push('checkbox_rich');
     if (isChecked) classes.push('checkbox_checked');
 
