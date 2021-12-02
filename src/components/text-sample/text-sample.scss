@@ -1,19 +1,15 @@
 @import '../../styles/variables';
 
 .text-sample {
-  display: table-row;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  grid-column-gap: 1.875rem;
 
   &__tag {
-    display: table-cell;
     text-align: right;
     text-transform: capitalize;
     font-weight: normal;
     color: rgba($dark, 25%);
-  }
-
-  &__text {
-    display: table-cell;
-    padding-left: 30px;
   }
 
   &_theme {
