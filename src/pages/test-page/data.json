@@ -465,6 +465,9 @@
   "signIns": [
     {}
   ],
+  "signUps": [
+    {}
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -579,6 +582,11 @@
       "title": "Sign Ins",
       "mix": "sign-in",
       "dataList": "signIns"
+    },
+    {
+      "title": "Sign Ups",
+      "mix": "sign-up",
+      "dataList": "signUps"
     }
   ]
 }
