@@ -7,5 +7,6 @@ import '../../components/checkbox/Checkbox';
 import '../../components/advantage/advantage';
 import '../../components/like-button/LikeButton';
 import '../../components/comment/comment';
+import '../../components/radio-button/radio-button';
 
 import './test-page.scss';

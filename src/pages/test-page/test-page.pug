@@ -10,6 +10,7 @@ include ../../components/advantage/advantage
 include ../../components/like-button/like-button
 include ../../components/comment/comment
 include ../../components/logo/logo
+include ../../components/radio-button/radio-button
 
 block variables
   -
@@ -25,6 +26,7 @@ block variables
       likeButtons,
       comments,
       logos,
+      radioButtons,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -98,4 +100,11 @@ block main
         .test-page__logos-list
           each logo in logos
             +logo(logo)
+        hr.test-page__underline
+    if radioButtons
+      .test-page__radio-buttons
+        h2.test-page__title Radio Buttons
+        .test-page__radio-buttons-list
+          each radioButton in radioButtons
+            +radio-button(radioButton)
         hr.test-page__underline

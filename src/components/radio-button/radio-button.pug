@@ -1,12 +1,17 @@
 //-
-  options.isChecked - если true, то кнопка будет в состоянии checked
   options.text - текст метки
   options.group - название группы меток
+  options.isChecked - если true, то кнопка будет в состоянии checked
 mixin radio-button(options)
   if !options
     - options = {};
+
   -
-    const { isChecked = false, text = '', group = 'default'} = options;
+    const {
+      text = '',
+      group = 'default',
+      isChecked = false,
+    } = options;
 
   label.radio-button
     input.radio-button__input(type = 'radio' name = group checked = isChecked)

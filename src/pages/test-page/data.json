@@ -208,5 +208,20 @@
       "href": "index",
       "withText": false
     }
+  ],
+  "radioButtons": [
+    {
+      "text": "Мужчина",
+      "group": "gender"
+    },
+    {
+      "text": "Женщина",
+      "group": "gender"
+    },
+    {
+      "text": "Боевой Ударный Вертолёт",
+      "group": "gender",
+      "isChecked": true
+    }
   ]
 }
