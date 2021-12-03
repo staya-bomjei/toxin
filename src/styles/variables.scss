@@ -65,3 +65,12 @@ $secondary-gradient: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
 }
+
+%form {
+  padding: 2.4375rem 1.8125rem 1.8125rem;
+  border: 1px solid rgba(black, 12%);
+  box-shadow: 0 0 1.5625rem rgba(black, 20%);
+  border-radius: 0.25rem;
+  background: white;
+  margin: 0;
+}

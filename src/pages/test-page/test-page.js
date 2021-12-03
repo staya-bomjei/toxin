@@ -13,5 +13,6 @@ import '../../components/toggle-button/ToggleButton';
 import '../../components/range-slider/RangeSlider';
 import '../../components/checkbox-list/CheckboxList';
 import '../../components/dropdown/Dropdown';
+import '../../components/find-number/find-number';
 
 import './test-page.scss';

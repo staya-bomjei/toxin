@@ -375,6 +375,9 @@
       "type": "datepicker"
     }
   ],
+  "findNumbers": [
+    {}
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -463,6 +466,11 @@
       "mix": "dropdown",
       "dataList": "dropdowns",
       "theme": "two-columns"
+    },
+    {
+      "title": "Find Numbers",
+      "mix": "find-number",
+      "dataList": "findNumbers"
     }
   ]
 }

@@ -11,12 +11,23 @@ mixin find-number()
 
   form.find-number
     h2.find-number__title Найдём номера под ваши пожелания
-    +dropdown({ 
-      title: ['прибытие', 'выезд'], placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], 
-      type: 'datepicker', isRange: true, isSplit: true
-    })
-    +dropdown({ 
-      title: 'гости', placeholder: 'Сколько гостей', rows, maxLen: 30, 
-      type: 'summator', countables: ['гость', 'гостя', 'гостей'], hasControls: true,
-    })
-    +button({ mix: 'find-number__find-button', text: 'подобрать номер', type: 'arrow' })
+    .find-number__datepicker
+      +dropdown({ 
+        title: ['прибытие', 'выезд'],
+        placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], 
+        type: 'datepicker',
+        isRange: true,
+        isSplit: true
+      })
+    .find-number__guests-dropdown
+      +dropdown({ 
+        title: 'гости',
+        placeholder: 'Сколько гостей',
+        rows,
+        maxLen: 30, 
+        type: 'summator',
+        countables: ['гость', 'гостя', 'гостей'],
+        hasControls: true,
+      })
+    .find-number__find-button
+      +button({ text: 'подобрать номер', type: 'arrow' })
