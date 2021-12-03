@@ -468,6 +468,34 @@
   "signUps": [
     {}
   ],
+  "menus": [
+    {
+      "items": [
+        {
+          "text": "Пункт меню 1",
+          "isBold": true
+        },
+        {
+          "text": "Пункт меню 2",
+          "isBold": true
+        },
+        {
+          "text": "Пункт меню 3",
+          "isBold": true,
+          "submenu": [
+            {
+              "text": "Пункт меню 1",
+              "isBold": true
+            },
+            {
+              "text": "Пункт меню 2",
+              "isBold": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -587,6 +615,11 @@
       "title": "Sign Ups",
       "mix": "sign-up",
       "dataList": "signUps"
+    },
+    {
+      "title": "Menus",
+      "mix": "menu",
+      "dataList": "menus"
     }
   ]
 }

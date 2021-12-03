@@ -19,5 +19,6 @@ import '../../components/reservation/reservation';
 import '../../components/room-thumbnail/RoomThumbnail';
 import '../../components/sign-in/sign-in';
 import '../../components/sign-up/sign-up';
+import '../../components/menu/menu';
 
 import './test-page.scss';

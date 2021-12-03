@@ -1,5 +1,4 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .menu {
   list-style: none;
@@ -7,25 +6,9 @@
   padding: 0;
   display: flex;
   justify-content: center;
-  box-sizing: border-box;
-  $itemWidth: 80px;
 
-  & * {
-    box-sizing: border-box;
-  }
-
-  &__item:not(:last-child) {
-    margin-right: 20px;
-  }
-
-  &__subitem > &__expand-more {
-    transform: rotate(-90deg);
-  }
-
-  &__subitem > &__submenu {
-    top: 0;
-    left: calc(100%);
-  }
+  $class: &;
+  $item-width: 5rem;
 
   &__item,
   &__subitem {
@@ -34,15 +17,9 @@
     background: white;
   }
 
-  &__item:hover,
-  &__subitem:hover {
-    & > .menu__submenu {
-      display: block;
-    }
-  }
-
   &__link {
     @extend %default-text;
+
     display: flex;
     align-items: flex-start;
     text-decoration: none;
@@ -50,7 +27,7 @@
 
     &_bold {
       font-weight: bold;
-      color: rgba($dark, .75);
+      color: rgba($dark, 75%);
     }
   }
 
@@ -65,11 +42,32 @@
 
   &__expand-more {
     @extend %material-icons;
-    font-size: 24px;
-    color: rgba($dark, .5);
+
+    font-size: 1.5rem;
+    color: rgba($dark, 50%);
     display: inline-block;
     user-select: none;
     cursor: pointer;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 1.25rem;
+  }
+
+  &__subitem > &__expand-more {
+    transform: rotate(-90deg);
+  }
+
+  &__subitem > &__submenu {
+    top: 0;
+    left: calc(100%);
+  }
+
+  &__item:hover,
+  &__subitem:hover {
+    & > #{$class}__submenu {
+      display: block;
+    }
   }
 
   @media (max-width: $md) {
@@ -81,13 +79,13 @@
     &__item,
     &__subitem {
       width: 100%;
-      margin: 10px;
+      margin: 0.625rem;
       display: flex;
       flex-direction: column;
     }
-    
+
     &__item:not(:last-child) {
-      margin-right: 10px;
+      margin-right: 0.625rem;
     }
 
     &__submenu {
@@ -98,6 +96,5 @@
       width: 100%;
       justify-content: space-between;
     }
-    
   }
 }

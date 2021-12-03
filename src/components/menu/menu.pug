@@ -16,12 +16,12 @@ mixin menu(options)
   
   ul(class = menuClass)
     each item in items
-        li(class = itemClass)
-          a.menu__link(
-            class = (item.isBold) ? 'menu__link_bold' : null
-            href = `${item.href}.html`
-          )= item.text
-            if item.submenu
-              span.menu__expand-more expand_more
+      li(class = itemClass)
+        a.menu__link(
+          class = (item.isBold) ? 'menu__link_bold' : null
+          href = `${item.href}.html`
+        )= item.text
           if item.submenu
-            +menu({ isSubmenu: true, items: item.submenu })
+            span.menu__expand-more expand_more
+        if item.submenu
+          +menu({ isSubmenu: true, items: item.submenu })
