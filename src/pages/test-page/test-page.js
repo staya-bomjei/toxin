@@ -15,5 +15,6 @@ import '../../components/checkbox-list/CheckboxList';
 import '../../components/dropdown/Dropdown';
 import '../../components/find-number/find-number';
 import '../../components/pagination/Pagination';
+import '../../components/reservation/reservation';
 
 import './test-page.scss';

@@ -5,65 +5,68 @@ include ../button/button
   options.number - номер отеля
   options.type - тип отеля (например, 'люкс')
   options.price - строимость отеля за сутки
-  options.pricePerGuest - стоимость дополнительных услуг за одного гостя
   options.discount - размер скидки
   options.postfix - валяютный постфикс, по умолчанию '₽'
-  options.dpChanged - название триггера, который будет запускаться при изменении datepicker
-  options.guestsChanged - название триггера, который будет запускаться при изменении dropdown с гостями
-  options.selectedDates - массив выбранных дат (например, ['2021-10-25', '2021-10-30'])
 mixin reservation(options)
   if !options
     - options = {};
+
   -
     const { 
-      number = 0, type = '', price = 0, pricePerGuest = 0, discount = 0, 
-      postfix = '₽', dpChanged = 'data-datepicker-range-changed',
-      guestsChanged = 'data-guests-changed', selectedDates = [],
+      number = 888,
+      type = 'люкс',
+      price = 9990,
+      discount = 2179,
+      additionals = 300,
+      postfix = '₽',
     } = options;
+
     const rows = [
       { text: 'взрослые', counter: 3 },
       { text: 'дети', counter: 0 },
       { text: 'младенцы', counter: 0 },
     ];
 
-  form.reservation.js-reservation(
-    data-dp-changed = dpChanged
-    data-guests-changed = guestsChanged
-    data-price = price
-    data-price-per-guest = pricePerGuest
-    data-discount = discount
-    data-postfix = postfix
-  )
+    const toCurrency = (number) => `${number.toLocaleString('ru')}${postfix}`;
+
+  form.reservation
     .reservation__info
-      .reservation__line-group
-        h2.reservation__n №&nbsp;
-        h2.reservation__number= number
+      a.reservation__number-info(href = 'error-page.html')
+        span.reservation__n №&nbsp;
+        span.reservation__number= number
         span.reservation__type= type
-      span.reservation__price-info.reservation__line-group
-        strong.reservation__price.js-reservation__price
+      span.reservation__price
+        strong= toCurrency(price)
         span &nbsp;в сутки
-    +dropdown({ 
-      mix: 'js-reservation__datepicker', title: ['прибытие', 'выезд'], 
-      placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], type: 'datepicker', 
-      isRange: true, isSplit: true, valueChanged: dpChanged, selected: selectedDates,
-    })
-    +dropdown({
-      title: 'гости', placeholder: 'Сколько гостей', rows, maxLen: 30, 
-      type: 'summator', countables: ['гость', 'гостя', 'гостей'],
-      valueChanged: guestsChanged, mix: 'js-reservation__guests',
-    })
+    .reservation__datepicker
+      +dropdown({ 
+        title: ['прибытие', 'выезд'], 
+        placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'],
+        type: 'datepicker', 
+        isRange: true,
+        isSplit: true,
+      })
+    .reservation__guests-dropdown
+      +dropdown({
+        title: 'гости',
+        placeholder: 'Сколько гостей',
+        rows,
+        maxLen: 30, 
+        type: 'summator',
+        countables: ['гость', 'гостя', 'гостей'],
+      })
     .reservation__calculator
-      .reservation__rent.js-reservation__rent
-      .reservation__rent-total.js-reservation__rent-total
-      div Сбор за услуги: скидка 
-        span.reservation__discount.js-reservation__discount
+      .reservation__rent= `${toCurrency(price)} x 4 суток`
+      .reservation__rent-total 39 960₽
+      .reservation__discount= `Сбор за услуги: скидка ${toCurrency(discount)}`
       span.reservation__i i
       .reservation__discount-total 0₽
       .reservation__additional Сбор за дополнительные услуги
       span.reservation__i i
-      .reservation__additional-total.js-reservation__additional-total
+      .reservation__additional-total= toCurrency(additionals)
     .reservation__total
-      h3 Итого
+      | Итого
       span.reservation__dashed-underline
-      h3.reservation__total-cost.js-reservation__total-cost
-    +button({ text: 'забронировать', type: 'arrow' })
+      .reservation__total-cost 38 081₽
+    .reservation__reserve-button
+      +button({ text: 'забронировать', type: 'arrow' })

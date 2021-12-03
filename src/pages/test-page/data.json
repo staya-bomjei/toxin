@@ -390,6 +390,9 @@
       "postfix": "вариантов аренды"
     }
   ],
+  "reservations": [
+    {}
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -488,6 +491,11 @@
       "title": "Paginations",
       "mix": "pagination",
       "dataList": "paginations"
+    },
+    {
+      "title": "Reservations",
+      "mix": "reservation",
+      "dataList": "reservations"
     }
   ]
 }
