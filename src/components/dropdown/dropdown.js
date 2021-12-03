@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 import { choiceCountable } from '../../libs/utils/utils';
-import MyAirDatepicker from '../../libs/air-datepicker/AirDatepicker';
+import MyAirDatepicker from '../../libs/air-datepicker/MyAirDatepicker';
 import '../button/button';
 
 import './dropdown.scss';
