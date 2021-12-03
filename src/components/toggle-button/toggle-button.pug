@@ -1,16 +1,19 @@
 //-
-  options.mix - класс, который будет добавлен к компоненту
-  options.isChecked - checked свойство кнопки
   options.text - текст кнопки
+  options.isChecked - checked свойство кнопки
   options.valueChanged - название триггера, который будет запускаться при изменении состояния
 mixin toggle-button(options)
   if !options
     - options = {};
+
   -
-    const { mix, isChecked = false, text = '', valueChanged } = options;
+    const {
+      text = '',
+      isChecked = false,
+      valueChanged,
+    } = options;
 
     const classes = [];
-    if (mix) classes.push(mix);
     if (isChecked) classes.push('toggle-button_checked');
 
   .toggle-button.js-toggle-button(

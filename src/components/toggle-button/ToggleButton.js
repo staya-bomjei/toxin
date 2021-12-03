@@ -1,21 +1,26 @@
 import './toggle-button.scss';
 import $ from 'jquery';
 
+const TOGGLE_BUTTON_SELECTOR = '.js-toggle-button';
+const TOGGLE_BUTTON_CLASS = 'toggle-button';
+const TOGGLE_BUTTON_CHECKED = 'toggle-button_checked';
+const VALUE_CHANGED_ATTR = 'data-value-changed';
+
 class ToggleButton {
   constructor($component) {
     this.$component = $component;
-    this.valueChanged = $component.attr('data-value-changed');
+    this.valueChanged = $component.attr(VALUE_CHANGED_ATTR);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    this.$component.on('click', (event) => this.onClick(event));
+    this.$component.on('click', (event) => this.handleComponentClick(event));
   }
 
-  onClick(event) {
-    if ($(event.target).hasClass('js-toggle-button')) return;
+  handleComponentClick(event) {
+    if ($(event.target).hasClass(TOGGLE_BUTTON_CLASS)) return;
 
-    this.$component.toggleClass('toggle-button_checked');
+    this.$component.toggleClass(TOGGLE_BUTTON_CHECKED);
 
     this.triggerValueChanged();
   }
@@ -28,5 +33,5 @@ class ToggleButton {
 }
 
 $(() => {
-  $('.js-toggle-button').map((index, node) => new ToggleButton($(node)));
+  $(TOGGLE_BUTTON_SELECTOR).map((index, node) => new ToggleButton($(node)));
 });

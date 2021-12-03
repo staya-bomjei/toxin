@@ -1,42 +1,42 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .toggle-button {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   user-select: none;
-  $marker-width: 40px;
-  $marker-height: 20px;
-  $center-size: 12px;
+
+  $marker-width: 2.5rem;
+  $marker-height: 1.25rem;
+  $center-size: 0.75rem;
 
   &__mark {
-    box-sizing: border-box;
     flex-grow: 0;
     flex-shrink: 0;
     height: $marker-height;
     width: $marker-width;
-    border: 1px solid rgba($dark, .25);
-    border-radius: $marker-height;  
+    border: 0.0625rem solid rgba($dark, 25%);
+    border-radius: $marker-height;
     cursor: pointer;
 
     &::after {
-      content: "";
+      content: '';
       position: relative;
       display: block;
-      left: 3px;
-      top: 3px;
+      left: 0.1875rem;
+      top: 0.1875rem;
       width: $center-size;
       height: $center-size;
       border-radius: 50%;
-      background-color: rgba($dark, .25);
+      background-color: rgba($dark, 25%);
     }
   }
 
   &__text {
     @extend %default-text;
-    line-height: 20px;
-    margin-left: 10px;  
+
+    line-height: 1.25rem;
+    margin-left: 0.625rem;
     cursor: pointer;
   }
 
@@ -44,7 +44,7 @@
     border-color: $purple;
 
     &::after {
-      left: 23px;
+      left: 1.4375rem;
       background-image: $primary-gradient;
     }
   }

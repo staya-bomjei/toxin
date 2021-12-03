@@ -12,6 +12,7 @@ include ../../components/comment/comment
 include ../../components/logo/logo
 include ../../components/radio-button/radio-button
 include ../../components/rate-button/rate-button
+include ../../components/toggle-button/toggle-button
 
 block variables
   -
@@ -29,6 +30,7 @@ block variables
       logos,
       radioButtons,
       rateButtons,
+      toggleButtons,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -112,8 +114,15 @@ block main
         hr.test-page__underline
     if rateButtons
       .test-page__rate-buttons
-        h2.test-page__title Radio Buttons
+        h2.test-page__title Rate Buttons
         .test-page__rate-buttons-list
           each rateButton in rateButtons
             +rate-button(rateButton)
+        hr.test-page__underline
+    if toggleButtons
+      .test-page__toggle-buttons
+        h2.test-page__title Toggle Buttons
+        .test-page__toggle-buttons-list
+          each toggleButton in toggleButtons
+            +toggle-button(toggleButton)
         hr.test-page__underline

@@ -9,5 +9,6 @@ import '../../components/like-button/LikeButton';
 import '../../components/comment/comment';
 import '../../components/radio-button/radio-button';
 import '../../components/rate-button/RateButton';
+import '../../components/toggle-button/ToggleButton';
 
 import './test-page.scss';

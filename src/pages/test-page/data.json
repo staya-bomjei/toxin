@@ -237,5 +237,19 @@
       "counter": 10,
       "rate": 1
     }
+  ],
+  "toggleButtons": [
+    {
+      "text": "First",
+      "isChecked": false
+    },
+    {
+      "text": "Second",
+      "isChecked": true
+    },
+    {
+      "text": "Я очень большой toggle Я очень большой toggle Я очень большой toggle",
+      "isChecked": true
+    }
   ]
 }
