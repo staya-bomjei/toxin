@@ -378,6 +378,18 @@
   "findNumbers": [
     {}
   ],
+  "paginations": [
+    {
+      "itemsCounter": 180,
+      "itemsPerPage": 12,
+      "postfix": "вариантов аренды"
+    },
+    {
+      "itemsCounter": 1001,
+      "itemsPerPage": 20,
+      "postfix": "вариантов аренды"
+    }
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -471,6 +483,11 @@
       "title": "Find Numbers",
       "mix": "find-number",
       "dataList": "findNumbers"
+    },
+    {
+      "title": "Paginations",
+      "mix": "pagination",
+      "dataList": "paginations"
     }
   ]
 }

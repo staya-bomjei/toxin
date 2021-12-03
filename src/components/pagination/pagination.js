@@ -1,5 +1,13 @@
-import './pagination.scss';
 import $ from 'jquery';
+
+import './pagination.scss';
+
+const PAGINATION_SELECTOR = '.js-pagination';
+const NUMBER_BUTTON_SELECTOR = '.js-pagination__number';
+const PREV_BUTTON_SELECTOR = '.js-pagination__prev';
+const NEXT_BUTTON_SELECTOR = '.js-pagination__next';
+const TEXT_SELECTOR = '.js-pagination__text';
+const CURRENT_NUMBER_BUTTON = 'pagination__number_current';
 
 class Pagination {
   constructor($component) {
@@ -8,28 +16,36 @@ class Pagination {
     this.itemsPerPage = Number($component.attr('data-items-per-page'));
     this.pagesCounter = Math.ceil(this.itemsCounter / this.itemsPerPage);
     this.postfix = $component.attr('data-postfix');
-    this.buttons = Array.from($('.js-pagination__number', $component)).map((item) => $(item));
-    this.$toLeft = $('.js-pagination__to-left', $component);
-    this.$toRight = $('.js-pagination__to-right', $component);
-    this.$text = $('.js-pagination__text', $component);
+    this.buttons = Array.from($(NUMBER_BUTTON_SELECTOR, $component)).map((item) => $(item));
+    this.$prev = $(PREV_BUTTON_SELECTOR, $component);
+    this.$next = $(NEXT_BUTTON_SELECTOR, $component);
+    this.$text = $(TEXT_SELECTOR, $component);
     this.pageNumber = 0;
     this.updateState(1);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    this.$toLeft.on('click', () => this.updateState(this.pageNumber - 1));
-    this.$toRight.on('click', () => this.updateState(this.pageNumber + 1));
+    this.$prev.on('click', () => this.handlePrevButtonClick());
+    this.$next.on('click', () => this.handleNextButtonClick());
     this.buttons.forEach(($button) => {
-      $button.on('click', (event) => this.onNumberButtonClick(event));
+      $button.on('click', (event) => this.handleNumberButtonClick(event));
     });
   }
 
-  onNumberButtonClick(event) {
+  handleNumberButtonClick(event) {
     const text = $(event.target).html();
     if (text === '...') return;
 
     this.updateState(Number(text));
+  }
+
+  handlePrevButtonClick() {
+    this.updateState(this.pageNumber - 1);
+  }
+
+  handleNextButtonClick() {
+    this.updateState(this.pageNumber + 1);
   }
 
   setButtons(texts) {
@@ -45,7 +61,7 @@ class Pagination {
 
   toggleButtonSelection(text) {
     const $button = this.buttons.find(($btn) => $btn.html() === String(text));
-    if ($button) $button.toggleClass('pagination__number_current');
+    if ($button) $button.toggleClass(CURRENT_NUMBER_BUTTON);
   }
 
   updateButtons(pageNumber) {
@@ -54,14 +70,14 @@ class Pagination {
     this.toggleButtonSelection(pageNumber);
 
     if (pageNumber === 1) {
-      this.$toLeft.hide();
-      this.$toRight.show();
+      this.$prev.hide();
+      this.$next.show();
     } else if (pageNumber === this.pagesCounter) {
-      this.$toRight.hide();
-      this.$toLeft.show();
+      this.$next.hide();
+      this.$prev.show();
     } else {
-      this.$toRight.show();
-      this.$toLeft.show();
+      this.$next.show();
+      this.$prev.show();
     }
 
     this.pageNumber = pageNumber;
@@ -71,9 +87,8 @@ class Pagination {
     const from = (position - 1) * this.itemsPerPage + 1;
     const to = Math.min(from + this.itemsPerPage, this.itemsCounter);
     const exp = Math.trunc(Math.log10(this.itemsCounter));
-    const base = Math.trunc(this.itemsCounter / exp);
 
-    this.$text.html(`${from} – ${to} из ${base * 10 ** (exp - 1)}+ ${this.postfix}`);
+    this.$text.html(`${from} – ${to} из ${10 ** exp}+ ${this.postfix}`);
   }
 
   updateState(pageNumber) {
@@ -113,5 +128,5 @@ class Pagination {
 }
 
 $(() => {
-  $('.js-pagination').map((index, node) => new Pagination($(node)));
+  $(PAGINATION_SELECTOR).map((index, node) => new Pagination($(node)));
 });

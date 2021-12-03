@@ -1,21 +1,26 @@
 //-
-  options.itemsCount - сколько всего элементов в сумме, со всех страниц пагинатора
+  options.itemsCounter - сколько всего элементов в сумме, со всех страниц пагинатора
   options.itemsPerPage - сколько элементов на одной странице
   options.postfix - добавочный текст, который появляется под пагинатором после вывода текущей позиции по элементам
 mixin pagination(options)
   if !options
     - options = {};
+
   -
-    const { itemsCount = 180, itemsPerPage = 12, postfix = '' } = options;
+    const {
+      itemsCounter = 180,
+      itemsPerPage = 12,
+      postfix = ''
+    } = options;
 
   .pagination.js-pagination(
-    data-items-count = itemsCount 
+    data-items-count = itemsCounter
     data-items-per-page = itemsPerPage
     data-postfix = postfix
   )
     .pagination__buttons
-      .pagination__to-left.js-pagination__to-left arrow_back
+      .pagination__prev.js-pagination__prev arrow_back
       - for (let i = 0; i < 7; i++)
         .pagination__number.js-pagination__number
-      .pagination__to-right.js-pagination__to-right arrow_forward
+      .pagination__next.js-pagination__next arrow_forward
     .pagination__text.js-pagination__text

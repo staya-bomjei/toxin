@@ -14,5 +14,6 @@ import '../../components/range-slider/RangeSlider';
 import '../../components/checkbox-list/CheckboxList';
 import '../../components/dropdown/Dropdown';
 import '../../components/find-number/find-number';
+import '../../components/pagination/pagination';
 
 import './test-page.scss';
