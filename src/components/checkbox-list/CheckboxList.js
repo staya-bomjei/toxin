@@ -1,22 +1,29 @@
-import './checkbox-list.scss';
 import $ from 'jquery';
+
+import '../checkbox/Checkbox';
+
+import './checkbox-list.scss';
+
+const CHECKBOX_LIST_SELECTOR = '.js-checkbox-list';
+const BUTTON_SELECTOR = '.js-checkbox-list__button';
+const CHECKBOX_LIST_OPEN = 'checkbox-list_open';
 
 class CheckboxList {
   constructor($component) {
     this.$component = $component;
-    this.$button = $('.js-checkbox-list__button', $component);
+    this.$button = $(BUTTON_SELECTOR, $component);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    this.$button.on('click', (event) => this.onButtonClick(event.target));
+    this.$button.on('click', (event) => this.handleButtonClick(event.target));
   }
 
-  onButtonClick() {
-    this.$component.toggleClass('checkbox-list_open');
+  handleButtonClick() {
+    this.$component.toggleClass(CHECKBOX_LIST_OPEN);
   }
 }
 
 $(() => {
-  $('.js-checkbox-list').map((index, node) => new CheckboxList($(node)));
+  $(CHECKBOX_LIST_SELECTOR).map((index, node) => new CheckboxList($(node)));
 });

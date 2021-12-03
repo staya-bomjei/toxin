@@ -268,6 +268,44 @@
       "postfix": "₽"
     }
   ],
+  "checkboxLists": [
+    {
+      "text": "First",
+      "isExpanded": true,
+      "list": [
+        {
+          "text": "Можно курить"
+        },
+        {
+          "text": "Можно с питомцами"
+        },
+        {
+          "text": "Можно пригласить гостей (до 10 человек)"
+        },
+        {
+          "richTitle": "Широкий коридор",
+          "text": "Ширина коридоров в номере не менее 91 см.",
+          "isChecked": true
+        },
+        {
+          "richTitle": "Помощник для инвалидов",
+          "text": "На 1 этаже вас встретит специалист и проводит до номера.",
+          "isChecked": true
+        }
+      ]
+    },
+    {
+      "text": "Second",
+      "list": [
+        {
+          "text": "Можно быть пепегой"
+        },
+        {
+          "text": "Можно быть птицей"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -343,6 +381,12 @@
       "title": "Range Sliders",
       "mix": "range-slider",
       "dataList": "rangeSliders",
+      "theme": "two-columns"
+    },
+    {
+      "title": "Checkbox Lists",
+      "mix": "checkbox-list",
+      "dataList": "checkboxLists",
       "theme": "two-columns"
     }
   ]

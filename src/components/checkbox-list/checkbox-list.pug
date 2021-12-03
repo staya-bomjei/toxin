@@ -8,10 +8,16 @@ include ../checkbox/checkbox
 mixin checkbox-list(options) 
   if !options
     - options = {};
-  -
-    const { text = '', list = [], isOpen = false, isExpanded = false } = options;
-    let classes = [];
 
+  -
+    const {
+      text = '',
+      list = [],
+      isOpen = false,
+      isExpanded = false
+    } = options;
+
+    let classes = [];
     if (isOpen) classes.push('checkbox-list_open');
     if (isExpanded) classes.push('checkbox-list_epxanded');
 
