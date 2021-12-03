@@ -251,5 +251,77 @@
       "text": "Я очень большой toggle Я очень большой toggle Я очень большой toggle",
       "isChecked": true
     }
+  ],
+  "tests": [
+    {
+      "title": "Colors Samples",
+      "mix": "color-sample",
+      "dataList": "colorsSamples"
+    },
+    {
+      "title": "Text Samples",
+      "mix": "text-sample",
+      "dataList": "textsSamples"
+    },
+    {
+      "title": "Text Fields",
+      "mix": "text-field",
+      "dataList": "textFields",
+      "theme": "two-columns"
+    },
+    {
+      "title": "Buttons",
+      "mix": "button",
+      "dataList": "buttons",
+      "theme": "two-columns"
+    },
+    {
+      "title": "Bullet Lists",
+      "mix": "bullet-list",
+      "dataList": "bulletLists",
+      "theme": "two-columns"
+    },
+    {
+      "title": "Checkboxes",
+      "mix": "checkbox",
+      "dataList": "checkboxes"
+    },
+    {
+      
+      "title": "Advantages",
+      "mix": "advantage",
+      "dataList": "advantages"
+    },
+    {
+      "title": "Like Buttons",
+      "mix": "like-button",
+      "dataList": "likeButtons",
+      "theme": "flex-row"
+    },
+    {
+      "title": "Comments",
+      "mix": "comment",
+      "dataList": "comments"
+    },
+    {
+      "title": "Logos",
+      "mix": "logo",
+      "dataList": "logos"
+    },
+    {
+      "title": "Radio Buttons",
+      "mix": "radio-button",
+      "dataList": "radioButtons"
+    },
+    {
+      "title": "Rate Buttons",
+      "mix": "rate-button",
+      "dataList": "rateButtons"
+    },
+    {
+      "title": "Toggle Buttons",
+      "mix": "toggle-button",
+      "dataList": "toggleButtons"
+    }
   ]
 }

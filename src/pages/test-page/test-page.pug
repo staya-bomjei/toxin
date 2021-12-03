@@ -14,115 +14,50 @@ include ../../components/radio-button/radio-button
 include ../../components/rate-button/rate-button
 include ../../components/toggle-button/toggle-button
 
+//-
+  options.title - заголовок теста
+  options.mix - название миксина
+  options.dataList - массив объектов инициализации миксина
+  options.theme - тема отображения контента
+mixin test-page__test(options)
+  if !options
+    - options = {};
+  
+  -
+    const {
+      title = '',
+      mix,
+      dataList,
+      theme,
+    } = options;
+    
+    const listTheme = (theme) ? `test-page__test__list_theme-${theme}` : null;
+  
+  .test-page__test
+    h2.test-page__test__title= title
+    .test-page__test__list(class = listTheme)
+      each data in dataList
+        .test-page__test__item
+          +#{mix}(data)
+    hr.test-page__test__underline
+
 block variables
   -
     const title = 'Тестовая страница';
-    const {
-      colorsSamples,
-      textsSamples,
-      textFields,
-      buttons,
-      bulletLists,
-      checkboxes,
-      advantages,
-      likeButtons,
-      comments,
-      logos,
-      radioButtons,
-      rateButtons,
-      toggleButtons,
-    } = htmlWebpackPlugin.options.getData();
+    const data = htmlWebpackPlugin.options.getData();
+    const { tests } = data;
+
+    // связывание ссылок на данные с тестами
+    tests.forEach((test) => {
+      test.dataList = data[test.dataList];
+    });
+
+    // получение ссылок на изображения в собранном проекте
+    data.comments.forEach((comment) => {
+      comment.image = require(`./img/${comment.image}`);
+    });
 
 block main
   .test-page
-    if colorsSamples
-      .test-page__colors-samples
-        h2.test-page__title Colors Samples
-        .test-page__colors-samples-list
-          each colorSample in colorsSamples
-            +color-sample(colorSample)
-        hr.test-page__underline
-    if textsSamples
-      .test-page__texts-samples
-        h2.test-page__title Text Samples
-        .test-page__texts-samples-list
-          each textSample in textsSamples
-            +text-sample(textSample)
-        hr.test-page__underline
-    if textFields
-      .test-page__text-fields
-        h2.test-page__title Text Fields
-        .test-page__texts-fields-list
-          each textField in textFields
-            +text-field(textField)
-        hr.test-page__underline
-    if buttons
-      .test-page__buttons
-        h2.test-page__title Buttons
-        .test-page__buttons-list
-          each button in buttons
-            +button(button)
-        hr.test-page__underline
-    if bulletLists
-      .test-page__bullet-lists
-        h2.test-page__title Bullet Lists
-        .test-page__bullet-lists-list
-          each bulletList in bulletLists
-            +bullet-list(bulletList)
-        hr.test-page__underline
-    if checkboxes
-      .test-page__checkboxes
-        h2.test-page__title Checkboxes
-        .test-page__checkboxes-list
-          each checkbox in checkboxes
-            +checkbox(checkbox)
-        hr.test-page__underline
-    if advantages
-      .test-page__advantages
-        h2.test-page__title Advantages
-        .test-page__advantages-list
-          each advantage in advantages
-            +advantage(advantage)
-        hr.test-page__underline
-    if likeButtons
-      .test-page__like-buttons
-        h2.test-page__title Like Buttons
-        .test-page__like-buttons-list
-          each likeButton in likeButtons
-            +like-button(likeButton)
-        hr.test-page__underline
-    if comments
-      .test-page__comments
-        h2.test-page__title Comments
-        .test-page__comments-list
-          each comment in comments
-            +comment({ ...comment, image: require(`./img/${comment.image}`) })
-        hr.test-page__underline
-    if logos
-      .test-page__logos
-        h2.test-page__title Logos
-        .test-page__logos-list
-          each logo in logos
-            +logo(logo)
-        hr.test-page__underline
-    if radioButtons
-      .test-page__radio-buttons
-        h2.test-page__title Radio Buttons
-        .test-page__radio-buttons-list
-          each radioButton in radioButtons
-            +radio-button(radioButton)
-        hr.test-page__underline
-    if rateButtons
-      .test-page__rate-buttons
-        h2.test-page__title Rate Buttons
-        .test-page__rate-buttons-list
-          each rateButton in rateButtons
-            +rate-button(rateButton)
-        hr.test-page__underline
-    if toggleButtons
-      .test-page__toggle-buttons
-        h2.test-page__title Toggle Buttons
-        .test-page__toggle-buttons-list
-          each toggleButton in toggleButtons
-            +toggle-button(toggleButton)
-        hr.test-page__underline
+    each test in tests
+      +test-page__test(test)

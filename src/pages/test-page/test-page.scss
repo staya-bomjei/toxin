@@ -1,100 +1,40 @@
 @import '../../styles/variables';
 
 .test-page {
-  &__colors-samples-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 20px;
+  &__test {
     margin: 20px;
-  }
 
-  &__texts-samples-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 50px;
-    margin: 20px;
-    width: 448px;
-  }
+    $class: &;
 
-  &__texts-fields-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 10px;
-    margin: 20px;
-    width: 320px;
-  }
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: 20px;
+      margin: 20px;
 
-  &__buttons-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    margin: 20px;
-    width: 400px;
-  }
+      &_theme {
+        &-two-columns {
+          grid-template-columns: 1fr 1fr;
+          grid-column-gap: 20px;
+        }
 
-  &__bullet-lists-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 50px;
-    margin: 20px;
-  }
+        &-flex-column {
+          display: flex;
+          flex-direction: column;
 
-  &__checkboxes-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
-    margin: 20px;
-    width: 255px;
-  }
+          #{$class}__item:not(:last-child) {
+            margin-bottom: 20px;
+          }
+        }
 
-  &__advantages-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 20px;
-    width: 255px;
-  }
+        &-flex-row {
+          display: flex;
 
-  &__like-buttons-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin: 20px;
-    width: 60px;
-  }
-
-  &__comments-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin: 20px;
-    width: 700px;
-  }
-
-  &__logos-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin: 20px;
-  }
-
-  &__radio-buttons-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin: 20px;
-  }
-
-  &__rate-buttons-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin: 20px;
-  }
-
-  &__toggle-buttons-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 10px;
-    margin: 20px;
+          #{$class}__item:not(:last-child) {
+            margin-right: 20px;
+          }
+        }
+      }
+    }
   }
 }
