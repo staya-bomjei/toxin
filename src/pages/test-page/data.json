@@ -223,5 +223,19 @@
       "group": "gender",
       "isChecked": true
     }
+  ],
+  "rateButtons": [
+    {
+      "counter": 5,
+      "rate": 5
+    },
+    {
+      "counter": 5,
+      "rate": 4
+    },
+    {
+      "counter": 10,
+      "rate": 1
+    }
   ]
 }

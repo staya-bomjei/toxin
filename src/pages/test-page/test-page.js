@@ -8,5 +8,6 @@ import '../../components/advantage/advantage';
 import '../../components/like-button/LikeButton';
 import '../../components/comment/comment';
 import '../../components/radio-button/radio-button';
+import '../../components/rate-button/RateButton';
 
 import './test-page.scss';

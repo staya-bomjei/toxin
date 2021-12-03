@@ -11,6 +11,7 @@ include ../../components/like-button/like-button
 include ../../components/comment/comment
 include ../../components/logo/logo
 include ../../components/radio-button/radio-button
+include ../../components/rate-button/rate-button
 
 block variables
   -
@@ -27,6 +28,7 @@ block variables
       comments,
       logos,
       radioButtons,
+      rateButtons,
     } = htmlWebpackPlugin.options.getData();
 
 block main
@@ -107,4 +109,11 @@ block main
         .test-page__radio-buttons-list
           each radioButton in radioButtons
             +radio-button(radioButton)
+        hr.test-page__underline
+    if rateButtons
+      .test-page__rate-buttons
+        h2.test-page__title Radio Buttons
+        .test-page__rate-buttons-list
+          each rateButton in rateButtons
+            +rate-button(rateButton)
         hr.test-page__underline
