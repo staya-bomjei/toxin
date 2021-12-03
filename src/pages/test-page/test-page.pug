@@ -19,6 +19,7 @@ include ../../components/dropdown/dropdown
 include ../../components/find-number/find-number
 include ../../components/pagination/pagination
 include ../../components/reservation/reservation
+include ../../components/room-thumbnail/room-thumbnail
 
 //-
   options.title - заголовок теста
@@ -61,6 +62,11 @@ block variables
     // получение ссылок на изображения в собранном проекте
     data.comments.forEach((comment) => {
       comment.image = require(`./img/${comment.image}`);
+    });
+    data.roomThumbnails.forEach((roomThumbnail) => {
+      roomThumbnail.images.forEach((image) => {
+        image.path = require(`./img/${image.path}`);
+      })
     });
 
 block main

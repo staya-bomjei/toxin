@@ -2,7 +2,7 @@ include ../rate-button/rate-button
 
 //-
   options.images - массив изображений
-  options.images[0].path - путь к картинке для профиля пользователя (от папки ./img этого компонента)
+  options.images[0].path - путь к картинке для профиля пользователя
   options.images[0].alt - текстовая альтернатива картинке
   options.selected - выбранное изображение
   options.rate - оценка компонента
@@ -14,10 +14,17 @@ include ../rate-button/rate-button
 mixin room-thumbnail(options)
   if !options
     - options = {};
+
   -
     const { 
-      images = [], selected = 0, rate = 5, number = 0, price = 0, 
-      reviews = 0, type = '', href = 'error-page',
+      images = [],
+      selected = 0,
+      rate = 5,
+      number = 0,
+      price = 0, 
+      reviews = 0,
+      type = '',
+      href = 'error-page',
     } = options;
 
   .room-thumbnail.js-room-thumbnail(
@@ -27,7 +34,7 @@ mixin room-thumbnail(options)
     figure.room-thumbnail__carousel
       each image in images
         img.room-thumbnail__image.js-room-thumbnail__image(
-          src = require(`../../components/room-thumbnail/img/${image.path}`)
+          src = image.path
           alt = image.alt
         )
       .room-thumbnail__prev.js-room-thumbnail__prev

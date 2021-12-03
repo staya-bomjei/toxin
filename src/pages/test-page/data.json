@@ -393,6 +393,75 @@
   "reservations": [
     {}
   ],
+  "roomThumbnails": [
+    {
+      "rate": 4,
+      "number": 888,
+      "price": 9990,
+      "reviews": 200,
+      "type": "люкс",
+      "images": [
+        {
+          "path": "thumbnail1.png",
+          "alt": "thumbnail1"
+        },
+        {
+          "path": "thumbnail2.png",
+          "alt": "thumbnail2"
+        },
+        {
+          "path": "thumbnail3.png",
+          "alt": "thumbnail3"
+        },
+        {
+          "path": "thumbnail4.png",
+          "alt": "thumbnail4"
+        }
+      ]
+    },
+    {
+      "rate": 0,
+      "number": 12323,
+      "price": 1123,
+      "reviews": 200,
+      "selected": 2,
+      "type": "люкс",
+      "images": [
+        {
+          "path": "thumbnail1.png",
+          "alt": "thumbnail1"
+        },
+        {
+          "path": "thumbnail2.png",
+          "alt": "thumbnail2"
+        },
+        {
+          "path": "thumbnail3.png",
+          "alt": "thumbnail3"
+        },
+        {
+          "path": "thumbnail4.png",
+          "alt": "thumbnail4"
+        },
+        {
+          "path": "thumbnail1.png",
+          "alt": "thumbnail1"
+        },
+        {
+          "path": "thumbnail2.png",
+          "alt": "thumbnail2"
+        },
+        {
+          "path": "thumbnail3.png",
+          "alt": "thumbnail3"
+        },
+        {
+          "path": "thumbnail4.png",
+          "alt": "thumbnail4"
+        }
+      ]
+    }
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -496,6 +565,12 @@
       "title": "Reservations",
       "mix": "reservation",
       "dataList": "reservations"
+    },
+    {
+      "title": "Room Thumbnails",
+      "mix": "room-thumbnail",
+      "dataList": "roomThumbnails",
+      "theme": "flex-row"
     }
   ]
 }

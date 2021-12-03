@@ -16,5 +16,6 @@ import '../../components/dropdown/Dropdown';
 import '../../components/find-number/find-number';
 import '../../components/pagination/Pagination';
 import '../../components/reservation/reservation';
+import '../../components/room-thumbnail/RoomThumbnail';
 
 import './test-page.scss';

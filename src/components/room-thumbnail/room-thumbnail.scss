@@ -1,11 +1,12 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .room-thumbnail {
   width: 100%;
   background-color: white;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   overflow: hidden;
+
+  $class: &;
 
   &__carousel {
     position: relative;
@@ -16,8 +17,10 @@
     grid-template-rows: minmax(9.5rem, 100%);
     margin: 0;
 
-    &:hover, &_hovered {
-      .room-thumbnail__prev, .room-thumbnail__next {
+    &:hover,
+    &_hovered {
+      #{$class}__prev,
+      #{$class}__next {
         display: flex;
       }
     }
@@ -47,7 +50,8 @@
 
     &__icon {
       @extend %material-icons;
-      font-size: 24px;
+
+      font-size: 1.5rem;
       color: white;
     }
   }
@@ -75,21 +79,21 @@
   &__buttons {
     display: flex;
     position: absolute;
-    right: 15px;
-    bottom: 15px;
+    right: 0.9375rem;
+    bottom: 0.9375rem;
     z-index: 2;
   }
 
   &__button {
     box-sizing: border-box;
-    width: 7.5px;
-    height: 7.5px;
-    border: 1px solid white;
+    width: 0.4688rem;
+    height: 0.4688rem;
+    border: 0.0625rem solid white;
     border-radius: 50%;
     cursor: pointer;
 
     &:not(:last-of-type) {
-      margin-right: 3.5px;
+      margin-right: 0.2188rem;
     }
 
     &_selected {
@@ -98,7 +102,7 @@
   }
 
   &__info {
-    padding: 19px;
+    padding: 1.1875rem;
   }
 
   &__row {
@@ -114,18 +118,20 @@
   &__price-per-day,
   &__reviews {
     @extend %default-text;
-    color: rgba($dark, .5);
+
+    color: rgba($dark, 50%);
   }
 
   &__number-info,
-  &__price-per-day {   
+  &__price-per-day {
     display: flex;
     align-items: baseline;
   }
 
   &__n {
     @extend %item-title;
-    font-size: .875rem;
+
+    font-size: 0.875rem;
     line-height: 1.0625rem;
   }
 
@@ -135,16 +141,17 @@
 
   &__type {
     @extend %label;
+
     color: $purple;
     display: inline-block;
-    margin-left: 1px;
+    margin-left: 0.0625rem;
   }
 
   &__underline {
     border: none;
-    border-top: 1px solid rgba($dark, .1);
+    border-top: 0.0625rem solid rgba($dark, 10%);
     margin: 0;
-    margin-top: 10px;
-    margin-bottom: 8px;
+    margin-top: 0.625rem;
+    margin-bottom: 0.5rem;
   }
 }
