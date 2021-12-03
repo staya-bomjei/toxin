@@ -1,7 +1,6 @@
 include ../button/button
 
 //-
-  options.mix - класс, который будет добавлен к компоненту
   options.title - заголовок компонента, должен быть массивом если isSplit true
   options.condition - текст, показывающий в каком состоянии находится компонент, должен быть массивом если isSplit true
   options.placeholder - строка placeholder дропдауна, должен быть массивом если isSplit true
@@ -24,12 +23,23 @@ include ../button/button
 mixin dropdown(options)
   if !options
     - options = {};
+
   -
     const { 
-      mix = false, title = '', condition = '', placeholder = '', rows = [], 
-      maxLen = 100, type = 'default', isExpanded = false, hasControls = false, 
-      isRange = false, isSplit = false, isContentOnly = false, countables = [], 
-      selected = [], valueChanged, 
+      title = '',
+      condition = '',
+      placeholder = '',
+      rows = [], 
+      maxLen = 100,
+      type = 'default',
+      isExpanded = false,
+      hasControls = false, 
+      isRange = false,
+      isSplit = false,
+      isContentOnly = false,
+      countables = [], 
+      selected = [],
+      valueChanged, 
     } = options;
 
     let dropdowns = [{ title, condition, placeholder }];
@@ -41,7 +51,6 @@ mixin dropdown(options)
     }
 
     const classes = [];
-    if (mix) classes.push(mix);
     if (type === 'summator') classes.push('dropdown_summator');
     else if (type === 'datepicker') classes.push('dropdown_datepicker');
     if (isExpanded) classes.push('dropdown_expanded');
@@ -59,7 +68,6 @@ mixin dropdown(options)
     data-selected = selected
     data-countables = (type === 'summator') ? countables : null
     )
-
     .dropdown__dropdowns.js-dropdown__dropdowns(class = (isSplit) ? 'dropdown__dropdowns_split' : null)
       each dropdown in dropdowns 
         .dropdown__dropdown

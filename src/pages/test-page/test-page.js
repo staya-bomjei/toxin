@@ -12,5 +12,6 @@ import '../../components/rate-button/RateButton';
 import '../../components/toggle-button/ToggleButton';
 import '../../components/range-slider/RangeSlider';
 import '../../components/checkbox-list/CheckboxList';
+import '../../components/dropdown/dropdown';
 
 import './test-page.scss';

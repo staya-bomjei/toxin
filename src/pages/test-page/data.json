@@ -306,6 +306,75 @@
       ]
     }
   ],
+  "dropdowns": [
+    {
+      "title": "dropdown", 
+      "condition": "default", 
+      "placeholder": "Выбирете комплектацию", 
+      "rows": [
+        {
+          "text": "спальни",
+          "counter": 2,
+          "countables": ["спальня", "спальни", "спален"]
+        },
+        {
+          "text": "кровати",
+          "counter": 2,
+          "countables": ["кровать", "кровати", "кроватей"]
+        },
+        {
+          "text": "ванные комнаты",
+          "counter": 0,
+          "countables": ["ванная комната", "ванных комнаты", "ванных комнат"]
+        }
+      ] 
+    },
+    {
+      "title": "dropdown", 
+      "condition": "summator", 
+      "placeholder": "Сколько гостей",
+      "type": "summator",
+      "hasControls": true,
+      "countables": ["гость", "гостя", "гостей"],
+      "rows": [
+        {
+          "text": "Взрослые",
+          "counter": 2
+        },
+        {
+          "text": "Дети",
+          "counter": 2
+        },
+        {
+          "text": "Младенцы",
+          "counter": 0
+        }
+      ] 
+    },
+    {
+      "title": ["date", "picker"],
+      "condition": ["split", "range"],
+      "placeholder": ["ДД.ММ.ГГГГ", "ДД.ММ.ГГГГ"],
+      "type": "datepicker",
+      "selected": ["2021-12-03", "2021-12-06"],
+      "isRange": true,
+      "isSplit": true
+    },
+    {
+      "title": "datepicker",
+      "condition": "RANGE",
+      "placeholder": "Выберите даты",
+      "type": "datepicker",
+      "selected": ["2021-12-03", "2021-12-06"],
+      "isRange": true
+    },
+    {
+      "title": "datepicker",
+      "condition": "One",
+      "placeholder": "Выберите дату",
+      "type": "datepicker"
+    }
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -387,6 +456,12 @@
       "title": "Checkbox Lists",
       "mix": "checkbox-list",
       "dataList": "checkboxLists",
+      "theme": "two-columns"
+    },
+    {
+      "title": "Dropdowns",
+      "mix": "dropdown",
+      "dataList": "dropdowns",
       "theme": "two-columns"
     }
   ]

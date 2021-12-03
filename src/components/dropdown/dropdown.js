@@ -1,9 +1,23 @@
-import './dropdown.scss';
-import 'air-datepicker/air-datepicker.css';
-import AirDatepicker from 'air-datepicker';
 import $ from 'jquery';
-import { ruLocale } from './ru';
-import { choiceCountable } from '../../scripts/utils';
+
+import { choiceCountable } from '../../libs/utils/utils';
+import MyAirDatepicker from '../../libs/air-datepicker/AirDatepicker';
+import '../button/button';
+
+import './dropdown.scss';
+
+const DROPDOWN_SELECTOR = '.js-dropdown';
+const DROPDOWNS_SELECTOR = '.js-dropdown__dropdowns';
+const CONTENT_SELECTOR = '.js-dropdown__content';
+const TEXT_SELECTOR = '.js-dropdown__text';
+const CLEAR_BUTTON_SELECTOR = '.js-dropdown__clear-button';
+const ACCEPT_BUTTON_SELECTOR = '.js-dropdown__accept-button';
+const INPUT_BOX_SELECTOR = '.js-dropdown__input-box';
+const ROW_SELECTOR = '.js-dropdown__row';
+const MINUS_SELECTOR = '.js-dropdown__button-minus';
+const COUNTER_SELECTOR = '.js-dropdown__counter';
+const PLUS_SELECTOR = '.js-dropdown__button-plus';
+const DROPDOWN_OPEN = 'dropdown_open';
 
 class Dropdown {
   constructor($component) {
@@ -15,19 +29,18 @@ class Dropdown {
     this.isSummator = type === 'summator';
     this.hasControls = $component.has('data-has-controls') !== undefined;
     this.$component = $component;
-    this.$dropdowns = $('.js-dropdown__dropdowns', $component);
-    this.$content = $('.js-dropdown__content', $component);
+    this.$dropdowns = $(DROPDOWNS_SELECTOR, $component);
+    this.$content = $(CONTENT_SELECTOR, $component);
 
     if (this.isDatepicker) {
-      this.texts = $('.js-dropdown__text', $component);
+      this.texts = $(TEXT_SELECTOR, $component);
       this.isSplit = $component.attr('data-is-split') !== undefined;
       this.isRange = $component.attr('data-is-range') !== undefined;
       this.datepicker = this.createCalendar({ range: this.isRange });
       const selected = JSON.parse($component.attr('data-selected'));
       this.datepicker.selectDate(selected);
-      $('button', this.datepicker.$buttons).attr('type', 'button');
     } else {
-      this.$text = $('.js-dropdown__text', $component);
+      this.$text = $(TEXT_SELECTOR, $component);
 
       if (this.isSummator) {
         this.countables = JSON.parse($component.attr('data-countables'));
@@ -39,8 +52,8 @@ class Dropdown {
       this.updateText();
 
       if (this.hasControls) {
-        this.$clear = $component.find('.js-dropdown__clear-button');
-        this.$accept = $component.find('.js-dropdown__accept-button');
+        this.$clear = $component.find(CLEAR_BUTTON_SELECTOR);
+        this.$accept = $component.find(ACCEPT_BUTTON_SELECTOR);
         this.updateClearButtonVisability();
       }
     }
@@ -48,37 +61,37 @@ class Dropdown {
   }
 
   attachEventHandlers() {
-    $(document).on('click', (event) => this.onOutOfComponentClick(event));
-    this.$dropdowns.on('click', (event) => this.onDropdownsClick(event));
+    $(document).on('click', (event) => this.handleOutOfComponentClick(event));
+    this.$dropdowns.on('click', (event) => this.handleDropdownsClick(event));
 
     if (!this.isDatepicker) {
       if (this.hasControls) {
-        this.$clear.on('click', () => this.onClearButtonClick());
-        this.$accept.on('click', (event) => this.onAcceptButtonClick(event));
+        this.$clear.on('click', () => this.handleClearButtonClick());
+        this.$accept.on('click', (event) => this.handleAcceptButtonClick(event));
       }
 
       this.rows.forEach((row) => {
-        row.$minus.on('click', () => this.onMinusClick(row.$minus, row.$counter));
-        row.$plus.on('click', () => this.onPlusClick(row.$minus, row.$counter));
+        row.$minus.on('click', () => this.handleMinusClick(row.$minus, row.$counter));
+        row.$plus.on('click', () => this.handlePlusClick(row.$minus, row.$counter));
       });
     }
   }
 
-  onOutOfComponentClick(event) {
+  handleOutOfComponentClick(event) {
     const { target } = event;
     if (this.$component.has(target).length === 0) {
-      this.$component.removeClass('dropdown_open');
+      this.$component.removeClass(DROPDOWN_OPEN);
     }
   }
 
-  onDropdownsClick(event) {
+  handleDropdownsClick(event) {
     const $target = $(event.target);
-    if ($target.closest('.js-dropdown__input-box').length !== 0) {
-      this.$component.toggleClass('dropdown_open');
+    if ($target.closest(INPUT_BOX_SELECTOR).length !== 0) {
+      this.$component.toggleClass(DROPDOWN_OPEN);
     }
   }
 
-  onMinusClick($minus, $counter) {
+  handleMinusClick($minus, $counter) {
     const counter = Number($counter.html());
 
     if (counter === 0) return;
@@ -92,7 +105,7 @@ class Dropdown {
     }
   }
 
-  onPlusClick($minus, $counter) {
+  handlePlusClick($minus, $counter) {
     const counter = Number($counter.html());
 
     if (counter === 0) {
@@ -107,7 +120,7 @@ class Dropdown {
     }
   }
 
-  onClearButtonClick() {
+  handleClearButtonClick() {
     this.rows.forEach((row) => {
       row.$minus.removeClass('dropdown__button-minus_active');
       row.$counter.html('0');
@@ -117,54 +130,8 @@ class Dropdown {
     this.updateClearButtonVisability();
   }
 
-  onClearCalendarClick(dp) {
-    dp.clear();
-    if (this.isSplit) {
-      $(this.texts[1]).val('');
-    }
-  }
-
-  onAcceptButtonClick() {
-    this.$component.removeClass('dropdown_open');
-  }
-
-  onCellSelect({ date, datepicker }) {
-    if (this.isDatepicker) {
-      const [first, second] = datepicker.selectedDates;
-
-      if (datepicker.selectedDates.length === 1) {
-        if (this.isSplit) {
-          $(this.texts[0]).val(first.toLocaleDateString('ru'));
-          $(this.texts[1]).val('');
-        }
-
-        this.$component.attr('data-from', first.toLocaleDateString('en'));
-        this.$component.attr('data-to', '');
-      } else if (datepicker.selectedDates.length === 2) {
-        if (this.isSplit) {
-          $(this.texts[0]).val(first.toLocaleDateString('ru'));
-          $(this.texts[1]).val(second.toLocaleDateString('ru'));
-        }
-
-        this.$component.attr('data-from', first.toLocaleDateString('en'));
-        this.$component.attr('data-to', second.toLocaleDateString('en'));
-      }
-    }
-
-    if (datepicker.selectedDates.length === 1) {
-      const year = date.getFullYear();
-      const month = date.getMonth();
-      const day = date.getDate();
-      const selector = `.air-datepicker-cell[data-year=${year}][data-month=${month}][data-date=${day}]`;
-      const $selectedCell = $(selector, datepicker.$datepicker);
-
-      if ($selectedCell.hasClass('-focus-')) {
-        $selectedCell.addClass('-range-from-');
-        $selectedCell.addClass('-range-to-');
-      }
-    }
-
-    this.triggerValueChanged();
+  handleAcceptButtonClick() {
+    this.$component.removeClass(DROPDOWN_OPEN);
   }
 
   setText(string) {
@@ -174,13 +141,13 @@ class Dropdown {
   }
 
   getRows() {
-    const rows = Array.from($('.js-dropdown__row', this.$component));
+    const rows = Array.from($(ROW_SELECTOR, this.$component));
 
     return rows.map((row) => {
       const resultObject = {
-        $minus: $(row).find('.js-dropdown__button-minus'),
-        $counter: $(row).find('.js-dropdown__counter'),
-        $plus: $(row).find('.js-dropdown__button-plus'),
+        $minus: $(row).find(MINUS_SELECTOR),
+        $counter: $(row).find(COUNTER_SELECTOR),
+        $plus: $(row).find(PLUS_SELECTOR),
       };
 
       if (this.isSummator) return resultObject;
@@ -236,32 +203,17 @@ class Dropdown {
   createCalendar(additionalOptions = {}) {
     const options = {
       ...additionalOptions,
-      inline: true,
-      locale: ruLocale,
+      $component: this.$component,
+      $content: this.$content,
+      texts: this.texts,
+      isDatepicker: this.isDatepicker,
+      isSplit: this.isSplit,
+      triggerValueChanged: () => this.triggerValueChanged(),
+      onAcceptButtonClick: () => this.handleAcceptButtonClick(),
       altField: this.texts[0],
-      altFieldDateFormat: 'd MMM',
-      prevHtml: '',
-      nextHtml: '',
-      multipleDatesSeparator: ' - ',
-      dateFormat: 'd MMM',
-      moveToOtherMonthsOnSelect: false,
-      navTitles: {
-        days: 'MMMM yyyy',
-      },
-      onSelect: (dp) => this.onCellSelect(dp),
-      buttons: [
-        {
-          content: 'очистить',
-          onClick: (dp) => this.onClearCalendarClick(dp),
-        },
-        {
-          content: 'принять',
-          onClick: () => this.onAcceptButtonClick(),
-        },
-      ],
     };
 
-    return new AirDatepicker(this.$content[0], options);
+    return new MyAirDatepicker(options);
   }
 
   triggerValueChanged() {
@@ -272,5 +224,5 @@ class Dropdown {
 }
 
 $(() => {
-  $('.js-dropdown').map((index, node) => new Dropdown($(node)));
+  $(DROPDOWN_SELECTOR).map((index, node) => new Dropdown($(node)));
 });
