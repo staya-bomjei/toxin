@@ -462,6 +462,9 @@
       ]
     }
   ],
+  "signIns": [
+    {}
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -571,6 +574,11 @@
       "mix": "room-thumbnail",
       "dataList": "roomThumbnails",
       "theme": "flex-row"
+    },
+    {
+      "title": "Sign Ins",
+      "mix": "sign-in",
+      "dataList": "signIns"
     }
   ]
 }
