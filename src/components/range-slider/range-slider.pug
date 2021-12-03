@@ -8,11 +8,22 @@
 mixin range-slider(options)
   if !options
     - options = {};
+
   -
-    let { min, max, step = 0.1, values, text = '', note = '', postfix = '' } = options;
-    if (!values) {
-      values = [min, max];
+    const {
+      min,
+      max,
+      step = 0.1,
+      values = [],
+      text = '',
+      note = '',
+      postfix = ''
+    } = options;
+
+    if (!values.length) {
+      values.push(min, max);
     }
+
     const leftRange = (((values[0] - min) / (max - min))) * 100;
     const rightRange = (((values[1] - min) / (max - min))) * 100;
 
@@ -21,8 +32,20 @@ mixin range-slider(options)
       .range-slider__text= text
       .range-slider__output.js-range-slider__output
     .range-slider__slider
-      input.range-slider__range.js-range-slider__range(type = 'range' min = 0 max = 100 value = leftRange step = step)
-      input.range-slider__range.js-range-slider__range(type = 'range' min = 0 max = 100 value = rightRange step = step)
+      input.range-slider__range.js-range-slider__range(
+        type = 'range'
+        min = 0
+        max = 100
+        value = leftRange
+        step = step
+      )
+      input.range-slider__range.js-range-slider__range(
+        type = 'range'
+        min = 0
+        max = 100
+        value = rightRange
+        step = step
+      )
       .range-slider__track
         .range-slider__track-inner.js-range-slider__track-inner
       .range-slider__thumb.js-range-slider__thumb

@@ -1,19 +1,28 @@
 import './range-slider.scss';
 import $ from 'jquery';
 
+const RANGES_SLIDER_SELECTOR = '.js-range-slider';
+const OUTPUT_SELECTOR = '.js-range-slider__output';
+const TRACK_SELECTOR = '.js-range-slider__track-inner';
+const RANGE_SELECTOR = '.js-range-slider__range';
+const THUMB_SELECTOR = '.js-range-slider__thumb';
+const POSTFIX_ATTR = 'data-postfix';
+const MIN_ATTR = 'data-min';
+const MAX_ATTR = 'data-max';
+
 class RangeSlider {
   constructor($component) {
     this.$component = $component;
-    this.postfix = $component.attr('data-postfix');
-    this.min = Number($component.attr('data-min'));
-    this.max = Number($component.attr('data-max'));
-    this.$output = $('.js-range-slider__output', $component);
-    this.$track = $('.js-range-slider__track-inner', $component);
+    this.postfix = $component.attr(POSTFIX_ATTR);
+    this.min = Number($component.attr(MIN_ATTR));
+    this.max = Number($component.attr(MAX_ATTR));
+    this.$output = $(OUTPUT_SELECTOR, $component);
+    this.$track = $(TRACK_SELECTOR, $component);
 
-    const ranges = Array.from($('.js-range-slider__range', $component));
+    const ranges = Array.from($(RANGE_SELECTOR, $component));
     [this.$range1, this.$range2] = ranges.map((range) => $(range));
 
-    const thumbs = Array.from($('.js-range-slider__thumb', $component));
+    const thumbs = Array.from($(THUMB_SELECTOR, $component));
     [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
 
     this.setState(this.$range1.attr('value'), this.$range2.attr('value'));
@@ -22,11 +31,11 @@ class RangeSlider {
   }
 
   attachEventHandlers() {
-    this.$range1.on('input', (event) => this.onValueChange(event));
-    this.$range2.on('input', (event) => this.onValueChange(event));
+    this.$range1.on('input', (event) => this.handleComponentValueChange(event));
+    this.$range2.on('input', (event) => this.handleComponentValueChange(event));
   }
 
-  onValueChange(event) {
+  handleComponentValueChange(event) {
     const $range = $(event.target);
     const value = Number(event.target.value);
     let { valueLeft, valueRight } = this.getValues();
@@ -85,5 +94,5 @@ class RangeSlider {
 }
 
 $(() => {
-  $('.js-range-slider').map((index, node) => new RangeSlider($(node)));
+  $(RANGES_SLIDER_SELECTOR).map((index, node) => new RangeSlider($(node)));
 });

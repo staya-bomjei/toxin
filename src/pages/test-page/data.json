@@ -252,6 +252,22 @@
       "isChecked": true
     }
   ],
+  "rangeSliders": [
+    {
+      "min": 0,
+      "max": 15000,
+      "values": [5000, 10000],
+      "text": "range slider",
+      "note": "Стоимость за сутки пребывания в номере",
+      "postfix": "₽"
+    },
+    {
+      "min": 1000,
+      "max": 2000,
+      "text": "range spider",
+      "postfix": "₽"
+    }
+  ],
   "tests": [
     {
       "title": "Colors Samples",
@@ -322,6 +338,12 @@
       "title": "Toggle Buttons",
       "mix": "toggle-button",
       "dataList": "toggleButtons"
+    },
+    {
+      "title": "Range Sliders",
+      "mix": "range-slider",
+      "dataList": "rangeSliders",
+      "theme": "two-columns"
     }
   ]
 }
