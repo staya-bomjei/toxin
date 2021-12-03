@@ -21,5 +21,6 @@ import '../../components/sign-in/sign-in';
 import '../../components/sign-up/sign-up';
 import '../../components/menu/menu';
 import '../../components/header/Header';
+import '../../components/footer/footer';
 
 import './test-page.scss';

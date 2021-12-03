@@ -11,12 +11,13 @@ include ../text-field/text-field
 mixin footer(options)
   if !options
     - options = {};
-  
+
   -
     const { isMobile = false, items = [] } = options;
+
     const classes = [];
     if (isMobile) classes.push('footer_theme-mobile');
-  
+
   .footer(class = classes)
     .footer__inner-wrapper
       section.footer__about.footer__list
