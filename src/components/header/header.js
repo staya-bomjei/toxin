@@ -1,31 +1,40 @@
-import './header.scss';
 import $ from 'jquery';
+
+import '../button/button';
+import '../menu/menu';
+
+import './header.scss';
+
+const HEADER_SELECTOR = '.js-header';
+const BURGER_BUTTON_SELECTOR = '.js-header__burger';
+const INFO_SELECTOR = '.js-header__info';
+const BURGER_BUTTON_ACTIVE = 'header__burger_active';
 
 class Header {
   constructor($component) {
     this.$component = $component;
-    this.$burgerButton = $('.js-header__burger', $component);
-    this.$info = $('.js-header__info', $component);
+    this.$burgerButton = $(BURGER_BUTTON_SELECTOR, $component);
+    this.$info = $(INFO_SELECTOR, $component);
     this.attachEventHandlers();
   }
 
   attachEventHandlers() {
-    $(document).on('resize', () => this.onResizeDocument());
-    this.$burgerButton.on('click', () => this.onBurgerButtonClick());
+    $(document).on('resize', () => this.handleDocumentResize());
+    this.$burgerButton.on('click', () => this.handleBurgerButtonClick());
   }
 
-  onResizeDocument() {
+  handleDocumentResize() {
     if (this.$burgerButton.is(':hidden')) {
       this.$info.show();
     }
   }
 
-  onBurgerButtonClick() {
-    this.$burgerButton.toggleClass('header__burger_active');
+  handleBurgerButtonClick() {
+    this.$burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
     this.$info.toggle();
   }
 }
 
 $(() => {
-  $('.js-header').map((index, node) => new Header($(node)));
+  $(HEADER_SELECTOR).map((index, node) => new Header($(node)));
 });

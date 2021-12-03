@@ -1,25 +1,25 @@
-@import '../../styles/variables.scss';
-@import '../../styles/fonts.scss';
+@import '../../styles/variables';
 
 .header {
   display: flex;
   justify-content: center;
-  min-height: 70px;
+  min-height: 4.375rem;
   background-color: white;
-  box-shadow: 0px 10px 20px rgba($dark, .05);
-  $burgerSize: 40px;
-  $burgerLineHeight: 40px / 7;
+  box-shadow: 0 0.625rem 1.25rem rgba($dark, 5%);
+
+  $class: &;
+  $burger-size: 2.5rem;
+  $burger-line-height: $burger-size / 7;
 
   @media (max-width: $md) {
     & {
-      padding: 20px;
+      padding: 1.25rem;
     }
   }
 
-
   &__burger {
-    width: $burgerSize;
-    height: $burgerSize;
+    width: $burger-size;
+    height: $burger-size;
     cursor: pointer;
     background: none;
     border: none;
@@ -27,26 +27,26 @@
     display: none;
 
     &:hover:not(&_active) {
-      & .header__burger-box::before {
-        top: -$burgerLineHeight * 3;
+      & #{$class}__burger-box::before {
+        top: -$burger-line-height * 3;
       }
 
-      & .header__burger-box::after {
-        bottom: -$burgerLineHeight * 3;
+      & #{$class}__burger-box::after {
+        bottom: -$burger-line-height * 3;
       }
     }
 
     &_active {
-      .header__burger-box {
+      #{$class}__burger-box {
         background: transparent;
       }
 
-      .header__burger-box::before {
+      #{$class}__burger-box::before {
         top: 0;
         transform: rotateZ(45deg);
       }
-      
-      .header__burger-box::after {
+
+      #{$class}__burger-box::after {
         bottom: 0;
         transform: rotateZ(-45deg);
       }
@@ -63,28 +63,28 @@
   &__burger-box {
     position: relative;
     display: inline-block;
-    width: $burgerSize;
-    height: $burgerLineHeight;
+    width: $burger-size;
+    height: $burger-line-height;
     background: $purple;
-    transition: all .2s ease-out;
-    
+    transition: all 0.2s ease-out;
+
     &::before,
     &::after {
       content: '';
-      width: $burgerSize;
-      height: $burgerLineHeight;
+      width: $burger-size;
+      height: $burger-line-height;
       background: $purple;
       position: absolute;
       left: 0;
-      transition: all .2s ease-out;
+      transition: all 0.2s ease-out;
     }
 
     &::before {
-      top: -$burgerLineHeight * 2;
+      top: -$burger-line-height * 2;
     }
 
     &::after {
-      bottom: -$burgerLineHeight * 2;
+      bottom: -$burger-line-height * 2;
     }
   }
 
@@ -93,7 +93,7 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    max-width: 1160px;
+    max-width: 72.5rem;
     width: 100%;
 
     @media (max-width: $md) {
@@ -107,8 +107,8 @@
   }
 
   &__logo {
-    width: 105px;
-    height: 40px;
+    width: 6.5625rem;
+    height: 2.5rem;
   }
 
   &__info {
@@ -125,17 +125,17 @@
   }
 
   &__vertical-line {
-    height: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-right: 1px solid rgba($dark, .1);  
-    
+    height: 1.875rem;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    border-right: 0.0625rem solid rgba($dark, 10%);
+
     @media (max-width: $md) {
       & {
         height: 0;
         width: 100%;
-        margin: 0px;
-        border-top: 1px solid rgba($dark, .1);
+        margin: 0;
+        border-top: 0.0625rem solid rgba($dark, 10%);
       }
     }
   }
@@ -146,17 +146,17 @@
     @media (max-width: $md) {
       & {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 1.25rem;
       }
     }
   }
 
   &__buttons {
-    margin-left: 20px;
+    margin-left: 1.25rem;
     display: grid;
     grid-template-columns: auto auto;
-    grid-column-gap: 20px; 
-    
+    grid-column-gap: 1.25rem;
+
     @media (max-width: $md) {
       & {
         display: flex;

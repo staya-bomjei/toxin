@@ -13,10 +13,14 @@ include ../logo/logo
 mixin header(options)
   if !options
     - options = {};
-  
+
   -
-    const { menuItems = [], loggedIn = false, userName } = options;
-  
+    const {
+      menuItems = [],
+      loggedIn = false,
+      userName
+    } = options;
+
   .js-header.header
     .header__inner-wrapper
       .header__home

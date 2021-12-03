@@ -20,5 +20,6 @@ import '../../components/room-thumbnail/RoomThumbnail';
 import '../../components/sign-in/sign-in';
 import '../../components/sign-up/sign-up';
 import '../../components/menu/menu';
+import '../../components/header/header';
 
 import './test-page.scss';
