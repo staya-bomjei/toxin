@@ -85,7 +85,7 @@ class Pagination {
 
   updateText(position) {
     const from = (position - 1) * this.itemsPerPage + 1;
-    const to = Math.min(from + this.itemsPerPage, this.itemsCounter);
+    const to = Math.min(from + this.itemsPerPage - 1, this.itemsCounter);
     const exp = Math.trunc(Math.log10(this.itemsCounter));
 
     this.$text.html(`${from} – ${to} из ${10 ** exp}+ ${this.postfix}`);
