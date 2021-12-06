@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+
+.index {
+  display: grid;
+  grid-row-gap: 2.5rem;
+  padding: 8rem;
+
+  &__ui-list,
+  &__pages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    @extend %title;
+
+    text-decoration: none;
+    position: relative;
+
+    &::after {
+      @extend %material-icons;
+
+      content: 'star_border';
+      font-size: 1.5rem;
+      position: absolute;
+      top: calc((100% - 1.5rem) / 2);
+      left: -1.5rem;
+      display: none;
+    }
+
+    &:hover {
+      opacity: 0.5;
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  &__ui-list &__link {
+    color: $purple;
+  }
+
+  &__pages-list &__link {
+    color: $green;
+
+    &::after {
+      content: 'star';
+    }
+  }
+}

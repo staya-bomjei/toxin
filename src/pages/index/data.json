@@ -1,0 +1,46 @@
+{
+  "uiList": [
+    {
+      "text": "Colors & Type",
+      "href": "error-page"
+    },
+    {
+      "text": "Form Elements",
+      "href": "error-page"
+    },
+    {
+      "text": "Cards",
+      "href": "error-page"
+    },
+    {
+      "text": "Headers & Footers",
+      "href": "error-page"
+    },
+    {
+      "text": "Test Page",
+      "href": "test-page"
+    }
+  ],
+  "pagesList": [
+    {
+      "text": "Landing Page",
+      "href": "error-page"
+    },
+    {
+      "text": "Search room",
+      "href": "error-page"
+    },
+    {
+      "text": "Room details",
+      "href": "error-page"
+    },
+    {
+      "text": "Registration",
+      "href": "error-page"
+    },
+    {
+      "text": "Sign In",
+      "href": "error-page"
+    }
+  ]
+}

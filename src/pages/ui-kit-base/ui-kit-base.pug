@@ -1,0 +1,10 @@
+extends ../base/base
+
+include ../../components/logo/logo
+
+append main
+  .ui-kit-base
+    .ui-kit-base__logo
+      +logo({ withText: false })
+    .ui-kit-base__page
+      block main

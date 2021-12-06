@@ -79,7 +79,7 @@ module.exports = (env) => {
     mode: 'development',
     devServer: {
       port: 4200,
-      open: '/test-page.html',
+      open: '/index.html',
     },
     ...baseConfig,
   };

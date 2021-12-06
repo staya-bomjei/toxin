@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.ui-kit-base {
+  position: relative;
+
+  &__logo {
+    position: absolute;
+    margin-top: 1.875rem;
+    margin-left: 1.875rem;
+    z-index: 1000;
+  }
+}
