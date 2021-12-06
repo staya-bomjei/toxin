@@ -1,0 +1,137 @@
+extends ../ui-kit-base/ui-kit-base
+
+include ../../components/text-field/text-field
+include ../../components/dropdown/dropdown
+include ../../components/checkbox/checkbox
+include ../../components/button/button
+include ../../components/radio-button/radio-button
+include ../../components/toggle-button/toggle-button
+include ../../components/like-button/like-button
+include ../../components/rate-button/rate-button
+include ../../components/range-slider/range-slider
+include ../../components/pagination/pagination
+include ../../components/checkbox-list/checkbox-list
+include ../../components/bullet-list/bullet-list
+include ../../components/advantage/advantage
+include ../../components/comment/comment
+
+block variables
+  -
+    const title = 'Form Elements';
+    const {
+      textFields,
+      dropdowns,
+      checkboxes,
+      radioButtons,
+      toggleButtons,
+      likeButtons,
+      rateButtons,
+      rangeSlider,
+      buttons,
+      pagination,
+      checkboxLists,
+      bulletList,
+      advantageList,
+      comment,
+    } = htmlWebpackPlugin.options.getData();
+
+    // свзязывание картинок
+    comment.image = require(`./img/${comment.image}`);
+
+block main
+  .form-elements
+    .form-elements__row
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper
+          .form-elements__group-column.form-elements__group-column_gap-40
+            .form-elements__group-column
+              +text-field(textFields.default)
+              +text-field(textFields.hover)
+              +dropdown(dropdowns.summator.default)
+              +text-field(textFields.masked)
+            +dropdown(dropdowns.datepicker.splitRange)
+            .form-elements__wrapper.form-elements__wrapper_short
+              .form-elements__group-column.form-elements__group-column_gap-40
+                +dropdown(dropdowns.datepicker.filter)
+                +text-field(textFields.subscription)
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__group-column.form-elements__group-column_gap-40
+          .form-elements__wrapper.form-elements__wrapper_small
+            .form-elements__title Checkbox Buttons
+            .form-elements__group-column.form-elements__group-column_gap-10
+              each checkbox in checkboxes.defaultList
+                +checkbox(checkbox)
+          .form-elements__wrapper
+            .form-elements__title Radio Buttons
+            .form-elements__group-row
+              +radio-button(radioButtons.man)
+              +radio-button(radioButtons.woman)
+          .form-elements__wrapper
+            .form-elements__title toggle Buttons
+            .form-elements__group-column.form-elements__group-column_gap-10
+              +toggle-button(toggleButtons.checked)
+              +toggle-button(toggleButtons.unchecked)
+          .form-elements__wrapper
+            .form-elements__title like Buttons
+            .form-elements__group-row.form-elements__group-row_gap-10
+              +like-button(likeButtons.unliked)
+              +like-button(likeButtons.liked)
+          .form-elements__wrapper
+            .form-elements__title rate Buttons
+            .form-elements__group-row.form-elements__group-row_gap-10
+              +rate-button(rateButtons.four)
+              +rate-button(rateButtons.five)
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__group-column.form-elements__group-column_gap-40
+          .form-elements__wrapper.form-elements__wrapper_short
+            +range-slider(rangeSlider)
+          .form-elements__wrapper.form-elements__wrapper_small
+            .form-elements__group-column.form-elements__group-column_gap-30
+              .form-elements__group-row
+                +button(buttons.fill.default)
+                +button(buttons.fill.hovered)
+              .form-elements__group-row
+                +button(buttons.border.default)
+                +button(buttons.border.hovered)
+              .form-elements__group-row
+                +button(buttons.default.default)
+                +button(buttons.default.hovered)
+          .form-elements__wrapper
+            +button(buttons.arrow)
+          .form-elements__wrapper
+            .form-elements__title pagination
+            +pagination(pagination)
+    .form-elements__row
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper.form-elements__wrapper_short
+          +dropdown(dropdowns.default.default)
+          +dropdown(dropdowns.default.expanded)
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper
+          +dropdown(dropdowns.summator.expanded.hasNoGuests)
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper
+          +dropdown(dropdowns.summator.expanded.hasGuests)
+    .form-elements__row
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper.form-elements__wrapper_short
+          +checkbox-list(checkboxLists.default)
+          +checkbox-list(checkboxLists.expanded)
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper.form-elements__wrapper_short
+          .form-elements__title rich checkbox buttons
+          .form-elements__group-column.form-elements__group-column_gap-10
+            each rich in checkboxes.richList
+              +checkbox(rich)
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper.form-elements__wrapper_short
+          .form-elements__title bullet list
+          +bullet-list(bulletList)
+    .form-elements__row
+      .form-elements__column.form-elements__column_md-4
+        .form-elements__wrapper.form-elements__wrapper_short
+          .form-elements__group-column
+            each advantage in advantageList
+              +advantage(advantage)
+      .form-elements__column.form-elements__column_md-8
+        +comment(comment)
