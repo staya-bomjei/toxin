@@ -1,0 +1,61 @@
+{
+  "colors": [
+    {
+      "theme": "dark-100",
+      "name": "Dark Shade 100%",
+      "code": "#1f2041"
+    },
+    {
+      "theme": "dark-75",
+      "name": "Dark Shade 75%",
+      "code": "#1f2041"
+    },
+    {
+      "theme": "dark-50",
+      "name": "Dark Shade 50%",
+      "code": "#1f2041"
+    },
+    {
+      "theme": "dark-25",
+      "name": "Dark Shade 25%",
+      "code": "#1f2041"
+    },
+    {
+      "theme": "dark-5",
+      "name": "Dark Shade 5%",
+      "code": "#1f2041"
+    },
+    {
+      "theme": "purple",
+      "name": "Purple",
+      "code": "#bc9cff"
+    },
+    {
+      "theme": "green",
+      "name": "Green",
+      "code": "#6fcf97"
+    }
+  ],
+  "texts": [
+    {
+      "theme": "title",
+      "tag": "h1",
+      "text": "This one is the sub-section or widget title"
+    },
+    {
+      "theme": "item-title",
+      "tag": "h2",
+      "text": "Next one is the item title inside widgets"
+    },
+    {
+      "theme": "label",
+      "tag": "h3",
+      "text": "this is a label or cta text"
+    },
+    {
+      "theme": "default-text",
+      "tag": "body",
+      "text": "This is the body text which is used for most of the design, like paragraphs, lists, etc."
+    }
+  ]
+}

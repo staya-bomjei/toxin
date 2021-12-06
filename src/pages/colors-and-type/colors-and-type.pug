@@ -1,0 +1,19 @@
+extends ../ui-kit-base/ui-kit-base
+
+include ../../components/color-sample/color-sample
+include ../../components/text-sample/text-sample
+
+block variables
+  -
+    const title = 'Colors & Type';
+    const { colors, texts } = htmlWebpackPlugin.options.getData();
+
+block main
+  .colors-and-type
+    .colors-and-type__color-samples-list
+      each color in colors
+        +color-sample(color)
+    .colors-and-type__text-samples-wrapper
+      .colors-and-type__text-samples-list
+        each text in texts
+          +text-sample(text)

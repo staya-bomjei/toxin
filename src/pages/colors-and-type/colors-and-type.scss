@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+.colors-and-type {
+  padding: 9.0625rem 8.875rem 9.0625rem 9.375rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &__color-samples-list {
+    display: grid;
+    grid-row-gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &__text-samples-wrapper {
+    max-width: 27.5rem;
+  }
+
+  &__text-samples-list {
+    display: grid;
+    grid-row-gap: 3.125rem;
+  }
+}
