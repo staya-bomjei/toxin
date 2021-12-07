@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.headers-and-footers {
+  padding: 8.75rem 0;
+  display: grid;
+  grid-row-gap: 2.5rem;
+
+  &__center-wrapper {
+    width: 48rem;
+    margin: 0 auto;
+  }
+}

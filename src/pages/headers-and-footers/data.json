@@ -1,0 +1,176 @@
+{
+  "header": {
+    "loggedIn": {
+      "loggedIn": true,
+      "userName": "Юлий Цезарь",
+      "menuItems": [
+        {
+           "text": "О Нас",
+           "isBold": true,
+           "href": "error-page"
+        },
+        {
+           "text": "Услуги",
+           "href": "error-page",
+           "submenu": [
+            {
+               "text": "Услуга 1",
+               "href": "error-page"
+            },
+            {
+               "text": "Услуга 2",
+               "href": "error-page"
+            },
+            {
+               "text": "Услуга 3",
+               "href": "error-page"
+            }
+          ]
+        },
+        {
+           "text": "Вакансии",
+           "href": "error-page"
+        },
+        {
+           "text": "Новости",
+           "href": "error-page"
+        },
+        {
+           "text": "Соглашения",
+           "href": "error-page",
+           "submenu": [
+            {
+               "text": "Соглашение 1",
+               "href": "error-page"
+            },
+            {
+               "text": "Соглашение 2",
+               "href": "error-page"
+            },
+            {
+               "text": "Соглашение 3",
+               "href": "error-page"
+            }
+          ]
+        }
+      ]
+    },
+    "notLoggedIn": {
+      "loggedIn": false,
+      "menuItems": [
+        {
+           "text": "О Нас",
+           "isBold": true,
+           "href": "error-page"
+        },
+        {
+           "text": "Услуги",
+           "href": "error-page",
+           "submenu": [
+            {
+               "text": "Услуга 1",
+               "href": "error-page"
+            },
+            {
+               "text": "Услуга 2",
+               "href": "error-page"
+            },
+            {
+               "text": "Услуга 3",
+               "href": "error-page"
+            }
+          ]
+        },
+        {
+           "text": "Вакансии",
+           "href": "error-page"
+        },
+        {
+           "text": "Новости",
+           "href": "error-page"
+        },
+        {
+           "text": "Соглашения",
+           "href": "error-page",
+           "submenu": [
+            {
+               "text": "Соглашение 1",
+               "href": "error-page"
+            },
+            {
+               "text": "Соглашение 2",
+               "href": "error-page"
+            },
+            {
+               "text": "Соглашение 3",
+               "href": "error-page"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "footer": {
+    "default": {
+      "items": [
+        {
+          "text": "навигация",
+          "links": [
+            { "text": "О нас", "href": "error-page" },
+            { "text": "Новости", "href": "error-page" },
+            { "text": "Служба поддержки", "href": "error-page" },
+            { "text": "Услуги", "href": "error-page" }
+          ]
+        },
+        {
+          "text": "о нас",
+          "links": [
+            { "text": "О сервисе", "href": "error-page" },
+            { "text": "Наша команда", "href": "error-page" },
+            { "text": "Вакансии", "href": "error-page" },
+            { "text": "Инвесторы", "href": "error-page" }
+          ]
+        },
+        {
+          "text": "служба поддержки",
+          "links": [
+            { "text": "Соглашения", "href": "error-page" },
+            { "text": "Сообщества", "href": "error-page" },
+            { "text": "Связь с нами", "href": "error-page" }
+          ]
+        }
+      ]
+    },
+    "mobile": {
+      "isMobile": true,
+      "items": [
+        {
+          "text": "навигация",
+          "links": [
+            { "text": "О нас", "href": "error-page" },
+            { "text": "Новости", "href": "error-page" },
+            { "text": "Служба поддержки", "href": "error-page" },
+            { "text": "Услуги", "href": "error-page" }
+          ]
+        },
+        {
+          "text": "о нас",
+          "links": [
+            { "text": "О сервисе", "href": "error-page" },
+            { "text": "Наша команда", "href": "error-page" },
+            { "text": "Вакансии", "href": "error-page" },
+            { "text": "Инвесторы", "href": "error-page" }
+          ]
+        },
+        {
+          "text": "служба поддержки",
+          "links": [
+            { "text": "Соглашения", "href": "error-page" },
+            { "text": "Сообщества", "href": "error-page" },
+            { "text": "Связь с нами", "href": "error-page" }
+          ]
+        }
+      ]
+    }
+  }
+}

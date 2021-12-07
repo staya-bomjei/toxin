@@ -1,0 +1,20 @@
+extends ../ui-kit-base/ui-kit-base
+
+include ../../components/header/header
+include ../../components/footer/footer
+
+block variables
+  -
+    const title = 'Headers & Footers';
+    const {
+      header,
+      footer
+    } = htmlWebpackPlugin.options.getData();
+
+block main
+  .headers-and-footers
+    +header(header.loggedIn)
+    +header(header.notLoggedIn)
+    +footer(footer.default)
+    .headers-and-footers__center-wrapper
+      +footer(footer.mobile)
