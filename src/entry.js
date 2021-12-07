@@ -6,4 +6,5 @@ import './styles/fonts.scss';
 import './pages/index';
 import './pages/colors-and-type/colors-and-type';
 import './pages/form-elements/form-elements';
+import './pages/cards/cards';
 import './pages/test-page/test-page';

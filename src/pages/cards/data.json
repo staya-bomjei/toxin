@@ -1,0 +1,59 @@
+{
+  "calendar": {
+    "type": "datepicker",
+    "selected": ["2021-12-19", "2021-12-23"],
+    "isRange": true,
+    "isContentOnly": true
+  },
+  "roomThumbnails": [
+    {
+      "rate": 5,
+      "number": 888,
+      "price": 9990,
+      "reviews": 145,
+      "type": "люкс",
+      "images": [
+        {
+          "path": "thumbnail1.png",
+          "alt": "thumbnail1"
+        },
+        {
+          "path": "thumbnail2.png",
+          "alt": "thumbnail2"
+        },
+        {
+          "path": "thumbnail3.png",
+          "alt": "thumbnail3"
+        },
+        {
+          "path": "thumbnail4.png",
+          "alt": "thumbnail4"
+        }
+      ]
+    },
+    {
+      "rate": 4,
+      "number": 840,
+      "price": 9990,
+      "reviews": 65,
+      "images": [
+        {
+          "path": "thumbnail2.png",
+          "alt": "thumbnail2"
+        },
+        {
+          "path": "thumbnail1.png",
+          "alt": "thumbnail1"
+        },
+        {
+          "path": "thumbnail3.png",
+          "alt": "thumbnail3"
+        },
+        {
+          "path": "thumbnail4.png",
+          "alt": "thumbnail4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+
+.cards {
+  padding: 9.375rem 8.75rem 8.75rem;
+
+  $width: 23.75rem;
+  $short-width: 20rem;
+  $small-width: 16.875rem;
+  $row-gap: 0;
+  $column-gap: 1.25rem;
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -$column-gap;
+
+    &:not(:last-child) {
+      padding-bottom: $row-gap - $column-gap;
+    }
+  }
+
+  &__column {
+    flex-grow: auto;
+    margin: $column-gap;
+  }
+
+  &__wrapper {
+    min-width: $width;
+
+    &_short {
+      min-width: 0;
+      max-width: $short-width;
+    }
+
+    &_small {
+      min-width: 0;
+      max-width: $small-width;
+    }
+  }
+
+  &__group-column {
+    display: grid;
+    grid-row-gap: 2.5rem;
+  }
+}

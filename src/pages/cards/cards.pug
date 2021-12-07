@@ -1,0 +1,45 @@
+extends ../ui-kit-base/ui-kit-base
+
+include ../../components/find-number/find-number
+include ../../components/sign-up/sign-up
+include ../../components/reservation/reservation
+include ../../components/sign-in/sign-in
+include ../../components/dropdown/dropdown
+include ../../components/room-thumbnail/room-thumbnail
+
+block variables
+  -
+    const title = 'Cards';
+    const {
+      calendar,
+      roomThumbnails
+    } = htmlWebpackPlugin.options.getData();
+
+    // получение ссылок на изображения в собранном проекте
+    roomThumbnails.forEach((roomThumbnail) => {
+      roomThumbnail.images.forEach((image) => {
+        image.path = require(`./img/${image.path}`);
+      });
+    });
+
+block main
+  .cards
+    .cards__row
+      .cards__column.cards__column_md-4
+        .cards__wrapper
+          .cards__group-column.cards__group-column_gap-40
+            +find-number()
+            +sign-up()
+      .cards__column.cards__column_md-4
+        .cards__wrapper
+          .cards__group-column.cards__group-column_gap-40
+            +reservation()
+            +sign-in()
+      .cards__column.cards__column_md-4
+        .cards__wrapper.cards__wrapper_short
+          .cards__group-column.cards__group-column_gap-40
+            +dropdown(calendar)
+            .cards__wrapper.cards__wrapper_small
+              .cards__group-column.cards__group-column_gap-40
+                each roomThumbnail in roomThumbnails
+                  +room-thumbnail(roomThumbnail)
