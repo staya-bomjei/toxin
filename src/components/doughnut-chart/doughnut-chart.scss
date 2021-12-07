@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+
+.doughnut-chart {
+  $chart-size: 7.5rem;
+  $dot-size: 0.625rem;
+  $dot-margin: 0.3125rem;
+
+  display: grid;
+  grid-template-columns: $chart-size auto;
+  grid-column-gap: 1.875rem;
+
+  &__chart-wrapper {
+    position: relative;
+    width: $chart-size;
+    height: $chart-size;
+  }
+
+  &__total {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__counter {
+    @extend %title;
+  }
+
+  &__votes {
+    @extend %label;
+  }
+
+  &__counter,
+  &__votes {
+    color: $purple;
+    text-align: center;
+  }
+
+  &__legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: $dot-size + $dot-margin;
+    align-self: end;
+  }
+
+  &__label {
+    @extend %default-text;
+
+    position: relative;
+  }
+
+  &__dot {
+    position: absolute;
+    content: '';
+    width: $dot-size;
+    height: $dot-size;
+    border-radius: 50%;
+    left: -$dot-margin;
+    top: 50%;
+    transform: translate(-100%, -50%);
+  }
+}
