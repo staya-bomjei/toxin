@@ -8,4 +8,3 @@ import './pages/colors-and-type/colors-and-type';
 import './pages/form-elements/form-elements';
 import './pages/cards/cards';
 import './pages/headers-and-footers/headers-and-footers';
-import './pages/test-page/test-page';
