@@ -93,7 +93,7 @@
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
-    max-width: 72.5rem;
+    max-width: $content-width;
     width: 100%;
 
     @media (max-width: $md) {

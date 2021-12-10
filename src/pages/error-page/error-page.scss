@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.error-page {
+  max-width: $content-width;
+  margin: 0 auto;
+
+  &__message {
+    @extend %title;
+
+    color: red;
+  }
+}

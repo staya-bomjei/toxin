@@ -15,7 +15,7 @@
   }
 
   &__inner-wrapper {
-    max-width: 1160px;
+    max-width: $content-width;
     width: 100%;
 
     &:first-child {
