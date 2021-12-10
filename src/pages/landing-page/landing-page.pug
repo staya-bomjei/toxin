@@ -1,0 +1,26 @@
+extends ../page-base/page-base
+
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/find-number/find-number
+
+append variables
+  -
+    const title = 'Landing page';
+    const { header, footer } = htmlWebpackPlugin.options.getData();
+
+append header
+  +header(header)
+
+append main
+  .landing-page
+    .landing-page__content
+      +find-number()
+      .landing-page__label
+        | Лучшие номера для вашей работы,
+        br
+        | отдыха и просто вдохновения
+
+
+append footer
+  +footer(footer)

@@ -10,3 +10,4 @@ import './pages/cards/cards';
 import './pages/headers-and-footers/headers-and-footers';
 
 import './pages/error-page/error-page';
+import './pages/landing-page/landing-page';
