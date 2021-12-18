@@ -2,10 +2,7 @@
   options.text - текст кнопки
   options.isChecked - checked свойство кнопки
   options.valueChanged - название триггера, который будет запускаться при изменении состояния
-mixin toggle-button(options)
-  if !options
-    - options = {};
-
+mixin toggle-button(options = {})
   -
     const {
       text = '',

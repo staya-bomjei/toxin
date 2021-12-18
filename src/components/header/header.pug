@@ -10,10 +10,7 @@ include ../logo/logo
   options.menuItems[0].submenu - массив подменю
   options.loggedIn - если true, то будет отображено имя options.userName, иначе кнопки для входа и регистрации
   options.userName - имя авторизованного пользователя
-mixin header(options)
-  if !options
-    - options = {};
-
+mixin header(options = {})
   -
     const {
       menuItems = [],

@@ -5,10 +5,7 @@
   options.size - размер кнопки: 'default' | 'small'
   options.htmlType - html type свойство: 'button' | 'submit' | 'reset', по умолчанию 'button'
   options.isHovered - если true, то кнопка будет всегда hovered
-mixin button(options)
-  if !options
-    - options = {};
-
+mixin button(options = {})
   -
     const {
       text = 'click me',

@@ -7,10 +7,7 @@ include ../button/button
   options.price - строимость отеля за сутки
   options.discount - размер скидки
   options.postfix - валяютный постфикс, по умолчанию '₽'
-mixin reservation(options)
-  if !options
-    - options = {};
-
+mixin reservation(options = {})
   -
     const { 
       number = 888,

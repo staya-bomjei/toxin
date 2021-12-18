@@ -5,10 +5,7 @@
   options.text - строка заголовка слайдера
   options.note - строка заметки слайдера
   options.postfix - валютный постфикс
-mixin range-slider(options)
-  if !options
-    - options = {};
-
+mixin range-slider(options = {})
   -
     const {
       min,

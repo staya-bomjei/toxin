@@ -7,10 +7,7 @@
   options.items[0].color.stops - массив стопов градиента
   options.items[0].color.stops[0].percent - процент стопа градиента
   options.items[0].color.stops[0].color - строка цвета стопа градиента
-mixin doughnut-chart(options)
-  if !options
-    - options = {};
-
+mixin doughnut-chart(options = {})
   -
     const { items } = options;
     const total = items.reduce((sum, item) => sum + item.counter, 0);

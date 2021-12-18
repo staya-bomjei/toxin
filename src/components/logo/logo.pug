@@ -1,10 +1,7 @@
 //-
   options.href - ссылка, на которую ведёт лого
   options.withText - если true, то лого будет отображено с текстом
-mixin logo(options)
-  if !options
-    - options = {};
-
+mixin logo(options = {})
   -
     const {
       href = 'index',

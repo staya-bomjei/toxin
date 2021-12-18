@@ -1,11 +1,7 @@
 //-
   options.points - массив текстов для пунктов списка
-mixin bullet-list(options) 
-  if !options
-    - options = {};
-
-  -
-    const { points = [] } = options;
+mixin bullet-list(options = {})
+  - const { points = [] } = options;
 
   ul.bullet-list
     each point in points

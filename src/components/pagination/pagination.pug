@@ -2,10 +2,7 @@
   options.itemsCounter - сколько всего элементов в сумме, со всех страниц пагинатора
   options.itemsPerPage - сколько элементов на одной странице
   options.postfix - добавочный текст, который появляется под пагинатором после вывода текущей позиции по элементам
-mixin pagination(options)
-  if !options
-    - options = {};
-
+mixin pagination(options = {})
   -
     const {
       itemsCounter = 180,

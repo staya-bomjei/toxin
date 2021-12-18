@@ -3,10 +3,7 @@
   options.title - заголовок преимущества
   options.text - описание преимущества
   options.hasUnderline - если true, то под компонентом появится подчеркивание
-mixin advantage(options)
-  if !options
-    - options = {};
-
+mixin advantage(options = {})
   -
     const {
       icon = '',

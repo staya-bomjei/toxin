@@ -20,10 +20,7 @@ include ../button/button
   options.isContentOnly - если true, то у dropdown будет виден только контент 
   options.isExpanded - если true, то dropdown будет всегда раскрыт
   options.valueChanged - название триггера, который будет запускаться при изменении dropdown
-mixin dropdown(options)
-  if !options
-    - options = {};
-
+mixin dropdown(options = {})
   -
     const { 
       title = '',

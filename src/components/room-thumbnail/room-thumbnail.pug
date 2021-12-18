@@ -11,10 +11,7 @@ include ../rate-button/rate-button
   options.reviews - количество отзывов на номер
   options.type - тип номера (например, 'люкс')
   options.href - ссылка
-mixin room-thumbnail(options)
-  if !options
-    - options = {};
-
+mixin room-thumbnail(options = {})
   -
     const { 
       images = [],

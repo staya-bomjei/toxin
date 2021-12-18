@@ -8,10 +8,7 @@ include ../text-field/text-field
   options.items[0].links - массив ссылок
   options.items[0].links[0].text - текст ссылки
   options.items[0].links[0].href - ссылка
-mixin footer(options)
-  if !options
-    - options = {};
-
+mixin footer(options = {})
   -
     const { isMobile = false, items = [] } = options;
 

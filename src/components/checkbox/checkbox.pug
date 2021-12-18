@@ -3,10 +3,7 @@
   options.text - текст метки
   options.richTitle - если указан, то добавляется заголовок richTitle
   options.valueChanged - название триггера, который будет запускаться при изменении состояния
-mixin checkbox(options)
-  if !options
-    - options = {};
-
+mixin checkbox(options = {})
   -
     const {
       isChecked = false,

@@ -1,0 +1,84 @@
+{
+  "chart": {
+    "items": [
+      {
+        "text": "Великолепно",
+        "counter": 130,
+        "color": {
+          "direction": 180,
+          "stops": [
+            {
+              "percent": 0,
+              "color": "#FFE39C"
+            },
+            {
+              "percent": 100,
+              "color": "#FFBA9C"
+            }
+          ]
+        }
+      },
+      {
+        "text": "Пепежно",
+        "counter": 22,
+        "color": "red"
+      },
+      {
+        "text": "Реквежно",
+        "counter": 98,
+        "color": "yellow"
+      },
+      {
+        "text": "Хорошо",
+        "counter": 65,
+        "color": {
+          "direction": 180,
+          "stops": [
+            {
+              "percent": 0,
+              "color": "#6FCF97"
+            },
+            {
+              "percent": 100,
+              "color": "#66D2EA"
+            }
+          ]
+        }
+      },
+      {
+        "text": "Удовлетворительно",
+        "counter": 65,
+        "color": {
+          "direction": 180,
+          "stops": [
+            {
+              "percent": 0,
+              "color": "#BC9CFF"
+            },
+            {
+              "percent": 100,
+              "color": "#8BA4F9"
+            }
+          ]
+        }
+      },
+      {
+        "text": "Разочарован",
+        "counter": 0,
+        "color": {
+          "direction": 180,
+          "stops": [
+            {
+              "percent": 0,
+              "color": "#919191"
+            },
+            {
+              "percent": 100,
+              "color": "#3D4975"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,12 +1,8 @@
 //-
   options.counter - количество звёздочек
   options.rate - число рейтинга (не может быть больше counter)
-mixin rate-button(options)
-  if !options
-    - options = {};
-
-  -
-    const { counter = 5, rate = 0 } = options;
+mixin rate-button(options = {})
+  - const { counter = 5, rate = 0 } = options;
 
   .rate-button.js-rate-button(data-rate = rate)
     - for (let i = 0; i < counter; i++)

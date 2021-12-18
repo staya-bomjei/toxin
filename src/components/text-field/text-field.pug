@@ -5,10 +5,7 @@
   options.value - изначальное значение текстового поля
   options.type - тип поля ввода: 'default' | 'mask' | 'subscription'
   options.isHovered - если true, то элемент всегда будет отображаться в состоянии hovered
-mixin text-field(options)
-  if !options
-    - options = {};
-
+mixin text-field(options = {})
   -
     const {
       title = '',

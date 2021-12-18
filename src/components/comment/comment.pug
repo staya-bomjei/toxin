@@ -7,10 +7,7 @@ include ../like-button/like-button
   options.image - путь к картинке профиля (путь должен быть до картинки уже собранного проекта,
   добиться этого можно обернув путь к картинке в require)
   options.likes - количество поставленных лайков
-mixin comment(options)
-  if !options
-    - options = {};
-
+mixin comment(options = {})
   -
     const {
       text = '',
