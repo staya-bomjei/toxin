@@ -6,12 +6,18 @@
   align-items: flex-start;
   user-select: none;
 
+  $class: &;
   $marker-width: 2.5rem;
   $marker-height: 1.25rem;
   $center-size: 0.75rem;
 
+  &__input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
   &__mark {
-    flex-grow: 0;
     flex-shrink: 0;
     height: $marker-height;
     width: $marker-width;
@@ -40,12 +46,14 @@
     cursor: pointer;
   }
 
-  &_checked &__mark {
-    border-color: $purple;
+  & &__input:checked {
+    ~ #{$class}__mark {
+      border-color: $purple;
 
-    &::after {
-      left: 1.4375rem;
-      background-image: $primary-gradient;
+      &::after {
+        left: 1.4375rem;
+        background-image: $primary-gradient;
+      }
     }
   }
 }

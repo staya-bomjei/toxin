@@ -7,6 +7,7 @@
   cursor: pointer;
   user-select: none;
 
+  $class: &;
   $text-margin: 0.625rem;
   $marker-size: 1.25rem;
   $center-size: 0.75rem;
@@ -20,8 +21,6 @@
   }
 
   &__mark {
-    box-sizing: border-box;
-    flex-grow: 0;
     flex-shrink: 0;
     height: $marker-size;
     width: $marker-size;
@@ -48,15 +47,17 @@
     margin-left: $text-margin;
   }
 
-  & &__input:checked ~ &__text {
-    color: rgba($dark, 75%);
-  }
+  & &__input:checked {
+    ~ #{$class}__text {
+      color: rgba($dark, 75%);
+    }
 
-  & &__input:checked ~ &__mark {
-    border-color: $purple;
+    ~ #{$class}__mark {
+      border-color: $purple;
 
-    &::after {
-      display: block;
+      &::after {
+        display: block;
+      }
     }
   }
 }
