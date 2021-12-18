@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import '../checkbox/Checkbox';
+import '../checkbox/checkbox';
 
 import './checkbox-list.scss';
 
