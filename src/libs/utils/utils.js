@@ -1,9 +1,7 @@
 function choiceCountable(counter, countables) {
-  if (counter === 1) {
-    return countables[0];
-  }
+  const isTeenCounter = counter > 10 && counter < 20;
 
-  if (counter > 10 && counter < 20) {
+  if (isTeenCounter) {
     return countables[2];
   }
 
