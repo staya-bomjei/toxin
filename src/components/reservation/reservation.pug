@@ -24,7 +24,7 @@ mixin reservation(options = {})
       { text: 'младенцы', counter: 0 },
     ];
 
-    const toCurrency = (number) => `${number.toLocaleString('ru')}${postfix}`;
+    const { makeCurrency } = require('../../libs/utils/utils.js');
 
   form.reservation
     .reservation__info
@@ -33,8 +33,9 @@ mixin reservation(options = {})
         span.reservation__number= number
         span.reservation__type= type
       span.reservation__price
-        strong= toCurrency(price)
-        span &nbsp;в сутки
+        strong.reservation__price-value= makeCurrency(price, postfix)
+        span &nbsp;
+        span.reservation__price-per-day в сутки
     .reservation__datepicker
       +dropdown({ 
         title: ['прибытие', 'выезд'], 
@@ -53,14 +54,14 @@ mixin reservation(options = {})
         countables: ['гость', 'гостя', 'гостей'],
       })
     .reservation__calculator
-      .reservation__rent= `${toCurrency(price)} x 4 суток`
+      .reservation__rent= `${makeCurrency(price, postfix)} x 4 суток`
       .reservation__rent-total 39 960₽
-      .reservation__discount= `Сбор за услуги: скидка ${toCurrency(discount)}`
+      .reservation__discount= `Сбор за услуги: скидка ${makeCurrency(discount, postfix)}`
       span.reservation__i i
       .reservation__discount-total 0₽
       .reservation__additional Сбор за дополнительные услуги
       span.reservation__i i
-      .reservation__additional-total= toCurrency(additionals)
+      .reservation__additional-total= makeCurrency(additionals, postfix)
     .reservation__total
       | Итого
       span.reservation__dashed-underline

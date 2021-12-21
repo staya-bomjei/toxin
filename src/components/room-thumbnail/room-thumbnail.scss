@@ -116,19 +116,6 @@
     text-decoration: none;
   }
 
-  &__price-per-day,
-  &__reviews {
-    @extend %default-text;
-
-    color: rgba($dark, 50%);
-  }
-
-  &__number-info,
-  &__price-per-day {
-    display: flex;
-    align-items: baseline;
-  }
-
   &__n {
     @extend %item-title;
 
@@ -146,6 +133,17 @@
     color: $purple;
     display: inline-block;
     margin-left: 0.0625rem;
+  }
+
+  &__price,
+  &__reviews {
+    @extend %default-text;
+
+    color: rgba($dark, 50%);
+  }
+
+  &__price-per-day {
+    font-size: 0.75rem;
   }
 
   &__underline {

@@ -4,7 +4,7 @@
   @extend %form;
 
   display: grid;
-  grid-row-gap: 1.25rem;
+  grid-row-gap: 1.3125rem;
   max-width: 23.75rem;
 
   &__title {
@@ -32,10 +32,8 @@
   }
 
   &__label {
-    @extend %label;
+    @extend %default-text;
 
-    text-transform: none;
-    font-weight: normal;
-    color: $dark;
+    color: black;
   }
 }

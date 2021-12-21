@@ -14,7 +14,10 @@
   }
 
   &__number-info {
+    display: inline-flex;
+    align-items: baseline;
     text-decoration: none;
+    padding-top: 0.125rem;
   }
 
   &__n {
@@ -37,19 +40,20 @@
   }
 
   &__price {
-    @extend %label;
+    @extend %default-text;
+  }
 
-    text-transform: none;
-    font-weight: normal;
-    color: rgba($dark, 50%);
+  &__price-per-day {
+    font-size: 0.75rem;
   }
 
   &__calculator {
     @extend %default-text;
 
+    line-height: 1.125rem;
     display: grid;
     grid-template-columns: 1fr 1.25rem 5rem;
-    grid-row-gap: 0.625rem;
+    grid-row-gap: 0.9375rem;
   }
 
   &__rent {

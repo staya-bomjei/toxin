@@ -43,7 +43,9 @@
   &__text {
     @extend %default-text;
 
+    display: inline-block;
     color: rgba($dark, 50%);
+    line-height: 1.125rem;
     margin-left: $text-margin;
   }
 

@@ -55,7 +55,12 @@ function timeAgo(dateString) {
   return buildSentence(years, ['год', 'года', 'лет']);
 }
 
+function makeCurrency(number, postfix = '', locale = 'ru') {
+  return `${number.toLocaleString(locale)}${postfix}`;
+}
+
 module.exports = {
   choiceCountable,
   timeAgo,
+  makeCurrency,
 };

@@ -8,6 +8,7 @@ include ../rate-button/rate-button
   options.rate - оценка компонента
   options.number - номер комнаты в отеле
   options.price - стоимость номера за день
+  options.postfix - валяютный постфикс, по умолчанию '₽'
   options.reviews - количество отзывов на номер
   options.type - тип номера (например, 'люкс')
   options.href - ссылка
@@ -18,11 +19,14 @@ mixin room-thumbnail(options = {})
       selected = 0,
       rate = 5,
       number = 0,
-      price = 0, 
+      price = 0,
+      postfix = '₽',
       reviews = 0,
       type = '',
       href = 'error-page',
     } = options;
+
+    const { makeCurrency } = require('../../libs/utils/utils.js');
 
   .room-thumbnail.js-room-thumbnail(
     data-selected = selected
@@ -44,12 +48,12 @@ mixin room-thumbnail(options = {})
     .room-thumbnail__info
       .room-thumbnail__row
         a.room-thumbnail__number-info(href = `${href}.html`)
-          span.room-thumbnail__n= '№'
+          span.room-thumbnail__n №&nbsp;
           span.room-thumbnail__number= number
           span.room-thumbnail__type= type
-        .room-thumbnail__price-per-day
-          strong.room-thumbnail__price.js-room-thumbnail__price
-          span &nbsp;в сутки
+        .room-thumbnail__price
+          strong.room-thumbnail__price-value= makeCurrency(price, postfix)
+          span.room-thumbnail__price-per-day &nbsp;в сутки
       .room-thumbnail__underline
       .room-thumbnail__row
         +rate-button({ rate })

@@ -30,15 +30,14 @@
     #{$class}__dropdown {
       flex-grow: 1;
 
-      &:first-of-type {
+      &:first-child {
         margin-right: 1.25rem;
       }
     }
   }
 
   &__input-box {
-    box-sizing: border-box;
-    height: 2.75rem;
+    min-height: 2.75rem;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -54,8 +53,7 @@
     outline: none;
     border: none;
     cursor: pointer;
-    margin-left: 0.875rem;
-    margin-right: 2.6875rem;
+    margin: 0 2.6875rem 0.125rem 0.875rem;
     padding: 0;
   }
 

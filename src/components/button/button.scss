@@ -63,6 +63,12 @@
     }
   }
 
+  &_bordered,
+  &_arrow,
+  &_filled {
+    min-width: 6.1875rem;
+  }
+
   &:hover,
   &_hovered {
     color: rgba($dark, 50%);

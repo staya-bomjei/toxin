@@ -55,7 +55,7 @@ export default class MyAirDatepicker {
           onClick: (dp) => this.onClearCalendarClick(dp),
         },
         {
-          content: 'принять',
+          content: 'применить',
           className: 'accept',
           onClick: () => this.onAcceptButtonClick(),
         },
