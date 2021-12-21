@@ -14,10 +14,20 @@
 
   &__text-samples-wrapper {
     max-width: 27.5rem;
+    margin-right: 0.75rem;
   }
 
   &__text-samples-list {
-    display: grid;
-    grid-row-gap: 3.125rem;
+    display: flex;
+    flex-direction: column;
+
+    & > *:not(:first-child) {
+      margin-top: 3.25rem;
+
+      &:last-child {
+        margin-top: 3rem;
+        max-width: 23rem;
+      }
+    }
   }
 }
