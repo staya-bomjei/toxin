@@ -10,10 +10,6 @@
 
   $class: &;
 
-  @media (max-width: $md) {
-    padding: 7.5rem 0;
-  }
-
   &__inner-wrapper {
     max-width: $content-width;
     width: 100%;
@@ -22,25 +18,12 @@
       display: grid;
       grid-template-columns: 1fr 2.45fr 1fr;
       margin: 100px 0;
-
-      @media (max-width: $md) {
-        display: flex;
-        justify-content: center;
-        margin: 0;
-      }
     }
   }
 
-  &__underline {
-    width: 100%;
-    border-bottom: 0.0625rem solid rgba($dark, 10%);
-
-    @media (max-width: $md) {
-      display: none;
-    }
-  }
-
-  &__list {
+  &__about,
+  &__list,
+  &__subscription {
     display: flex;
     flex-direction: column;
 
@@ -49,24 +32,29 @@
     }
   }
 
+  &__about-text,
+  &__subscription-text {
+    @extend %default-text;
+  }
+
+  &__underline {
+    width: 100%;
+    border-bottom: 0.0625rem solid rgba($dark, 10%);
+  }
+
   &__navigation {
     display: flex;
     justify-content: space-between;
-    margin-left: 2.5rem;
-    margin-right: 3.125rem;
+    margin: 0.25rem 3.125rem 0 2.5rem;
 
-    #{$class}__list:last-child {
-      margin-left: calc(10%);
-    }
+    #{$class}__list {
+      &:last-child {
+        margin-left: calc(10%);
+      }
 
-    @media (max-width: $md) {
-      display: none;
-    }
-  }
-
-  &__subscription {
-    @media (max-width: $md) {
-      display: none;
+      &:nth-child(2) {
+        margin-left: 1.125rem;
+      }
     }
   }
 
@@ -78,16 +66,12 @@
     @extend %default-text;
 
     text-decoration: none;
+    line-height: 1.125rem;
     color: rgba($dark, 50%);
   }
 
-  &__about-text,
-  &__subscription-text {
-    @extend %default-text;
-
-    @media (max-width: $md) {
-      display: none;
-    }
+  &__subscription {
+    margin-top: 0.25rem;
   }
 
   &__copyrights {
@@ -95,20 +79,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.4375rem 0;
-
-    @media (max-width: $md) {
-      flex-direction: column;
-      justify-content: center;
-      padding: 1.25rem 0 0;
-    }
   }
 
   &__copyrights-text {
     @extend %default-text;
-
-    @media (max-width: $md) {
-      margin-bottom: 1.5625rem;
-    }
   }
 
   &__media {
@@ -124,14 +98,21 @@
     height: 1.5rem;
   }
 
-  &_theme-mobile {
-    padding: 7.5rem 0;
-    max-width: 48rem;
+  @mixin mobile {
+    padding: 7.5rem 1rem;
+    margin: 0 auto;
+    width: 100%;
 
     #{$class}__inner-wrapper:first-child {
       display: flex;
       justify-content: center;
       margin: 0;
+    }
+
+    #{$class}__about {
+      & > * {
+        margin-bottom: 0;
+      }
     }
 
     #{$class}__underline,
@@ -148,7 +129,16 @@
     }
 
     #{$class}__copyrights-text {
-      margin-bottom: 1.5625rem;
+      margin-bottom: 1.25rem;
+      text-align: center;
     }
+  }
+
+  &_theme-mobile {
+    @include mobile;
+  }
+
+  @media (max-width: $md) {
+    @include mobile;
   }
 }

@@ -66,7 +66,9 @@
   &_bordered,
   &_arrow,
   &_filled {
-    min-width: 6.1875rem;
+    &:not(#{$class}_size-small) {
+      min-width: 6.1875rem;
+    }
   }
 
   &:hover,
