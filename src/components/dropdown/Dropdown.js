@@ -18,6 +18,7 @@ const MINUS_SELECTOR = '.js-dropdown__button-minus';
 const COUNTER_SELECTOR = '.js-dropdown__counter';
 const PLUS_SELECTOR = '.js-dropdown__button-plus';
 const DROPDOWN_OPEN = 'dropdown_open';
+const DROPDOWN_EXPANDED = 'dropdown_expanded';
 const MINUS_ACTIVE = 'dropdown__button-minus_active';
 
 class Dropdown {
@@ -37,6 +38,10 @@ class Dropdown {
   }
 
   init() {
+    if (!this.$component.hasClass(DROPDOWN_EXPANDED)) {
+      this.$content.css('z-index', Number(this.$content.css('z-index')) + 1);
+    }
+
     if (this.isDatepicker) {
       this.texts = $(TEXT_SELECTOR, this.$component);
       this.isSplit = this.$component.attr('data-is-split') !== undefined;
@@ -81,8 +86,7 @@ class Dropdown {
     }
   }
 
-  handleOutOfComponentClick(event) {
-    const { target } = event;
+  handleOutOfComponentClick({ target }) {
     if (this.$component.has(target).length === 0) {
       this.$component.removeClass(DROPDOWN_OPEN);
     }

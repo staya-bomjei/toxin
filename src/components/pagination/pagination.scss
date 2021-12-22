@@ -5,7 +5,7 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   %button {
@@ -46,6 +46,7 @@
   &__text {
     @extend %default-text;
 
-    text-align: center;
+    text-indent: 0.4375rem;
+    margin-top: 0.5rem;
   }
 }

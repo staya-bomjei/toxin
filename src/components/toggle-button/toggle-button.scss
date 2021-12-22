@@ -41,9 +41,11 @@
   &__text {
     @extend %default-text;
 
-    line-height: 1.125rem;
+    line-height: 1.5rem;
     margin-left: 0.625rem;
     cursor: pointer;
+    position: relative;
+    bottom: 0.25rem;
   }
 
   & &__input:checked {

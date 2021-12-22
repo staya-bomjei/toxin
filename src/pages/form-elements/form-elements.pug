@@ -15,6 +15,35 @@ include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
 include ../../components/comment/comment
 
+//-
+  options.direction - направление списка, 'row' | 'column'
+  options.gap - пустое место между элементами списка, число из [0, 10, 20, 30, 40]
+  options.wrapper - если указано, то список будет обёрнут во враппер, 
+    ограничивающий ширину списка, 'normal' | 'short' | 'small' 
+mixin items-group(options = {})
+  -
+    const {
+      direction = 'row',
+      gap,
+      wrapper,
+    } = options;
+
+    const groupClasses = [];
+    groupClasses.push(`form-elements__${direction}`);
+    if (gap) groupClasses.push(`${groupClasses[0]}_gap_${gap}`);
+
+    const wrapperClass = (wrapper) ? `form-elements__wrapper_${wrapper}` : null;
+
+  if wrapper
+    .form-elements__wrapper(class = wrapperClass)
+      div(class = groupClasses)
+        block
+  else
+    div(class = groupClasses)
+      block
+      
+
+
 block variables
   -
     const title = 'Form Elements';
@@ -40,98 +69,100 @@ block variables
 
 block main
   .form-elements
-    .form-elements__row
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper
-          .form-elements__group-column.form-elements__group-column_gap-40
-            .form-elements__group-column
-              +text-field(textFields.default)
-              +text-field(textFields.hover)
-              +dropdown(dropdowns.summator.default)
-              +text-field(textFields.masked)
-            +dropdown(dropdowns.datepicker.splitRange)
-            .form-elements__wrapper.form-elements__wrapper_short
-              .form-elements__group-column.form-elements__group-column_gap-40
-                +dropdown(dropdowns.datepicker.filter)
-                +text-field(textFields.subscription)
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__group-column.form-elements__group-column_gap-40
-          .form-elements__wrapper.form-elements__wrapper_small
-            .form-elements__title Checkbox Buttons
-            .form-elements__group-column.form-elements__group-column_gap-10
+    .form-elements__row.form-elements__row_main
+      .form-elements__column.form-elements__column_main_1
+        +items-group({ direction: 'column', gap: 40, wrapper: 'normal' })
+          +items-group({ direction: 'column', gap: 20 })
+            +text-field(textFields.default)
+            +text-field(textFields.hover)
+            +dropdown(dropdowns.summator.default)
+            +text-field(textFields.masked)
+          +dropdown(dropdowns.datepicker.splitRange)
+          +items-group({ direction: 'column', gap: 40, wrapper: 'short' })
+            +dropdown(dropdowns.datepicker.filter)
+            +text-field(textFields.subscription)
+      .form-elements__column.form-elements__column_main_2
+        +items-group({ direction: 'column', gap: 40, wrapper: 'short' })
+          +items-group({ direction: 'column' })
+            .form-elements__title checkbox buttons
+            +items-group({ direction: 'column', gap: 10 })
               each checkbox in checkboxes.defaultList
                 +checkbox(checkbox)
-          .form-elements__wrapper
-            .form-elements__title Radio Buttons
-            .form-elements__group-row
+          +items-group({ direction: 'column' })
+            .form-elements__title radio buttons
+            +items-group({ direction: 'row', gap: 20 })
               +radio-button(radioButtons.man)
               +radio-button(radioButtons.woman)
-          .form-elements__wrapper
-            .form-elements__title toggle Buttons
-            .form-elements__group-column.form-elements__group-column_gap-10
+          +items-group({ direction: 'column' })
+            .form-elements__title toggle
+            +items-group({ direction: 'column', gap: 10 })
               +toggle-button(toggleButtons.checked)
               +toggle-button(toggleButtons.unchecked)
-          .form-elements__wrapper
-            .form-elements__title like Buttons
-            .form-elements__group-row.form-elements__group-row_gap-10
+          +items-group({ direction: 'column' })
+            .form-elements__title like Button
+            +items-group({ direction: 'row', gap: 10 })
               +like-button(likeButtons.unliked)
               +like-button(likeButtons.liked)
-          .form-elements__wrapper
-            .form-elements__title rate Buttons
-            .form-elements__group-row.form-elements__group-row_gap-10
+          +items-group({ direction: 'column' })
+            .form-elements__title rate button
+            +items-group({ direction: 'row', gap: 20 })
               +rate-button(rateButtons.four)
               +rate-button(rateButtons.five)
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__group-column.form-elements__group-column_gap-40
-          .form-elements__wrapper.form-elements__wrapper_short
+      .form-elements__column.form-elements__column_main_3
+        +items-group({ direction: 'column', gap: 40, wrapper: 'normal' })
+          +items-group({ direction: 'column', wrapper: 'short' })
             +range-slider(rangeSlider)
-          .form-elements__wrapper.form-elements__wrapper_small
-            .form-elements__group-column.form-elements__group-column_gap-30
-              .form-elements__group-row
-                +button(buttons.fill.default)
-                +button(buttons.fill.hovered)
-              .form-elements__group-row
-                +button(buttons.border.default)
-                +button(buttons.border.hovered)
-              .form-elements__group-row
-                +button(buttons.default.default)
-                +button(buttons.default.hovered)
-          .form-elements__wrapper
+          +items-group({ direction: 'column', gap: 30 })
+            +items-group({ direction: 'column', wrapper: 'small' })
+              .form-elements__title Buttons
+              +items-group({ direction: 'column', gap: 30 })
+                +items-group({ direction: 'row', gap: 20 })
+                  +button(buttons.fill.default)
+                  +button(buttons.fill.hovered)
+                +items-group({ direction: 'row', gap: 20 })
+                  +button(buttons.border.default)
+                  +button(buttons.border.hovered)
+                +items-group({ direction: 'row', gap: 20 })
+                  +button(buttons.default.default)
+                  +button(buttons.default.hovered)
             +button(buttons.arrow)
-          .form-elements__wrapper
+          +items-group({ direction: 'column' })
             .form-elements__title pagination
             +pagination(pagination)
-    .form-elements__row
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper.form-elements__wrapper_short
+    .form-elements__row.form-elements__row_main
+      .form-elements__column.form-elements__column_main_1
+        +items-group({ direction: 'column', gap: 20, wrapper: 'short' })
           +dropdown(dropdowns.default.default)
-          +dropdown(dropdowns.default.expanded)
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper
+          .form-elements__relative-wrapper
+            .form-elements__absolute-child
+              +dropdown(dropdowns.default.expanded)
+      .form-elements__column.form-elements__column_main_2
+        +items-group({ direction: 'column', wrapper: 'normal' })
           +dropdown(dropdowns.summator.expanded.hasNoGuests)
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper
+      .form-elements__column.form-elements__column_main_3
+        +items-group({ direction: 'column', wrapper: 'normal' })
           +dropdown(dropdowns.summator.expanded.hasGuests)
-    .form-elements__row
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper.form-elements__wrapper_short
+    .form-elements__row.form-elements__row_main
+      .form-elements__column.form-elements__column_main_1
+        +items-group({ direction: 'column', gap: 20, wrapper: 'short' })
           +checkbox-list(checkboxLists.default)
           +checkbox-list(checkboxLists.expanded)
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper.form-elements__wrapper_short
+      .form-elements__column.form-elements__column_main_2
+        +items-group({ direction: 'column', wrapper: 'normal' })
           .form-elements__title rich checkbox buttons
-          .form-elements__group-column.form-elements__group-column_gap-10
+          +items-group({ direction: 'column', gap: 10, wrapper: 'short'})
             each rich in checkboxes.richList
               +checkbox(rich)
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper.form-elements__wrapper_short
+      .form-elements__column.form-elements__column_main_3
+        +items-group({ direction: 'column', wrapper: 'normal' })
           .form-elements__title bullet list
-          +bullet-list(bulletList)
-    .form-elements__row
-      .form-elements__column.form-elements__column_md-4
-        .form-elements__wrapper.form-elements__wrapper_short
-          .form-elements__group-column
-            each advantage in advantageList
-              +advantage(advantage)
-      .form-elements__column.form-elements__column_md-8
-        +comment(comment)
+          +items-group({ direction: 'column', wrapper: 'short' })
+            +bullet-list(bulletList)
+    .form-elements__row.form-elements__row_main
+      .form-elements__column.form-elements__column_main_1
+        +items-group({ direction: 'column', wrapper: 'short' })
+          each advantage in advantageList
+            +advantage(advantage)
+      .form-elements__column.form-elements__column_main_2-3
+        +items-group({ direction: 'column' })
+          +comment(comment)

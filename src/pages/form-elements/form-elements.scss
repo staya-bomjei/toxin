@@ -1,40 +1,88 @@
 @import '../../styles/variables';
 
 .form-elements {
-  padding: 8.75rem 8.8125rem 8.1875rem 8.75rem;
+  padding: 8.9375rem 8.8125rem 8.1875rem 8.75rem;
 
+  $big-width: 372px;
   $width: 320px;
   $short-width: 266px;
   $small-width: 222px;
   $row-gap: 6.25rem;
-  $column-gap: 2.25rem;
+
+  @mixin set-gap($direction, $gap) {
+    & > *:not(:last-child) {
+      @if $direction == column {
+        margin-bottom: $gap;
+      } @else if $direction == row {
+        margin-right: $gap;
+      }
+    }
+  }
 
   &__row {
     display: flex;
-    flex-wrap: wrap;
-    margin: -$column-gap;
 
-    &:not(:last-child) {
-      padding-bottom: $row-gap - $column-gap;
+    &_main {
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &:not(:last-child) {
+        margin-bottom: $row-gap;
+      }
+    }
+
+    &_gap {
+      @for $i from 0 through 4 {
+        $gap: $i * 10;
+
+        &_#{$gap} {
+          @include set-gap(row, #{$gap}px);
+        }
+      }
     }
   }
 
   &__column {
-    width: calc(100% - 2 * $column-gap);
-    min-width: $width;
-    margin: $column-gap;
+    display: flex;
+    flex-direction: column;
 
-    &_md {
-      @for $i from 1 through 12 {
-        &-#{$i} {
-          width: calc(100% / 12 * $i - 2 * $column-gap);
+    &_main {
+      &_1 {
+        min-width: $width;
+        width: 38.44%;
+      }
+
+      &_2 {
+        min-width: $width;
+        width: 33.79%;
+      }
+
+      &_3 {
+        min-width: $width;
+        width: 27.77%;
+      }
+
+      &_2-3 {
+        min-width: $width;
+        width: 61.56%;
+      }
+    }
+
+    &_gap {
+      @for $i from 0 through 4 {
+        $gap: $i * 10;
+
+        &_#{$gap} {
+          @include set-gap(column, #{$gap}px);
         }
       }
     }
   }
 
   &__wrapper {
-    max-width: $width;
+    &_normal {
+      max-width: $width;
+    }
 
     &_short {
       max-width: $short-width;
@@ -45,42 +93,19 @@
     }
   }
 
-  &__group {
-    &-column {
-      display: grid;
-      grid-row-gap: 1.25rem;
-
-      &_gap-40 {
-        grid-row-gap: 2.5rem;
-      }
-
-      &_gap-30 {
-        grid-row-gap: 1.875rem;
-      }
-
-      &_gap-10 {
-        grid-row-gap: 0.625rem;
-      }
-    }
-
-    &-row {
-      display: flex;
-
-      & > *:not(:last-child) {
-        margin-right: 1.25rem;
-      }
-
-      &_gap-10 {
-        & > *:not(:last-child) {
-          margin-right: 0.625rem;
-        }
-      }
-    }
-  }
-
   &__title {
     @extend %label;
 
     margin-bottom: 1rem;
+  }
+
+  &__relative-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__absolute-child {
+    position: absolute;
+    width: 100%;
   }
 }
