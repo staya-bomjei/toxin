@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/variables';
 
 .header {
@@ -9,7 +10,7 @@
 
   $class: &;
   $burger-size: 2.5rem;
-  $burger-line-height: $burger-size / 7;
+  $burger-line-height: math.div($burger-size, 7);
 
   @media (max-width: $md) {
     & {

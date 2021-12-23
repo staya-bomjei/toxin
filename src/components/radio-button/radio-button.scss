@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/variables';
 
 .radio-button {
@@ -11,7 +12,7 @@
   $text-margin: 0.625rem;
   $marker-size: 1.25rem;
   $center-size: 0.75rem;
-  $center-offset: ($marker-size - $center-size) / 2 - 0.0625rem;
+  $center-offset: math.div($marker-size - $center-size, 2) - 0.0625rem;
 
   &__input {
     opacity: 0;
