@@ -4,7 +4,6 @@
     "menuItems": [
       {
           "text": "О Нас",
-          "isBold": true,
           "href": "error-page"
       },
       {
