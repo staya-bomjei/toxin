@@ -1,0 +1,64 @@
+extends ../page-base/page-base
+
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/dropdown/dropdown
+include ../../components/range-slider/range-slider
+include ../../components/checkbox/checkbox
+include ../../components/checkbox-list/checkbox-list
+include ../../components/room-thumbnail/room-thumbnail
+include ../../components/pagination/pagination
+
+append variables
+  -
+    const title = 'Search room';
+    const {
+      header,
+      footer,
+      filter,
+      numbers,
+      pagination,
+    } = htmlWebpackPlugin.options.getData();
+
+    // получение ссылок на изображения в собранном проекте
+    numbers.forEach((number) => {
+      number.images.forEach((image) => {
+        image.path = require(`./img/${image.path}`);
+      });
+    });
+
+append header
+  +header(header)
+  
+append main
+  .search-room
+    .search-room__content
+      .search-room__filter
+        .search-room__list.search-room__list_gap_normal
+          +dropdown(filter.dates)
+          +dropdown(filter.guests)
+        +range-slider(filter.priceRange)
+        .search-room__wrapper
+          .search-room__list-title правила дома
+          .search-room__list.search-room__list_gap_short
+            each rule in filter.houseRules
+              +checkbox(rule)
+        .search-room__wrapper
+          .search-room__list-title доступность
+          .search-room__list.search-room__list_gap_short
+            each reach in filter.reaches
+              +checkbox(reach)
+        .search-room__list.search-room__list_gap_short
+          +dropdown(filter.comfort)
+          +checkbox-list(filter.additionalComfort)
+      .search-room__wrapper
+        h1.search-room__title Номера, которые мы для вас подобрали
+        .search-room__numbers
+          each number in numbers
+            +room-thumbnail(number)
+        .search-room__pagination
+          +pagination(pagination)
+    .search-room__underline
+
+append footer
+  +footer(footer)

@@ -1,5 +1,8 @@
-import './range-slider.scss';
 import $ from 'jquery';
+
+import { makeCurrency } from '../../libs/utils/utils';
+
+import './range-slider.scss';
 
 const RANGES_SLIDER_SELECTOR = '.js-range-slider';
 const OUTPUT_SELECTOR = '.js-range-slider__output';
@@ -56,7 +59,7 @@ class RangeSlider {
     const leftRange = Math.round(((this.max - this.min) * valueLeft) / 100 + this.min);
     const rightRange = Math.round(((this.max - this.min) * valueRight) / 100 + this.min);
 
-    this.$output.html(`${leftRange}${this.postfix} - ${rightRange}${this.postfix}`);
+    this.$output.html(`${makeCurrency(leftRange, this.postfix)} - ${makeCurrency(rightRange, this.postfix)}`);
   }
 
   isLeftValue($range) {

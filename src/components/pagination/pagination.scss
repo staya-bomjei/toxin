@@ -1,6 +1,8 @@
 @import '../../styles/variables';
 
 .pagination {
+  display: inline-block;
+
   $button-size: 2.5rem;
 
   &__buttons {
