@@ -1,0 +1,22 @@
+extends ../page-base/page-base
+
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/sign-up/sign-up
+
+append variables
+  -
+    const title = 'Registration Page';
+    const { header, footer, form } = htmlWebpackPlugin.options.getData();
+
+append header
+  +header(header)
+
+append main
+  .registration
+    .registration__content
+      +sign-up(form)
+
+
+append footer
+  +footer(footer)
