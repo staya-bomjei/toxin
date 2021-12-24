@@ -1,6 +1,8 @@
 @import '../../styles/variables';
 
 .advantage {
+  $class: &;
+
   &__content {
     @extend %default-text;
 
@@ -27,9 +29,10 @@
     font-weight: bold;
   }
 
-  &__underline {
-    border: none;
-    border-top: 0.0625rem solid rgba($dark, 10%);
-    margin: 1.25rem 0 0;
+  &_with-underline {
+    #{$class}__content {
+      border-bottom: 0.0625rem solid rgba($dark, 10%);
+      padding-bottom: 1.25rem;
+    }
   }
 }

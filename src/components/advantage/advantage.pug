@@ -12,11 +12,9 @@ mixin advantage(options = {})
       hasUnderline = true,
     } = options;
 
-  .advantage
+  .advantage(class = (hasUnderline) ? "advantage_with-underline" : null)
     .advantage__content
       .advantage__icon= icon
       .advantage__text-box
         .advantage__title= title
         .advantage__text= text
-    if hasUnderline
-      hr.advantage__underline
