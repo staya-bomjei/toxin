@@ -25,21 +25,21 @@ block variables
 block main
   .cards
     .cards__row
-      .cards__column.cards__column_md-4
+      .cards__column
         .cards__wrapper
-          .cards__group-column.cards__group-column_gap-40
+          .cards__group-column
             +find-number()
             +sign-up()
-      .cards__column.cards__column_md-4
+      .cards__column
         .cards__wrapper
-          .cards__group-column.cards__group-column_gap-40
+          .cards__group-column
             +reservation()
             +sign-in()
-      .cards__column.cards__column_md-4
+      .cards__column
         .cards__wrapper.cards__wrapper_short
-          .cards__group-column.cards__group-column_gap-40
+          .cards__group-column
             +dropdown(calendar)
             .cards__wrapper.cards__wrapper_small
-              .cards__group-column.cards__group-column_gap-40
+              .cards__group-column
                 each roomThumbnail in roomThumbnails
                   +room-thumbnail(roomThumbnail)
