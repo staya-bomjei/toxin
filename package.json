@@ -7,7 +7,8 @@
     "dev": "webpack --env development",
     "prod": "webpack --env production",
     "start": "webpack-dev-server --env development",
-    "stylelint": "npx stylelint \"**/*.scss\""
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "eslint": "npx eslint \"**/*.js\""
   },
   "author": "Denis Beschastnykh",
   "license": "ISC",
