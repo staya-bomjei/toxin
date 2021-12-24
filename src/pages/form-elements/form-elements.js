@@ -1,3 +1,5 @@
+import '../../page-layouts/ui-kit-base/ui-kit-base';
+
 import '../../components/text-field/text-field';
 import '../../components/dropdown/Dropdown';
 import '../../components/checkbox/checkbox';

@@ -1,3 +1,5 @@
+import '../../page-layouts/ui-kit-base/ui-kit-base';
+
 import '../../components/color-sample/color-sample';
 import '../../components/text-sample/text-sample';
 

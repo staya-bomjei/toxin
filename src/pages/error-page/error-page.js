@@ -1,6 +1,6 @@
+import '../../page-layouts/page-base/page-base';
+
 import '../../components/header/Header';
 import '../../components/footer/footer';
-
-import '../page-base/page-base';
 
 import './error-page.scss';

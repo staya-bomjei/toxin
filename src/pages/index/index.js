@@ -1,3 +1,3 @@
-import '../ui-kit-base/ui-kit-base';
+import '../../page-layouts/page-base/page-base';
 
 import './index.scss';
