@@ -1,0 +1,23 @@
+extends ../page-base/page-base
+
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/sign-in/sign-in
+
+append variables
+  -
+    const title = 'Sign In Page';
+    const { header, footer, form } = htmlWebpackPlugin.options.getData();
+
+append header
+  +header(header)
+
+append main
+  .sign-in-page
+    .sign-in-page__content
+      .sign-in-page__form
+        +sign-in(form)
+
+
+append footer
+  +footer(footer)

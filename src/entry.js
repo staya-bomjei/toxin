@@ -14,3 +14,4 @@ import './pages/landing-page/landing-page';
 import './pages/search-room/search-room';
 import './pages/room-details/room-details';
 import './pages/registration/registration';
+import './pages/sign-in-page/sign-in-page';
