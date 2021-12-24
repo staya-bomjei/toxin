@@ -1,5 +1,8 @@
 @import '../../styles/variables';
 
+// родной код air-datepicker использует классы не в стиле kebab-case
+/* stylelint-disable selector-class-pattern */
+
 .air-datepicker {
   box-sizing: border-box;
   border: 1px solid rgba($dark, 25%);
@@ -35,7 +38,7 @@
 
         font-size: 24px;
         background: $primary-gradient;
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         display: initial;
       }
@@ -123,6 +126,7 @@
           background: $primary-gradient;
         }
       }
+
       &.-selected-:not(.-range-from-):not(.-range-to-) {
         border-radius: 50%;
       }

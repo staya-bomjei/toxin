@@ -10,7 +10,7 @@
     cursor: pointer;
     user-select: none;
     background: $primary-gradient;
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: initial;
   }
