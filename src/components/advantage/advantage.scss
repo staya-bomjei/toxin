@@ -7,7 +7,6 @@
     display: flex;
     justify-content: left;
     align-items: flex-start;
-    margin-bottom: 1.25rem;
   }
 
   &__icon {
@@ -31,6 +30,6 @@
   &__underline {
     border: none;
     border-top: 0.0625rem solid rgba($dark, 10%);
-    margin: 0;
+    margin: 1.25rem 0 0;
   }
 }

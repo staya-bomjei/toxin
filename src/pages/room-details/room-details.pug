@@ -1,0 +1,70 @@
+extends ../page-base/page-base
+
+include ../../components/header/header
+include ../../components/footer/footer
+include ../../components/advantage/advantage
+include ../../components/doughnut-chart/doughnut-chart
+include ../../components/comment/comment
+include ../../components/bullet-list/bullet-list
+include ../../components/reservation/reservation
+
+append variables
+  -
+    const title = 'Search room';
+    const {
+      header,
+      footer,
+      advantages,
+      chart,
+      comments,
+      rules,
+      cancel,
+      form,
+    } = htmlWebpackPlugin.options.getData();
+
+    const { choiceCountable } = require('../../libs/utils/utils');
+    const commentCountables = ['отзыв', 'отзыва', 'отзывов'];
+    const commentCounter = `${comments.length} ${choiceCountable(comments.length, commentCountables)}`;
+
+    // получение ссылок на изображения в собранном проекте
+    comments.forEach((comment) => {
+      comment.image = require(`./img/${comment.image}`);
+    });
+
+append header
+  +header(header)
+  
+append main
+  .room-details
+    figure.room-details__images
+      img.room-details__image(src=require('./img/room-1.png') alt="room photo")
+      img.room-details__image(src=require('./img/room-2.png') alt="room photo")
+      img.room-details__image(src=require('./img/room-3.png') alt="room photo")
+    .room-details__content
+      .room-details__wrapper
+        .room-details__info
+          .room-details__wrapper.room-details__wrapper_small
+            h3.room-details__item-title Сведения о номере
+            .room-details__advantages
+              each advantage in advantages
+                +advantage(advantage)
+          .room-details__wrapper
+            h3.room-details__item-title Впечатления от номера
+            +doughnut-chart(chart)
+          .room-details__wrapper
+            h3.room-details__item-title Отзывы посетителей номера
+              span.room-details__comments-counter= commentCounter
+            .room-details__comments
+              each comment in comments
+                +comment(comment)
+          .room-details__wrapper.room-details__wrapper_smaller
+            h3.room-details__item-title Правила
+            +bullet-list(rules)
+          .room-details__wrapper.room-details__wrapper_wide
+            h3.room-details__item-title Отмена
+            .room-details__text= cancel
+      .room-details__reservation
+        +reservation(form)
+
+append footer
+  +footer(footer)

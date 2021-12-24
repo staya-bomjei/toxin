@@ -12,3 +12,4 @@ import './pages/headers-and-footers/headers-and-footers';
 import './pages/error-page/error-page';
 import './pages/landing-page/landing-page';
 import './pages/search-room/search-room';
+import './pages/room-details/room-details';

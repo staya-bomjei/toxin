@@ -7,6 +7,7 @@ include ../like-button/like-button
   options.image - путь к картинке профиля (путь должен быть до картинки уже собранного проекта,
   добиться этого можно обернув путь к картинке в require)
   options.likes - количество поставленных лайков
+  options.liked - проставлен ли лайк
 mixin comment(options = {})
   -
     const {
@@ -14,7 +15,8 @@ mixin comment(options = {})
       name = '',
       date,
       image,
-      likes = 0
+      likes = 0,
+      isLiked = false,
     } = options;
 
     const { timeAgo } = require('../../libs/utils/utils.js');
@@ -25,5 +27,5 @@ mixin comment(options = {})
       .comment__user-name= name
       .comment__user-time-ago= timeAgo(date)
     .comment__like-button
-      +like-button({ counter: likes })
+      +like-button({ counter: likes, isLiked })
     .comment__text= text
