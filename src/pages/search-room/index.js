@@ -1,12 +1,12 @@
 import '../../page-layouts/page-base';
 
-import '../../components/header/Header';
-import '../../components/footer/footer';
+import '../../components/header';
+import '../../components/footer';
 import '../../components/dropdown';
-import '../../components/range-slider/RangeSlider';
-import '../../components/checkbox/checkbox';
-import '../../components/checkbox-list/CheckboxList';
-import '../../components/room-thumbnail/RoomThumbnail';
-import '../../components/pagination/Pagination';
+import '../../components/range-slider';
+import '../../components/checkbox';
+import '../../components/checkbox-list';
+import '../../components/room-thumbnail';
+import '../../components/pagination';
 
 import './search-room.scss';

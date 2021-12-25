@@ -1,17 +1,17 @@
 import '../../page-layouts/ui-kit-base';
 
-import '../../components/text-field/text-field';
+import '../../components/text-field';
 import '../../components/dropdown';
-import '../../components/checkbox/checkbox';
-import '../../components/button/button';
-import '../../components/radio-button/radio-button';
-import '../../components/toggle-button/toggle-button';
-import '../../components/like-button/LikeButton';
-import '../../components/range-slider/RangeSlider';
-import '../../components/pagination/Pagination';
-import '../../components/checkbox-list/CheckboxList';
-import '../../components/bullet-list/bullet-list';
-import '../../components/advantage/advantage';
-import '../../components/comment/comment';
+import '../../components/checkbox';
+import '../../components/button';
+import '../../components/radio-button';
+import '../../components/toggle-button';
+import '../../components/like-button';
+import '../../components/range-slider';
+import '../../components/pagination';
+import '../../components/checkbox-list';
+import '../../components/bullet-list';
+import '../../components/advantage';
+import '../../components/comment';
 
 import './form-elements.scss';

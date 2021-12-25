@@ -1,16 +1,13 @@
 import $ from 'jquery';
 
-import '../checkbox/checkbox';
+import {
+  BUTTON_SELECTOR,
+  LIST_SELECTOR,
+  CHECKBOX_LIST_EXPANDED,
+  CHECKBOX_LIST_OPEN,
+} from './const';
 
-import './checkbox-list.scss';
-
-const CHECKBOX_LIST_SELECTOR = '.js-checkbox-list';
-const BUTTON_SELECTOR = '.js-checkbox-list__button';
-const LIST_SELECTOR = '.js-checkbox-list__list';
-const CHECKBOX_LIST_OPEN = 'checkbox-list_open';
-const CHECKBOX_LIST_EXPANDED = 'checkbox-list_epxanded';
-
-class CheckboxList {
+export default class CheckboxList {
   constructor($component) {
     this.$component = $component;
     this.$button = $(BUTTON_SELECTOR, $component);
@@ -40,7 +37,3 @@ class CheckboxList {
     }
   }
 }
-
-$(() => {
-  $(CHECKBOX_LIST_SELECTOR).map((index, node) => new CheckboxList($(node)));
-});

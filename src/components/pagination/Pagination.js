@@ -1,15 +1,14 @@
 import $ from 'jquery';
 
-import './pagination.scss';
+import {
+  NUMBER_BUTTON_SELECTOR,
+  PREV_BUTTON_SELECTOR,
+  NEXT_BUTTON_SELECTOR,
+  TEXT_SELECTOR,
+  CURRENT_NUMBER_BUTTON,
+} from './const';
 
-const PAGINATION_SELECTOR = '.js-pagination';
-const NUMBER_BUTTON_SELECTOR = '.js-pagination__number';
-const PREV_BUTTON_SELECTOR = '.js-pagination__prev';
-const NEXT_BUTTON_SELECTOR = '.js-pagination__next';
-const TEXT_SELECTOR = '.js-pagination__text';
-const CURRENT_NUMBER_BUTTON = 'pagination__number_current';
-
-class Pagination {
+export default class Pagination {
   constructor($component) {
     this.$component = $component;
     this.itemsCounter = Number($component.attr('data-items-count'));
@@ -126,7 +125,3 @@ class Pagination {
     return texts.map((item) => String(item));
   }
 }
-
-$(() => {
-  $(PAGINATION_SELECTOR).map((index, node) => new Pagination($(node)));
-});

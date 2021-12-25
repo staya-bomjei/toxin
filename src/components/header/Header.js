@@ -1,16 +1,12 @@
 import $ from 'jquery';
 
-import '../button/button';
-import '../menu/menu';
+import {
+  BURGER_BUTTON_SELECTOR,
+  INFO_SELECTOR,
+  BURGER_BUTTON_ACTIVE,
+} from './const';
 
-import './header.scss';
-
-const HEADER_SELECTOR = '.js-header';
-const BURGER_BUTTON_SELECTOR = '.js-header__burger';
-const INFO_SELECTOR = '.js-header__info';
-const BURGER_BUTTON_ACTIVE = 'header__burger_active';
-
-class Header {
+export default class Header {
   constructor($component) {
     this.$component = $component;
     this.$burgerButton = $(BURGER_BUTTON_SELECTOR, $component);
@@ -34,7 +30,3 @@ class Header {
     this.$info.toggle();
   }
 }
-
-$(() => {
-  $(HEADER_SELECTOR).map((index, node) => new Header($(node)));
-});

@@ -1,11 +1,11 @@
 import '../../page-layouts/page-base';
 
-import '../../components/header/Header';
-import '../../components/footer/footer';
-import '../../components/advantage/advantage';
-import '../../components/doughnut-chart/DoughnutChart';
-import '../../components/comment/comment';
-import '../../components/bullet-list/bullet-list';
-import '../../components/reservation/reservation';
+import '../../components/header';
+import '../../components/footer';
+import '../../components/advantage';
+import '../../components/doughnut-chart';
+import '../../components/comment';
+import '../../components/bullet-list';
+import '../../components/reservation';
 
 import './room-details.scss';

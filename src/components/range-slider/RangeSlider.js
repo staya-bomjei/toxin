@@ -2,18 +2,17 @@ import $ from 'jquery';
 
 import { makeCurrency } from '../../libs/utils/utils';
 
-import './range-slider.scss';
+import {
+  POSTFIX_ATTR,
+  MIN_ATTR,
+  MAX_ATTR,
+  OUTPUT_SELECTOR,
+  TRACK_SELECTOR,
+  RANGE_SELECTOR,
+  THUMB_SELECTOR,
+} from './const';
 
-const RANGES_SLIDER_SELECTOR = '.js-range-slider';
-const OUTPUT_SELECTOR = '.js-range-slider__output';
-const TRACK_SELECTOR = '.js-range-slider__track-inner';
-const RANGE_SELECTOR = '.js-range-slider__range';
-const THUMB_SELECTOR = '.js-range-slider__thumb';
-const POSTFIX_ATTR = 'data-postfix';
-const MIN_ATTR = 'data-min';
-const MAX_ATTR = 'data-max';
-
-class RangeSlider {
+export default class RangeSlider {
   constructor($component) {
     this.$component = $component;
     this.postfix = $component.attr(POSTFIX_ATTR);
@@ -95,7 +94,3 @@ class RangeSlider {
     }
   }
 }
-
-$(() => {
-  $(RANGES_SLIDER_SELECTOR).map((index, node) => new RangeSlider($(node)));
-});

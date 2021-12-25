@@ -1,14 +1,14 @@
-import './like-button.scss';
 import $ from 'jquery';
 
-const LIKE_BUTTON_SELECTOR = '.js-like-button';
-const ICON_SELECTOR = '.js-like-button__icon';
-const COUNTER_SELECTOR = '.js-like-button__counter';
-const ICON_LIKED = 'favorite';
-const ICON_UNLIKED = 'favorite_border';
-const BUTTON_LIKED_CLASS = 'like-button_liked';
+import {
+  ICON_SELECTOR,
+  COUNTER_SELECTOR,
+  ICON_UNLIKED,
+  ICON_LIKED,
+  BUTTON_LIKED_CLASS,
+} from './const';
 
-class LikeButton {
+export default class LikeButton {
   constructor($component) {
     this.$component = $component;
     this.$icon = $(ICON_SELECTOR, $component);
@@ -43,7 +43,3 @@ class LikeButton {
     this.$counter.html(counter);
   }
 }
-
-$(() => {
-  $(LIKE_BUTTON_SELECTOR).map((index, node) => new LikeButton($(node)));
-});

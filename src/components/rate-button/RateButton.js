@@ -1,13 +1,13 @@
-import './rate-button.scss';
 import $ from 'jquery';
 
-const RATE_BUTTON_SELECTOR = '.js-rate-button';
-const STAR_SELECTOR = '.js-rate-button__star';
-const STAR_ICON = 'star';
-const UNSTAR_ICON = 'star_border';
-const RATE_ATTR = 'data-rate';
+import {
+  RATE_ATTR,
+  STAR_SELECTOR,
+  STAR_ICON,
+  UNSTAR_ICON,
+} from './const';
 
-class RateButton {
+export default class RateButton {
   constructor($component) {
     this.$component = $component;
     this.rate = Number($component.attr(RATE_ATTR));
@@ -57,7 +57,3 @@ class RateButton {
     return this.stars.findIndex(($star) => $star.is(star)) + 1;
   }
 }
-
-$(() => {
-  $(RATE_BUTTON_SELECTOR).map((index, node) => new RateButton($(node)));
-});

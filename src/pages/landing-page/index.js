@@ -1,7 +1,7 @@
 import '../../page-layouts/page-base';
 
-import '../../components/header/Header';
-import '../../components/footer/footer';
-import '../../components/find-number/find-number';
+import '../../components/header';
+import '../../components/footer';
+import '../../components/find-number';
 
 import './landing-page.scss';

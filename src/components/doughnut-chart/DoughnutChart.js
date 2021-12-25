@@ -1,13 +1,12 @@
 import $ from 'jquery';
 import Chart from 'chart.js/auto';
 
-import './doughnut-chart.scss';
+import {
+  CHART_SELECTOR,
+  DOT_SELECTOR,
+} from './const';
 
-const DOUGHNUT_CHART_SELECTOR = '.js-doughnut-chart';
-const CHART_SELECTOR = '.js-doughnut-chart__chart';
-const DOT_SELECTOR = '.js-doughnut-chart__dot';
-
-class DoughnutChart {
+export default class DoughnutChart {
   constructor($component) {
     this.$component = $component;
     this.$chart = $(CHART_SELECTOR, $component);
@@ -105,7 +104,3 @@ class DoughnutChart {
     return gradient;
   }
 }
-
-$(() => {
-  $(DOUGHNUT_CHART_SELECTOR).map((index, node) => new DoughnutChart($(node)));
-});

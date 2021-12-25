@@ -1,19 +1,16 @@
 import $ from 'jquery';
 
-import '../rate-button/RateButton';
+import {
+  IMAGE_SELECTOR,
+  BUTTON_SELECTOR,
+  PREV_SELECTOR,
+  NEXT_SELECTOR,
+  PRICE_SELECTOR,
+  IMAGE_SELECTED,
+  BUTTON_SELECTED,
+} from './const';
 
-import './room-thumbnail.scss';
-
-const ROOM_THUMBNAIL_SELECTOR = '.js-room-thumbnail';
-const IMAGE_SELECTOR = '.js-room-thumbnail__image';
-const BUTTON_SELECTOR = '.js-room-thumbnail__button';
-const PREV_SELECTOR = '.js-room-thumbnail__prev';
-const NEXT_SELECTOR = '.js-room-thumbnail__next';
-const PRICE_SELECTOR = '.js-room-thumbnail__price';
-const IMAGE_SELECTED = 'room-thumbnail__image_selected';
-const BUTTON_SELECTED = 'room-thumbnail__button_selected';
-
-class RoomThumbnail {
+export default class RoomThumbnail {
   constructor($component) {
     this.$component = $component;
     this.selected = Number($component.attr('data-selected'));
@@ -78,7 +75,3 @@ class RoomThumbnail {
     array[index].addClass(modifier);
   }
 }
-
-$(() => {
-  $(ROOM_THUMBNAIL_SELECTOR).map((index, node) => new RoomThumbnail($(node)));
-});
