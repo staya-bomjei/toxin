@@ -3,9 +3,11 @@ extends ../../page-layouts/ui-kit-base/ui-kit-base
 include ../../components/color-sample/color-sample
 include ../../components/text-sample/text-sample
 
-block variables
+append variables
   -
     const title = 'Colors & Type';
+    const description = 'Colors & Type, тут отображены цвета и шрифты используемые на сайте.';
+    const keywords = 'Toxin, UI-Kit, Colors & Type';
     const { colors, texts } = htmlWebpackPlugin.options.getData();
 
 block main

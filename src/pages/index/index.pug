@@ -1,8 +1,10 @@
 extends ../../page-layouts/ui-kit-base/ui-kit-base
 
-block variables
+append variables
   -
     const title = 'Main Page Toxin';
+    const description = 'Main Page, главная страница, из неё вы можете попасть на любую другую страницу Toxin.';
+    const keywords = 'Toxin, Main, главная страница';
     const { uiList, pagesList } = htmlWebpackPlugin.options.getData();
 
 block main
