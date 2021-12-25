@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
-import '../button/button';
-import '../menu/menu';
+import '../button';
+import '../menu';
 
 import Header from './Header';
 import { HEADER_SELECTOR } from './const';

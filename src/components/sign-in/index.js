@@ -1,6 +1,6 @@
-import '../text-field/text-field';
-import '../radio-button/radio-button';
-import '../toggle-button/toggle-button';
-import '../button/button';
+import '../text-field';
+import '../radio-button';
+import '../toggle-button';
+import '../button';
 
 import './sign-in.scss';

@@ -1,3 +1,3 @@
-import '../text-field/text-field';
+import '../text-field';
 
 import './footer.scss';

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import '../button/button';
+import '../button';
 
 import Dropdown from './Dropdown';
 import Datepicker from './Datepicker';

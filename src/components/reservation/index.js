@@ -1,4 +1,4 @@
 import '../dropdown';
-import '../button/button';
+import '../button';
 
 import './reservation.scss';
