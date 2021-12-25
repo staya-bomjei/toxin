@@ -8,9 +8,9 @@
   @font-face {
     font-family: $name;
     src:
-      url('../fonts/#{$name}-#{$suffix}.woff') format('woff'),
-      url('../fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
-      url('../fonts/#{$name}-#{$suffix}.svg') format('svg');
+      url('../assets/fonts/#{$name}-#{$suffix}.woff') format('woff'),
+      url('../assets/fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
+      url('../assets/fonts/#{$name}-#{$suffix}.svg') format('svg');
     font-style: $style;
     font-weight: $weight;
 

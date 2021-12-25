@@ -18,10 +18,14 @@ module.exports = (env) => {
     template: path.resolve(__dirname, 'src', 'pages', page, `${page}.pug`),
   }));
 
+  function filename(ext) {
+    return `${ext}/[name].${(env.production) ? '[contenthash]' : ''}.${ext}`;
+  }
+
   const baseConfig = {
     entry: path.resolve(__dirname, 'src', 'entry.js'),
     output: {
-      filename: (env.production) ? '[name].[hash].js' : '[name].js',
+      filename: filename('js'),
       path: path.resolve(__dirname, 'build'),
       clean: true,
     },
@@ -31,13 +35,15 @@ module.exports = (env) => {
       },
     },
     plugins: [
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: filename('css'),
+      }),
       ...htmlPlugins,
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: path.resolve(__dirname, 'src', 'favicons'),
-            to: 'favicons',
+            from: path.resolve(__dirname, 'src', 'assets', 'favicons'),
+            to: 'assets/favicons',
           },
         ],
       }),
@@ -91,10 +97,19 @@ module.exports = (env) => {
           },
         },
         {
-          test: /\.(png|jpg|gif|ttf|woff|svg)$/i,
+          test: /\.(png|jpg|gif|svg)$/i,
           type: 'asset/resource',
+          exclude: /fonts/,
           generator: {
-            filename: './assets/[name].[hash][ext]',
+            filename: './assets/img/[contenthash][ext]',
+          },
+        },
+        {
+          test: /\.(ttf|woff|svg)$/i,
+          type: 'asset/resource',
+          exclude: /img/,
+          generator: {
+            filename: './assets/fonts/[name][ext]',
           },
         },
       ],
