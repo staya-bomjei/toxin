@@ -17,22 +17,22 @@ module.exports = (env) => {
     },
     filename: `${page}.html`,
     template: path.resolve(__dirname, 'src', 'pages', page, `${page}.pug`),
+    chunks: [page],
   }));
+  const entryPoints = pages.reduce((result, page) => ({
+    ...result,
+    [page]: path.resolve(__dirname, 'src', 'pages', page, `${page}.js`),
+  }), {});
 
   function filename(ext) {
-    return `${ext}/[name].${(env.production) ? '[contenthash]' : ''}.${ext}`;
+    return `${ext}/[name].${(env.production) ? '[contenthash]' : ''}${ext}`;
   }
 
   const baseConfig = {
-    entry: path.resolve(__dirname, 'src', 'entry.js'),
+    entry: entryPoints,
     output: {
       filename: filename('js'),
       path: path.resolve(__dirname, 'build'),
-    },
-    optimization: {
-      splitChunks: {
-        chunks: 'all',
-      },
     },
     plugins: [
       new CleanWebpackPlugin(),
