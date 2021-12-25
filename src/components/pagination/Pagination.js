@@ -6,22 +6,29 @@ import {
   NEXT_BUTTON_SELECTOR,
   TEXT_SELECTOR,
   CURRENT_NUMBER_BUTTON,
+  INIT_STATE,
+  ITEMS_COUNT,
+  ITEMS_PER_PAGE,
+  POSTFIX,
 } from './const';
 
 export default class Pagination {
   constructor($component) {
     this.$component = $component;
-    this.itemsCounter = Number($component.attr('data-items-count'));
-    this.itemsPerPage = Number($component.attr('data-items-per-page'));
+    this.itemsCounter = Number($component.attr(ITEMS_COUNT));
+    this.itemsPerPage = Number($component.attr(ITEMS_PER_PAGE));
     this.pagesCounter = Math.ceil(this.itemsCounter / this.itemsPerPage);
-    this.postfix = $component.attr('data-postfix');
+    this.postfix = $component.attr(POSTFIX);
     this.buttons = Array.from($(NUMBER_BUTTON_SELECTOR, $component)).map((item) => $(item));
     this.$prev = $(PREV_BUTTON_SELECTOR, $component);
     this.$next = $(NEXT_BUTTON_SELECTOR, $component);
     this.$text = $(TEXT_SELECTOR, $component);
+  }
+
+  init() {
     this.pageNumber = 0;
-    this.updateState(1);
-    this.attachEventHandlers();
+    const initState = Number(this.$component.attr(INIT_STATE));
+    this.updateState(initState);
   }
 
   attachEventHandlers() {
@@ -123,5 +130,10 @@ export default class Pagination {
     }
 
     return texts.map((item) => String(item));
+  }
+
+  render() {
+    this.init();
+    this.attachEventHandlers();
   }
 }

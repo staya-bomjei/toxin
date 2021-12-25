@@ -5,29 +5,24 @@ import {
   BUTTON_SELECTOR,
   PREV_SELECTOR,
   NEXT_SELECTOR,
-  PRICE_SELECTOR,
   IMAGE_SELECTED,
   BUTTON_SELECTED,
+  SELECTED,
 } from './const';
 
 export default class RoomThumbnail {
   constructor($component) {
     this.$component = $component;
-    this.selected = Number($component.attr('data-selected'));
-    this.price = Number($component.attr('data-price'));
+    this.selected = Number($component.attr(SELECTED));
 
     this.images = Array.from($(IMAGE_SELECTOR, $component)).map((item) => $(item));
     this.buttons = Array.from($(BUTTON_SELECTOR, $component)).map((item) => $(item));
 
     this.$prev = $(PREV_SELECTOR, $component);
     this.$next = $(NEXT_SELECTOR, $component);
-    this.$price = $(PRICE_SELECTOR, $component);
-    this.init();
-    this.attachEventHandlers();
   }
 
   init() {
-    this.$price.html(`${this.price.toLocaleString('ru')}₽`);
     this.selectImage(this.selected);
   }
 
@@ -73,5 +68,10 @@ export default class RoomThumbnail {
 
     array[this.selected].removeClass(modifier);
     array[index].addClass(modifier);
+  }
+
+  render() {
+    this.init();
+    this.attachEventHandlers();
   }
 }

@@ -6,5 +6,9 @@ import { RANGES_SLIDER_SELECTOR } from './const';
 import './range-slider.scss';
 
 $(() => {
-  $(RANGES_SLIDER_SELECTOR).map((index, node) => new RangeSlider($(node)));
+  $(RANGES_SLIDER_SELECTOR).each((index, node) => {
+    const $node = $(node);
+    const rangeSlider = new RangeSlider($node);
+    rangeSlider.render();
+  });
 });

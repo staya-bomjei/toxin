@@ -12,7 +12,6 @@ export default class DoughnutChart {
     this.$chart = $(CHART_SELECTOR, $component);
     this.$dots = $(DOT_SELECTOR, $component);
     this.ctx = this.$chart[0].getContext('2d');
-    this.init();
   }
 
   init() {
@@ -71,12 +70,12 @@ export default class DoughnutChart {
   }
 
   paintDots(colors) {
-    this.$dots.each((i, dot) => {
-      if (typeof colors[i] === 'string') {
-        $(dot).css('background', colors[i]);
+    this.$dots.each((index, dot) => {
+      if (typeof colors[index] === 'string') {
+        $(dot).css('background', colors[index]);
       } else {
-        const stops = colors[i].stops.map((stop) => `${stop.color} ${stop.percent}%`);
-        const color = `linear-gradient(${colors[i].direction}deg, ${stops.join(', ')})`;
+        const stops = colors[index].stops.map((stop) => `${stop.color} ${stop.percent}%`);
+        const color = `linear-gradient(${colors[index].direction}deg, ${stops.join(', ')})`;
         $(dot).css('background', color);
       }
     });
@@ -102,5 +101,9 @@ export default class DoughnutChart {
     stops.forEach((stop) => gradient.addColorStop(stop.percent / 100, stop.color));
 
     return gradient;
+  }
+
+  render() {
+    this.init();
   }
 }

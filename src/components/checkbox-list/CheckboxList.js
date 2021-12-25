@@ -12,8 +12,6 @@ export default class CheckboxList {
     this.$component = $component;
     this.$button = $(BUTTON_SELECTOR, $component);
     this.$list = $(LIST_SELECTOR, $component);
-    this.init();
-    this.attachEventHandlers();
   }
 
   init() {
@@ -35,5 +33,10 @@ export default class CheckboxList {
     if (this.$component.has(target).length === 0) {
       this.$component.removeClass(CHECKBOX_LIST_OPEN);
     }
+  }
+
+  render() {
+    this.init();
+    this.attachEventHandlers();
   }
 }

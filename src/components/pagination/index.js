@@ -6,5 +6,9 @@ import { PAGINATION_SELECTOR } from './const';
 import './pagination.scss';
 
 $(() => {
-  $(PAGINATION_SELECTOR).map((index, node) => new Pagination($(node)));
+  $(PAGINATION_SELECTOR).each((index, node) => {
+    const $node = $(node);
+    const pagination = new Pagination($node);
+    pagination.render();
+  });
 });

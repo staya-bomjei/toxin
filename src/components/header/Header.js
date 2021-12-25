@@ -11,7 +11,6 @@ export default class Header {
     this.$component = $component;
     this.$burgerButton = $(BURGER_BUTTON_SELECTOR, $component);
     this.$info = $(INFO_SELECTOR, $component);
-    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -28,5 +27,9 @@ export default class Header {
   handleBurgerButtonClick() {
     this.$burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
     this.$info.toggle();
+  }
+
+  render() {
+    this.attachEventHandlers();
   }
 }

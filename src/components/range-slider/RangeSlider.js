@@ -3,21 +3,22 @@ import $ from 'jquery';
 import { makeCurrency } from '../../libs/utils/utils';
 
 import {
-  POSTFIX_ATTR,
-  MIN_ATTR,
-  MAX_ATTR,
   OUTPUT_SELECTOR,
   TRACK_SELECTOR,
   RANGE_SELECTOR,
   THUMB_SELECTOR,
+  VALUE,
+  POSTFIX,
+  MIN,
+  MAX,
 } from './const';
 
 export default class RangeSlider {
   constructor($component) {
     this.$component = $component;
-    this.postfix = $component.attr(POSTFIX_ATTR);
-    this.min = Number($component.attr(MIN_ATTR));
-    this.max = Number($component.attr(MAX_ATTR));
+    this.postfix = $component.attr(POSTFIX);
+    this.min = Number($component.attr(MIN));
+    this.max = Number($component.attr(MAX));
     this.$output = $(OUTPUT_SELECTOR, $component);
     this.$track = $(TRACK_SELECTOR, $component);
 
@@ -26,10 +27,11 @@ export default class RangeSlider {
 
     const thumbs = Array.from($(THUMB_SELECTOR, $component));
     [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
+  }
 
-    this.setState(this.$range1.attr('value'), this.$range2.attr('value'));
+  init() {
+    this.setState(this.$range1.attr(VALUE), this.$range2.attr(VALUE));
     this.updateOutput();
-    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -67,8 +69,8 @@ export default class RangeSlider {
 
   getValues() {
     return {
-      valueLeft: Number(this.$range1.attr('value')),
-      valueRight: Number(this.$range2.attr('value')),
+      valueLeft: Number(this.$range1.attr(VALUE)),
+      valueRight: Number(this.$range2.attr(VALUE)),
     };
   }
 
@@ -79,7 +81,7 @@ export default class RangeSlider {
   }
 
   static setThumb(value, $range, $thumb) {
-    $range.attr('value', value);
+    $range.attr(VALUE, value);
     $thumb.css('left', `${value}%`);
     $thumb.css('transform', `translate(-${value}%, -50%)`);
   }
@@ -92,5 +94,10 @@ export default class RangeSlider {
       this.$track.css('width', `${valueRight - valueLeft}%`);
       this.$track.css('left', `${valueLeft}%`);
     }
+  }
+
+  render() {
+    this.init();
+    this.attachEventHandlers();
   }
 }

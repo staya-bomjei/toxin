@@ -5,7 +5,7 @@ import {
   COUNTER_SELECTOR,
   ICON_UNLIKED,
   ICON_LIKED,
-  BUTTON_LIKED_CLASS,
+  BUTTON_LIKED,
 } from './const';
 
 export default class LikeButton {
@@ -13,7 +13,6 @@ export default class LikeButton {
     this.$component = $component;
     this.$icon = $(ICON_SELECTOR, $component);
     this.$counter = $(COUNTER_SELECTOR, $component);
-    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -28,11 +27,11 @@ export default class LikeButton {
       this.setCounter(this.getCounter() + 1);
       this.$icon.html(ICON_LIKED);
     }
-    this.$component.toggleClass(BUTTON_LIKED_CLASS);
+    this.$component.toggleClass(BUTTON_LIKED);
   }
 
   isLiked() {
-    return this.$component.hasClass(BUTTON_LIKED_CLASS);
+    return this.$component.hasClass(BUTTON_LIKED);
   }
 
   getCounter() {
@@ -41,5 +40,9 @@ export default class LikeButton {
 
   setCounter(counter) {
     this.$counter.html(counter);
+  }
+
+  render() {
+    this.attachEventHandlers();
   }
 }

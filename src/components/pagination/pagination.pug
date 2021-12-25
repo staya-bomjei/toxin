@@ -1,17 +1,20 @@
 //-
+  options.initState - начальное состояние пагинации
   options.itemsCounter - сколько всего элементов в сумме, со всех страниц пагинатора
   options.itemsPerPage - сколько элементов на одной странице
   options.postfix - добавочный текст, который появляется под пагинатором после вывода текущей позиции по элементам
 mixin pagination(options = {})
   -
     const {
+      initState = 1,
       itemsCounter = 180,
       itemsPerPage = 12,
       postfix = ''
     } = options;
 
   .pagination.js-pagination(
-    data-items-count = itemsCounter
+    data-init-state = initState
+    data-items-counter = itemsCounter
     data-items-per-page = itemsPerPage
     data-postfix = postfix
   )

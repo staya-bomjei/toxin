@@ -1,19 +1,21 @@
 import $ from 'jquery';
 
 import {
-  RATE_ATTR,
   STAR_SELECTOR,
   STAR_ICON,
   UNSTAR_ICON,
+  RATE,
 } from './const';
 
 export default class RateButton {
   constructor($component) {
     this.$component = $component;
-    this.rate = Number($component.attr(RATE_ATTR));
+    this.rate = Number($component.attr(RATE));
     this.stars = Array.from($(STAR_SELECTOR, $component)).map((item) => $(item));
+  }
+
+  init() {
     this.setState(this.rate);
-    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -45,7 +47,7 @@ export default class RateButton {
   setState(rate, isChanging = true) {
     if (isChanging) {
       this.rate = rate;
-      this.$component.attr(RATE_ATTR, rate);
+      this.$component.attr(RATE, rate);
     }
 
     this.stars.forEach(($star, index) => {
@@ -55,5 +57,10 @@ export default class RateButton {
 
   getStarRate(star) {
     return this.stars.findIndex(($star) => $star.is(star)) + 1;
+  }
+
+  render() {
+    this.init();
+    this.attachEventHandlers();
   }
 }

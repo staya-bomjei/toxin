@@ -9,5 +9,9 @@ import { HEADER_SELECTOR } from './const';
 import './header.scss';
 
 $(() => {
-  $(HEADER_SELECTOR).map((index, node) => new Header($(node)));
+  $(HEADER_SELECTOR).each((index, node) => {
+    const $node = $(node);
+    const header = new Header($node);
+    header.render();
+  });
 });
