@@ -16,6 +16,7 @@ import {
   MAX_LEN,
   HAS_CONTROLS,
   ROW_COUNTABLES,
+  VALUE,
 } from './const';
 
 export default class Counter extends Dropdown {
@@ -30,13 +31,13 @@ export default class Counter extends Dropdown {
     super.init();
 
     this.rows = this.getRows();
-    this.updateText();
 
     if (this.hasControls) {
       this.$clear = this.$component.find(CLEAR_BUTTON_SELECTOR);
       this.$accept = this.$component.find(ACCEPT_BUTTON_SELECTOR);
-      this.updateClearButtonVisability();
     }
+
+    this.update();
   }
 
   attachEventHandlers() {
@@ -75,8 +76,7 @@ export default class Counter extends Dropdown {
 
     $counter.html(counter - 1);
 
-    this.updateText();
-    this.updateClearButtonVisability();
+    this.update();
   }
 
   handlePlusClick($minus, $counter) {
@@ -88,8 +88,7 @@ export default class Counter extends Dropdown {
 
     $counter.html(counter + 1);
 
-    this.updateText();
-    this.updateClearButtonVisability();
+    this.update();
   }
 
   setText(string) {
@@ -122,25 +121,23 @@ export default class Counter extends Dropdown {
     return this.rows.every((row) => Number(row.$counter.html()) === 0);
   }
 
+  update() {
+    this.updateText();
+    this.updateValue();
+    this.updateClearButtonVisability();
+    this.triggerValueChanged();
+  }
+
   updateText() {
     if (this.areAllCountersZero()) {
       this.setText('');
     } else {
-      this.setText(this.calcDropdownValue());
+      this.setText(this.calcDropdownText());
     }
-
-    this.triggerValueChanged();
   }
 
-  calcDropdownValue() {
-    return this.rows
-      .map((row) => {
-        const counter = Number(row.$counter.html());
-        if (counter === 0) return '';
-        return `${counter} ${choiceCountable(counter, row.countables)}`;
-      })
-      .filter((string) => string !== '')
-      .join(', ');
+  updateValue() {
+    this.$component.attr(VALUE, this.calcDropdownValue());
   }
 
   updateClearButtonVisability() {
@@ -149,6 +146,21 @@ export default class Counter extends Dropdown {
     } else {
       this.$clear.show();
     }
+  }
+
+  calcDropdownValue() {
+    return this.rows.map((row) => Number(row.$counter.html()));
+  }
+
+  calcDropdownText() {
+    return this.rows
+      .map((row) => {
+        const counter = Number(row.$counter.html());
+        if (counter === 0) return '';
+        return `${counter} ${choiceCountable(counter, row.countables)}`;
+      })
+      .filter((string) => string !== '')
+      .join(', ');
   }
 
   render() {

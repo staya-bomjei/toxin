@@ -2,31 +2,53 @@ include ../dropdown/dropdown
 include ../button/button
 
 //-
+  options.id - id формы, должно быть уникальным на одной странице
   options.number - номер отеля
   options.type - тип отеля (например, 'люкс')
   options.price - строимость отеля за сутки
   options.discount - размер скидки
   options.postfix - валяютный постфикс, по умолчанию '₽'
+  options.selectedDays - массив выбранных дней, например ["2019-08-14", "2019-08-19"]
+  options.rows - массив для создания дропдауна
+  options.rows[0].text - текст строки
+  options.rows[0].counter - значение счётчика этой строки
+  options.rows[0].countables - массив, содержащий три формы rows[0].text
+    (например: ['кровать', 'кровати', 'кроватей'])
+  options.rows[0].additional - стоимость дополнительных расходов на один элемент 
 mixin reservation(options = {})
   -
-    const { 
-      number = 888,
-      type = 'люкс',
-      price = 9990,
-      discount = 2179,
-      additionals = 300,
+    const {
+      id = 0,
+      number = 0,
+      type = '',
+      price = 0,
+      discount = 0,
       postfix = '₽',
+      selectedDays = [],
+      rows,
     } = options;
+    
+    const datepickerValueChanged = `datepicker-value-changed-${id}`;
+    const guestsValueChanged = `guests-value-changed-${id}`;
 
-    const rows = [
-      { text: 'взрослые', counter: 3 },
-      { text: 'дети', counter: 0 },
-      { text: 'младенцы', counter: 0 },
-    ];
+    const dropdownRows = rows.map((row) => ({
+      text: row.text,
+      counter: row.counter,
+      countables: row.countables,
+    }));
+
+    const additionals = rows.map((row) => row.additional);
 
     const { makeCurrency } = require('../../libs/utils/utils.js');
 
-  form.reservation
+  form.reservation.js-reservation(
+    data-price = price
+    data-discount = discount
+    data-postfix = postfix
+    data-datepicker-value-changed = datepickerValueChanged
+    data-guests-value-changed = guestsValueChanged
+    data-additionals = additionals
+  )
     .reservation__info
       a.reservation__number-info(href = 'error-page.html')
         span.reservation__n №&nbsp;
@@ -36,35 +58,38 @@ mixin reservation(options = {})
         strong.reservation__price-value= makeCurrency(price, postfix)
         span &nbsp;
         span.reservation__price-per-day в сутки
-    .reservation__datepicker
+    .reservation__datepicker.js-reservation__datepicker
       +dropdown({ 
         title: ['прибытие', 'выезд'], 
         placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'],
-        type: 'datepicker', 
+        type: 'datepicker',
+        selected: selectedDays,
         isRange: true,
         isSplit: true,
+        valueChanged: datepickerValueChanged,
       })
-    .reservation__guests-dropdown
+    .reservation__guests-dropdown.js-reservation__guests-dropdown
       +dropdown({
         title: 'гости',
         placeholder: 'Сколько гостей',
-        rows,
+        rows: dropdownRows,
         maxLen: 30, 
         type: 'summator',
         countables: ['гость', 'гостя', 'гостей'],
+        valueChanged: guestsValueChanged,
       })
     .reservation__calculator
-      .reservation__rent= `${makeCurrency(price, postfix)} x 4 суток`
-      .reservation__rent-total 39 960₽
+      .reservation__rent.js-reservation__rent= `${makeCurrency(price, postfix)} x 4 суток`
+      .reservation__rent-total.js-reservation__rent-total 39 960₽
       .reservation__discount= `Сбор за услуги: скидка ${makeCurrency(discount, postfix)}`
       span.reservation__i i
-      .reservation__discount-total 0₽
+      .reservation__discount-total 0#{postfix}
       .reservation__additional Сбор за дополнительные услуги
       span.reservation__i i
-      .reservation__additional-total= makeCurrency(additionals, postfix)
+      .reservation__additional-total.js-reservation__additional-total
     .reservation__total
       | Итого
       span.reservation__dashed-underline
-      .reservation__total-cost 38 081₽
+      .reservation__total-cost.js-reservation__total-cost 38 081₽
     .reservation__reserve-button
       +button({ text: 'забронировать', type: 'arrow' })

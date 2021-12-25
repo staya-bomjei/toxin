@@ -16,6 +16,7 @@ export const MINUS_ACTIVE = 'dropdown__button-minus_active';
 
 export const PLACEHOLDER = 'data-placeholder';
 export const VALUE_CHANGED = 'data-value-changed';
+export const VALUE = 'data-value';
 export const MAX_LEN = 'data-max-len';
 export const HAS_CONTROLS = 'data-has-controls';
 export const ROW_COUNTABLES = 'data-row-countables';
@@ -23,3 +24,5 @@ export const COUNTABLES = 'data-countables';
 export const IS_SPLIT = 'data-is-split';
 export const IS_RANGE = 'data-is-range';
 export const SELECTED = 'data-selected';
+export const DATE_FROM = 'data-date-from';
+export const DATE_TO = 'data-date-to';

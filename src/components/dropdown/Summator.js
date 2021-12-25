@@ -15,7 +15,7 @@ export default class Summator extends Counter {
       .reduce((sum, row) => sum + Number(row.$counter.html()), 0);
   }
 
-  calcDropdownValue() {
+  calcDropdownText() {
     const sum = this.sumAllCounters();
     const value = (sum) ? `${sum} ${choiceCountable(sum, this.countables)}` : '';
     const counters = this.rows

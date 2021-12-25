@@ -13,6 +13,7 @@ append variables
     const description = 'Cards, тут отображены формы используемые на сайте.';
     const keywords = 'Toxin, UI-Kit, Cards';
     const {
+      reservation,
       calendar,
       roomThumbnails
     } = htmlWebpackPlugin.options.getData();
@@ -35,7 +36,7 @@ block main
       .cards__column
         .cards__wrapper
           .cards__group-column
-            +reservation()
+            +reservation(reservation)
             +sign-in()
       .cards__column
         .cards__wrapper.cards__wrapper_short

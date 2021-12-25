@@ -13,6 +13,8 @@ export default class MyAirDatepicker {
     this.isSplit = options.isSplit;
     this.triggerValueChanged = options.triggerValueChanged;
     this.onAcceptButtonClick = options.onAcceptButtonClick;
+    this.DATE_FROM = options.DATE_FROM;
+    this.DATE_TO = options.DATE_TO;
 
     const {
       range,
@@ -28,6 +30,9 @@ export default class MyAirDatepicker {
     $buttons.attr('type', 'button');
     this.$clear = $($buttons[0]);
     this.updateClearButtonVisability(datepicker);
+
+    this.$component.attr(this.DATE_FROM, '');
+    this.$component.attr(this.DATE_TO, '');
 
     return datepicker;
   }
@@ -71,16 +76,16 @@ export default class MyAirDatepicker {
         $(this.texts[1]).val('');
       }
 
-      this.$component.attr('data-from', first.toLocaleDateString('en'));
-      this.$component.attr('data-to', '');
+      this.$component.attr(this.DATE_FROM, first.toLocaleDateString('en'));
+      this.$component.attr(this.DATE_TO, '');
     } else if (datepicker.selectedDates.length === 2) {
       if (this.isSplit) {
         $(this.texts[0]).val(first.toLocaleDateString('ru'));
         $(this.texts[1]).val(second.toLocaleDateString('ru'));
       }
 
-      this.$component.attr('data-from', first.toLocaleDateString('en'));
-      this.$component.attr('data-to', second.toLocaleDateString('en'));
+      this.$component.attr(this.DATE_FROM, first.toLocaleDateString('en'));
+      this.$component.attr(this.DATE_TO, second.toLocaleDateString('en'));
     }
 
     if (datepicker.selectedDates.length === 1) {

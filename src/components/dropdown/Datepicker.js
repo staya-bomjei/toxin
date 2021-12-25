@@ -9,6 +9,8 @@ import {
   IS_SPLIT,
   IS_RANGE,
   SELECTED,
+  DATE_FROM,
+  DATE_TO,
 } from './const';
 
 export default class Datepicker extends Dropdown {
@@ -37,6 +39,8 @@ export default class Datepicker extends Dropdown {
       triggerValueChanged: () => this.triggerValueChanged(),
       onAcceptButtonClick: () => this.handleAcceptButtonClick(),
       altField: this.texts[0],
+      DATE_FROM,
+      DATE_TO,
     };
 
     return new MyAirDatepicker(options);

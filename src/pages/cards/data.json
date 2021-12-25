@@ -1,4 +1,30 @@
 {
+  "reservation": {
+    "number": 888,
+    "type": "люкс",
+    "price": 9990,
+    "discount": 2179,
+    "postfix": "₽",
+    "selectedDays": ["2019-08-14", "2019-08-19"],
+    "rows": [
+      {
+        "text": "взрослые",
+        "counter": 3,
+        "additional": 100
+      },
+      {
+        "text": "дети",
+        "counter": 0,
+        "additional": 100
+      },
+      {
+        "text": "младенцы",
+        "counter": 0,
+        "countables": ["младенец", "младенца", "младенцев"],
+        "additional": 0
+      }
+    ]
+  },
   "calendar": {
     "type": "datepicker",
     "selected": ["2021-12-19", "2021-12-23"],
