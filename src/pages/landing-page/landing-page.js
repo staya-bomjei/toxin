@@ -1,4 +1,4 @@
-import '../../page-layouts/page-base/page-base';
+import '../../page-layouts/page-base';
 
 import '../../components/header/Header';
 import '../../components/footer/footer';
