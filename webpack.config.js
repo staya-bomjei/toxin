@@ -21,7 +21,7 @@ module.exports = (env) => {
   }));
   const entryPoints = pages.reduce((result, page) => ({
     ...result,
-    [page]: path.resolve(__dirname, 'src', 'pages', page, `${page}.js`),
+    [page]: path.resolve(__dirname, 'src', 'pages', page, 'index.js'),
   }), {});
 
   function filename(ext) {
