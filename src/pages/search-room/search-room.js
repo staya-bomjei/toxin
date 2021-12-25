@@ -2,7 +2,7 @@ import '../../page-layouts/page-base/page-base';
 
 import '../../components/header/Header';
 import '../../components/footer/footer';
-import '../../components/dropdown/Dropdown';
+import '../../components/dropdown';
 import '../../components/range-slider/RangeSlider';
 import '../../components/checkbox/checkbox';
 import '../../components/checkbox-list/CheckboxList';

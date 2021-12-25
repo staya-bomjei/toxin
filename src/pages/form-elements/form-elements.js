@@ -1,7 +1,7 @@
 import '../../page-layouts/ui-kit-base/ui-kit-base';
 
 import '../../components/text-field/text-field';
-import '../../components/dropdown/Dropdown';
+import '../../components/dropdown';
 import '../../components/checkbox/checkbox';
 import '../../components/button/button';
 import '../../components/radio-button/radio-button';

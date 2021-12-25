@@ -10,7 +10,6 @@ export default class MyAirDatepicker {
   constructor(options) {
     this.$component = options.$component;
     this.texts = options.texts;
-    this.isDatepicker = options.isDatepicker;
     this.isSplit = options.isSplit;
     this.triggerValueChanged = options.triggerValueChanged;
     this.onAcceptButtonClick = options.onAcceptButtonClick;
@@ -64,26 +63,24 @@ export default class MyAirDatepicker {
   }
 
   onCellSelect({ date, datepicker }) {
-    if (this.isDatepicker) {
-      const [first, second] = datepicker.selectedDates;
+    const [first, second] = datepicker.selectedDates;
 
-      if (datepicker.selectedDates.length === 1) {
-        if (this.isSplit) {
-          $(this.texts[0]).val(first.toLocaleDateString('ru'));
-          $(this.texts[1]).val('');
-        }
-
-        this.$component.attr('data-from', first.toLocaleDateString('en'));
-        this.$component.attr('data-to', '');
-      } else if (datepicker.selectedDates.length === 2) {
-        if (this.isSplit) {
-          $(this.texts[0]).val(first.toLocaleDateString('ru'));
-          $(this.texts[1]).val(second.toLocaleDateString('ru'));
-        }
-
-        this.$component.attr('data-from', first.toLocaleDateString('en'));
-        this.$component.attr('data-to', second.toLocaleDateString('en'));
+    if (datepicker.selectedDates.length === 1) {
+      if (this.isSplit) {
+        $(this.texts[0]).val(first.toLocaleDateString('ru'));
+        $(this.texts[1]).val('');
       }
+
+      this.$component.attr('data-from', first.toLocaleDateString('en'));
+      this.$component.attr('data-to', '');
+    } else if (datepicker.selectedDates.length === 2) {
+      if (this.isSplit) {
+        $(this.texts[0]).val(first.toLocaleDateString('ru'));
+        $(this.texts[1]).val(second.toLocaleDateString('ru'));
+      }
+
+      this.$component.attr('data-from', first.toLocaleDateString('en'));
+      this.$component.attr('data-to', second.toLocaleDateString('en'));
     }
 
     if (datepicker.selectedDates.length === 1) {
