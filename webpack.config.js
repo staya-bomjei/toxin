@@ -25,7 +25,7 @@ module.exports = (env) => {
   }), {});
 
   function filename(ext) {
-    return `${ext}/[name].${(env.production) ? '[contenthash]' : ''}${ext}`;
+    return `${ext}/[name]${(env.production) ? '.[contenthash]' : ''}.${ext}`;
   }
 
   const baseConfig = {
