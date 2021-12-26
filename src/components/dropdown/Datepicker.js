@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import LibsDatepicker from '../../libs/air-datepicker/MyAirDatepicker';
+import LibsDatepicker from '../../libs/datepicker/Datepicker';
 
 import Dropdown from './Dropdown';
 import {
