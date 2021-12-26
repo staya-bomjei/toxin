@@ -3,19 +3,24 @@ extends ../../page-layouts/page-base/page-base
 include ../../components/header/header
 include ../../components/footer/footer
 include ../../components/sign-up/sign-up
+include ../../components/backgrounds/backgrounds
 
 append variables
   -
     const title = 'Registration Page';
     const description = 'Отель Toxin, здесь вы можете подобрать себе номер в отеле по вкусу!';
     const keywords = 'Toxin, Main, sign up, зарегестрироваться';
-    const { header, footer, form } = htmlWebpackPlugin.options.getData();
+    const { header, footer, form, backgrounds } = htmlWebpackPlugin.options.getData();
+
+    // получение ссылок на изображения в собранном проекте
+    backgrounds.images.forEach((image) => image.path = require(`./img/${image.path}`))
 
 append header
   +header(header)
 
 append main
   .registration
+    +backgrounds(backgrounds)
     .registration__content
       .registration__form
         +sign-up(form)

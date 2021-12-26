@@ -81,5 +81,21 @@
         ]
       }
     ]
+  },
+  "backgrounds": {
+    "images": [
+      {
+        "path": "background-1.png",
+        "alt" : "Background image 1"
+      },
+      {
+        "path": "background-2.png",
+        "alt" : "Background image 2"
+      },
+      {
+        "path": "background-3.png",
+        "alt" : "Background image 3"
+      }
+    ]
   }
 }

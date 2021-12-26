@@ -1,0 +1,21 @@
+//-
+  options.images - массив изображений
+  options.images[0].path - путь к изображению в собранном проекте
+  options.images[0].alt - альтернативный текст изображения
+mixin backgrounds(options = {})
+  -
+    const {
+      delay = 10,
+      duration = 3,
+      images = [],
+    } = options
+
+  figure.backgrounds.js-backgrounds(
+    data-delay = delay
+    data-duration = duration
+  )
+    each image in images
+      img.backgrounds__image.js-backgrounds__image(
+        src = image.path
+        alt = image.alt
+      )
