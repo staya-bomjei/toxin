@@ -1,7 +1,7 @@
 {
   "name": "toxin",
   "version": "1.0.0",
-  "description": "Задание №2 из обучающей программы MetaLamp",
+  "description": "MetaLamp 2nd task",
   "main": "entry.js",
   "scripts": {
     "dev": "webpack --env development",
