@@ -20,7 +20,7 @@ include ../../components/comment/comment
   options.gap - пустое место между элементами списка, число из [0, 10, 20, 30, 40]
   options.wrapper - если указано, то список будет обёрнут во враппер, 
     ограничивающий ширину списка, 'normal' | 'short' | 'small' 
-mixin items-group(options = {})
+mixin box-layout(options = {})
   -
     const {
       direction = 'row',
@@ -41,8 +41,6 @@ mixin items-group(options = {})
   else
     div(class = groupClasses)
       block
-      
-
 
 append variables
   -
@@ -73,98 +71,98 @@ block main
   .form-elements
     .form-elements__row.form-elements__row_main
       .form-elements__column.form-elements__column_main_1
-        +items-group({ direction: 'column', gap: 40, wrapper: 'normal' })
-          +items-group({ direction: 'column', gap: 20 })
+        +box-layout({ direction: 'column', gap: 40, wrapper: 'normal' })
+          +box-layout({ direction: 'column', gap: 20 })
             +text-field(textFields.default)
             +text-field(textFields.hover)
             +dropdown(dropdowns.summator.default)
             +text-field(textFields.masked)
           +dropdown(dropdowns.datepicker.splitRange)
-          +items-group({ direction: 'column', gap: 40, wrapper: 'short' })
+          +box-layout({ direction: 'column', gap: 40, wrapper: 'short' })
             +dropdown(dropdowns.datepicker.filter)
             +text-field(textFields.subscription)
       .form-elements__column.form-elements__column_main_2
-        +items-group({ direction: 'column', gap: 40, wrapper: 'short' })
-          +items-group({ direction: 'column' })
+        +box-layout({ direction: 'column', gap: 40, wrapper: 'short' })
+          +box-layout({ direction: 'column' })
             .form-elements__title checkbox buttons
-            +items-group({ direction: 'column', gap: 10 })
+            +box-layout({ direction: 'column', gap: 10 })
               each checkbox in checkboxes.defaultList
                 +checkbox(checkbox)
-          +items-group({ direction: 'column' })
+          +box-layout({ direction: 'column' })
             .form-elements__title radio buttons
-            +items-group({ direction: 'row', gap: 20 })
+            +box-layout({ direction: 'row', gap: 20 })
               +radio-button(radioButtons.man)
               +radio-button(radioButtons.woman)
-          +items-group({ direction: 'column' })
+          +box-layout({ direction: 'column' })
             .form-elements__title toggle
-            +items-group({ direction: 'column', gap: 10 })
+            +box-layout({ direction: 'column', gap: 10 })
               +toggle-button(toggleButtons.checked)
               +toggle-button(toggleButtons.unchecked)
-          +items-group({ direction: 'column' })
+          +box-layout({ direction: 'column' })
             .form-elements__title like Button
-            +items-group({ direction: 'row', gap: 10 })
+            +box-layout({ direction: 'row', gap: 10 })
               +like-button(likeButtons.unliked)
               +like-button(likeButtons.liked)
-          +items-group({ direction: 'column' })
+          +box-layout({ direction: 'column' })
             .form-elements__title rate button
-            +items-group({ direction: 'row', gap: 20 })
+            +box-layout({ direction: 'row', gap: 20 })
               +rate-button(rateButtons.four)
               +rate-button(rateButtons.five)
       .form-elements__column.form-elements__column_main_3
-        +items-group({ direction: 'column', gap: 40, wrapper: 'normal' })
-          +items-group({ direction: 'column', wrapper: 'short' })
+        +box-layout({ direction: 'column', gap: 40, wrapper: 'normal' })
+          +box-layout({ direction: 'column', wrapper: 'short' })
             +range-slider(rangeSlider)
-          +items-group({ direction: 'column', gap: 30 })
-            +items-group({ direction: 'column', wrapper: 'small' })
+          +box-layout({ direction: 'column', gap: 30 })
+            +box-layout({ direction: 'column', wrapper: 'small' })
               .form-elements__title Buttons
-              +items-group({ direction: 'column', gap: 30 })
-                +items-group({ direction: 'row', gap: 20 })
+              +box-layout({ direction: 'column', gap: 30 })
+                +box-layout({ direction: 'row', gap: 20 })
                   +button(buttons.fill.default)
                   +button(buttons.fill.hovered)
-                +items-group({ direction: 'row', gap: 20 })
+                +box-layout({ direction: 'row', gap: 20 })
                   +button(buttons.border.default)
                   +button(buttons.border.hovered)
-                +items-group({ direction: 'row', gap: 20 })
+                +box-layout({ direction: 'row', gap: 20 })
                   +button(buttons.default.default)
                   +button(buttons.default.hovered)
             +button(buttons.arrow)
-          +items-group({ direction: 'column' })
+          +box-layout({ direction: 'column' })
             .form-elements__title pagination
             +pagination(pagination)
     .form-elements__row.form-elements__row_main
       .form-elements__column.form-elements__column_main_1
-        +items-group({ direction: 'column', gap: 20, wrapper: 'short' })
+        +box-layout({ direction: 'column', gap: 20, wrapper: 'short' })
           +dropdown(dropdowns.default.default)
           .form-elements__relative-wrapper
             .form-elements__absolute-child
               +dropdown(dropdowns.default.expanded)
       .form-elements__column.form-elements__column_main_2
-        +items-group({ direction: 'column', wrapper: 'normal' })
+        +box-layout({ direction: 'column', wrapper: 'normal' })
           +dropdown(dropdowns.summator.expanded.hasNoGuests)
       .form-elements__column.form-elements__column_main_3
-        +items-group({ direction: 'column', wrapper: 'normal' })
+        +box-layout({ direction: 'column', wrapper: 'normal' })
           +dropdown(dropdowns.summator.expanded.hasGuests)
     .form-elements__row.form-elements__row_main
       .form-elements__column.form-elements__column_main_1
-        +items-group({ direction: 'column', gap: 20, wrapper: 'short' })
+        +box-layout({ direction: 'column', gap: 20, wrapper: 'short' })
           +checkbox-list(checkboxLists.default)
           +checkbox-list(checkboxLists.expanded)
       .form-elements__column.form-elements__column_main_2
-        +items-group({ direction: 'column', wrapper: 'normal' })
+        +box-layout({ direction: 'column', wrapper: 'normal' })
           .form-elements__title rich checkbox buttons
-          +items-group({ direction: 'column', gap: 10, wrapper: 'short'})
+          +box-layout({ direction: 'column', gap: 10, wrapper: 'short'})
             each rich in checkboxes.richList
               +checkbox(rich)
       .form-elements__column.form-elements__column_main_3
-        +items-group({ direction: 'column', wrapper: 'normal' })
+        +box-layout({ direction: 'column', wrapper: 'normal' })
           .form-elements__title bullet list
-          +items-group({ direction: 'column', wrapper: 'short' })
+          +box-layout({ direction: 'column', wrapper: 'short' })
             +bullet-list(bulletList)
     .form-elements__row.form-elements__row_main
       .form-elements__column.form-elements__column_main_1
-        +items-group({ direction: 'column', gap: 20, wrapper: 'short' })
+        +box-layout({ direction: 'column', gap: 20, wrapper: 'short' })
           each advantage in advantageList
             +advantage(advantage)
       .form-elements__column.form-elements__column_main_2-3
-        +items-group({ direction: 'column' })
+        +box-layout({ direction: 'column' })
           +comment(comment)
