@@ -83,7 +83,21 @@
     ]
   },
   "form" : {
-
+    "rows": [
+      {
+        "text": "Взрослые",
+        "counter": 0
+      },
+      {
+        "text": "Дети",
+        "counter": 0
+      },
+      {
+        "text": "Младенцы",
+        "counter": 0,
+        "countables": ["младенец", "младенца", "младенцев"] 
+      }
+    ]
   },
   "backgrounds": {
     "images": [

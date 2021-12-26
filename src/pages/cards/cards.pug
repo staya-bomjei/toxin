@@ -14,8 +14,9 @@ append variables
     const keywords = 'Toxin, UI-Kit, Cards';
     const {
       reservation,
+      findNumber,
       calendar,
-      roomThumbnails
+      roomThumbnails,
     } = htmlWebpackPlugin.options.getData();
 
     // получение ссылок на изображения в собранном проекте
@@ -31,7 +32,7 @@ block main
       .cards__column
         .cards__wrapper
           .cards__group-column
-            +find-number()
+            +find-number(findNumber)
             +sign-up()
       .cards__column
         .cards__wrapper

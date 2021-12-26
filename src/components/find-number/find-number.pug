@@ -1,13 +1,14 @@
 include ../dropdown/dropdown
 include ../button/button
 
-mixin find-number()
+//-
+  options.rows - массив для инициализации dropdown
+  options.rows[0].text - текст строки
+  options.rows[0].counter - значение счётчика этой строки
+  options.rows[0].countables - массив, содержащий три формы rows[0].text
+mixin find-number(options = {})
   -
-    const rows = [
-      { text: 'взрослые', counter: 0 },
-      { text: 'дети', counter: 0 },
-      { text: 'младенцы', counter: 0 },
-    ];
+    const { rows = [] } = options;
 
   form.find-number
     h2.find-number__title Найдём номера под ваши пожелания
