@@ -10,7 +10,7 @@ append variables
     const title = 'Landing page';
     const description = 'Отель Toxin, здесь вы можете подобрать себе номер в отеле по вкусу!';
     const keywords = 'Toxin, Main, главная страница, подобрать номер, отель, снять жильё';
-    const { header, footer, backgrounds } = htmlWebpackPlugin.options.getData();
+    const { header, footer, form, backgrounds } = htmlWebpackPlugin.options.getData();
 
     // получение ссылок на изображения в собранном проекте
     backgrounds.images.forEach((image) => image.path = require(`./img/${image.path}`))
@@ -22,7 +22,9 @@ append main
   .landing-page
     +backgrounds(backgrounds)
     .landing-page__content
-      +find-number()
+      .landing-page__find-number
+        +find-number(form)
+      .landing-page__spacing
       .landing-page__label
         | Лучшие номера для вашей работы,
         br
