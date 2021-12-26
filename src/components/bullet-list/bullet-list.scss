@@ -10,7 +10,7 @@
   &__point {
     @extend %default-text;
 
-    line-height: 1.75rem;
+    line-height: 1.5rem;
 
     &::before {
       content: '';
@@ -20,6 +20,10 @@
       border-radius: 50%;
       background-color: rgba($dark, 25%);
       margin-right: 0.625rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.625rem;
     }
   }
 }
