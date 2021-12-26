@@ -1,4 +1,4 @@
-const ruLocale = {
+export default {
   days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
   daysShort: ['Вос', 'Пон', 'Вто', 'Сре', 'Чет', 'Пят', 'Суб'],
   daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
@@ -9,8 +9,4 @@ const ruLocale = {
   dateFormat: 'dd.MM.yyyy',
   timeFormat: 'HH:mm',
   firstDay: 1,
-};
-
-module.exports = {
-  ruLocale,
 };

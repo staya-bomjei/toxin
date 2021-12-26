@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import MyAirDatepicker from '../../libs/air-datepicker/MyAirDatepicker';
+import LibsDatepicker from '../../libs/air-datepicker/MyAirDatepicker';
 
 import Dropdown from './Dropdown';
 import {
@@ -43,6 +43,6 @@ export default class Datepicker extends Dropdown {
       DATE_TO,
     };
 
-    return new MyAirDatepicker(options);
+    return new LibsDatepicker(options);
   }
 }
