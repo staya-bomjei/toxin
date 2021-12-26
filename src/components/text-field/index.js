@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import Inputmask from 'inputmask';
+
+import Inputmask from '../../libs/inputmask/inputmask';
 
 import {
   TEXT_FIELD_INPUT_SELECTOR,
@@ -13,11 +14,10 @@ $(() => {
     const $node = $(node);
     const placeholder = $node.attr(PLACEHOLDER);
     const im = new Inputmask({
-      alias: 'datetime',
+      $input: $node,
       inputFormat: 'dd.mm.yyyy',
       placeholder,
     });
-
-    im.mask($node);
+    im.render();
   });
 });
