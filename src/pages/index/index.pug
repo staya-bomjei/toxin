@@ -5,7 +5,7 @@ append variables
     const title = 'Main Page Toxin';
     const description = 'Main Page, главная страница, из неё вы можете попасть на любую другую страницу Toxin.';
     const keywords = 'Toxin, Main, главная страница';
-    const { uiList, pagesList } = htmlWebpackPlugin.options.getData();
+    const { uiList, pagesList, othersList } = htmlWebpackPlugin.options.getData();
 
 block main
   .index
@@ -15,5 +15,9 @@ block main
           a.index__link(href = `${item.href}.html`)= item.text
     ui.index__pages-list
       each item in pagesList
+        li.index__item
+          a.index__link(href = `${item.href}.html`)= item.text
+    ui.index__others-list
+      each item in othersList
         li.index__item
           a.index__link(href = `${item.href}.html`)= item.text

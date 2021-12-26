@@ -6,7 +6,8 @@
   padding: 8rem;
 
   &__ui-list,
-  &__pages-list {
+  &__pages-list,
+  &__others-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -47,6 +48,14 @@
 
     &::after {
       content: 'star';
+    }
+  }
+
+  &__others-list &__link {
+    color: red;
+
+    &::after {
+      content: 'accessible_forward';
     }
   }
 }

@@ -38,5 +38,11 @@
       "text": "Sign In",
       "href": "sign-in-page"
     }
+  ],
+  "othersList": [
+    {
+      "text": "Error Page",
+      "href": "error-page"
+    }
   ]
 }
