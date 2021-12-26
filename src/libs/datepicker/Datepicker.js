@@ -4,7 +4,7 @@ import OutsideDatepicker from 'air-datepicker';
 import ruLocale from './ru';
 
 import 'air-datepicker/air-datepicker.css';
-import './air-datepicker.scss';
+import './datepicker.scss';
 
 export default class Datepicker {
   constructor(options) {
