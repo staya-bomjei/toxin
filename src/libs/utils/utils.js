@@ -1,4 +1,4 @@
-function choiceCountable(counter, countables) {
+export function choiceCountable(counter, countables) {
   const isTeenCounter = counter > 10 && counter < 20;
 
   if (isTeenCounter) {
@@ -29,7 +29,7 @@ function buildSentence(counter, countables) {
   return `${counter} ${countable} назад`;
 }
 
-function timeAgo(dateString) {
+export function timeAgo(dateString) {
   const date = (dateString) ? new Date(dateString) : new Date();
   const now = new Date();
 
@@ -55,12 +55,6 @@ function timeAgo(dateString) {
   return buildSentence(years, ['год', 'года', 'лет']);
 }
 
-function makeCurrency(number, postfix = '', locale = 'ru') {
+export function makeCurrency(number, postfix = '', locale = 'ru') {
   return `${number.toLocaleString(locale)}${postfix}`;
 }
-
-module.exports = {
-  choiceCountable,
-  timeAgo,
-  makeCurrency,
-};
