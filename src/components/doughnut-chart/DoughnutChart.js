@@ -1,9 +1,11 @@
 import $ from 'jquery';
-import Chart from 'chart.js/auto';
+
+import Chart from '../../libs/chart/Chart';
 
 import {
   CHART_SELECTOR,
   DOT_SELECTOR,
+  ITEMS,
 } from './const';
 
 export default class DoughnutChart {
@@ -15,75 +17,41 @@ export default class DoughnutChart {
   }
 
   init() {
-    const items = JSON.parse(this.$component.attr('data-items'));
-    this.paintDots(items.map((item) => item.color));
-    items.reverse();
+    const items = JSON.parse(this.$component.attr(ITEMS));
+    this.counters = items.map((item) => item.counter);
+    this.colors = items.map((item) => item.color);
     this.chart = this.createChart(items);
+    this.paintDots();
   }
 
-  createChart(items) {
-    const counters = items.map((item) => item.counter);
-    const colors = items.map((item) => {
-      if (typeof item.color === 'string') return item.color;
-      return this.createCanvasGradient(item.color);
+  createChart() {
+    const colors = this.colors.map((color) => {
+      if (typeof color === 'string') return color;
+      return this.createCanvasGradient(color);
     });
 
-    const data = {
-      datasets: [{
-        data: counters,
-        backgroundColor: colors,
-      }],
-    };
-
     const options = {
-      cutout: '89%',
-      radius: 60,
-      borderWidth: 2,
-      aspectRatio: 1,
-      responsive: true,
-      maintainAspectRatio: false,
-      animation: {
-        animateRotate: false,
-      },
-      interaction: {
-        mode: null,
-      },
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: -10,
-          bottom: 0,
-        },
-      },
-      plugins: {
-        tooltip: {
-          enabled: false,
-        },
-        legend: {
-          display: false,
-        },
-      },
+      ctx: this.ctx,
+      counters: this.counters,
+      colors,
     };
 
-    return new Chart(this.ctx, { type: 'doughnut', data, options });
+    return new Chart(options);
   }
 
-  paintDots(colors) {
+  paintDots() {
     this.$dots.each((index, dot) => {
-      if (typeof colors[index] === 'string') {
-        $(dot).css('background', colors[index]);
+      if (typeof this.colors[index] === 'string') {
+        $(dot).css('background', this.colors[index]);
       } else {
-        const stops = colors[index].stops.map((stop) => `${stop.color} ${stop.percent}%`);
-        const color = `linear-gradient(${colors[index].direction}deg, ${stops.join(', ')})`;
+        const stops = this.colors[index].stops.map((stop) => `${stop.color} ${stop.percent}%`);
+        const color = `linear-gradient(${this.colors[index].direction}deg, ${stops.join(', ')})`;
         $(dot).css('background', color);
       }
     });
   }
 
-  createCanvasGradient(options) {
-    const { direction, stops } = options;
-
+  createCanvasGradient({ direction, stops }) {
     const width = 120;
     const canAng = direction - 90;
     const ang = (canAng - 90) * (Math.PI / 180);
