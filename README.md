@@ -18,7 +18,7 @@
 * [**Landing Page**](https://staya-bomjei.github.io/toxin/landing-page.html)
 * [**Search room**](https://staya-bomjei.github.io/toxin/search-room.html)
 * [**Room details**](https://staya-bomjei.github.io/toxin/room-details.html)
-* [**Registration**](https://staya-bomjei.github.io/toxin/registration-page.html)
+* [**Registration**](https://staya-bomjei.github.io/toxin/registration.html)
 * [**Sign In**](https://staya-bomjei.github.io/toxin/sign-in-page.html)
 * [**Error Page**](https://staya-bomjei.github.io/toxin/error-page.html)
 
