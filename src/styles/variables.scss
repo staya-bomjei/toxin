@@ -75,6 +75,6 @@ $secondary-gradient: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
   border: 1px solid rgba(black, 12%);
   box-shadow: 0 0 1.5625rem rgba(black, 20%);
   border-radius: 0.25rem;
-  background: white;
+  background: $background;
   margin: 0;
 }
