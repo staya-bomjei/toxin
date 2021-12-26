@@ -25,10 +25,9 @@ export default class Datepicker {
     const airOptions = this.createAirOptions({ range, altField });
     const datepicker = new OutsideDatepicker($content[0], airOptions);
 
-    const $buttons = $('button', datepicker.$buttons);
-    $buttons.attr('type', 'button');
-    this.$clear = $($buttons[0]);
+    this.$clear = Datepicker.findClearButton(datepicker);
     this.updateClearButtonVisability(datepicker);
+    Datepicker.fixButtonsType(datepicker);
 
     return datepicker;
   }
@@ -101,8 +100,8 @@ export default class Datepicker {
     this.update(datepicker);
   }
 
-  onClearCalendarClick(dp) {
-    dp.clear();
+  onClearCalendarClick(datepicker) {
+    datepicker.clear();
     if (this.isSplit) {
       $(this.texts[1]).val('');
     }
@@ -113,12 +112,24 @@ export default class Datepicker {
     this.triggerValueChanged();
   }
 
-  updateClearButtonVisability(dp) {
-    if (dp.selectedDates.length) {
+  updateClearButtonVisability(datepicker) {
+    const hasSelectedDates = datepicker.selectedDates.length !== 0;
+
+    if (hasSelectedDates) {
       this.$clear.show();
     } else {
       this.$clear.hide();
     }
+  }
+
+  static findClearButton(datepicker) {
+    const $buttons = $('button', datepicker.$buttons);
+    return $($buttons[0]);
+  }
+
+  static fixButtonsType(datepicker) {
+    const $buttons = $('button', datepicker.$buttons);
+    $buttons.attr('type', 'button');
   }
 
   static fixFocusDisplay(date, datepicker) {
