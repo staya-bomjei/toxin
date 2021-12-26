@@ -120,6 +120,11 @@ module.exports = (env) => {
   if (env.production) {
     return {
       mode: 'production',
+      optimization: {
+        splitChunks: {
+          chunks: 'all',
+        },
+      },
       ...baseConfig,
     };
   }
