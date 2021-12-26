@@ -3,6 +3,7 @@
 .button {
   @extend %label;
 
+  display: block;
   text-decoration: none;
   text-align: center;
   user-select: none;

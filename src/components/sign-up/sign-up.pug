@@ -17,7 +17,7 @@ mixin sign-up()
       +text-field({ title: 'данные для входа в сервис', placeholder: 'Email' })
       +text-field({ placeholder: 'Пароль' })
       +toggle-button({ text: 'Получать спецпредложения' })
-    +button({ text: 'перейти к оплате', type: 'arrow' })
+    +button({ text: 'перейти к оплате', type: 'arrow', href: 'error-page' })
     .sign-up__has-account
       .sign-up__label Уже есть аккаунт на Toxin?
-      +button({ text: 'войти', type: 'border' })
+      +button({ text: 'войти', type: 'border', href: 'sign-up-page' })

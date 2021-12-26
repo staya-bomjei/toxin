@@ -9,7 +9,7 @@ mixin sign-in()
     .sign-in__row
       +text-field({ placeholder: 'Email' })
       +text-field({ placeholder: 'Пароль' })
-    +button({ text: 'войти', type: 'arrow' })
+    +button({ text: 'войти', type: 'arrow', href: 'sign-in-page' })
     .sign-in__has-account
       .sign-in__label Нет аккаунта на Toxin?
-      +button({ text: 'Создать', type: 'border' })
+      +button({ text: 'Создать', type: 'border', href: 'registration' })
