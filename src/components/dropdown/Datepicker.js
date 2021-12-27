@@ -19,7 +19,12 @@ export default class Datepicker extends Dropdown {
     this.texts = $(TEXT_SELECTOR, this.$component);
     this.isSplit = this.$component.attr(IS_SPLIT) !== undefined;
     this.isRange = this.$component.attr(IS_RANGE) !== undefined;
-    this.datepicker = this.createCalendar({ range: this.isRange });
+    this.datepicker = this.createCalendar();
+  }
+
+  init() {
+    super.init();
+
     const selected = JSON.parse(this.$component.attr(SELECTED));
     this.datepicker.selectDate(selected);
   }
@@ -28,14 +33,14 @@ export default class Datepicker extends Dropdown {
     this.$component.removeClass(DROPDOWN_OPEN);
   }
 
-  createCalendar(additionalOptions = {}) {
+  createCalendar() {
     const options = {
-      ...additionalOptions,
       $component: this.$component,
       $content: this.$content,
       texts: this.texts,
       isDatepicker: this.isDatepicker,
       isSplit: this.isSplit,
+      range: this.isRange,
       triggerValueChanged: () => this.triggerValueChanged(),
       onAcceptButtonClick: () => this.handleAcceptButtonClick(),
       altField: this.texts[0],
