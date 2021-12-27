@@ -9,14 +9,14 @@ export default class Summator extends Counter {
     this.countables = JSON.parse(this.$component.attr(COUNTABLES));
   }
 
-  sumAllCounters() {
+  sumAllDropdownCountables() {
     return this.rows
       .filter((row) => row.countables === null)
       .reduce((sum, row) => sum + Number(row.$counter.html()), 0);
   }
 
   calcDropdownText() {
-    const sum = this.sumAllCounters();
+    const sum = this.sumAllDropdownCountables();
     const value = (sum) ? `${sum} ${choiceCountable(sum, this.countables)}` : '';
     const counters = this.rows
       .filter((row) => row.countables !== null)
