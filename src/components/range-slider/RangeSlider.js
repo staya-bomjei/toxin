@@ -38,9 +38,9 @@ export default class RangeSlider {
     this.$range2.on('input', (event) => this.handleComponentValueChange(event));
   }
 
-  handleComponentValueChange(event) {
-    const $range = $(event.target);
-    const value = Number(event.target.value);
+  handleComponentValueChange({ target }) {
+    const $range = $(target);
+    const value = Number(target.value);
     let { valueLeft, valueRight } = this.getValues();
 
     if (this.isLeftValue($range)) {
