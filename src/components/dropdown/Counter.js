@@ -105,14 +105,14 @@ export default class Counter extends Dropdown {
     return rows.map((row) => {
       const $row = $(row);
       const resultObj = {
-        $minus: $(row).find(MINUS_SELECTOR),
-        $counter: $(row).find(COUNTER_SELECTOR),
-        $plus: $(row).find(PLUS_SELECTOR),
+        $minus: $row.find(MINUS_SELECTOR),
+        $counter: $row.find(COUNTER_SELECTOR),
+        $plus: $row.find(PLUS_SELECTOR),
         countables: null,
       };
 
       if ($row.attr(ROW_COUNTABLES) !== undefined) {
-        resultObj.countables = JSON.parse($(row).attr(ROW_COUNTABLES));
+        resultObj.countables = JSON.parse($row.attr(ROW_COUNTABLES));
       }
 
       return resultObj;
