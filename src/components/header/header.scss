@@ -126,8 +126,7 @@
 
   &__vertical-line {
     height: 1.875rem;
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
+    margin: 0 1.25rem;
     border-right: $border-width solid rgba($dark, 10%);
 
     @media (max-width: $md) {

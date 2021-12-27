@@ -39,8 +39,7 @@
     outline: none;
     border: $border-width solid rgba($dark, 25%);
     border-radius: 0.25rem;
-    padding-left: 0.875rem;
-    padding-right: 0.875rem;
+    padding: 0 0.875rem;
     color: rgba($dark, 25%);
 
     &::placeholder {
