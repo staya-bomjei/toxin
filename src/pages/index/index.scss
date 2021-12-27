@@ -5,6 +5,8 @@
   grid-row-gap: 2.5rem;
   padding: 8rem;
 
+  $class: &;
+
   &__ui-list,
   &__pages-list,
   &__others-list {
@@ -39,23 +41,29 @@
     }
   }
 
-  &__ui-list &__link {
-    color: $purple;
-  }
-
-  &__pages-list &__link {
-    color: $green;
-
-    &::after {
-      content: 'star';
+  &__ui-list {
+    #{$class}__link {
+      color: $purple;
     }
   }
 
-  &__others-list &__link {
-    color: red;
+  &__pages-list {
+    #{$class}__link {
+      color: $green;
 
-    &::after {
-      content: 'accessible_forward';
+      &::after {
+        content: 'star';
+      }
+    }
+  }
+
+  &__others-list {
+    #{$class}__link {
+      color: red;
+
+      &::after {
+        content: 'accessible_forward';
+      }
     }
   }
 }
