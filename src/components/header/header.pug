@@ -18,13 +18,13 @@ mixin header(options = {})
       userName
     } = options;
 
-  .js-header.header
+  .header.js-header
     .header__inner-wrapper
       .header__home
         +logo()
-      button.js-header__burger.header__burger
+      button.header__burger.js-header__burger
         .header__burger-box
-      .js-header__info.header__info
+      .header__info.js-header__info
         .header__menu
           +menu({ items: menuItems })
         if loggedIn

@@ -4,6 +4,7 @@ import {
   BURGER_BUTTON_SELECTOR,
   INFO_SELECTOR,
   BURGER_BUTTON_ACTIVE,
+  INFO_MOBILE_EXPANDED,
 } from './const';
 
 export default class Header {
@@ -14,19 +15,12 @@ export default class Header {
   }
 
   attachEventHandlers() {
-    $(document).on('resize', () => this.handleDocumentResize());
     this.$burgerButton.on('click', () => this.handleBurgerButtonClick());
-  }
-
-  handleDocumentResize() {
-    if (this.$burgerButton.is(':hidden')) {
-      this.$info.show();
-    }
   }
 
   handleBurgerButtonClick() {
     this.$burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
-    this.$info.toggle();
+    this.$info.toggleClass(INFO_MOBILE_EXPANDED);
   }
 
   render() {
