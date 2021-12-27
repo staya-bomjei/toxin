@@ -19,7 +19,7 @@
   &__genders {
     display: flex;
 
-    .radio-button:not(:last-of-type) {
+    & > *:not(:last-of-type) {
       margin-right: 1.25rem;
     }
   }
