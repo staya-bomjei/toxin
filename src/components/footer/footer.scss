@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: $background;
   box-shadow: $tiny-shadow;
 
   $class: &;
@@ -17,7 +17,7 @@
     &:first-child {
       display: grid;
       grid-template-columns: 1fr 2.45fr 1fr;
-      margin: 100px 0;
+      margin: 6.25rem 0;
     }
   }
 

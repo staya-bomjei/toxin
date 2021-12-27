@@ -58,7 +58,7 @@ $tiny-shadow: 0 0.625rem 1.25rem rgba($dark, 5%);
   font-family: MaterialIcons, sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
+  font-size: 1.5rem;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -73,7 +73,7 @@ $tiny-shadow: 0 0.625rem 1.25rem rgba($dark, 5%);
 }
 
 %form {
-  padding: 40px 1.8125rem 1.8125rem;
+  padding: 2.5rem 1.8125rem 1.8125rem;
   border: $border-width solid rgba(black, 12%);
   box-shadow: 0 0 1.5625rem rgba(black, 20%);
   border-radius: 0.25rem;
