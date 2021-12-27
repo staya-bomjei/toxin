@@ -10,6 +10,15 @@
 
   $box-size: 4.375rem;
   $box-radius: 0.375rem;
+  $themes: (
+    'dark-100': $dark,
+    'dark-75': rgba($dark, 75%),
+    'dark-50': rgba($dark, 50%),
+    'dark-25': rgba($dark, 25%),
+    'dark-5': rgba($dark, 5%),
+    'purple': $purple,
+    'green': $green,
+  );
 
   &__box {
     width: $box-size;
@@ -17,32 +26,10 @@
     border-radius: $box-radius;
 
     &_theme {
-      &-dark-100 {
-        background-color: $dark;
-      }
-
-      &-dark-75 {
-        background-color: rgba($dark, 75%);
-      }
-
-      &-dark-50 {
-        background-color: rgba($dark, 50%);
-      }
-
-      &-dark-25 {
-        background-color: rgba($dark, 25%);
-      }
-
-      &-dark-5 {
-        background-color: rgba($dark, 5%);
-      }
-
-      &-purple {
-        background-color: $purple;
-      }
-
-      &-green {
-        background-color: $green;
+      @each $theme, $bg-color in $themes {
+        &-#{$theme} {
+          background: $bg-color;
+        }
       }
     }
   }

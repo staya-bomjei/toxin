@@ -74,7 +74,7 @@ $tiny-shadow: 0 0.625rem 1.25rem rgba($dark, 5%);
 
 %form {
   padding: 40px 1.8125rem 1.8125rem;
-  border: 1px solid rgba(black, 12%);
+  border: $border-width solid rgba(black, 12%);
   box-shadow: 0 0 1.5625rem rgba(black, 20%);
   border-radius: 0.25rem;
   background: $background;
