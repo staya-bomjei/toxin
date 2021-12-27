@@ -63,8 +63,7 @@ export default class Counter extends Dropdown {
       row.$counter.html(0);
     });
 
-    this.updateText();
-    this.updateClearButtonVisability();
+    this.update();
   }
 
   handleAcceptButtonClick() {
