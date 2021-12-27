@@ -52,7 +52,7 @@ export default class DoughnutChart {
   }
 
   createCanvasGradient({ direction, stops }) {
-    const width = 120;
+    const width = this.$chart.width();
     const canAng = direction - 90;
     const ang = (canAng - 90) * (Math.PI / 180);
     const hypt = width / Math.cos(ang);
