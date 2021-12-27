@@ -14,10 +14,8 @@ export default class RoomThumbnail {
   constructor($component) {
     this.$component = $component;
     this.selected = Number($component.attr(SELECTED));
-
     this.images = Array.from($(IMAGE_SELECTOR, $component)).map((item) => $(item));
     this.buttons = Array.from($(BUTTON_SELECTOR, $component)).map((item) => $(item));
-
     this.$prev = $(PREV_SELECTOR, $component);
     this.$next = $(NEXT_SELECTOR, $component);
   }
@@ -35,21 +33,17 @@ export default class RoomThumbnail {
   }
 
   handlePrevClick() {
-    let index = this.selected - 1;
-    if (index < 0) index = this.images.length - 1;
-
+    const index = (this.selected === 0) ? this.images.length - 1 : this.selected - 1;
     this.selectImage(index);
   }
 
   handleNextClick() {
-    let index = this.selected + 1;
-    if (index > this.images.length - 1) index = 0;
-
+    const index = (this.selected + 1) % this.images.length;
     this.selectImage(index);
   }
 
-  handleButtonClick(event) {
-    const buttonNumber = this.getButtonIndex(event.target);
+  handleButtonClick({ target }) {
+    const buttonNumber = this.getButtonIndex(target);
     this.selectImage(buttonNumber);
   }
 
