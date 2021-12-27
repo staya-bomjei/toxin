@@ -8,7 +8,6 @@ $xl: 1440px;
 $content-width: 72.5rem;
 $border-width: 0.0625rem;
 $z-expanded: 10;
-$tiny-shadow: 0 0.625rem 1.25rem rgba($dark, 5%);
 $dark: #1f2041;
 $purple: #bb9cff;
 $green: #6fcf97;
@@ -16,6 +15,7 @@ $background: #fff;
 $primary-gradient: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 $primary-gradient-25: linear-gradient(180deg, #bc9cff40 0%, #8ba4f940 100%);
 $secondary-gradient: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+$tiny-shadow: 0 0.625rem 1.25rem rgba($dark, 5%);
 
 %title {
   font-family: Montserrat, Arial, sans-serif;
