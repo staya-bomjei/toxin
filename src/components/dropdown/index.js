@@ -6,7 +6,7 @@ import Dropdown from './Dropdown';
 import Datepicker from './Datepicker';
 import Counter from './Counter';
 import Summator from './Summator';
-import { DROPDOWN_SELECTOR } from './const';
+import { DROPDOWN_SELECTOR, TYPE } from './const';
 
 import './dropdown.scss';
 
@@ -26,7 +26,7 @@ function dropdownFactory(type, $node) {
 $(() => {
   $(DROPDOWN_SELECTOR).each((index, node) => {
     const $node = $(node);
-    const type = $node.attr('data-type');
+    const type = $node.attr(TYPE);
     const dropdown = dropdownFactory(type, $node);
     dropdown.render();
   });

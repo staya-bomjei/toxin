@@ -26,3 +26,4 @@ export const IS_RANGE = 'data-is-range';
 export const SELECTED = 'data-selected';
 export const DATE_FROM = 'data-date-from';
 export const DATE_TO = 'data-date-to';
+export const TYPE = 'data-type';
