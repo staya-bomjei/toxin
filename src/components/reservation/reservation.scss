@@ -73,7 +73,7 @@
     color: rgba($dark, 25%);
     width: 1.25rem;
     height: 1.25rem;
-    border: 0.0625rem solid rgba($dark, 25%);
+    border: $border-width solid rgba($dark, 25%);
     border-radius: 50%;
     text-align: center;
     line-height: 1.25rem;
@@ -90,7 +90,7 @@
   &__dashed-underline {
     display: inline-block;
     width: 100%;
-    border-bottom: 0.0625rem dashed rgba($dark, 25%);
+    border-bottom: $border-width dashed rgba($dark, 25%);
   }
 
   &__total-cost {

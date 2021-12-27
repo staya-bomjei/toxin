@@ -20,7 +20,7 @@
     flex-shrink: 0;
     height: 1.25rem;
     width: 1.25rem;
-    border: 0.0625rem solid rgba($dark, 25%);
+    border: $border-width solid rgba($dark, 25%);
     border-radius: 0.25rem;
 
     &::after {

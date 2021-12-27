@@ -21,7 +21,7 @@
     flex-shrink: 0;
     height: $marker-height;
     width: $marker-width;
-    border: 0.0625rem solid rgba($dark, 25%);
+    border: $border-width solid rgba($dark, 25%);
     border-radius: $marker-height;
     cursor: pointer;
 

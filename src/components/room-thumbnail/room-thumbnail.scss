@@ -91,7 +91,7 @@
     box-sizing: border-box;
     width: 0.4688rem;
     height: 0.4688rem;
-    border: 0.0625rem solid white;
+    border: $border-width solid white;
     border-radius: 50%;
     cursor: pointer;
 
@@ -150,7 +150,7 @@
 
   &__underline {
     border: none;
-    border-top: 0.0625rem solid rgba($dark, 10%);
+    border-top: $border-width solid rgba($dark, 10%);
     margin: 0;
     margin-top: 0.625rem;
     margin-bottom: 0.5rem;

@@ -41,7 +41,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    border: 0.0625rem solid rgba($dark, 25%);
+    border: $border-width solid rgba($dark, 25%);
     border-radius: $border-radius;
     cursor: pointer;
   }
@@ -75,7 +75,7 @@
     z-index: $z-expanded;
     width: 100%;
     background-color: $background;
-    border: 0.0625rem solid rgba($dark, 50%);
+    border: $border-width solid rgba($dark, 50%);
     border-top: none;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
@@ -115,7 +115,7 @@
     text-align: center;
     width: $button-size;
     height: $button-size;
-    border: 0.0625rem solid rgba($dark, 25%);
+    border: $border-width solid rgba($dark, 25%);
     border-radius: 50%;
     user-select: none;
   }

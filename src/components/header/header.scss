@@ -128,14 +128,14 @@
     height: 1.875rem;
     margin-left: 1.25rem;
     margin-right: 1.25rem;
-    border-right: 0.0625rem solid rgba($dark, 10%);
+    border-right: $border-width solid rgba($dark, 10%);
 
     @media (max-width: $md) {
       & {
         height: 0;
         width: 100%;
         margin: 0;
-        border-top: 0.0625rem solid rgba($dark, 10%);
+        border-top: $border-width solid rgba($dark, 10%);
       }
     }
   }

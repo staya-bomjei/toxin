@@ -27,7 +27,7 @@
   }
 
   @mixin input-hover {
-    border: 0.0625rem solid rgba($dark, 50%);
+    border: $border-width solid rgba($dark, 50%);
     color: rgba($dark, 75%);
   }
 
@@ -37,7 +37,7 @@
     min-height: 2.75rem;
     width: 100%;
     outline: none;
-    border: 0.0625rem solid rgba($dark, 25%);
+    border: $border-width solid rgba($dark, 25%);
     border-radius: 0.25rem;
     padding-left: 0.875rem;
     padding-right: 0.875rem;
