@@ -21,15 +21,14 @@ export default class RangeSlider {
     this.max = Number($component.attr(MAX));
     this.$output = $(OUTPUT_SELECTOR, $component);
     this.$track = $(TRACK_SELECTOR, $component);
-
-    const ranges = Array.from($(RANGE_SELECTOR, $component));
-    [this.$range1, this.$range2] = ranges.map((range) => $(range));
-
-    const thumbs = Array.from($(THUMB_SELECTOR, $component));
-    [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
   }
 
   init() {
+    const ranges = Array.from($(RANGE_SELECTOR, this.$component));
+    [this.$range1, this.$range2] = ranges.map((range) => $(range));
+    const thumbs = Array.from($(THUMB_SELECTOR, this.$component));
+    [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
+
     this.setState(this.$range1.attr(VALUE), this.$range2.attr(VALUE));
     this.updateOutput();
   }
