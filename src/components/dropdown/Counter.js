@@ -25,19 +25,22 @@ export default class Counter extends Dropdown {
     this.maxLen = Number($component.attr(MAX_LEN));
     this.hasControls = $component.has(HAS_CONTROLS) !== undefined;
     this.$text = $(TEXT_SELECTOR, this.$component);
+    this.rows = this.getRows();
   }
 
   init() {
     super.init();
 
-    this.rows = this.getRows();
-
     if (this.hasControls) {
-      this.$clear = this.$component.find(CLEAR_BUTTON_SELECTOR);
-      this.$accept = this.$component.find(ACCEPT_BUTTON_SELECTOR);
+      this.initControls();
     }
 
     this.update();
+  }
+
+  initControls() {
+    this.$clear = this.$component.find(CLEAR_BUTTON_SELECTOR);
+    this.$accept = this.$component.find(ACCEPT_BUTTON_SELECTOR);
   }
 
   attachEventHandlers() {
