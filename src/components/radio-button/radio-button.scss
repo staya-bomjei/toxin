@@ -21,6 +21,7 @@
   }
 
   &__mark {
+    position: relative;
     flex-shrink: 0;
     height: $marker-size;
     width: $marker-size;
@@ -29,7 +30,7 @@
 
     &::after {
       content: '';
-      position: relative;
+      position: absolute;
       display: none;
       left: $center-offset;
       top: $center-offset;
