@@ -5,13 +5,15 @@
 
 .air-datepicker {
   box-sizing: border-box;
-  border: 1px solid rgba($dark, 25%);
-  border-radius: 4px;
-  width: 320px;
-  padding: 15px 19px 18px;
+  border: $border-width solid rgba($dark, 25%);
+  border-radius: 0.25rem;
+  width: 20rem;
+  padding: 0.9375rem 1.1875rem 1.125rem;
+
+  $cell-size: 2.5rem;
 
   &.-inline- {
-    box-shadow: 0 10px 20px rgba($dark, 5%);
+    box-shadow: $tiny-shadow;
   }
 
   &--pointer {
@@ -19,7 +21,7 @@
   }
 
   &--navigation {
-    margin-bottom: 27px;
+    margin-bottom: 1.6875rem;
   }
 
   &-nav {
@@ -36,7 +38,7 @@
       &[data-action='next']::after {
         @extend %material-icons;
 
-        font-size: 24px;
+        font-size: 1.5rem;
         background: $primary-gradient;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -59,8 +61,8 @@
 
   &-body {
     &--day-names {
-      grid-template-columns: repeat(7, 40px);
-      grid-auto-rows: 40px;
+      grid-template-columns: repeat(7, $cell-size);
+      grid-auto-rows: $cell-size;
       margin: 0;
     }
 
@@ -69,14 +71,14 @@
 
       text-transform: capitalize;
       color: $purple;
-      width: 40px;
-      height: 40px;
+      width: $cell-size;
+      height: $cell-size;
     }
 
     &--cells {
       &.-days- {
-        grid-template-columns: repeat(7, 40px);
-        grid-auto-rows: 40px;
+        grid-template-columns: repeat(7, $cell-size);
+        grid-auto-rows: $cell-size;
       }
     }
   }
@@ -177,7 +179,7 @@
   &--buttons {
     border: none;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
 
   &-buttons {
