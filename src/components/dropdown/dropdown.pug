@@ -39,13 +39,13 @@ mixin dropdown(options = {})
       valueChanged, 
     } = options;
 
-    let dropdowns = [{ title, condition, placeholder }];
+    let buttons = [{ title, condition, placeholder }];
     if (isSplit) {
-      dropdowns = [{}, {}];
-      dropdowns.forEach((dropdown, index) => {
-        dropdown.title = (typeof title === 'string') ? title : title[index];
-        dropdown.condition = (typeof condition === 'string') ? condition : condition[index];
-        dropdown.placeholder = (typeof placeholder === 'string') ? placeholder : placeholder[index];
+      buttons = [{}, {}];
+      buttons.forEach((button, index) => {
+        button.title = (typeof title === 'string') ? title : title[index];
+        button.condition = (typeof condition === 'string') ? condition : condition[index];
+        button.placeholder = (typeof placeholder === 'string') ? placeholder : placeholder[index];
       });
     }
 
@@ -66,21 +66,21 @@ mixin dropdown(options = {})
     data-is-split = isSplit
     data-selected = selected
     )
-    .dropdown__dropdowns.js-dropdown__dropdowns(class = (isSplit) ? 'dropdown__dropdowns_split' : null)
-      each dropdown in dropdowns 
-        .dropdown__dropdown
+    .dropdown__inputs.js-dropdown__inputs(class = (isSplit) ? 'dropdown__inputs_split' : null)
+      each button in buttons 
+        .dropdown__input
           .dropdown__info
-            .dropdown__title= dropdown.title
-            .dropdown__condition= dropdown.condition
+            .dropdown__title= button.title
+            .dropdown__condition= button.condition
           .dropdown__input-box.js-dropdown__input-box
-            input.dropdown__text.js-dropdown__text(type = text placeholder = dropdown.placeholder readonly = true)
+            input.dropdown__text.js-dropdown__text(type = text placeholder = button.placeholder readonly = true)
             .dropdown__icon expand_more
     .dropdown__content.js-dropdown__content
       if type !== 'datepicker'
         each row in rows
           .dropdown__row.js-dropdown__row(data-row-countables = row.countables)
             .dropdown__row-text= row.text
-            .dropdown__buttons
+            .dropdown__row-buttons
               .dropdown__button-minus.js-dropdown__button-minus(class = (row.counter !== 0) ? 'dropdown__button-minus_active' : '') -
               .dropdown__counter.js-dropdown__counter= row.counter
               .dropdown__button-plus.js-dropdown__button-plus.dropdown__button-plus_active +

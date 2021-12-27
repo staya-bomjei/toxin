@@ -1,5 +1,5 @@
 export const DROPDOWN_SELECTOR = '.js-dropdown';
-export const DROPDOWNS_SELECTOR = '.js-dropdown__dropdowns';
+export const INPUTS_SELECTOR = '.js-dropdown__inputs';
 export const CONTENT_SELECTOR = '.js-dropdown__content';
 export const TEXT_SELECTOR = '.js-dropdown__text';
 export const CLEAR_BUTTON_SELECTOR = '.js-dropdown__clear-button';

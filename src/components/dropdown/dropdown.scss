@@ -24,10 +24,10 @@
     color: rgba($dark, 50%);
   }
 
-  &__dropdowns_split {
+  &__inputs_split {
     display: flex;
 
-    #{$class}__dropdown {
+    #{$class}__input {
       flex-grow: 1;
 
       &:first-child {
@@ -95,7 +95,7 @@
     }
   }
 
-  &__buttons {
+  &__row-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -195,7 +195,7 @@
       margin: 0;
     }
     #{$class}__info,
-    #{$class}__dropdown {
+    #{$class}__input {
       display: none;
     }
   }
