@@ -24,14 +24,16 @@
     color: rgba($dark, 50%);
   }
 
-  &__inputs_split {
-    display: flex;
+  &__inputs {
+    &_split {
+      display: flex;
 
-    #{$class}__input {
-      flex-grow: 1;
+      #{$class}__input {
+        flex-grow: 1;
 
-      &:first-child {
-        margin-right: 1.25rem;
+        &:first-child {
+          margin-right: 1.25rem;
+        }
       }
     }
   }
