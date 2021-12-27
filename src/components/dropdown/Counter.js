@@ -126,7 +126,7 @@ export default class Counter extends Dropdown {
   update() {
     this.updateText();
     this.updateValue();
-    this.updateClearButtonVisability();
+    this.updateClearButtonVisibility();
     this.triggerValueChanged();
   }
 
@@ -142,7 +142,7 @@ export default class Counter extends Dropdown {
     this.$component.attr(VALUE, this.calcDropdownValue());
   }
 
-  updateClearButtonVisability() {
+  updateClearButtonVisibility() {
     if (this.areAllCountersZero()) {
       this.$clear.hide();
     } else {

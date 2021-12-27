@@ -26,7 +26,7 @@ export default class Datepicker {
     const datepicker = new OutsideDatepicker($content[0], airOptions);
 
     this.$clear = Datepicker.findClearButton(datepicker);
-    this.updateClearButtonVisability(datepicker);
+    this.updateClearButtonVisibility(datepicker);
     Datepicker.fixButtonsType(datepicker);
 
     return datepicker;
@@ -108,11 +108,11 @@ export default class Datepicker {
   }
 
   update(datepicker) {
-    this.updateClearButtonVisability(datepicker);
+    this.updateClearButtonVisibility(datepicker);
     this.triggerValueChanged();
   }
 
-  updateClearButtonVisability(datepicker) {
+  updateClearButtonVisibility(datepicker) {
     const hasSelectedDates = datepicker.selectedDates.length !== 0;
 
     if (hasSelectedDates) {
