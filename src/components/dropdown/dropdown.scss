@@ -79,8 +79,7 @@
     background-color: $background;
     border: $border-width solid rgba($dark, 50%);
     border-top: none;
-    border-bottom-left-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    border-radius: 0 0 $border-radius $border-radius;
     padding: 0.4375rem 0.4375rem 0.4375rem 0.9375rem;
   }
 
@@ -159,8 +158,7 @@
   &_content-only {
     #{$class}__input-box {
       border-color: rgba($dark, 50%);
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+      border-radius: $border-radius $border-radius 0 0;
     }
 
     #{$class}__content {
