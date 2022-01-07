@@ -3,7 +3,7 @@ import { choiceCountable } from '../../libs/utils/utils';
 import Counter from './Counter';
 import { COUNTABLES } from './const';
 
-export default class Summator extends Counter {
+class Summator extends Counter {
   constructor($component) {
     super($component);
     this.countables = JSON.parse(this.$component.attr(COUNTABLES));
@@ -31,3 +31,5 @@ export default class Summator extends Counter {
       .join(', ');
   }
 }
+
+export default Summator;

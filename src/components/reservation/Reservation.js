@@ -18,7 +18,7 @@ import {
   ADDITIONALS,
 } from './const';
 
-export default class Reservation {
+class Reservation {
   constructor($component) {
     this.$component = $component;
     this.price = Number($component.attr(PRICE));
@@ -105,3 +105,5 @@ export default class Reservation {
     this.attachEventHandlers();
   }
 }
+
+export default Reservation;

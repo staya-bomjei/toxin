@@ -7,7 +7,7 @@ import {
   INFO_MOBILE_EXPANDED,
 } from './const';
 
-export default class Header {
+class Header {
   constructor($component) {
     this.$component = $component;
     this.$burgerButton = $(BURGER_BUTTON_SELECTOR, $component);
@@ -27,3 +27,5 @@ export default class Header {
     this.attachEventHandlers();
   }
 }
+
+export default Header;

@@ -1,7 +1,16 @@
-export const HEADER_SELECTOR = '.js-header';
-export const BURGER_BUTTON_SELECTOR = '.js-header__burger';
-export const INFO_SELECTOR = '.js-header__info';
+const HEADER_SELECTOR = '.js-header';
+const BURGER_BUTTON_SELECTOR = '.js-header__burger';
+const INFO_SELECTOR = '.js-header__info';
 
-export const BURGER_BUTTON_ACTIVE = 'header__burger_active';
-export const HEADER_MOBILE = 'header_mobile';
-export const INFO_MOBILE_EXPANDED = 'header__info_mobile-expanded';
+const BURGER_BUTTON_ACTIVE = 'header__burger_active';
+const HEADER_MOBILE = 'header_mobile';
+const INFO_MOBILE_EXPANDED = 'header__info_mobile-expanded';
+
+export {
+  HEADER_SELECTOR,
+  BURGER_BUTTON_SELECTOR,
+  INFO_SELECTOR,
+  BURGER_BUTTON_ACTIVE,
+  HEADER_MOBILE,
+  INFO_MOBILE_EXPANDED,
+};

@@ -1,6 +1,6 @@
 import OutsideChart from 'chart.js/auto';
 
-export default class Chart {
+class Chart {
   constructor(options) {
     this.ctx = options.ctx;
     this.counters = options.counters;
@@ -59,3 +59,5 @@ export default class Chart {
     };
   }
 }
+
+export default Chart;

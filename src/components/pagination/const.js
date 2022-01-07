@@ -1,12 +1,25 @@
-export const PAGINATION_SELECTOR = '.js-pagination';
-export const NUMBER_BUTTON_SELECTOR = '.js-pagination__number';
-export const PREV_BUTTON_SELECTOR = '.js-pagination__prev';
-export const NEXT_BUTTON_SELECTOR = '.js-pagination__next';
-export const TEXT_SELECTOR = '.js-pagination__text';
+const PAGINATION_SELECTOR = '.js-pagination';
+const NUMBER_BUTTON_SELECTOR = '.js-pagination__number';
+const PREV_BUTTON_SELECTOR = '.js-pagination__prev';
+const NEXT_BUTTON_SELECTOR = '.js-pagination__next';
+const TEXT_SELECTOR = '.js-pagination__text';
 
-export const CURRENT_NUMBER_BUTTON = 'pagination__number_current';
+const CURRENT_NUMBER_BUTTON = 'pagination__number_current';
 
-export const INIT_STATE = 'data-init-state';
-export const ITEMS_COUNT = 'data-items-counter';
-export const ITEMS_PER_PAGE = 'data-items-per-page';
-export const POSTFIX = 'data-postfix';
+const INIT_STATE = 'data-init-state';
+const ITEMS_COUNT = 'data-items-counter';
+const ITEMS_PER_PAGE = 'data-items-per-page';
+const POSTFIX = 'data-postfix';
+
+export {
+  PAGINATION_SELECTOR,
+  NUMBER_BUTTON_SELECTOR,
+  PREV_BUTTON_SELECTOR,
+  NEXT_BUTTON_SELECTOR,
+  TEXT_SELECTOR,
+  CURRENT_NUMBER_BUTTON,
+  INIT_STATE,
+  ITEMS_COUNT,
+  ITEMS_PER_PAGE,
+  POSTFIX,
+};

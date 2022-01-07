@@ -8,7 +8,7 @@ import {
   ITEMS,
 } from './const';
 
-export default class DoughnutChart {
+class DoughnutChart {
   constructor($component) {
     this.$component = $component;
     this.$chart = $(CHART_SELECTOR, $component);
@@ -75,3 +75,5 @@ export default class DoughnutChart {
     this.init();
   }
 }
+
+export default DoughnutChart;

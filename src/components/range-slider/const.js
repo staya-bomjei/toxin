@@ -1,10 +1,22 @@
-export const RANGES_SLIDER_SELECTOR = '.js-range-slider';
-export const OUTPUT_SELECTOR = '.js-range-slider__output';
-export const TRACK_SELECTOR = '.js-range-slider__track-inner';
-export const RANGE_SELECTOR = '.js-range-slider__range';
-export const THUMB_SELECTOR = '.js-range-slider__thumb';
+const RANGES_SLIDER_SELECTOR = '.js-range-slider';
+const OUTPUT_SELECTOR = '.js-range-slider__output';
+const TRACK_SELECTOR = '.js-range-slider__track-inner';
+const RANGE_SELECTOR = '.js-range-slider__range';
+const THUMB_SELECTOR = '.js-range-slider__thumb';
 
-export const VALUE = 'value';
-export const POSTFIX = 'data-postfix';
-export const MIN = 'data-min';
-export const MAX = 'data-max';
+const VALUE = 'value';
+const POSTFIX = 'data-postfix';
+const MIN = 'data-min';
+const MAX = 'data-max';
+
+export {
+  RANGES_SLIDER_SELECTOR,
+  OUTPUT_SELECTOR,
+  TRACK_SELECTOR,
+  RANGE_SELECTOR,
+  THUMB_SELECTOR,
+  VALUE,
+  POSTFIX,
+  MIN,
+  MAX,
+};

@@ -10,7 +10,7 @@ import {
   SELECTED,
 } from './const';
 
-export default class RoomThumbnail {
+class RoomThumbnail {
   constructor($component) {
     this.$component = $component;
     this.selected = Number($component.attr(SELECTED));
@@ -69,3 +69,5 @@ export default class RoomThumbnail {
     this.attachEventHandlers();
   }
 }
+
+export default RoomThumbnail;

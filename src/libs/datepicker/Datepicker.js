@@ -6,7 +6,7 @@ import ruLocale from './ru';
 import 'air-datepicker/air-datepicker.css';
 import './datepicker.scss';
 
-export default class Datepicker {
+class Datepicker {
   constructor(options) {
     this.$component = options.$component;
     this.texts = options.texts;
@@ -150,3 +150,5 @@ export default class Datepicker {
     return date.toLocaleDateString(locale);
   }
 }
+
+export default Datepicker;

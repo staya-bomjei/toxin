@@ -12,7 +12,7 @@ import {
   POSTFIX,
 } from './const';
 
-export default class Pagination {
+class Pagination {
   constructor($component) {
     this.$component = $component;
     this.itemsCounter = Number($component.attr(ITEMS_COUNT));
@@ -137,3 +137,5 @@ export default class Pagination {
     this.attachEventHandlers();
   }
 }
+
+export default Pagination;

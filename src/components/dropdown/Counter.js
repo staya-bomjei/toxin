@@ -19,7 +19,7 @@ import {
   VALUE,
 } from './const';
 
-export default class Counter extends Dropdown {
+class Counter extends Dropdown {
   constructor($component) {
     super($component);
     this.maxLen = Number($component.attr(MAX_LEN));
@@ -170,3 +170,5 @@ export default class Counter extends Dropdown {
     this.attachEventHandlers();
   }
 }
+
+export default Counter;

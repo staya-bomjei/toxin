@@ -7,7 +7,7 @@ import {
   RATE,
 } from './const';
 
-export default class RateButton {
+class RateButton {
   constructor($component) {
     this.$component = $component;
     this.rate = Number($component.attr(RATE));
@@ -64,3 +64,5 @@ export default class RateButton {
     this.attachEventHandlers();
   }
 }
+
+export default RateButton;

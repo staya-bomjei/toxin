@@ -1,8 +1,17 @@
-export const LIKE_BUTTON_SELECTOR = '.js-like-button';
-export const ICON_SELECTOR = '.js-like-button__icon';
-export const COUNTER_SELECTOR = '.js-like-button__counter';
+const LIKE_BUTTON_SELECTOR = '.js-like-button';
+const ICON_SELECTOR = '.js-like-button__icon';
+const COUNTER_SELECTOR = '.js-like-button__counter';
 
-export const BUTTON_LIKED = 'like-button_liked';
+const BUTTON_LIKED = 'like-button_liked';
 
-export const ICON_LIKED = 'favorite';
-export const ICON_UNLIKED = 'favorite_border';
+const ICON_LIKED = 'favorite';
+const ICON_UNLIKED = 'favorite_border';
+
+export {
+  LIKE_BUTTON_SELECTOR,
+  ICON_SELECTOR,
+  COUNTER_SELECTOR,
+  BUTTON_LIKED,
+  ICON_LIKED,
+  ICON_UNLIKED,
+};

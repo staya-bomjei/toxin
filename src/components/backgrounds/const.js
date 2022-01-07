@@ -1,11 +1,23 @@
-export const BACKGROUNDS_SELECTOR = '.js-backgrounds';
-export const IMAGE_SELECTOR = '.js-backgrounds__image';
+const BACKGROUNDS_SELECTOR = '.js-backgrounds';
+const IMAGE_SELECTOR = '.js-backgrounds__image';
 
-export const IMAGE_VISIBLE = 'backgrounds__image_visible';
-export const IMAGE_FADE = 'backgrounds__image_fade';
+const IMAGE_VISIBLE = 'backgrounds__image_visible';
+const IMAGE_FADE = 'backgrounds__image_fade';
 
-export const DELAY = 'data-delay';
-export const DURATION = 'data-duration';
-export const ABOVE = -1;
-export const BELOW = -2;
-export const MS_PER_SECOND = 1000;
+const DELAY = 'data-delay';
+const DURATION = 'data-duration';
+const ABOVE = -1;
+const BELOW = -2;
+const MS_PER_SECOND = 1000;
+
+export {
+  BACKGROUNDS_SELECTOR,
+  IMAGE_SELECTOR,
+  IMAGE_VISIBLE,
+  IMAGE_FADE,
+  DELAY,
+  DURATION,
+  ABOVE,
+  BELOW,
+  MS_PER_SECOND,
+};

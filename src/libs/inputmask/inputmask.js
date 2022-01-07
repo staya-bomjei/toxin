@@ -1,6 +1,6 @@
 import OutsideInputmask from 'inputmask';
 
-export default class Inputmask {
+class Inputmask {
   constructor({ $input, inputFormat, placeholder }) {
     const options = {
       alias: 'datetime',
@@ -16,3 +16,5 @@ export default class Inputmask {
     this.outsideInputmask.mask(this.$input);
   }
 }
+
+export default Inputmask;

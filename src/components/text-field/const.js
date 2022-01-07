@@ -1,3 +1,8 @@
-export const TEXT_FIELD_INPUT_SELECTOR = '.js-text-field__input';
+const TEXT_FIELD_INPUT_SELECTOR = '.js-text-field__input';
 
-export const PLACEHOLDER = 'placeholder';
+const PLACEHOLDER = 'placeholder';
+
+export {
+  TEXT_FIELD_INPUT_SELECTOR,
+  PLACEHOLDER,
+};

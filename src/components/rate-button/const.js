@@ -1,6 +1,14 @@
-export const RATE_BUTTON_SELECTOR = '.js-rate-button';
-export const STAR_SELECTOR = '.js-rate-button__star';
+const RATE_BUTTON_SELECTOR = '.js-rate-button';
+const STAR_SELECTOR = '.js-rate-button__star';
 
-export const STAR_ICON = 'star';
-export const UNSTAR_ICON = 'star_border';
-export const RATE = 'data-rate';
+const STAR_ICON = 'star';
+const UNSTAR_ICON = 'star_border';
+const RATE = 'data-rate';
+
+export {
+  RATE_BUTTON_SELECTOR,
+  STAR_SELECTOR,
+  STAR_ICON,
+  UNSTAR_ICON,
+  RATE,
+};

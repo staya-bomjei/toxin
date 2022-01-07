@@ -13,7 +13,7 @@ import {
   MAX,
 } from './const';
 
-export default class RangeSlider {
+class RangeSlider {
   constructor($component) {
     this.$component = $component;
     this.postfix = $component.attr(POSTFIX);
@@ -100,3 +100,5 @@ export default class RangeSlider {
     this.attachEventHandlers();
   }
 }
+
+export default RangeSlider;

@@ -13,7 +13,7 @@ import {
   DATE_TO,
 } from './const';
 
-export default class Datepicker extends Dropdown {
+class Datepicker extends Dropdown {
   constructor($component) {
     super($component);
     this.texts = $(TEXT_SELECTOR, this.$component);
@@ -51,3 +51,5 @@ export default class Datepicker extends Dropdown {
     return new LibsDatepicker(options);
   }
 }
+
+export default Datepicker;

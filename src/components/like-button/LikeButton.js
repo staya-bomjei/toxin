@@ -8,7 +8,7 @@ import {
   BUTTON_LIKED,
 } from './const';
 
-export default class LikeButton {
+class LikeButton {
   constructor($component) {
     this.$component = $component;
     this.$icon = $(ICON_SELECTOR, $component);
@@ -46,3 +46,5 @@ export default class LikeButton {
     this.attachEventHandlers();
   }
 }
+
+export default LikeButton;

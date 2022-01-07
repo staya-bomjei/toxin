@@ -7,7 +7,7 @@ import {
   CHECKBOX_LIST_OPEN,
 } from './const';
 
-export default class CheckboxList {
+class CheckboxList {
   constructor($component) {
     this.$component = $component;
     this.$button = $(BUTTON_SELECTOR, $component);
@@ -40,3 +40,5 @@ export default class CheckboxList {
     this.attachEventHandlers();
   }
 }
+
+export default CheckboxList;

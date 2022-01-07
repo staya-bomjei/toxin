@@ -1,29 +1,59 @@
-export const DROPDOWN_SELECTOR = '.js-dropdown';
-export const INPUTS_SELECTOR = '.js-dropdown__inputs';
-export const CONTENT_SELECTOR = '.js-dropdown__content';
-export const TEXT_SELECTOR = '.js-dropdown__text';
-export const CLEAR_BUTTON_SELECTOR = '.js-dropdown__clear-button';
-export const ACCEPT_BUTTON_SELECTOR = '.js-dropdown__accept-button';
-export const INPUT_BOX_SELECTOR = '.js-dropdown__input-box';
-export const ROW_SELECTOR = '.js-dropdown__row';
-export const MINUS_SELECTOR = '.js-dropdown__button-minus';
-export const COUNTER_SELECTOR = '.js-dropdown__counter';
-export const PLUS_SELECTOR = '.js-dropdown__button-plus';
+const DROPDOWN_SELECTOR = '.js-dropdown';
+const INPUTS_SELECTOR = '.js-dropdown__inputs';
+const CONTENT_SELECTOR = '.js-dropdown__content';
+const TEXT_SELECTOR = '.js-dropdown__text';
+const CLEAR_BUTTON_SELECTOR = '.js-dropdown__clear-button';
+const ACCEPT_BUTTON_SELECTOR = '.js-dropdown__accept-button';
+const INPUT_BOX_SELECTOR = '.js-dropdown__input-box';
+const ROW_SELECTOR = '.js-dropdown__row';
+const MINUS_SELECTOR = '.js-dropdown__button-minus';
+const COUNTER_SELECTOR = '.js-dropdown__counter';
+const PLUS_SELECTOR = '.js-dropdown__button-plus';
 
-export const DROPDOWN_OPEN = 'dropdown_open';
-export const DROPDOWN_EXPANDED = 'dropdown_expanded';
-export const MINUS_ACTIVE = 'dropdown__button-minus_active';
+const DROPDOWN_OPEN = 'dropdown_open';
+const DROPDOWN_EXPANDED = 'dropdown_expanded';
+const MINUS_ACTIVE = 'dropdown__button-minus_active';
 
-export const PLACEHOLDER = 'data-placeholder';
-export const VALUE_CHANGED = 'data-value-changed';
-export const VALUE = 'data-value';
-export const MAX_LEN = 'data-max-len';
-export const HAS_CONTROLS = 'data-has-controls';
-export const ROW_COUNTABLES = 'data-row-countables';
-export const COUNTABLES = 'data-countables';
-export const IS_SPLIT = 'data-is-split';
-export const IS_RANGE = 'data-is-range';
-export const SELECTED = 'data-selected';
-export const DATE_FROM = 'data-date-from';
-export const DATE_TO = 'data-date-to';
-export const TYPE = 'data-type';
+const PLACEHOLDER = 'data-placeholder';
+const VALUE_CHANGED = 'data-value-changed';
+const VALUE = 'data-value';
+const MAX_LEN = 'data-max-len';
+const HAS_CONTROLS = 'data-has-controls';
+const ROW_COUNTABLES = 'data-row-countables';
+const COUNTABLES = 'data-countables';
+const IS_SPLIT = 'data-is-split';
+const IS_RANGE = 'data-is-range';
+const SELECTED = 'data-selected';
+const DATE_FROM = 'data-date-from';
+const DATE_TO = 'data-date-to';
+const TYPE = 'data-type';
+
+export {
+  DROPDOWN_SELECTOR,
+  INPUTS_SELECTOR,
+  CONTENT_SELECTOR,
+  TEXT_SELECTOR,
+  CLEAR_BUTTON_SELECTOR,
+  ACCEPT_BUTTON_SELECTOR,
+  INPUT_BOX_SELECTOR,
+  ROW_SELECTOR,
+  MINUS_SELECTOR,
+  COUNTER_SELECTOR,
+  PLUS_SELECTOR,
+  DROPDOWN_OPEN,
+  DROPDOWN_EXPANDED,
+  MINUS_ACTIVE,
+  PLACEHOLDER,
+  VALUE_CHANGED,
+  VALUE,
+  MAX_LEN,
+  HAS_CONTROLS,
+  ROW_COUNTABLES,
+  COUNTABLES,
+  IS_SPLIT,
+  IS_RANGE,
+  SELECTED,
+  DATE_FROM,
+  DATE_TO,
+  TYPE,
+};

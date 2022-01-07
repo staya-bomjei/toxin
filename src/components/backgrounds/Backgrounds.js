@@ -11,7 +11,7 @@ import {
   MS_PER_SECOND,
 } from './const';
 
-export default class Backgrounds {
+class Backgrounds {
   constructor($component) {
     this.$component = $component;
     this.delay = Number($component.attr(DELAY));
@@ -81,3 +81,5 @@ export default class Backgrounds {
     }
   }
 }
+
+export default Backgrounds;

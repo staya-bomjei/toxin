@@ -9,7 +9,7 @@ import {
   VALUE_CHANGED,
 } from './const';
 
-export default class Dropdown {
+class Dropdown {
   constructor($component) {
     this.$component = $component;
     this.valueChanged = $component.attr(VALUE_CHANGED);
@@ -52,3 +52,5 @@ export default class Dropdown {
     this.attachEventHandlers();
   }
 }
+
+export default Dropdown;
