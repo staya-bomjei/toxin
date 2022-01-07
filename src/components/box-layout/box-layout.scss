@@ -1,10 +1,10 @@
 @import '../../styles/variables';
 
 .box-layout {
-  $big-width: 372px;
-  $width: 320px;
-  $short-width: 266px;
-  $small-width: 222px;
+  $big-width: 23.25rem;
+  $width: 20rem;
+  $short-width: 16.625rem;
+  $small-width: 13.875rem;
 
   @mixin set-gap($direction, $gap) {
     & > *:not(:last-child) {

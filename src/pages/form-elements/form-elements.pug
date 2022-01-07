@@ -43,7 +43,7 @@ append variables
 
 block main
   .form-elements
-    .form-elements__row.form-elements__row_main
+    .form-elements__row
       .form-elements__column.form-elements__column_main_1
         +box-layout({ direction: 'column', gap: 40, wrapper: 'normal' })
           +box-layout({ direction: 'column', gap: 20 })
@@ -103,7 +103,7 @@ block main
           +box-layout({ direction: 'column' })
             .form-elements__title pagination
             +pagination(pagination)
-    .form-elements__row.form-elements__row_main
+    .form-elements__row
       .form-elements__column.form-elements__column_main_1
         +box-layout({ direction: 'column', gap: 20, wrapper: 'short' })
           +dropdown(dropdowns.default.default)
@@ -116,7 +116,7 @@ block main
       .form-elements__column.form-elements__column_main_3
         +box-layout({ direction: 'column', wrapper: 'normal' })
           +dropdown(dropdowns.summator.expanded.hasGuests)
-    .form-elements__row.form-elements__row_main
+    .form-elements__row
       .form-elements__column.form-elements__column_main_1
         +box-layout({ direction: 'column', gap: 20, wrapper: 'short' })
           +checkbox-list(checkboxLists.default)
@@ -132,7 +132,7 @@ block main
           .form-elements__title bullet list
           +box-layout({ direction: 'column', wrapper: 'short' })
             +bullet-list(bulletList)
-    .form-elements__row.form-elements__row_main
+    .form-elements__row
       .form-elements__column.form-elements__column_main_1
         +box-layout({ direction: 'column', gap: 20, wrapper: 'short' })
           each advantage in advantageList

@@ -3,19 +3,16 @@
 .form-elements {
   padding: 8.9375rem 8.8125rem 8.1875rem 8.75rem;
 
-  $width: 320px;
+  $width: 20rem;
   $row-gap: 6.25rem;
 
   &__row {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
-    &_main {
-      justify-content: space-between;
-      flex-wrap: wrap;
-
-      &:not(:last-child) {
-        margin-bottom: $row-gap;
-      }
+    &:not(:last-child) {
+      margin-bottom: $row-gap;
     }
   }
 
