@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+
+.box-layout {
+  $big-width: 372px;
+  $width: 320px;
+  $short-width: 266px;
+  $small-width: 222px;
+
+  @mixin set-gap($direction, $gap) {
+    & > *:not(:last-child) {
+      @if $direction == column {
+        margin-bottom: $gap;
+      } @else if $direction == row {
+        margin-right: $gap;
+      }
+    }
+  }
+
+  &__row {
+    display: flex;
+
+    &_gap {
+      @for $i from 0 through 4 {
+        $gap: $i * 10;
+
+        &_#{$gap} {
+          @include set-gap(row, #{$gap}px);
+        }
+      }
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+
+    &_gap {
+      @for $i from 0 through 4 {
+        $gap: $i * 10;
+
+        &_#{$gap} {
+          @include set-gap(column, #{$gap}px);
+        }
+      }
+    }
+  }
+
+  &__wrapper {
+    &_normal {
+      max-width: $width;
+    }
+
+    &_short {
+      max-width: $short-width;
+    }
+
+    &_small {
+      max-width: $small-width;
+    }
+  }
+}

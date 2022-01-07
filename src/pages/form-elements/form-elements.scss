@@ -3,21 +3,8 @@
 .form-elements {
   padding: 8.9375rem 8.8125rem 8.1875rem 8.75rem;
 
-  $big-width: 372px;
   $width: 320px;
-  $short-width: 266px;
-  $small-width: 222px;
   $row-gap: 6.25rem;
-
-  @mixin set-gap($direction, $gap) {
-    & > *:not(:last-child) {
-      @if $direction == column {
-        margin-bottom: $gap;
-      } @else if $direction == row {
-        margin-right: $gap;
-      }
-    }
-  }
 
   &__row {
     display: flex;
@@ -28,16 +15,6 @@
 
       &:not(:last-child) {
         margin-bottom: $row-gap;
-      }
-    }
-
-    &_gap {
-      @for $i from 0 through 4 {
-        $gap: $i * 10;
-
-        &_#{$gap} {
-          @include set-gap(row, #{$gap}px);
-        }
       }
     }
   }
@@ -66,30 +43,6 @@
         min-width: $width;
         width: 61.56%;
       }
-    }
-
-    &_gap {
-      @for $i from 0 through 4 {
-        $gap: $i * 10;
-
-        &_#{$gap} {
-          @include set-gap(column, #{$gap}px);
-        }
-      }
-    }
-  }
-
-  &__wrapper {
-    &_normal {
-      max-width: $width;
-    }
-
-    &_short {
-      max-width: $short-width;
-    }
-
-    &_small {
-      max-width: $small-width;
     }
   }
 

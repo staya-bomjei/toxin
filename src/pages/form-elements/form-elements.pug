@@ -14,33 +14,7 @@ include ../../components/checkbox-list/checkbox-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
 include ../../components/comment/comment
-
-//-
-  options.direction - направление списка, 'row' | 'column'
-  options.gap - пустое место между элементами списка, число из [0, 10, 20, 30, 40]
-  options.wrapper - если указано, то список будет обёрнут во враппер, 
-    ограничивающий ширину списка, 'normal' | 'short' | 'small' 
-mixin box-layout(options = {})
-  -
-    const {
-      direction = 'row',
-      gap,
-      wrapper,
-    } = options;
-
-    const groupClasses = [];
-    groupClasses.push(`form-elements__${direction}`);
-    if (gap) groupClasses.push(`${groupClasses[0]}_gap_${gap}`);
-
-    const wrapperClass = (wrapper) ? `form-elements__wrapper_${wrapper}` : null;
-
-  if wrapper
-    .form-elements__wrapper(class = wrapperClass)
-      div(class = groupClasses)
-        block
-  else
-    div(class = groupClasses)
-      block
+include ../../components/box-layout/box-layout
 
 append variables
   -
