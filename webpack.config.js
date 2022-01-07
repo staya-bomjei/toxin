@@ -52,7 +52,7 @@ module.exports = (env) => {
     module: {
       rules: [
         {
-          test: /\.css$/i,
+          test: /\.css$/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
@@ -71,7 +71,7 @@ module.exports = (env) => {
           ],
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.s[ac]ss$/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
@@ -91,14 +91,14 @@ module.exports = (env) => {
           ],
         },
         {
-          test: /\.pug$/i,
+          test: /\.pug$/,
           loader: 'pug-loader',
           options: {
             pretty: true,
           },
         },
         {
-          test: /\.(png|jpg|gif|svg)$/i,
+          test: /\.(png|jpg|gif|svg)$/,
           type: 'asset/resource',
           exclude: /fonts/,
           generator: {
@@ -106,7 +106,7 @@ module.exports = (env) => {
           },
         },
         {
-          test: /\.(ttf|woff|svg)$/i,
+          test: /\.(ttf|woff|svg)$/,
           type: 'asset/resource',
           exclude: /img/,
           generator: {
