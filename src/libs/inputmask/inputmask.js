@@ -12,7 +12,7 @@ class Inputmask {
     this.$input = $input;
   }
 
-  render() {
+  init() {
     this.outsideInputmask.mask(this.$input);
   }
 }

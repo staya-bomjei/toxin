@@ -16,6 +16,7 @@ class RateButton {
 
   init() {
     this.setState(this.rate);
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -57,11 +58,6 @@ class RateButton {
 
   getStarRate(star) {
     return this.stars.findIndex(($star) => $star.is(star)) + 1;
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

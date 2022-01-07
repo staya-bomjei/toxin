@@ -9,6 +9,6 @@ $(() => {
   $(BACKGROUNDS_SELECTOR).each((index, node) => {
     const $node = $(node);
     const checkboxList = new Backgrounds($node);
-    checkboxList.render();
+    checkboxList.init();
   });
 });

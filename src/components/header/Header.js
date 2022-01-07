@@ -14,6 +14,10 @@ class Header {
     this.$info = $(INFO_SELECTOR, $component);
   }
 
+  init() {
+    this.attachEventHandlers();
+  }
+
   attachEventHandlers() {
     this.$burgerButton.on('click', () => this.handleBurgerButtonClick());
   }
@@ -21,10 +25,6 @@ class Header {
   handleBurgerButtonClick() {
     this.$burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
     this.$info.toggleClass(INFO_MOBILE_EXPANDED);
-  }
-
-  render() {
-    this.attachEventHandlers();
   }
 }
 

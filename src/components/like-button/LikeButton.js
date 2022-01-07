@@ -15,6 +15,10 @@ class LikeButton {
     this.$counter = $(COUNTER_SELECTOR, $component);
   }
 
+  init() {
+    this.attachEventHandlers();
+  }
+
   attachEventHandlers() {
     this.$component.on('click', () => this.handleComponentClick());
   }
@@ -40,10 +44,6 @@ class LikeButton {
 
   setCounter(counter) {
     this.$counter.html(counter);
-  }
-
-  render() {
-    this.attachEventHandlers();
   }
 }
 

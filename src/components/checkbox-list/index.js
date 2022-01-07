@@ -11,6 +11,6 @@ $(() => {
   $(CHECKBOX_LIST_SELECTOR).each((index, node) => {
     const $node = $(node);
     const checkboxList = new CheckboxList($node);
-    checkboxList.render();
+    checkboxList.init();
   });
 });

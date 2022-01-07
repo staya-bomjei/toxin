@@ -18,6 +18,6 @@ $(() => {
       inputFormat: 'dd.mm.yyyy',
       placeholder,
     });
-    im.render();
+    im.init();
   });
 });

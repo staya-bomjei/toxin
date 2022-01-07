@@ -9,6 +9,6 @@ $(() => {
   $(LIKE_BUTTON_SELECTOR).each((index, node) => {
     const $node = $(node);
     const likeButton = new LikeButton($node);
-    likeButton.render();
+    likeButton.init();
   });
 });

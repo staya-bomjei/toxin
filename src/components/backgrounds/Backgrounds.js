@@ -26,6 +26,10 @@ class Backgrounds {
 
     this.setImageVisibility(0, true);
     this.setImagesAnimationDuration();
+
+    if (this.images.length > 1) {
+      this.startAnimationLoop();
+    }
   }
 
   async startAnimationLoop() {
@@ -72,13 +76,6 @@ class Backgrounds {
       this.images[index].removeClass(IMAGE_FADE);
       this.images[index].removeClass(IMAGE_VISIBLE);
     }, this.durationMS);
-  }
-
-  render() {
-    this.init();
-    if (this.images.length > 1) {
-      this.startAnimationLoop();
-    }
   }
 }
 

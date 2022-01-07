@@ -31,6 +31,7 @@ class RangeSlider {
 
     this.setState(this.$range1.attr(VALUE), this.$range2.attr(VALUE));
     this.updateOutput();
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -93,11 +94,6 @@ class RangeSlider {
       this.$track.css('width', `${valueRight - valueLeft}%`);
       this.$track.css('left', `${valueLeft}%`);
     }
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

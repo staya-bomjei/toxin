@@ -22,6 +22,7 @@ class RoomThumbnail {
 
   init() {
     this.selectImage(this.selected);
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -62,11 +63,6 @@ class RoomThumbnail {
 
     array[this.selected].removeClass(modifier);
     array[index].addClass(modifier);
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

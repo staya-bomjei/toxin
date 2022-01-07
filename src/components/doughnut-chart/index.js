@@ -9,6 +9,6 @@ $(() => {
   $(DOUGHNUT_CHART_SELECTOR).each((index, node) => {
     const $node = $(node);
     const doughnutChart = new DoughnutChart($node);
-    doughnutChart.render();
+    doughnutChart.init();
   });
 });

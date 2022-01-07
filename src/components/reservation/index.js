@@ -12,6 +12,6 @@ $(() => {
   $(RESERVATION_SELECTOR).each((index, node) => {
     const $node = $(node);
     const reservation = new Reservation($node);
-    reservation.render();
+    reservation.init();
   });
 });

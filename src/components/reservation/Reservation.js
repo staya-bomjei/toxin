@@ -37,6 +37,7 @@ class Reservation {
 
   init() {
     this.update();
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -98,11 +99,6 @@ class Reservation {
     const days = this.countDays();
     const additional = this.calcAdditional();
     return this.price * days - this.discount + additional;
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

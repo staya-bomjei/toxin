@@ -29,6 +29,7 @@ class Pagination {
     this.pageNumber = 0;
     const initState = Number(this.$component.attr(INIT_STATE));
     this.updateState(initState);
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -130,11 +131,6 @@ class Pagination {
     }
 
     return texts.map((item) => String(item));
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

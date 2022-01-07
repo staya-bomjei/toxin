@@ -9,6 +9,6 @@ $(() => {
   $(PAGINATION_SELECTOR).each((index, node) => {
     const $node = $(node);
     const pagination = new Pagination($node);
-    pagination.render();
+    pagination.init();
   });
 });

@@ -29,12 +29,11 @@ class Counter extends Dropdown {
   }
 
   init() {
-    super.init();
-
     if (this.hasControls) {
       this.initControls();
     }
 
+    super.init();
     this.update();
   }
 
@@ -163,11 +162,6 @@ class Counter extends Dropdown {
       })
       .filter((string) => string !== '')
       .join(', ');
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

@@ -21,6 +21,8 @@ class Dropdown {
     if (!this.$component.hasClass(DROPDOWN_EXPANDED)) {
       this.$content.css('z-index', Number(this.$content.css('z-index')) + 1);
     }
+
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -45,11 +47,6 @@ class Dropdown {
     if (this.valueChanged) {
       $(document).trigger(this.valueChanged);
     }
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

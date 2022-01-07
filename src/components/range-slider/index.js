@@ -9,6 +9,6 @@ $(() => {
   $(RANGES_SLIDER_SELECTOR).each((index, node) => {
     const $node = $(node);
     const rangeSlider = new RangeSlider($node);
-    rangeSlider.render();
+    rangeSlider.init();
   });
 });

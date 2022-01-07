@@ -18,6 +18,7 @@ class CheckboxList {
     if (!this.$component.hasClass(CHECKBOX_LIST_EXPANDED)) {
       this.$list.css('z-index', Number(this.$list.css('z-index')) + 1);
     }
+    this.attachEventHandlers();
   }
 
   attachEventHandlers() {
@@ -33,11 +34,6 @@ class CheckboxList {
     if (this.$component.has(target).length === 0) {
       this.$component.removeClass(CHECKBOX_LIST_OPEN);
     }
-  }
-
-  render() {
-    this.init();
-    this.attachEventHandlers();
   }
 }
 

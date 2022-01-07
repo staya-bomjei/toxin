@@ -11,6 +11,6 @@ $(() => {
   $(ROOM_THUMBNAIL_SELECTOR).each((index, node) => {
     const $node = $(node);
     const roomThumbnail = new RoomThumbnail($node);
-    roomThumbnail.render();
+    roomThumbnail.init();
   });
 });

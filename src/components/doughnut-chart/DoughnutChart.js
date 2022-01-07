@@ -70,10 +70,6 @@ class DoughnutChart {
 
     return gradient;
   }
-
-  render() {
-    this.init();
-  }
 }
 
 export default DoughnutChart;

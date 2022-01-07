@@ -28,6 +28,6 @@ $(() => {
     const $node = $(node);
     const type = $node.attr(TYPE);
     const dropdown = dropdownFactory(type, $node);
-    dropdown.render();
+    dropdown.init();
   });
 });
