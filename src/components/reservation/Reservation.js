@@ -86,13 +86,12 @@ export default class Reservation {
   }
 
   calcAdditional() {
-    const guests = this.$guests.attr(VALUE)
+    return this.$guests.attr(VALUE)
       .split(',')
-      .map((item) => Number(item));
-
-    return guests.reduce((sum, guestCounter, index) => (
-      sum + guestCounter * this.additionals[index]
-    ), 0);
+      .map((item) => Number(item))
+      .reduce((sum, guestCounter, index) => (
+        sum + guestCounter * this.additionals[index]
+      ), 0);
   }
 
   calcTotalCost() {
