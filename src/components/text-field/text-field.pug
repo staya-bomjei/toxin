@@ -18,7 +18,7 @@ mixin text-field(options = {})
 
     const classes = [];
     if (isHovered) classes.push('text-field_hovered');
-    if (type === 'subscription') classes.push('text-field_subscription');
+    if (type === 'subscription') classes.push('text-field_type_subscription');
 
     const inputClass = (type === 'mask') ? 'js-text-field__input' : null;
 

@@ -13,6 +13,16 @@
     opacity: 0;
     height: 0;
     width: 0;
+
+    &:checked {
+      ~ #{$class}__mark {
+        border-color: $purple;
+
+        &::after {
+          display: block;
+        }
+      }
+    }
   }
 
   &__mark {
@@ -64,20 +74,12 @@
     cursor: pointer;
   }
 
-  &_rich {
-    #{$class}__text {
-      font-size: 0.75rem;
-      line-height: 0.875rem;
-      margin: 0;
-    }
-  }
-
-  & &__input:checked {
-    ~ #{$class}__mark {
-      border-color: $purple;
-
-      &::after {
-        display: block;
+  &_variant {
+    &_rich {
+      #{$class}__text {
+        font-size: 0.75rem;
+        line-height: 0.875rem;
+        margin: 0;
       }
     }
   }

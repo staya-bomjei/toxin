@@ -46,16 +46,18 @@
   }
 
   &__wrapper {
-    &_normal {
-      max-width: $width;
-    }
+    &_width {
+      &_normal {
+        max-width: $width;
+      }
 
-    &_short {
-      max-width: $short-width;
-    }
+      &_short {
+        max-width: $short-width;
+      }
 
-    &_small {
-      max-width: $small-width;
+      &_small {
+        max-width: $small-width;
+      }
     }
   }
 }

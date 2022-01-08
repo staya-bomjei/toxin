@@ -58,24 +58,26 @@
     }
   }
 
-  &_subscription {
-    #{$class}__input {
-      padding-right: 43px;
-    }
+  &_type {
+    &_subscription {
+      #{$class}__input {
+        padding-right: 43px;
+      }
 
-    #{$class}__icon {
-      @extend %material-icons;
+      #{$class}__icon {
+        @extend %material-icons;
 
-      font-size: 1.5rem;
-      position: absolute;
-      top: 0.625rem;
-      right: 0.625rem;
-      cursor: pointer;
-      user-select: none;
-      background: $primary-gradient;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: initial;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 0.625rem;
+        right: 0.625rem;
+        cursor: pointer;
+        user-select: none;
+        background: $primary-gradient;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: initial;
+      }
     }
   }
 }

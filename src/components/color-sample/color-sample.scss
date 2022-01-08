@@ -27,7 +27,7 @@
 
     &_theme {
       @each $theme, $bg-color in $themes {
-        &-#{$theme} {
+        &_#{$theme} {
           background: $bg-color;
         }
       }

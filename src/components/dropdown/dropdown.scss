@@ -117,18 +117,17 @@
     border: $border-width solid rgba($dark, 25%);
     border-radius: 50%;
     user-select: none;
+
+    &_active {
+      color: rgba($dark, 50%);
+      border-color: rgba($dark, 50%);
+      cursor: pointer;
+    }
   }
 
   &__counter {
     flex-grow: 1;
     text-align: center;
-  }
-
-  &__button-minus_active,
-  &__button-plus_active {
-    color: rgba($dark, 50%);
-    border-color: rgba($dark, 50%);
-    cursor: pointer;
   }
 
   &__control-buttons {
@@ -152,7 +151,7 @@
 
   &_open,
   &_expanded,
-  &_content-only {
+  &_with-content-only {
     #{$class}__input-box {
       border-color: rgba($dark, 50%);
       border-radius: $border-radius $border-radius 0 0;
@@ -168,13 +167,13 @@
   }
 
   &_expanded,
-  &_content-only {
+  &_with-content-only {
     #{$class}__content {
       position: inherit;
     }
   }
 
-  &_content-only {
+  &_with-content-only {
     #{$class}__content {
       margin: 0;
     }

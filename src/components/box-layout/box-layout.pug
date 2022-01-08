@@ -15,7 +15,7 @@ mixin box-layout(options = {})
     groupClasses.push(`box-layout__${direction}`);
     if (gap) groupClasses.push(`${groupClasses[0]}_gap_${gap}`);
 
-    const wrapperClass = (wrapper) ? `box-layout__wrapper_${wrapper}` : null;
+    const wrapperClass = (wrapper) ? `box-layout__wrapper_width_${wrapper}` : null;
 
   .box-layout
     if wrapper

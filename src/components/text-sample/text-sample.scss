@@ -13,19 +13,19 @@
   }
 
   &_theme {
-    &-title {
+    &_title {
       @extend %title;
     }
 
-    &-item-title {
+    &_item-title {
       @extend %item-title;
     }
 
-    &-label {
+    &_label {
       @extend %label;
     }
 
-    &-default-text {
+    &_default-text {
       @extend %default-text;
     }
   }

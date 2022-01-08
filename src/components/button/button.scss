@@ -24,7 +24,7 @@
     background-clip: padding-box, border-box;
   }
 
-  &_arrow {
+  &_arrowed {
     position: relative;
     width: 100%;
 
@@ -40,14 +40,14 @@
   }
 
   &_filled,
-  &_arrow {
+  &_arrowed {
     border-radius: 1.375rem;
     background: $primary-gradient;
     color: white;
   }
 
   &_size {
-    &-default {
+    &_default {
       padding: 0.875rem 1.25rem 0.9375rem;
 
       &#{$class}_bordered {
@@ -55,7 +55,7 @@
       }
     }
 
-    &-small {
+    &_small {
       padding: 0.5625rem 1.25rem 0.625rem;
 
       &#{$class}_bordered {
@@ -65,7 +65,7 @@
   }
 
   &_bordered,
-  &_arrow,
+  &_arrowed,
   &_filled {
     &:not(#{$class}_size-small) {
       min-width: 6.1875rem;
@@ -84,7 +84,7 @@
     }
 
     &#{$class}_filled,
-    &#{$class}_arrow {
+    &#{$class}_arrowed {
       color: white;
       opacity: 0.5;
     }

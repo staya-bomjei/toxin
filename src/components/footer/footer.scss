@@ -134,8 +134,10 @@
     }
   }
 
-  &_theme-mobile {
-    @include mobile;
+  &_theme {
+    &_mobile {
+      @include mobile;
+    }
   }
 
   @media (max-width: $md) {

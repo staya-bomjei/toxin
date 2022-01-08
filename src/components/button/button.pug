@@ -18,11 +18,11 @@ mixin button(options = {})
 
     const classes = [];
     if (isHovered) classes.push('button_hovered');
-    if (size === 'default' && type !== 'default') classes.push('button_size-default');
-    else if (size === 'small') classes.push('button_size-small');
+    if (size === 'default' && type !== 'default') classes.push('button_size_default');
+    else if (size === 'small') classes.push('button_size_small');
     if (type === 'border') classes.push('button_bordered');
     else if (type === 'fill') classes.push('button_filled');
-    else if (type === 'arrow') classes.push('button_arrow');
+    else if (type === 'arrow') classes.push('button_arrowed');
 
   if href
     a.button(class = classes href = `${href}.html`)= text

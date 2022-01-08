@@ -2,7 +2,7 @@ const BACKGROUNDS_SELECTOR = '.js-backgrounds';
 const IMAGE_SELECTOR = '.js-backgrounds__image';
 
 const IMAGE_VISIBLE = 'backgrounds__image_visible';
-const IMAGE_FADE = 'backgrounds__image_fade';
+const IMAGE_FADE = 'backgrounds__image_animation_fade';
 
 const DELAY = 'data-delay';
 const DURATION = 'data-duration';

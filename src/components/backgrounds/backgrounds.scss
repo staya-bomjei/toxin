@@ -20,8 +20,10 @@
       opacity: 1;
     }
 
-    &_fade {
-      animation: ease-in 1 image-fade;
+    &_animation {
+      &_fade {
+        animation: ease-in 1 image-fade;
+      }
     }
   }
 
