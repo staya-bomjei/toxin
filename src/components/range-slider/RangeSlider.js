@@ -4,8 +4,8 @@ import { makeCurrency } from '../../libs/utils/utils';
 
 import {
   OUTPUT_SELECTOR,
-  TRACK_SELECTOR,
-  RANGE_SELECTOR,
+  PROGRESS_SELECTOR,
+  INPUT_SELECTOR,
   THUMB_SELECTOR,
   VALUE,
   POSTFIX,
@@ -20,31 +20,31 @@ class RangeSlider {
     this.min = Number($component.attr(MIN));
     this.max = Number($component.attr(MAX));
     this.$output = $(OUTPUT_SELECTOR, $component);
-    this.$track = $(TRACK_SELECTOR, $component);
+    this.$progress = $(PROGRESS_SELECTOR, $component);
   }
 
   init() {
-    const ranges = Array.from($(RANGE_SELECTOR, this.$component));
-    [this.$range1, this.$range2] = ranges.map((range) => $(range));
+    const inputs = Array.from($(INPUT_SELECTOR, this.$component));
+    [this.$leftInput, this.$rightInput] = inputs.map((input) => $(input));
     const thumbs = Array.from($(THUMB_SELECTOR, this.$component));
-    [this.$thumb1, this.$thumb2] = thumbs.map((thumb) => $(thumb));
+    [this.$leftThumb, this.$rightThumb] = thumbs.map((thumb) => $(thumb));
 
-    this._setState(this.$range1.attr(VALUE), this.$range2.attr(VALUE));
+    this._setState(this.$leftInput.attr(VALUE), this.$rightInput.attr(VALUE));
     this._updateOutput();
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$range1.on('input', (event) => this._handleComponentValueChange(event));
-    this.$range2.on('input', (event) => this._handleComponentValueChange(event));
+    this.$leftInput.on('input', (event) => this._handleComponentValueChange(event));
+    this.$rightInput.on('input', (event) => this._handleComponentValueChange(event));
   }
 
   _handleComponentValueChange({ target }) {
-    const $range = $(target);
+    const $input = $(target);
     const value = Number(target.value);
     let { valueLeft, valueRight } = this._getValues();
 
-    if (this._isLeftValue($range)) {
+    if (this._isLeftValue($input)) {
       valueLeft = value;
     } else {
       valueRight = value;
@@ -57,43 +57,47 @@ class RangeSlider {
   _updateOutput() {
     let { valueLeft, valueRight } = this._getValues();
     if (valueLeft > valueRight) [valueLeft, valueRight] = [valueRight, valueLeft];
-    const leftRange = Math.round(((this.max - this.min) * valueLeft) / 100 + this.min);
-    const rightRange = Math.round(((this.max - this.min) * valueRight) / 100 + this.min);
 
-    this.$output.html(`${makeCurrency(leftRange, this.postfix)} - ${makeCurrency(rightRange, this.postfix)}`);
+    const from = Math.round(((this.max - this.min) * valueLeft) / 100 + this.min);
+    const to = Math.round(((this.max - this.min) * valueRight) / 100 + this.min);
+    const currencyFrom = makeCurrency(from, this.postfix);
+    const currencyTo = makeCurrency(to, this.postfix);
+
+    this.$output.html(`${currencyFrom} - ${currencyTo}`);
   }
 
-  _isLeftValue($range) {
-    return $range[0] === this.$range1[0];
+  _isLeftValue($input) {
+    return $input[0] === this.$leftInput[0];
   }
 
   _getValues() {
     return {
-      valueLeft: Number(this.$range1.attr(VALUE)),
-      valueRight: Number(this.$range2.attr(VALUE)),
+      valueLeft: Number(this.$leftInput.attr(VALUE)),
+      valueRight: Number(this.$rightInput.attr(VALUE)),
     };
   }
 
   _setState(valueLeft, valueRight) {
-    RangeSlider.setThumb(valueLeft, this.$range1, this.$thumb1);
-    RangeSlider.setThumb(valueRight, this.$range2, this.$thumb2);
-    this._setTrack(valueLeft, valueRight);
+    this._setThumb(valueLeft, true);
+    this._setThumb(valueRight, false);
+    this._setProgress(valueLeft, valueRight);
   }
 
-  static setThumb(value, $range, $thumb) {
+  _setThumb(value, isLeftThumb) {
+    const $range = (isLeftThumb) ? this.$leftInput : this.$rightInput;
+    const $thumb = (isLeftThumb) ? this.$leftThumb : this.$rightThumb;
+
     $range.attr(VALUE, value);
     $thumb.css('left', `${value}%`);
     $thumb.css('transform', `translate(-${value}%, -50%)`);
   }
 
-  _setTrack(valueLeft, valueRight) {
-    if (valueLeft > valueRight) {
-      this.$track.css('width', `${valueLeft - valueRight}%`);
-      this.$track.css('left', `${valueRight}%`);
-    } else {
-      this.$track.css('width', `${valueRight - valueLeft}%`);
-      this.$track.css('left', `${valueLeft}%`);
-    }
+  _setProgress(valueLeft, valueRight) {
+    const width = Math.abs(valueLeft - valueRight);
+    const offset = (valueLeft > valueRight) ? valueRight : valueLeft;
+
+    this.$progress.css('width', `${width}%`);
+    this.$progress.css('left', `${offset}%`);
   }
 }
 

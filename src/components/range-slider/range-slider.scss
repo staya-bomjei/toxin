@@ -38,7 +38,7 @@
     height: 0.875rem;
   }
 
-  &__range {
+  &__input {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -67,7 +67,7 @@
     pointer-events: none;
   }
 
-  &__track-inner {
+  &__progress {
     position: absolute;
     top: -$border-width;
     left: -$border-width;
