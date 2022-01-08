@@ -15,37 +15,37 @@ class RateButton {
   }
 
   init() {
-    this.setState(this.rate);
-    this.attachEventHandlers();
+    this._setState(this.rate);
+    this._attachEventHandlers();
   }
 
-  attachEventHandlers() {
+  _attachEventHandlers() {
     this.stars.forEach(($star) => {
       $star
-        .on('click', (event) => this.handleStarClick(event))
-        .on('mouseover', (event) => this.handleStarHover(event));
+        .on('click', (event) => this._handleStarClick(event))
+        .on('mouseover', (event) => this._handleStarHover(event));
     });
-    this.$component.on('mouseout', () => this.setState(this.rate));
+    this.$component.on('mouseout', () => this._setState(this.rate));
   }
 
-  handleStarClick(event) {
+  _handleStarClick(event) {
     const star = event.target;
-    const rate = this.getStarRate(star);
+    const rate = this._getStarRate(star);
 
     if (this.rate === rate) {
-      this.setState(0);
+      this._setState(0);
     } else {
-      this.setState(rate);
+      this._setState(rate);
     }
   }
 
-  handleStarHover(event) {
+  _handleStarHover(event) {
     const star = event.target;
-    const rate = this.getStarRate(star);
-    this.setState(rate, false);
+    const rate = this._getStarRate(star);
+    this._setState(rate, false);
   }
 
-  setState(rate, isChanging = true) {
+  _setState(rate, isChanging = true) {
     if (isChanging) {
       this.rate = rate;
       this.$component.attr(RATE, rate);
@@ -56,7 +56,7 @@ class RateButton {
     });
   }
 
-  getStarRate(star) {
+  _getStarRate(star) {
     return this.stars.findIndex(($star) => $star.is(star)) + 1;
   }
 }

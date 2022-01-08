@@ -22,28 +22,28 @@ class Dropdown {
       this.$content.css('z-index', Number(this.$content.css('z-index')) + 1);
     }
 
-    this.attachEventHandlers();
+    this._attachEventHandlers();
   }
 
-  attachEventHandlers() {
-    $(document).on('click', (event) => this.handleOutOfComponentClick(event));
-    this.$inputs.on('click', (event) => this.handleInputsClick(event));
+  _attachEventHandlers() {
+    $(document).on('click', (event) => this._handleOutOfComponentClick(event));
+    this.$inputs.on('click', (event) => this._handleInputsClick(event));
   }
 
-  handleOutOfComponentClick({ target }) {
+  _handleOutOfComponentClick({ target }) {
     if (this.$component.has(target).length === 0) {
       this.$component.removeClass(DROPDOWN_OPEN);
     }
   }
 
-  handleInputsClick({ target }) {
+  _handleInputsClick({ target }) {
     const $target = $(target);
     if ($target.closest(INPUT_BOX_SELECTOR).length !== 0) {
       this.$component.toggleClass(DROPDOWN_OPEN);
     }
   }
 
-  triggerValueChanged() {
+  _triggerValueChanged() {
     if (this.valueChanged) {
       $(document).trigger(this.valueChanged);
     }

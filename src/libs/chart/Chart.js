@@ -11,13 +11,13 @@ class Chart {
     this.colors.reverse();
 
     const type = 'doughnut';
-    const data = this.createData();
+    const data = this._createData();
     const outsideOptions = Chart.createOutsideOptions();
 
     return new OutsideChart(this.ctx, { type, data, options: outsideOptions });
   }
 
-  createData() {
+  _createData() {
     return {
       datasets: [{
         data: this.counters,

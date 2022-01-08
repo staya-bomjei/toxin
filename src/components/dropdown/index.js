@@ -24,7 +24,7 @@ function dropdownFactory(type, $node) {
 }
 
 $(() => {
-  $(DROPDOWN_SELECTOR).each((index, node) => {
+  $(DROPDOWN_SELECTOR).each((_, node) => {
     const $node = $(node);
     const type = $node.attr(TYPE);
     const dropdown = dropdownFactory(type, $node);

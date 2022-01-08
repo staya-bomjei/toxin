@@ -16,33 +16,33 @@ class LikeButton {
   }
 
   init() {
-    this.attachEventHandlers();
+    this._attachEventHandlers();
   }
 
-  attachEventHandlers() {
-    this.$component.on('click', () => this.handleComponentClick());
+  _attachEventHandlers() {
+    this.$component.on('click', () => this._handleComponentClick());
   }
 
-  handleComponentClick() {
-    if (this.isLiked()) {
-      this.setCounter(this.getCounter() - 1);
+  _handleComponentClick() {
+    if (this._isLiked()) {
+      this._setCounter(this._getCounter() - 1);
       this.$icon.html(ICON_UNLIKED);
     } else {
-      this.setCounter(this.getCounter() + 1);
+      this._setCounter(this._getCounter() + 1);
       this.$icon.html(ICON_LIKED);
     }
     this.$component.toggleClass(BUTTON_LIKED);
   }
 
-  isLiked() {
+  _isLiked() {
     return this.$component.hasClass(BUTTON_LIKED);
   }
 
-  getCounter() {
+  _getCounter() {
     return Number(this.$counter.html());
   }
 
-  setCounter(counter) {
+  _setCounter(counter) {
     this.$counter.html(counter);
   }
 }

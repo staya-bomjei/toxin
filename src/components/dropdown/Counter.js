@@ -25,51 +25,51 @@ class Counter extends Dropdown {
     this.maxLen = Number($component.attr(MAX_LEN));
     this.hasControls = $component.has(HAS_CONTROLS) !== undefined;
     this.$text = $(TEXT_SELECTOR, this.$component);
-    this.rows = this.getRows();
+    this.rows = this._getRows();
   }
 
   init() {
     if (this.hasControls) {
-      this.initControls();
+      this._initControls();
     }
 
     super.init();
-    this.update();
+    this._update();
   }
 
-  initControls() {
+  _initControls() {
     this.$clear = this.$component.find(CLEAR_BUTTON_SELECTOR);
     this.$accept = this.$component.find(ACCEPT_BUTTON_SELECTOR);
   }
 
-  attachEventHandlers() {
-    super.attachEventHandlers();
+  _attachEventHandlers() {
+    super._attachEventHandlers();
 
     if (this.hasControls) {
-      this.$clear.on('click', () => this.handleClearButtonClick());
-      this.$accept.on('click', (event) => this.handleAcceptButtonClick(event));
+      this.$clear.on('click', () => this._handleClearButtonClick());
+      this.$accept.on('click', (event) => this._handleAcceptButtonClick(event));
     }
 
     this.rows.forEach((row) => {
-      row.$minus.on('click', () => this.handleMinusClick(row.$minus, row.$counter));
-      row.$plus.on('click', () => this.handlePlusClick(row.$minus, row.$counter));
+      row.$minus.on('click', () => this._handleMinusClick(row.$minus, row.$counter));
+      row.$plus.on('click', () => this._handlePlusClick(row.$minus, row.$counter));
     });
   }
 
-  handleClearButtonClick() {
+  _handleClearButtonClick() {
     this.rows.forEach((row) => {
       row.$minus.removeClass(MINUS_ACTIVE);
       row.$counter.html(0);
     });
 
-    this.update();
+    this._update();
   }
 
-  handleAcceptButtonClick() {
+  _handleAcceptButtonClick() {
     this.$component.removeClass(DROPDOWN_OPEN);
   }
 
-  handleMinusClick($minus, $counter) {
+  _handleMinusClick($minus, $counter) {
     const counter = Number($counter.html());
 
     if (counter === 0) return;
@@ -77,10 +77,10 @@ class Counter extends Dropdown {
 
     $counter.html(counter - 1);
 
-    this.update();
+    this._update();
   }
 
-  handlePlusClick($minus, $counter) {
+  _handlePlusClick($minus, $counter) {
     const counter = Number($counter.html());
 
     if (counter === 0) {
@@ -89,16 +89,16 @@ class Counter extends Dropdown {
 
     $counter.html(counter + 1);
 
-    this.update();
+    this._update();
   }
 
-  setText(string) {
+  _setText(string) {
     let text = string.substring(0, this.maxLen);
     if (string.length >= this.maxLen) text += '...';
     this.$text.val(text);
   }
 
-  getRows() {
+  _getRows() {
     const rows = Array.from($(ROW_SELECTOR, this.$component));
 
     return rows.map((row) => {
@@ -118,42 +118,42 @@ class Counter extends Dropdown {
     });
   }
 
-  areAllCountersZero() {
+  _areAllCountersZero() {
     return this.rows.every((row) => Number(row.$counter.html()) === 0);
   }
 
-  update() {
-    this.updateText();
-    this.updateValue();
-    this.updateClearButtonVisibility();
-    this.triggerValueChanged();
+  _update() {
+    this._updateText();
+    this._updateValue();
+    this._updateClearButtonVisibility();
+    this._triggerValueChanged();
   }
 
-  updateText() {
-    if (this.areAllCountersZero()) {
-      this.setText('');
+  _updateText() {
+    if (this._areAllCountersZero()) {
+      this._setText('');
     } else {
-      this.setText(this.calcDropdownText());
+      this._setText(this._calcDropdownText());
     }
   }
 
-  updateValue() {
-    this.$component.attr(VALUE, this.calcDropdownValue());
+  _updateValue() {
+    this.$component.attr(VALUE, this._calcDropdownValue());
   }
 
-  updateClearButtonVisibility() {
-    if (this.areAllCountersZero()) {
+  _updateClearButtonVisibility() {
+    if (this._areAllCountersZero()) {
       this.$clear.hide();
     } else {
       this.$clear.show();
     }
   }
 
-  calcDropdownValue() {
+  _calcDropdownValue() {
     return this.rows.map((row) => Number(row.$counter.html()));
   }
 
-  calcDropdownText() {
+  _calcDropdownText() {
     return this.rows
       .map((row) => {
         const counter = Number(row.$counter.html());

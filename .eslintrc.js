@@ -13,5 +13,13 @@ module.exports = {
   },
   rules: {
     'linebreak-style': 0,
+    'no-underscore-dangle': [
+      'error',
+      {
+        enforceInMethodNames: false,
+        allowAfterThis: true,
+        allowAfterSuper: true,
+      },
+    ],
   },
 };

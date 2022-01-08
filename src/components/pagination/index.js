@@ -6,7 +6,7 @@ import { PAGINATION_SELECTOR } from './const';
 import './pagination.scss';
 
 $(() => {
-  $(PAGINATION_SELECTOR).each((index, node) => {
+  $(PAGINATION_SELECTOR).each((_, node) => {
     const $node = $(node);
     const pagination = new Pagination($node);
     pagination.init();

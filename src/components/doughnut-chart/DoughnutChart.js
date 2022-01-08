@@ -20,14 +20,14 @@ class DoughnutChart {
     const items = JSON.parse(this.$component.attr(ITEMS));
     this.counters = items.map((item) => item.counter);
     this.colors = items.map((item) => item.color);
-    this.chart = this.createChart(items);
-    this.paintDots();
+    this.chart = this._createChart(items);
+    this._paintDots();
   }
 
-  createChart() {
+  _createChart() {
     const colors = this.colors.map((color) => {
       if (typeof color === 'string') return color;
-      return this.createCanvasGradient(color);
+      return this._createCanvasGradient(color);
     });
 
     const options = {
@@ -39,7 +39,7 @@ class DoughnutChart {
     return new Chart(options);
   }
 
-  paintDots() {
+  _paintDots() {
     this.$dots.each((index, dot) => {
       if (typeof this.colors[index] === 'string') {
         $(dot).css('background', this.colors[index]);
@@ -51,7 +51,7 @@ class DoughnutChart {
     });
   }
 
-  createCanvasGradient({ direction, stops }) {
+  _createCanvasGradient({ direction, stops }) {
     const width = this.$chart.width();
     const canAng = direction - 90;
     const ang = (canAng - 90) * (Math.PI / 180);

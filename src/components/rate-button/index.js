@@ -6,7 +6,7 @@ import { RATE_BUTTON_SELECTOR } from './const';
 import './rate-button.scss';
 
 $(() => {
-  $(RATE_BUTTON_SELECTOR).each((index, node) => {
+  $(RATE_BUTTON_SELECTOR).each((_, node) => {
     const $node = $(node);
     const rateButton = new RateButton($node);
     rateButton.init();

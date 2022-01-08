@@ -9,7 +9,7 @@ import { HEADER_SELECTOR } from './const';
 import './header.scss';
 
 $(() => {
-  $(HEADER_SELECTOR).each((index, node) => {
+  $(HEADER_SELECTOR).each((_, node) => {
     const $node = $(node);
     const header = new Header($node);
     header.init();

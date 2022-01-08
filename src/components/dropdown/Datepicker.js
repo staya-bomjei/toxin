@@ -19,7 +19,7 @@ class Datepicker extends Dropdown {
     this.texts = $(TEXT_SELECTOR, this.$component);
     this.isSplit = this.$component.attr(IS_SPLIT) !== undefined;
     this.isRange = this.$component.attr(IS_RANGE) !== undefined;
-    this.datepicker = this.createCalendar();
+    this.datepicker = this._createCalendar();
   }
 
   init() {
@@ -29,11 +29,11 @@ class Datepicker extends Dropdown {
     this.datepicker.selectDate(selected);
   }
 
-  handleAcceptButtonClick() {
+  _handleAcceptButtonClick() {
     this.$component.removeClass(DROPDOWN_OPEN);
   }
 
-  createCalendar() {
+  _createCalendar() {
     const options = {
       $component: this.$component,
       $content: this.$content,
@@ -41,8 +41,8 @@ class Datepicker extends Dropdown {
       isDatepicker: this.isDatepicker,
       isSplit: this.isSplit,
       range: this.isRange,
-      triggerValueChanged: () => this.triggerValueChanged(),
-      onAcceptButtonClick: () => this.handleAcceptButtonClick(),
+      triggerValueChanged: () => this._triggerValueChanged(),
+      onAcceptButtonClick: () => this._handleAcceptButtonClick(),
       altField: this.texts[0],
       DATE_FROM,
       DATE_TO,

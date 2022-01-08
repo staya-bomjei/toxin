@@ -8,7 +8,7 @@ import { ROOM_THUMBNAIL_SELECTOR } from './const';
 import './room-thumbnail.scss';
 
 $(() => {
-  $(ROOM_THUMBNAIL_SELECTOR).each((index, node) => {
+  $(ROOM_THUMBNAIL_SELECTOR).each((_, node) => {
     const $node = $(node);
     const roomThumbnail = new RoomThumbnail($node);
     roomThumbnail.init();

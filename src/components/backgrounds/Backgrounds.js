@@ -24,32 +24,32 @@ class Backgrounds {
     const $images = $(IMAGE_SELECTOR, this.$component);
     this.images = Array.from($images).map((image) => $(image));
 
-    this.setImageVisibility(0, true);
-    this.setImagesAnimationDuration();
+    this._setImageVisibility(0, true);
+    this._setImagesAnimationDuration();
 
     if (this.images.length > 1) {
-      this.startAnimationLoop();
+      this._startAnimationLoop();
     }
   }
 
-  async startAnimationLoop() {
+  async _startAnimationLoop() {
     const imagesCounter = this.images.length;
     this.imageIndex = 0;
     this.nextImageIndex = (this.imageIndex + 1) % imagesCounter;
 
     setInterval(async () => {
-      this.setImageZIndex(this.imageIndex, ABOVE);
-      this.setImageZIndex(this.nextImageIndex, BELOW);
-      this.setImageVisibility(this.nextImageIndex, true);
-      this.playImageAnimation(this.imageIndex);
-      await this.stopImageAnimation(this.imageIndex);
+      this._setImageZIndex(this.imageIndex, ABOVE);
+      this._setImageZIndex(this.nextImageIndex, BELOW);
+      this._setImageVisibility(this.nextImageIndex, true);
+      this._playImageAnimation(this.imageIndex);
+      await this._stopImageAnimation(this.imageIndex);
 
       this.imageIndex = this.nextImageIndex;
       this.nextImageIndex = (this.imageIndex + 1) % imagesCounter;
     }, this.delayMS);
   }
 
-  setImageVisibility(index, visibility) {
+  _setImageVisibility(index, visibility) {
     if (visibility) {
       this.images[index].addClass(IMAGE_VISIBLE);
     } else {
@@ -57,21 +57,21 @@ class Backgrounds {
     }
   }
 
-  setImagesAnimationDuration() {
+  _setImagesAnimationDuration() {
     this.images.forEach(($image) => {
       $image.css('animation-duration', `${this.duration}s`);
     });
   }
 
-  setImageZIndex(index, zIndex) {
+  _setImageZIndex(index, zIndex) {
     this.images[index].css('z-index', zIndex);
   }
 
-  playImageAnimation(index) {
+  _playImageAnimation(index) {
     this.images[index].addClass(IMAGE_FADE);
   }
 
-  async stopImageAnimation(index) {
+  async _stopImageAnimation(index) {
     setTimeout(() => {
       this.images[index].removeClass(IMAGE_FADE);
       this.images[index].removeClass(IMAGE_VISIBLE);

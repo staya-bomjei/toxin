@@ -22,17 +22,17 @@ class Datepicker {
       $content,
     } = options;
 
-    const airOptions = this.createAirOptions({ range, altField });
+    const airOptions = this._createAirOptions({ range, altField });
     const datepicker = new OutsideDatepicker($content[0], airOptions);
 
     this.$clear = Datepicker.findClearButton(datepicker);
-    this.updateClearButtonVisibility(datepicker);
+    this._updateClearButtonVisibility(datepicker);
     Datepicker.fixButtonsType(datepicker);
 
     return datepicker;
   }
 
-  createAirOptions(options) {
+  _createAirOptions(options) {
     return {
       ...options,
       inline: true,
@@ -46,12 +46,12 @@ class Datepicker {
       navTitles: {
         days: 'MMMM yyyy',
       },
-      onSelect: (dp) => this.onCellSelect(dp),
+      onSelect: (dp) => this._onCellSelect(dp),
       buttons: [
         {
           content: 'очистить',
           className: 'clear',
-          onClick: (dp) => this.onClearCalendarClick(dp),
+          onClick: (dp) => this._onClearCalendarClick(dp),
         },
         {
           content: 'применить',
@@ -62,12 +62,12 @@ class Datepicker {
     };
   }
 
-  setState(first, second) {
-    this.setTexts(first, second);
-    this.setValues(first, second);
+  _setState(first, second) {
+    this._setTexts(first, second);
+    this._setValues(first, second);
   }
 
-  setValues(first, second) {
+  _setValues(first, second) {
     const firstString = Datepicker.dateToString(first);
     const secondString = Datepicker.dateToString(second);
 
@@ -75,7 +75,7 @@ class Datepicker {
     this.$component.attr(this.DATE_TO, secondString);
   }
 
-  setTexts(first, second) {
+  _setTexts(first, second) {
     if (!this.isSplit) return;
 
     const firstString = Datepicker.dateToString(first, 'ru');
@@ -85,34 +85,34 @@ class Datepicker {
     $(this.texts[1]).val(secondString);
   }
 
-  onCellSelect({ date, datepicker }) {
+  _onCellSelect({ date, datepicker }) {
     const [first, second] = datepicker.selectedDates;
     const oneDateSelected = datepicker.selectedDates.length === 1;
     const twoDatesSelected = datepicker.selectedDates.length === 2;
 
     if (oneDateSelected) {
       Datepicker.fixFocusDisplay(date, datepicker);
-      this.setState(first, '');
+      this._setState(first, '');
     } else if (twoDatesSelected) {
-      this.setState(first, second);
+      this._setState(first, second);
     }
 
-    this.update(datepicker);
+    this._update(datepicker);
   }
 
-  onClearCalendarClick(datepicker) {
+  _onClearCalendarClick(datepicker) {
     datepicker.clear();
     if (this.isSplit) {
       $(this.texts[1]).val('');
     }
   }
 
-  update(datepicker) {
-    this.updateClearButtonVisibility(datepicker);
+  _update(datepicker) {
+    this._updateClearButtonVisibility(datepicker);
     this.triggerValueChanged();
   }
 
-  updateClearButtonVisibility(datepicker) {
+  _updateClearButtonVisibility(datepicker) {
     const hasSelectedDates = datepicker.selectedDates.length !== 0;
 
     if (hasSelectedDates) {

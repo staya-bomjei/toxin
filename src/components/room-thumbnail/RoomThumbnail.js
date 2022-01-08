@@ -21,44 +21,44 @@ class RoomThumbnail {
   }
 
   init() {
-    this.selectImage(this.selected);
-    this.attachEventHandlers();
+    this._selectImage(this.selected);
+    this._attachEventHandlers();
   }
 
-  attachEventHandlers() {
-    this.$prev.on('click', () => this.handlePrevClick());
-    this.$next.on('click', () => this.handleNextClick());
+  _attachEventHandlers() {
+    this.$prev.on('click', () => this._handlePrevClick());
+    this.$next.on('click', () => this._handleNextClick());
     this.buttons.forEach(($button) => {
-      $button.on('click', (event) => this.handleButtonClick(event));
+      $button.on('click', (event) => this._handleButtonClick(event));
     });
   }
 
-  handlePrevClick() {
+  _handlePrevClick() {
     const index = (this.selected === 0) ? this.images.length - 1 : this.selected - 1;
-    this.selectImage(index);
+    this._selectImage(index);
   }
 
-  handleNextClick() {
+  _handleNextClick() {
     const index = (this.selected + 1) % this.images.length;
-    this.selectImage(index);
+    this._selectImage(index);
   }
 
-  handleButtonClick({ target }) {
-    const buttonNumber = this.getButtonIndex(target);
-    this.selectImage(buttonNumber);
+  _handleButtonClick({ target }) {
+    const buttonNumber = this._getButtonIndex(target);
+    this._selectImage(buttonNumber);
   }
 
-  getButtonIndex(button) {
+  _getButtonIndex(button) {
     return this.buttons.findIndex(($button) => $button.is(button));
   }
 
-  selectImage(index) {
-    this.setSelected(this.images, index, IMAGE_SELECTED);
-    this.setSelected(this.buttons, index, BUTTON_SELECTED);
+  _selectImage(index) {
+    this._setSelected(this.images, index, IMAGE_SELECTED);
+    this._setSelected(this.buttons, index, BUTTON_SELECTED);
     this.selected = index;
   }
 
-  setSelected(array, index, modifier) {
+  _setSelected(array, index, modifier) {
     if (array.length === 0) return;
 
     array[this.selected].removeClass(modifier);

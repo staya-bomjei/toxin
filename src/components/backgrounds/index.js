@@ -6,7 +6,7 @@ import { BACKGROUNDS_SELECTOR } from './const';
 import './backgrounds.scss';
 
 $(() => {
-  $(BACKGROUNDS_SELECTOR).each((index, node) => {
+  $(BACKGROUNDS_SELECTOR).each((_, node) => {
     const $node = $(node);
     const checkboxList = new Backgrounds($node);
     checkboxList.init();

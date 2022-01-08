@@ -15,14 +15,14 @@ class Header {
   }
 
   init() {
-    this.attachEventHandlers();
+    this._attachEventHandlers();
   }
 
-  attachEventHandlers() {
-    this.$burgerButton.on('click', () => this.handleBurgerButtonClick());
+  _attachEventHandlers() {
+    this.$burgerButton.on('click', () => this._handleBurgerButtonClick());
   }
 
-  handleBurgerButtonClick() {
+  _handleBurgerButtonClick() {
     this.$burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
     this.$info.toggleClass(INFO_MOBILE_EXPANDED);
   }

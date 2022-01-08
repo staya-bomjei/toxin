@@ -10,7 +10,7 @@ import {
 import './text-field.scss';
 
 $(() => {
-  $(TEXT_FIELD_INPUT_SELECTOR).each((index, node) => {
+  $(TEXT_FIELD_INPUT_SELECTOR).each((_, node) => {
     const $node = $(node);
     const placeholder = $node.attr(PLACEHOLDER);
     const im = new Inputmask({
