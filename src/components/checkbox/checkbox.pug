@@ -15,10 +15,10 @@ mixin checkbox(options = {})
 
   label.checkbox(class = classes)
     input.checkbox__input(type = 'checkbox' checked = isChecked)
-    .checkbox__mark
+    span.checkbox__mark
     if richTitle
-      .checkbox__rich-container
-        .checkbox__title= richTitle
-        .checkbox__text= text
+      span.checkbox__rich-container
+        span.checkbox__title= richTitle
+        span.checkbox__text= text
     else
-      .checkbox__text= text
+      span.checkbox__text= text

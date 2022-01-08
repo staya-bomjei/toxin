@@ -24,11 +24,11 @@ mixin footer(options = {})
       nav.footer__navigation
         each item in items
           section.footer__list
-            .footer__title= item.text
+            h3.footer__title= item.text
             each link in item.links
               a.footer__link(href = `${link.href}.html`)= link.text
       section.footer__subscription
-        .footer__title подписка
+        h3.footer__title подписка
         div.footer__subscription-text Получайте специальные предложения и новости сервиса
         +text-field({ type: 'subscription', placeholder: 'Email' })
     .footer__underline
@@ -37,8 +37,8 @@ mixin footer(options = {})
         .footer__copyrights-text Copyright © 2018 Toxin отель. Все права защищены.
         .footer__media
           a.footer__twitter(href = 'error-page.html')
-            img(src = require('../../components/footer/img/twitter.svg'))
+            img(src = require('../../components/footer/img/twitter.svg') alt = "twitter")
           a.footer__facebook(href = 'error-page.html')
-            img(src = require('../../components/footer/img/facebook-square.svg'))
+            img(src = require('../../components/footer/img/facebook-square.svg') alt = "facebook")
           a.footer__instagram(href = 'error-page.html')
-            img(src = require('../../components/footer/img/instagram-square.svg'))
+            img(src = require('../../components/footer/img/instagram-square.svg') alt = "instagram")

@@ -11,4 +11,4 @@ mixin logo(options = {})
     const path = (withText) ? 'logo.svg' : 'logo-without-text.svg';
 
   a.logo(href = `${href}.html`)
-    img.logo__image(src = require(`../../components/logo/img/${path}`))
+    img.logo__image(src = require(`../../components/logo/img/${path}`) alt = "logo")
