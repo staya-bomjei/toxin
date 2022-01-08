@@ -107,17 +107,16 @@ module.exports = (env) => {
     },
   };
 
-  if (isDev) {
-    return {
-      mode: 'development',
-      devServer: {
-        port: 4200,
-        open: '/index.html',
-      },
-      ...baseConfig,
-    };
-  }
-  return {
+  const devConfig = {
+    mode: 'development',
+    devServer: {
+      port: 4200,
+      open: '/index.html',
+    },
+    ...baseConfig,
+  };
+
+  const prodConfig = {
     mode: 'production',
     optimization: {
       splitChunks: {
@@ -126,4 +125,6 @@ module.exports = (env) => {
     },
     ...baseConfig,
   };
+
+  return (isDev) ? devConfig : prodConfig;
 };
