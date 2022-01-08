@@ -5,90 +5,80 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = (env) => {
-  const pages = fs.readdirSync(path.resolve(__dirname, 'src', 'pages'));
-  const htmlPlugins = pages.map((page) => new HTMLWebpackPlugin({
-    getData: () => {
-      try {
-        return JSON.parse(fs.readFileSync(`./src/pages/${page}/data.json`, 'utf8'));
-      } catch (e) {
-        return {};
-      }
-    },
-    filename: `${page}.html`,
-    template: path.resolve(__dirname, 'src', 'pages', page, `${page}.pug`),
-    chunks: [page],
-  }));
-  const entryPoints = pages.reduce((result, page) => ({
-    ...result,
-    [page]: path.resolve(__dirname, 'src', 'pages', page, 'index.js'),
-  }), {});
+const PATHS = {
+  ROOT: __dirname,
+  DIST: path.resolve(__dirname, 'dist'),
+  PAGES: path.resolve(__dirname, 'src', 'pages'),
+  FAVICONS: path.resolve(__dirname, 'src', 'assets', 'favicons'),
+};
 
-  function filename(ext) {
-    return `${ext}/[name]${(env.production) ? '.[contenthash]' : ''}.${ext}`;
-  }
+const pages = fs.readdirSync(PATHS.PAGES);
+
+const htmlPlugins = pages.map((page) => new HTMLWebpackPlugin({
+  getData: () => {
+    try {
+      const dataPath = path.resolve(PATHS.PAGES, page, 'data.json');
+      return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+    } catch (e) {
+      return {};
+    }
+  },
+  filename: `${page}.html`,
+  template: path.resolve(PATHS.PAGES, page, `${page}.pug`),
+  chunks: [page],
+}));
+
+const entryPoints = pages.reduce((result, page) => ({
+  ...result,
+  [page]: path.resolve(PATHS.PAGES, page, 'index.js'),
+}), {});
+
+const cssLoaders = [
+  MiniCssExtractPlugin.loader,
+  'css-loader',
+  {
+    loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        plugins: [
+          [
+            'autoprefixer',
+          ],
+        ],
+      },
+    },
+  },
+];
+
+module.exports = (env) => {
+  const isDev = Boolean(env.development);
+  const filename = (ext) => `${ext}/[name]${(isDev) ? '' : '.[contenthash]'}.${ext}`;
 
   const baseConfig = {
     entry: entryPoints,
     output: {
       filename: filename('js'),
-      path: path.resolve(__dirname, 'build'),
+      path: PATHS.DIST,
     },
     plugins: [
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
         filename: filename('css'),
       }),
-      ...htmlPlugins,
       new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, 'src', 'assets', 'favicons'),
-            to: 'assets/favicons',
-          },
-        ],
+        patterns: [{ from: PATHS.FAVICONS, to: 'assets/favicons' }],
       }),
+      ...htmlPlugins,
     ],
     module: {
       rules: [
         {
           test: /\.css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: [
-                    [
-                      'autoprefixer',
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
+          use: [...cssLoaders],
         },
         {
           test: /\.s[ac]ss$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: [
-                    [
-                      'autoprefixer',
-                    ],
-                  ],
-                },
-              },
-            },
-            'sass-loader',
-          ],
+          use: [...cssLoaders, 'sass-loader'],
         },
         {
           test: /\.pug$/,
@@ -117,22 +107,22 @@ module.exports = (env) => {
     },
   };
 
-  if (env.production) {
+  if (isDev) {
     return {
-      mode: 'production',
-      optimization: {
-        splitChunks: {
-          chunks: 'all',
-        },
+      mode: 'development',
+      devServer: {
+        port: 4200,
+        open: '/index.html',
       },
       ...baseConfig,
     };
   }
   return {
-    mode: 'development',
-    devServer: {
-      port: 4200,
-      open: '/index.html',
+    mode: 'production',
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
     },
     ...baseConfig,
   };
