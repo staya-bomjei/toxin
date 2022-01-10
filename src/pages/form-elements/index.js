@@ -14,5 +14,6 @@ import '../../components/bullet-list';
 import '../../components/advantage';
 import '../../components/comment';
 import '../../components/box-layout';
+import '../../components/rate-button';
 
 import './form-elements.scss';
