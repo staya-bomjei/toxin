@@ -52,7 +52,7 @@ mixin dropdown(options = {})
     const classes = [];
     if (type === 'summator') classes.push('dropdown_summator');
     else if (type === 'datepicker') classes.push('dropdown_datepicker');
-    if (isExpanded) classes.push('dropdown_expanded');
+    if (isExpanded) classes.push('dropdown_open', 'dropdown_expanded');
     if (isContentOnly) classes.push('dropdown_with-content-only');
 
   .dropdown.js-dropdown(

@@ -46,8 +46,7 @@
     list-style: none;
   }
 
-  &_open,
-  &_expanded {
+  &_open {
     #{$class}__button::after {
       transform: rotate(180deg);
     }
