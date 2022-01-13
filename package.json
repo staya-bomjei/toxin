@@ -11,8 +11,19 @@
     "stylelint": "npx stylelint \"**/*.scss\"",
     "eslint": "npx eslint \"**/*.js\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staya-bomjei/toxin.git"
+  },
+  "keywords": [
+    "hotel",
+    "toxin"
+  ],
   "author": "Denis Beschastnykh",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/staya-bomjei/toxin/issues"
+  },
   "homepage": "http://staya-bomjei.github.io/toxin",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
