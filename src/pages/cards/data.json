@@ -57,20 +57,20 @@
       "type": "люкс",
       "images": [
         {
-          "path": "thumbnail1.png",
-          "alt": "thumbnail1"
+          "path": "thumbnail-1.jpg",
+          "alt": "thumbnail-1"
         },
         {
-          "path": "thumbnail2.png",
-          "alt": "thumbnail2"
+          "path": "thumbnail-2.jpg",
+          "alt": "thumbnail-2"
         },
         {
-          "path": "thumbnail3.png",
-          "alt": "thumbnail3"
+          "path": "thumbnail-3.jpg",
+          "alt": "thumbnail-3"
         },
         {
-          "path": "thumbnail4.png",
-          "alt": "thumbnail4"
+          "path": "thumbnail-4.jpg",
+          "alt": "thumbnail-4"
         }
       ]
     },
@@ -81,20 +81,20 @@
       "reviews": 65,
       "images": [
         {
-          "path": "thumbnail2.png",
-          "alt": "thumbnail2"
+          "path": "thumbnail-2.jpg",
+          "alt": "thumbnail-2"
         },
         {
-          "path": "thumbnail1.png",
-          "alt": "thumbnail1"
+          "path": "thumbnail-1.jpg",
+          "alt": "thumbnail-1"
         },
         {
-          "path": "thumbnail3.png",
-          "alt": "thumbnail3"
+          "path": "thumbnail-3.jpg",
+          "alt": "thumbnail-3"
         },
         {
-          "path": "thumbnail4.png",
-          "alt": "thumbnail4"
+          "path": "thumbnail-4.jpg",
+          "alt": "thumbnail-4"
         }
       ]
     }

@@ -102,15 +102,15 @@
   "backgrounds": {
     "images": [
       {
-        "path": "background-1.png",
+        "path": "background-1.jpg",
         "alt" : "Background image 1"
       },
       {
-        "path": "background-2.png",
+        "path": "background-2.jpg",
         "alt" : "Background image 2"
       },
       {
-        "path": "background-3.png",
+        "path": "background-3.jpg",
         "alt" : "Background image 3"
       }
     ]
