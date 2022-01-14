@@ -1,23 +1,5 @@
 @import '../../styles/variables';
-
-@mixin box-layout($direction, $gap, $max-width: false) {
-  display: flex;
-  flex-direction: $direction;
-
-  @if $max-width {
-    max-width: $max-width;
-  }
-
-  & > * {
-    &:not(:last-child) {
-      @if $direction == 'row' {
-        margin-right: $gap;
-      } @else {
-        margin-bottom: $gap;
-      }
-    }
-  }
-}
+@import '../../styles/mixins';
 
 .form-elements {
   padding: 8.9375rem 8.8125rem 8.1875rem 8.75rem;

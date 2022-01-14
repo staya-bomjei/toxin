@@ -30,20 +30,13 @@ block main
   .cards
     .cards__row
       .cards__column
-        .cards__wrapper
-          .cards__group-column
-            +find-number(findNumber)
-            +sign-up()
+        +find-number(findNumber)
+        +sign-up()
       .cards__column
-        .cards__wrapper
-          .cards__group-column
-            +reservation(reservation)
-            +sign-in()
+        +reservation(reservation)
+        +sign-in()
       .cards__column
-        .cards__wrapper.cards__wrapper_short
-          .cards__group-column
-            +dropdown(calendar)
-            .cards__wrapper.cards__wrapper_small
-              .cards__group-column
-                each roomThumbnail in roomThumbnails
-                  +room-thumbnail(roomThumbnail)
+        +dropdown(calendar)
+        .cards__thumbnails
+          each roomThumbnail in roomThumbnails
+            +room-thumbnail(roomThumbnail)

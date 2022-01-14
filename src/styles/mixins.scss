@@ -1,0 +1,18 @@
+@mixin box-layout($direction, $gap, $max-width: false) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $max-width {
+    max-width: $max-width;
+  }
+
+  & > * {
+    &:not(:last-child) {
+      @if $direction == 'row' {
+        margin-right: $gap;
+      } @else {
+        margin-bottom: $gap;
+      }
+    }
+  }
+}
