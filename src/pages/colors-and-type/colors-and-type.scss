@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .colors-and-type {
   padding: 9.0625rem 8.875rem 9.0625rem 9.375rem;
@@ -7,9 +8,7 @@
   flex-wrap: wrap;
 
   &__color-samples-list {
-    display: grid;
-    grid-row-gap: 1.25rem;
-    margin-bottom: 1.25rem;
+    @include box-layout(column, 1.25rem);
   }
 
   &__text-samples-wrapper {
@@ -18,16 +17,13 @@
   }
 
   &__text-samples-list {
-    display: flex;
-    flex-direction: column;
+    @include box-layout(column, 3.25rem, 27.5rem);
 
-    & > *:not(:first-child) {
-      margin-top: 3.25rem;
+    margin-right: 0.75rem;
 
-      &:last-child {
-        margin-top: 3rem;
-        max-width: 23rem;
-      }
+    & > *:last-child {
+      margin-top: -0.325rem;
+      max-width: 23rem;
     }
   }
 }
