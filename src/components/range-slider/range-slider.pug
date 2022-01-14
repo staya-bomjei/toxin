@@ -47,4 +47,5 @@ mixin range-slider(options = {})
         .range-slider__progress.js-range-slider__progress
       .range-slider__thumb.js-range-slider__thumb
       .range-slider__thumb.js-range-slider__thumb
-    .range-slider__note= note
+    if note
+      .range-slider__note= note

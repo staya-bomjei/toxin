@@ -1,9 +1,31 @@
 @import '../../styles/variables';
 
+@mixin box-layout($direction, $gap, $max-width: false) {
+  display: flex;
+  flex-direction: $direction;
+
+  @if $max-width {
+    max-width: $max-width;
+  }
+
+  & > * {
+    &:not(:last-child) {
+      @if $direction == 'row' {
+        margin-right: $gap;
+      } @else {
+        margin-bottom: $gap;
+      }
+    }
+  }
+}
+
 .form-elements {
   padding: 8.9375rem 8.8125rem 8.1875rem 8.75rem;
 
+  $big-width: 23.25rem;
   $width: 20rem;
+  $short-width: 16.625rem;
+  $small-width: 13.875rem;
   $row-gap: 6.25rem;
 
   &__row {
@@ -17,9 +39,6 @@
   }
 
   &__column {
-    display: flex;
-    flex-direction: column;
-
     &_main {
       &_1 {
         min-width: $width;
@@ -43,10 +62,69 @@
     }
   }
 
+  &__wrapper {
+    @include box-layout(column, 2.5rem, $width);
+
+    &_width {
+      &_big {
+        max-width: $big-width;
+      }
+
+      &_short {
+        max-width: $short-width;
+      }
+
+      &_small {
+        max-width: $small-width;
+      }
+    }
+  }
+
+  &__text-inputs {
+    @include box-layout(column, 1.25rem);
+  }
+
+  &__bottom-text-inputs {
+    @include box-layout(column, 2.5625rem, $short-width);
+  }
+
   &__title {
     @extend %label;
 
     margin-bottom: 1rem;
+  }
+
+  &__checkboxes-list {
+    @include box-layout(column, 0.625rem, $small-width);
+  }
+
+  &__radio-buttons-list {
+    @include box-layout(row, 1.25rem, $small-width);
+  }
+
+  &__toggle-buttons-list {
+    @include box-layout(column, 0.625rem);
+  }
+
+  &__like-buttons-list {
+    @include box-layout(row, 0.625rem);
+  }
+
+  &__rate-buttons-list,
+  &__buttons-row {
+    @include box-layout(row, 1.25rem);
+  }
+
+  &__buttons-list {
+    @include box-layout(column, 1.875rem, $small-width);
+
+    margin-bottom: 1.875rem;
+  }
+
+  &__dropdowns,
+  &__checkbox-lists,
+  &__advantages {
+    @include box-layout(column, 1.25rem, $short-width);
   }
 
   &__relative-wrapper {
@@ -57,5 +135,13 @@
   &__absolute-child {
     position: absolute;
     width: 100%;
+  }
+
+  &__rich-checkboxes-list {
+    @include box-layout(column, 0.625rem, $short-width);
+  }
+
+  &__bullet-list {
+    max-width: $short-width;
   }
 }
