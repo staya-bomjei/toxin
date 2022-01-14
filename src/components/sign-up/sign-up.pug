@@ -15,7 +15,7 @@ mixin sign-up()
     +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
     .sign-up__row
       +text-field({ title: 'данные для входа в сервис', placeholder: 'Email' })
-      +text-field({ placeholder: 'Пароль' })
+      +text-field({ placeholder: 'Пароль', isPassword: true })
       +toggle-button({ text: 'Получать спецпредложения' })
     +button({ text: 'перейти к оплате', type: 'arrow', href: 'error-page' })
     .sign-up__has-account
