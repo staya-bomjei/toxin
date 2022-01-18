@@ -2,6 +2,9 @@
 @import '../../styles/mixins';
 
 .cards {
+  @include box-layout(row, 2.5rem);
+
+  flex-wrap: wrap;
   padding: 9.375rem 8.75rem 8.75rem;
 
   $width: 23.75rem;
@@ -9,16 +12,7 @@
   $small-width: 16.875rem;
   $column-gap: 1.25rem;
 
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -$column-gap;
-  }
-
   &__column {
-    flex-grow: auto;
-    margin: $column-gap;
-
     &:nth-child(1),
     &:nth-child(2) {
       @include box-layout(column, 2.5rem, $width);

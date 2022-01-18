@@ -28,15 +28,14 @@ append variables
 
 block main
   .cards
-    .cards__row
-      .cards__column
-        +find-number(findNumber)
-        +sign-up()
-      .cards__column
-        +reservation(reservation)
-        +sign-in()
-      .cards__column
-        +dropdown(calendar)
-        .cards__thumbnails
-          each roomThumbnail in roomThumbnails
-            +room-thumbnail(roomThumbnail)
+    .cards__column
+      +find-number(findNumber)
+      +sign-up()
+    .cards__column
+      +reservation(reservation)
+      +sign-in()
+    .cards__column
+      +dropdown(calendar)
+      .cards__thumbnails
+        each roomThumbnail in roomThumbnails
+          +room-thumbnail(roomThumbnail)
