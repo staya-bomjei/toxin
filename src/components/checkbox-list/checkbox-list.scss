@@ -8,6 +8,7 @@
   &__button {
     @extend %label;
 
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -15,7 +16,6 @@
     border: none;
     padding: 0;
     width: 100%;
-    min-height: 2.75rem;
     cursor: pointer;
     background-color: transparent;
 
@@ -26,8 +26,9 @@
       color: rgba($dark, 50%);
       content: 'expand_more';
       position: absolute;
-      top: 0.625rem;
+      top: 50%;
       right: 0.625rem;
+      transform: translateY(-50%);
     }
   }
 
@@ -35,7 +36,7 @@
     display: none;
     position: absolute;
     padding-left: 0;
-    padding-top: 0.125rem;
+    padding-top: 1.0625rem;
     margin: 0;
     background-color: $background;
     width: 100%;
@@ -48,7 +49,7 @@
 
   &_open {
     #{$class}__button::after {
-      transform: rotate(180deg);
+      transform: rotate(180deg) translateY(50%);
     }
 
     #{$class}__list {

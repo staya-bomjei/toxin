@@ -175,12 +175,12 @@
       {
         "richTitle": "Широкий коридор",
         "text": "Ширина коридоров в номере не менее 91 см.",
-        "isChecked": true
+        "isChecked": false
       },
       {
         "richTitle": "Помощник для инвалидов",
         "text": "На 1 этаже вас встретит специалист и проводит до номера.",
-        "isChecked": true
+        "isChecked": false
       }
     ]
   },

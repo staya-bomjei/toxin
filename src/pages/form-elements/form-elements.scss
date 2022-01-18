@@ -18,6 +18,16 @@
     &:not(:last-child) {
       margin-bottom: $row-gap;
     }
+
+    &_height {
+      &_221 {
+        height: 13.8125rem;
+      }
+
+      &_269 {
+        height: 16.8125rem;
+      }
+    }
   }
 
   &__column {
@@ -66,6 +76,10 @@
     @include flex-layout(column, 1.25rem);
   }
 
+  &__masked-text-field {
+    margin-top: 0.1875rem;
+  }
+
   &__bottom-text-inputs {
     @include flex-layout(column, 2.5625rem, $short-width);
   }
@@ -104,9 +118,12 @@
   }
 
   &__dropdowns,
-  &__checkbox-lists,
   &__advantages {
     @include flex-layout(column, 1.25rem, $short-width);
+  }
+
+  &__checkbox-lists {
+    @include flex-layout(column, 3.0625rem, $short-width);
   }
 
   &__relative-wrapper {
@@ -125,5 +142,9 @@
 
   &__bullet-list {
     max-width: $short-width;
+  }
+
+  &__comment {
+    margin-top: 0.625rem;
   }
 }
