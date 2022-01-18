@@ -11,6 +11,7 @@ mixin find-number(options = {})
 
   form.find-number
     h2.find-number__title Найдём номера под ваши пожелания
+
     .find-number__datepicker
       +dropdown({ 
         title: ['прибытие', 'выезд'],
@@ -19,6 +20,7 @@ mixin find-number(options = {})
         isRange: true,
         isSplit: true
       })
+
     .find-number__guests-dropdown
       +dropdown({ 
         title: 'гости',
@@ -29,5 +31,6 @@ mixin find-number(options = {})
         countables: ['гость', 'гостя', 'гостей'],
         hasControls: true,
       })
+
     .find-number__find-button
       +button({ text: 'подобрать номер', type: 'arrow', href: 'search-room' })

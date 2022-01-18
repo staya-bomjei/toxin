@@ -54,10 +54,12 @@ mixin reservation(options = {})
         span.reservation__n №&nbsp;
         span.reservation__number= number
         span.reservation__type= type
+
       span.reservation__price
         strong.reservation__price-value= makeCurrency(price, postfix)
         span &nbsp;
         span.reservation__price-per-day в сутки
+
     .reservation__datepicker.js-reservation__datepicker
       +dropdown({ 
         title: ['прибытие', 'выезд'], 
@@ -68,6 +70,7 @@ mixin reservation(options = {})
         isSplit: true,
         valueChanged: datepickerValueChanged,
       })
+
     .reservation__guests-dropdown.js-reservation__guests-dropdown
       +dropdown({
         title: 'гости',
@@ -78,6 +81,7 @@ mixin reservation(options = {})
         countables: ['гость', 'гостя', 'гостей'],
         valueChanged: guestsValueChanged,
       })
+
     .reservation__calculator
       .reservation__rent.js-reservation__rent= `${makeCurrency(price, postfix)} x 4 суток`
       .reservation__rent-total.js-reservation__rent-total 39 960₽
@@ -87,9 +91,11 @@ mixin reservation(options = {})
       .reservation__additional Сбор за дополнительные услуги
       span.reservation__i i
       .reservation__additional-total.js-reservation__additional-total
+
     .reservation__total
       | Итого
       span.reservation__dashed-underline
       .reservation__total-cost.js-reservation__total-cost 38 081₽
+
     .reservation__reserve-button
       +button({ text: 'забронировать', type: 'arrow', href: 'error-page' })

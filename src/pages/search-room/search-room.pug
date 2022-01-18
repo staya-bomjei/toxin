@@ -39,25 +39,32 @@ append main
         .search-room__dropdowns
           +dropdown(filter.dates)
           +dropdown(filter.guests)
+
         +range-slider(filter.priceRange)
+
         .search-room__house-rules
           .search-room__list-title правила дома
           .search-room__house-rules-list
             each rule in filter.houseRules
               +checkbox(rule)
+
         .search-room__availability
           .search-room__list-title доступность
           .search-room__availability-list
             each reach in filter.reaches
               +checkbox(reach)
+
         .search-room__facilities-list
           +dropdown(filter.comfort)
           +checkbox-list(filter.additionalComfort)
+
       .search-room__numbers-page
         h1.search-room__title Номера, которые мы для вас подобрали
+
         .search-room__numbers
           each number in numbers
             +room-thumbnail(number)
+
         .search-room__pagination
           +pagination(pagination)
 

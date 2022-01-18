@@ -6,18 +6,23 @@ include ../button/button
 mixin sign-up()
   form.sign-up
     h2.sign-up__title Регистрация аккаунта
+
     .sign-up__row
       +text-field({ placeholder: 'Имя' })
       +text-field({ placeholder: 'Фамилия' })
       .sign-up__genders
         +radio-button({ text: 'Мужчина', group: 'gender', isChecked: true })
         +radio-button({ text: 'Женщина', group: 'gender' })
+
     +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
+
     .sign-up__row
       +text-field({ title: 'данные для входа в сервис', placeholder: 'Email' })
       +text-field({ placeholder: 'Пароль', isPassword: true })
       +toggle-button({ text: 'Получать спецпредложения' })
+
     +button({ text: 'перейти к оплате', type: 'arrow', href: 'error-page' })
+
     .sign-up__has-account
       .sign-up__label Уже есть аккаунт на Toxin?
       +button({ text: 'войти', type: 'border', href: 'sign-in-page' })

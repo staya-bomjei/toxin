@@ -20,5 +20,6 @@ mixin menu(options = {})
         )= item.text
           if item.submenu
             span.menu__expand-more expand_more
+
         if item.submenu
           +menu({ isSubmenu: true, items: item.submenu })

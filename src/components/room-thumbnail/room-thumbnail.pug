@@ -38,23 +38,30 @@ mixin room-thumbnail(options = {})
           src = image.path
           alt = image.alt
         )
+
       .room-thumbnail__prev.js-room-thumbnail__prev
         span.room-thumbnail__icon expand_more
+
       .room-thumbnail__next.js-room-thumbnail__next
         span.room-thumbnail__icon expand_more
+
       .room-thumbnail__buttons
         each image in images
           .room-thumbnail__button.js-room-thumbnail__button
+
     .room-thumbnail__info
       .room-thumbnail__row
         a.room-thumbnail__number-info(href = `${href}.html`)
           span.room-thumbnail__n №&nbsp;
           span.room-thumbnail__number= number
           span.room-thumbnail__type= type
+
         .room-thumbnail__price
           strong.room-thumbnail__price-value= makeCurrency(price, postfix)
           span.room-thumbnail__price-per-day &nbsp;в сутки
+
       .room-thumbnail__underline
+
       .room-thumbnail__row
         +rate-button({ rate })
         span.room-thumbnail__reviews

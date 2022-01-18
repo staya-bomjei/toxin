@@ -50,10 +50,13 @@ block main
             +text-field(textFields.hover)
             +dropdown(dropdowns.summator.default)
             +text-field(textFields.masked)
+
           +dropdown(dropdowns.datepicker.splitRange)
+
           .form-elements__bottom-text-inputs
             +dropdown(dropdowns.datepicker.filter)
             +text-field(textFields.subscription)
+
       .form-elements__column.form-elements__column_main_2
         .form-elements__wrapper.form-elements__wrapper_width_short
           .form-elements__checkboxes
@@ -61,30 +64,36 @@ block main
             .form-elements__checkboxes-list
               each checkbox in checkboxes.defaultList
                 +checkbox(checkbox)
+
           .form-elements__radio-buttons
             .form-elements__title radio buttons
             .form-elements__radio-buttons-list
               +radio-button(radioButtons.man)
               +radio-button(radioButtons.woman)
+
           .form-elements__toggle-buttons
             .form-elements__title toggle
             .form-elements__toggle-buttons-list
               +toggle-button(toggleButtons.checked)
               +toggle-button(toggleButtons.unchecked)
+
           .form-elements__like-buttons
             .form-elements__title like Button
             .form-elements__like-buttons-list
               +like-button(likeButtons.unliked)
               +like-button(likeButtons.liked)
+
           .form-elements__rate-buttons
             .form-elements__title rate button
             .form-elements__rate-buttons-list
               +rate-button(rateButtons.four)
               +rate-button(rateButtons.five)
+
       .form-elements__column.form-elements__column_main_3
         .form-elements__wrapper
           .form-elements__wrapper.form-elements__wrapper_width_short
             +range-slider(rangeSlider)
+
           .form-elements__buttons
             .form-elements__title Buttons
             .form-elements__buttons-list
@@ -98,9 +107,11 @@ block main
                 +button(buttons.default.default)
                 +button(buttons.default.hovered)
             +button(buttons.arrow)
+
           .form-elements__pagination
             .form-elements__title pagination
             +pagination(pagination)
+
     .form-elements__row
       .form-elements__column.form-elements__column_main_1
         .form-elements__dropdowns
@@ -108,31 +119,38 @@ block main
           .form-elements__relative-wrapper
             .form-elements__absolute-child
               +dropdown(dropdowns.default.expanded)
+
       .form-elements__column.form-elements__column_main_2
         .form-elements__wrapper
           +dropdown(dropdowns.summator.expanded.hasNoGuests)
+
       .form-elements__column.form-elements__column_main_3
         .form-elements__wrapper
           +dropdown(dropdowns.summator.expanded.hasGuests)
+
     .form-elements__row
       .form-elements__column.form-elements__column_main_1
         .form-elements__checkbox-lists
           +checkbox-list(checkboxLists.default)
           +checkbox-list(checkboxLists.expanded)
+
       .form-elements__column.form-elements__column_main_2
         .form-elements__rich-checkboxes
           .form-elements__title rich checkbox buttons
           .form-elements__rich-checkboxes-list
             each rich in checkboxes.richList
               +checkbox(rich)
+
       .form-elements__column.form-elements__column_main_3
         .form-elements__bullet-list
           .form-elements__title bullet list
           +bullet-list(bulletList)
+
     .form-elements__row
       .form-elements__column.form-elements__column_main_1
         .form-elements__advantages
           each advantage in advantageList
             +advantage(advantage)
+
       .form-elements__column.form-elements__column_main_2-3
         +comment(comment)

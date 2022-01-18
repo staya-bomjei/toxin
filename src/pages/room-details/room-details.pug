@@ -42,6 +42,7 @@ append main
       img.room-details__image(src=require('./img/room-1.jpg') alt="room photo")
       img.room-details__image(src=require('./img/room-2.jpg') alt="room photo")
       img.room-details__image(src=require('./img/room-3.jpg') alt="room photo")
+
     .room-details__content
       .room-details__wrapper
         .room-details__info
@@ -50,22 +51,27 @@ append main
             .room-details__advantages
               each advantage in advantages
                 +advantage(advantage)
+
           .room-details__wrapper
             h3.room-details__item-title Впечатления от номера
             +doughnut-chart(chart)
+
           .room-details__wrapper
             h3.room-details__item-title Отзывы посетителей номера
               span.room-details__comments-counter= commentCounter
             .room-details__comments
               each comment in comments
                 +comment(comment)
+
           .room-details__wrapper.room-details__wrapper_smaller
             .room-details__rules-title
               h3.room-details__item-title Правила
             +bullet-list(rules)
+
           .room-details__wrapper.room-details__wrapper_wide
             h3.room-details__item-title Отмена
             .room-details__text= cancel
+
       .room-details__reservation
         +reservation(form)
 

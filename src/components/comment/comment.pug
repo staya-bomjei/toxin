@@ -23,9 +23,12 @@ mixin comment(options = {})
 
   article.comment
     img.comment__user-image(src = image alt = 'image')
+
     .comment__user-info
       h3.comment__user-name= name
       .comment__user-time-ago= timeAgo(date)
+
     .comment__like-button
       +like-button({ counter: likes, isLiked })
+
     .comment__text= text

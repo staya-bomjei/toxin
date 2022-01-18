@@ -22,11 +22,14 @@ mixin header(options = {})
     .header__inner-wrapper
       .header__home
         +logo()
+
       button.header__burger.js-header__burger
         span.header__burger-box
+
       .header__info.js-header__info
         .header__menu
           +menu({ items: menuItems })
+
         if loggedIn
           .header__vertical-line
           .header__user-name= userName

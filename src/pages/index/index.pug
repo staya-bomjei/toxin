@@ -13,10 +13,12 @@ block main
       each item in uiList
         li.index__item
           a.index__link(href = `${item.href}.html`)= item.text
+
     ul.index__pages-list
       each item in pagesList
         li.index__item
           a.index__link(href = `${item.href}.html`)= item.text
+
     ul.index__others-list
       each item in othersList
         li.index__item

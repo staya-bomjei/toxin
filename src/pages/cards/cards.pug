@@ -31,11 +31,14 @@ block main
     .cards__column
       +find-number(findNumber)
       +sign-up()
+
     .cards__column
       +reservation(reservation)
       +sign-in()
+
     .cards__column
       +dropdown(calendar)
+
       .cards__thumbnails
         each roomThumbnail in roomThumbnails
           +room-thumbnail(roomThumbnail)

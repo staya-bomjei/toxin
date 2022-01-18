@@ -16,9 +16,11 @@ mixin doughnut-chart(options = {})
   .doughnut-chart.js-doughnut-chart(data-items = items)
     .doughnut-chart__chart-wrapper
       canvas.doughnut-chart__chart.js-doughnut-chart__chart
+
       .doughnut-chart__total
         .doughnut-chart__counter= total
         .doughnut-chart__votes голосов
+
     ul.doughnut-chart__legend
       each label in labels
         li.doughnut-chart__label= label

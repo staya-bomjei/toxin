@@ -29,6 +29,7 @@ mixin text-field(options = {})
       .text-field__info
         .text-field__title= title
         .text-field__condition= condition
+
     .text-field__input-wrapper
       input.text-field__input(
         class = inputClass
@@ -36,5 +37,6 @@ mixin text-field(options = {})
         value = value
         type = (isPassword) ? 'password' : 'text'
       )
+
       if type === 'subscription'
         span.text-field__icon arrow_forward
