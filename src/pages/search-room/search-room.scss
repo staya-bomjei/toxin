@@ -14,14 +14,14 @@
   }
 
   &__filter {
-    @include box-layout(column, 1.875rem, 16.625rem);
+    @include flex-layout(column, 1.875rem, 16.625rem);
 
     width: 100%;
     margin-right: 3.75rem;
   }
 
   &__dropdowns {
-    @include box-layout(column, 1.25rem);
+    @include flex-layout(column, 1.25rem);
   }
 
   &__list-title {
@@ -33,7 +33,7 @@
   &__house-rules-list,
   &__availability-list,
   &__facilities-list {
-    @include box-layout(column, 0.625rem);
+    @include flex-layout(column, 0.625rem);
   }
 
   &__numbers-page {

@@ -45,7 +45,7 @@
   }
 
   &__wrapper {
-    @include box-layout(column, 2.5rem, $width);
+    @include flex-layout(column, 2.5rem, $width);
 
     &_width {
       &_big {
@@ -63,11 +63,11 @@
   }
 
   &__text-inputs {
-    @include box-layout(column, 1.25rem);
+    @include flex-layout(column, 1.25rem);
   }
 
   &__bottom-text-inputs {
-    @include box-layout(column, 2.5625rem, $short-width);
+    @include flex-layout(column, 2.5625rem, $short-width);
   }
 
   &__title {
@@ -77,28 +77,28 @@
   }
 
   &__checkboxes-list {
-    @include box-layout(column, 0.625rem, $small-width);
+    @include flex-layout(column, 0.625rem, $small-width);
   }
 
   &__radio-buttons-list {
-    @include box-layout(row, 1.25rem, $small-width);
+    @include flex-layout(row, 1.25rem, $small-width);
   }
 
   &__toggle-buttons-list {
-    @include box-layout(column, 0.625rem);
+    @include flex-layout(column, 0.625rem);
   }
 
   &__like-buttons-list {
-    @include box-layout(row, 0.625rem);
+    @include flex-layout(row, 0.625rem);
   }
 
   &__rate-buttons-list,
   &__buttons-row {
-    @include box-layout(row, 1.25rem);
+    @include flex-layout(row, 1.25rem);
   }
 
   &__buttons-list {
-    @include box-layout(column, 1.875rem, $small-width);
+    @include flex-layout(column, 1.875rem, $small-width);
 
     margin-bottom: 1.875rem;
   }
@@ -106,7 +106,7 @@
   &__dropdowns,
   &__checkbox-lists,
   &__advantages {
-    @include box-layout(column, 1.25rem, $short-width);
+    @include flex-layout(column, 1.25rem, $short-width);
   }
 
   &__relative-wrapper {
@@ -120,7 +120,7 @@
   }
 
   &__rich-checkboxes-list {
-    @include box-layout(column, 0.625rem, $short-width);
+    @include flex-layout(column, 0.625rem, $short-width);
   }
 
   &__bullet-list {

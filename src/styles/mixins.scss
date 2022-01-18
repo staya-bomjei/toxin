@@ -1,4 +1,4 @@
-@mixin box-layout($direction, $gap, $max-width: false) {
+@mixin flex-layout($direction, $gap, $max-width: false) {
   display: flex;
   flex-direction: $direction;
 

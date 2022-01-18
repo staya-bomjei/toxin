@@ -82,7 +82,7 @@
   }
 
   &__advantages {
-    @include box-layout(column, 1.25rem);
+    @include flex-layout(column, 1.25rem);
   }
 
   &__comments-counter {

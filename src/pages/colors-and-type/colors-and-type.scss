@@ -8,7 +8,7 @@
   flex-wrap: wrap;
 
   &__color-samples-list {
-    @include box-layout(column, 1.25rem);
+    @include flex-layout(column, 1.25rem);
   }
 
   &__text-samples-wrapper {
@@ -17,7 +17,7 @@
   }
 
   &__text-samples-list {
-    @include box-layout(column, 3.25rem, 27.5rem);
+    @include flex-layout(column, 3.25rem, 27.5rem);
 
     margin-right: 0.75rem;
 
