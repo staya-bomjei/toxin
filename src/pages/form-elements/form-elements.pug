@@ -43,7 +43,7 @@ append variables
 block main
   .form-elements
     .form-elements__row
-      .form-elements__column.form-elements__column_main_1
+      .form-elements__column.form-elements__column_number_1
         .form-elements__wrapper
           .form-elements__text-inputs
             +text-field(textFields.default)
@@ -57,7 +57,7 @@ block main
             +dropdown(dropdowns.datepicker.filter)
             +text-field(textFields.subscription)
 
-      .form-elements__column.form-elements__column_main_2
+      .form-elements__column.form-elements__column_number_2
         .form-elements__wrapper.form-elements__wrapper_width_short
           .form-elements__checkboxes
             .form-elements__title checkbox buttons
@@ -89,7 +89,7 @@ block main
               +rate-button(rateButtons.four)
               +rate-button(rateButtons.five)
 
-      .form-elements__column.form-elements__column_main_3
+      .form-elements__column.form-elements__column_number_3
         .form-elements__wrapper
           .form-elements__wrapper.form-elements__wrapper_width_short
             +range-slider(rangeSlider)
@@ -113,44 +113,44 @@ block main
             +pagination(pagination)
 
     .form-elements__row
-      .form-elements__column.form-elements__column_main_1
+      .form-elements__column.form-elements__column_number_1
         .form-elements__dropdowns
           +dropdown(dropdowns.default.default)
           .form-elements__relative-wrapper
             .form-elements__absolute-child
               +dropdown(dropdowns.default.expanded)
 
-      .form-elements__column.form-elements__column_main_2
+      .form-elements__column.form-elements__column_number_2
         .form-elements__wrapper
           +dropdown(dropdowns.summator.expanded.hasNoGuests)
 
-      .form-elements__column.form-elements__column_main_3
+      .form-elements__column.form-elements__column_number_3
         .form-elements__wrapper
           +dropdown(dropdowns.summator.expanded.hasGuests)
 
     .form-elements__row
-      .form-elements__column.form-elements__column_main_1
+      .form-elements__column.form-elements__column_number_1
         .form-elements__checkbox-lists
           +checkbox-list(checkboxLists.default)
           +checkbox-list(checkboxLists.expanded)
 
-      .form-elements__column.form-elements__column_main_2
+      .form-elements__column.form-elements__column_number_2
         .form-elements__rich-checkboxes
           .form-elements__title rich checkbox buttons
           .form-elements__rich-checkboxes-list
             each rich in checkboxes.richList
               +checkbox(rich)
 
-      .form-elements__column.form-elements__column_main_3
+      .form-elements__column.form-elements__column_number_3
         .form-elements__bullet-list
           .form-elements__title bullet list
           +bullet-list(bulletList)
 
     .form-elements__row
-      .form-elements__column.form-elements__column_main_1
+      .form-elements__column.form-elements__column_number_1
         .form-elements__advantages
           each advantage in advantageList
             +advantage(advantage)
 
-      .form-elements__column.form-elements__column_main_2-3
+      .form-elements__column.form-elements__column_number_2-3
         +comment(comment)
