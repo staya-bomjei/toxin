@@ -90,7 +90,7 @@ block main
               +rate-button(rateButtons.four)
               +rate-button(rateButtons.five)
 
-      .form-elements__column.form-elements__column_number_3
+      .form-elements__column
         .form-elements__wrapper
           .form-elements__wrapper.form-elements__wrapper_width_short
             +range-slider(rangeSlider)
@@ -123,7 +123,7 @@ block main
         .form-elements__wrapper
           +dropdown(dropdowns.summator.expanded.hasNoGuests)
 
-      .form-elements__column.form-elements__column_number_3
+      .form-elements__column
         .form-elements__wrapper
           +dropdown(dropdowns.summator.expanded.hasGuests)
 
@@ -140,9 +140,9 @@ block main
             each rich in checkboxes.richList
               +checkbox(rich)
 
-      .form-elements__column.form-elements__column_number_3
+      .form-elements__column
         .form-elements__bullet-list
-          .form-elements__title bullet list
+          .form-elements__title.form-elements__title_gap_small bullet list
           +bullet-list(bulletList)
 
     .form-elements__row

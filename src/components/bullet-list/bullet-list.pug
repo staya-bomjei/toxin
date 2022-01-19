@@ -1,3 +1,5 @@
+include ../text/text
+
 //-
   options.points - массив текстов для пунктов списка
 mixin bullet-list(options = {})
@@ -5,4 +7,5 @@ mixin bullet-list(options = {})
 
   ul.bullet-list
     each point in points
-      li.bullet-list__point= point
+      li.bullet-list__point
+        +text({ text: point })

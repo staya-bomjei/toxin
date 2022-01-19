@@ -54,9 +54,8 @@ append main
             each reach in filter.reaches
               +checkbox(reach)
 
-        .search-room__facilities-list
-          +dropdown(filter.comfort)
-          +checkbox-list(filter.additionalComfort)
+        +dropdown(filter.comfort)
+        +checkbox-list(filter.additionalComfort)
 
       .search-room__numbers-page
         h1.search-room__title Номера, которые мы для вас подобрали

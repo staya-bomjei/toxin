@@ -31,8 +31,7 @@
   }
 
   &__house-rules-list,
-  &__availability-list,
-  &__facilities-list {
+  &__availability-list {
     @include flex-layout(column, 0.625rem);
   }
 

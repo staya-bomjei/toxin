@@ -1,4 +1,5 @@
 include ../like-button/like-button
+include ../text/text
 
 //-
   options.text - текст комментария
@@ -31,4 +32,5 @@ mixin comment(options = {})
     .comment__like-button
       +like-button({ counter: likes, isLiked })
 
-    .comment__text= text
+    .comment__text
+      +text({ text })

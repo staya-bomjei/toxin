@@ -1,0 +1,13 @@
+//-
+  options.text - собственно текст
+mixin text(options = {})
+  -
+    const { text = '' } = options;
+    const sentences = text.split('\n');
+
+  span
+    - sentences.forEach((sentence, index) => {
+      span= sentence
+      if index < sentences.length - 1
+        br
+    - });

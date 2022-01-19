@@ -31,25 +31,19 @@
   }
 
   &__column {
+    width: $width;
+
     &_number {
       &_1 {
-        min-width: $width;
-        width: 38.44%;
+        margin-right: 126px;
       }
 
       &_2 {
-        min-width: $width;
-        width: 33.79%;
-      }
-
-      &_3 {
-        min-width: $width;
-        width: 27.77%;
+        margin-right: 72px;
       }
 
       &_2-3 {
-        min-width: $width;
-        width: 61.56%;
+        width: 711px;
       }
     }
   }
@@ -88,14 +82,20 @@
     @extend %label;
 
     margin-bottom: 1rem;
+
+    &_gap {
+      &_small {
+        margin-bottom: 0.75rem;
+      }
+    }
   }
 
   &__checkboxes-list {
-    @include flex-layout(column, 0.625rem, $small-width);
+    @include flex-layout(column, 0.625rem);
   }
 
   &__radio-buttons-list {
-    @include flex-layout(row, 1.25rem, $small-width);
+    @include flex-layout(row, 1.25rem);
   }
 
   &__toggle-buttons-list {
@@ -127,11 +127,7 @@
   }
 
   &__rich-checkboxes-list {
-    @include flex-layout(column, 0.625rem, $short-width);
-  }
-
-  &__bullet-list {
-    max-width: $short-width;
+    @include flex-layout(column, 0.75rem);
   }
 
   &__comment {
