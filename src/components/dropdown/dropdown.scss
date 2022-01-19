@@ -165,13 +165,6 @@
     }
   }
 
-  &_expanded,
-  &_with-content-only {
-    #{$class}__content {
-      position: inherit;
-    }
-  }
-
   &_datepicker {
     #{$class}__input-box {
       border-radius: $border-radius;
@@ -187,6 +180,7 @@
 
   &_with-content-only {
     #{$class}__content {
+      position: inherit;
       margin: 0;
     }
 

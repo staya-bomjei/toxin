@@ -19,13 +19,13 @@
       margin-bottom: $row-gap;
     }
 
-    &_height {
-      &_221 {
-        height: 13.8125rem;
+    &_size {
+      &_small {
+        min-height: 13.8125rem;
       }
 
-      &_269 {
-        height: 16.8125rem;
+      &_big {
+        min-height: 16.8125rem;
       }
     }
   }

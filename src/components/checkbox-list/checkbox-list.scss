@@ -57,10 +57,4 @@
       grid-row-gap: 0.625rem;
     }
   }
-
-  &_expanded {
-    #{$class}__list {
-      position: inherit;
-    }
-  }
 }
