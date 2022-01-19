@@ -3,7 +3,7 @@
     "loggedIn": false,
     "menuItems": [
       {
-          "text": "О Нас",
+          "text": "О нас",
           "href": "error-page"
       },
       {

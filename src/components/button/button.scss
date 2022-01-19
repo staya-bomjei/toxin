@@ -46,6 +46,12 @@
     color: white;
   }
 
+  &_bordered,
+  &_arrowed,
+  &_filled {
+    min-width: 6.1875rem;
+  }
+
   &_size {
     &_default {
       padding: 0.875rem 1.25rem 0.9375rem;
@@ -57,18 +63,11 @@
 
     &_small {
       padding: 0.5625rem 1.25rem 0.625rem;
+      min-width: auto;
 
       &#{$class}_bordered {
         padding: 0.4375rem 1.125rem 0.5rem;
       }
-    }
-  }
-
-  &_bordered,
-  &_arrowed,
-  &_filled {
-    &:not(#{$class}_size-small) {
-      min-width: 6.1875rem;
     }
   }
 

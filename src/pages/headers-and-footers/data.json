@@ -5,7 +5,7 @@
       "userName": "Юлий Цезарь",
       "menuItems": [
         {
-           "text": "О Нас",
+           "text": "О нас",
            "isBold": true,
            "href": "error-page"
         },
@@ -59,7 +59,7 @@
       "loggedIn": false,
       "menuItems": [
         {
-           "text": "О Нас",
+           "text": "О нас",
            "isBold": true,
            "href": "error-page"
         },
