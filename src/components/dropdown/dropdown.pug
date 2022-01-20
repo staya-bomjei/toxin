@@ -39,12 +39,11 @@ mixin dropdown(options = {})
     data-has-controls = hasControls
     data-countables = (type === 'summator') ? countables : null
   )
-    .dropdown__inputs.js-dropdown__inputs
-      .dropdown__input
-        .dropdown__title= title
-        .dropdown__input-box.js-dropdown__input-box
-          input.dropdown__text.js-dropdown__text(type = "text" placeholder = placeholder readonly = true)
-          .dropdown__icon expand_more
+    .dropdown__input
+      .dropdown__title= title
+      .dropdown__input-box.js-dropdown__input-box
+        input.dropdown__text.js-dropdown__text(type = "text" placeholder = placeholder readonly = true)
+        .dropdown__icon expand_more
 
     .dropdown__content.js-dropdown__content
       each row in rows

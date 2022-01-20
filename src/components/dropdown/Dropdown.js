@@ -1,7 +1,6 @@
 import $ from 'jquery';
 
 import {
-  INPUTS_SELECTOR,
   INPUT_BOX_SELECTOR,
   CONTENT_SELECTOR,
   DROPDOWN_OPEN,
@@ -12,7 +11,7 @@ class Dropdown {
   constructor($component) {
     this.$component = $component;
     this.valueChanged = $component.attr(VALUE_CHANGED);
-    this.$inputs = $(INPUTS_SELECTOR, $component);
+    this.$inputBox = $(INPUT_BOX_SELECTOR, $component);
     this.$content = $(CONTENT_SELECTOR, $component);
   }
 
@@ -22,7 +21,7 @@ class Dropdown {
 
   _attachEventHandlers() {
     $(document).on('click', (event) => this._handleOutOfComponentClick(event));
-    this.$inputs.on('click', (event) => this._handleInputsClick(event));
+    this.$inputBox.on('click', () => this._handleInputBoxClick());
   }
 
   _handleOutOfComponentClick({ target }) {
@@ -31,11 +30,8 @@ class Dropdown {
     }
   }
 
-  _handleInputsClick({ target }) {
-    const $target = $(target);
-    if ($target.closest(INPUT_BOX_SELECTOR).length !== 0) {
-      this.$component.toggleClass(DROPDOWN_OPEN);
-    }
+  _handleInputBoxClick() {
+    this.$component.toggleClass(DROPDOWN_OPEN);
   }
 
   _triggerValueChanged() {

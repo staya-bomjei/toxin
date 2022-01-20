@@ -1,5 +1,4 @@
 const DROPDOWN_SELECTOR = '.js-dropdown';
-const INPUTS_SELECTOR = '.js-dropdown__inputs';
 const CONTENT_SELECTOR = '.js-dropdown__content';
 const TEXT_SELECTOR = '.js-dropdown__text';
 const CLEAR_BUTTON_SELECTOR = '.js-dropdown__clear-button';
@@ -24,7 +23,6 @@ const TYPE = 'data-type';
 
 export {
   DROPDOWN_SELECTOR,
-  INPUTS_SELECTOR,
   CONTENT_SELECTOR,
   TEXT_SELECTOR,
   CLEAR_BUTTON_SELECTOR,
