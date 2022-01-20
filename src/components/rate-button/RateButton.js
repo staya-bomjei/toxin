@@ -33,7 +33,7 @@ class RateButton {
     const rate = this._getStarRate(star);
 
     if (this.rate === rate) {
-      this._setState(0);
+      this.rate = 0;
     } else {
       this._setState(rate);
     }
