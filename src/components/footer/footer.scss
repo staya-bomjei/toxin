@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .footer {
   display: flex;
@@ -22,14 +23,12 @@
   }
 
   &__about,
-  &__list,
   &__subscription {
-    display: flex;
-    flex-direction: column;
+    @include flex-layout(column, 1.125rem);
+  }
 
-    & > *:not(:last-child) {
-      margin-bottom: 1.25rem;
-    }
+  &__list {
+    @include flex-layout(column, 1.25rem);
   }
 
   &__about-text,
