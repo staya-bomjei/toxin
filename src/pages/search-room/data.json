@@ -86,7 +86,6 @@
     "dates": {
       "title": "даты пребывания в отеле",
       "placeholder": "Выберите даты",
-      "type": "datepicker",
       "selected": ["2019-08-19", "2019-08-23"],
       "isRange": true
     },

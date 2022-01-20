@@ -11,7 +11,6 @@ const COUNTER_SELECTOR = '.js-dropdown__counter';
 const PLUS_SELECTOR = '.js-dropdown__button-plus';
 
 const DROPDOWN_OPEN = 'dropdown_open';
-const DROPDOWN_EXPANDED = 'dropdown_expanded';
 const MINUS_ACTIVE = 'dropdown__button-minus_active';
 
 const PLACEHOLDER = 'data-placeholder';
@@ -21,11 +20,6 @@ const MAX_LEN = 'data-max-len';
 const HAS_CONTROLS = 'data-has-controls';
 const ROW_COUNTABLES = 'data-row-countables';
 const COUNTABLES = 'data-countables';
-const IS_SPLIT = 'data-is-split';
-const IS_RANGE = 'data-is-range';
-const SELECTED = 'data-selected';
-const DATE_FROM = 'data-date-from';
-const DATE_TO = 'data-date-to';
 const TYPE = 'data-type';
 
 export {
@@ -41,7 +35,6 @@ export {
   COUNTER_SELECTOR,
   PLUS_SELECTOR,
   DROPDOWN_OPEN,
-  DROPDOWN_EXPANDED,
   MINUS_ACTIVE,
   PLACEHOLDER,
   VALUE_CHANGED,
@@ -50,10 +43,5 @@ export {
   HAS_CONTROLS,
   ROW_COUNTABLES,
   COUNTABLES,
-  IS_SPLIT,
-  IS_RANGE,
-  SELECTED,
-  DATE_FROM,
-  DATE_TO,
   TYPE,
 };

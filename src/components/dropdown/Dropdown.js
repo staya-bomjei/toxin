@@ -5,7 +5,6 @@ import {
   INPUT_BOX_SELECTOR,
   CONTENT_SELECTOR,
   DROPDOWN_OPEN,
-  DROPDOWN_EXPANDED,
   VALUE_CHANGED,
 } from './const';
 
@@ -18,10 +17,6 @@ class Dropdown {
   }
 
   init() {
-    if (!this.$component.hasClass(DROPDOWN_EXPANDED)) {
-      this.$content.css('z-index', Number(this.$content.css('z-index')) + 1);
-    }
-
     this._attachEventHandlers();
   }
 

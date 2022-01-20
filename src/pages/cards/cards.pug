@@ -4,7 +4,7 @@ include ../../components/find-number/find-number
 include ../../components/sign-up/sign-up
 include ../../components/reservation/reservation
 include ../../components/sign-in/sign-in
-include ../../components/dropdown/dropdown
+include ../../components/datepicker/datepicker
 include ../../components/room-thumbnail/room-thumbnail
 
 append variables
@@ -37,7 +37,7 @@ block main
       +sign-in()
 
     .cards__column
-      +dropdown(calendar)
+      +datepicker(calendar)
 
       .cards__thumbnails
         each roomThumbnail in roomThumbnails

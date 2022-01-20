@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 import '../dropdown';
+import '../datepicker';
 import '../button';
 
 import Reservation from './Reservation';

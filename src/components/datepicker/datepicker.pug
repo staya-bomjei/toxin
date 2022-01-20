@@ -1,0 +1,52 @@
+
+//-
+  options.title - заголовок компонента, может быть массивом если isSplit true
+  options.placeholder - placeholder, может быть массивом если isSplit true
+  options.isRange - если true, то в календаре у datepicker можно будет выбрать две даты 
+  options.isSplit - если true, то у range-datepicker одно поле будет разделено на два
+  options.selected - массив дат в формате 'yyyy-mm-dd', которые будут выбраны изначально
+  options.isContentOnly - если true, то у datepicker будет виден только контент 
+  options.isExpanded - если true, то datepicker будет изначально раскрыт
+  options.valueChanged - название триггера, который будет запускаться при изменении datepicker
+mixin datepicker(options = {})
+  -
+    const { 
+      title = '',
+      placeholder = '',
+      isExpanded = false,
+      isRange = false,
+      isSplit = false,
+      isContentOnly = false,
+      selected = [],
+      valueChanged, 
+    } = options;
+
+    let buttons = [{ title, placeholder }];
+    if (isSplit) {
+      buttons = [{}, {}];
+      buttons.forEach((button, index) => {
+        button.title = (typeof title === 'string') ? title : title[index];
+        button.placeholder = (typeof placeholder === 'string') ? placeholder : placeholder[index];
+      });
+    }
+
+    const classes = [];
+    if (isExpanded) classes.push('datepicker_open');
+    if (isContentOnly) classes.push('datepicker_with-content-only');
+
+  .datepicker.js-datepicker(
+    class = classes 
+    data-value-changed = valueChanged
+    data-is-range = isRange
+    data-is-split = isSplit
+    data-selected = selected
+  )
+    .datepicker__inputs.js-datepicker__inputs(class = (isSplit) ? 'datepicker__inputs_split' : null)
+      each button in buttons 
+        .datepicker__input
+          .datepicker__title= button.title
+          .datepicker__input-box.js-datepicker__input-box
+            input.datepicker__text.js-datepicker__text(type = text placeholder = button.placeholder readonly = true)
+            .datepicker__icon expand_more
+
+    .datepicker__content.js-datepicker__content

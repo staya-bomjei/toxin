@@ -15,5 +15,6 @@ import '../../components/advantage';
 import '../../components/comment';
 import '../../components/rate-button';
 import '../../components/state-info';
+import '../../components/datepicker';
 
 import './form-elements.scss';

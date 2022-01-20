@@ -1,0 +1,103 @@
+@import '../../styles/variables';
+
+.datepicker {
+  position: relative;
+
+  $class: &;
+  $border-radius: 0.25rem;
+  $button-size: 1.875rem;
+
+  &__title {
+    @extend %label;
+
+    margin-bottom: 0.3125rem;
+  }
+
+  &__inputs {
+    &_split {
+      display: flex;
+
+      #{$class}__input {
+        flex-grow: 1;
+
+        &:first-child {
+          margin-right: 1.25rem;
+        }
+      }
+    }
+  }
+
+  &__input-box {
+    min-height: 2.75rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    border: $border-width solid rgba($dark, 25%);
+    border-radius: $border-radius;
+    cursor: pointer;
+  }
+
+  &__text {
+    @extend %default-text;
+
+    width: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    margin: 0 2.6875rem 0.125rem 0.875rem;
+    padding: 0;
+  }
+
+  &__icon {
+    @extend %material-icons;
+
+    font-size: 1.5rem;
+    color: rgba($dark, 75%);
+    position: absolute;
+    right: 0.625rem;
+    top: 0.625rem;
+  }
+
+  &__content {
+    display: none;
+    position: absolute;
+    z-index: $z-expanded;
+    width: 100%;
+    padding: 0;
+    margin-top: 0.3125rem;
+    background-color: transparent;
+  }
+
+  &_open {
+    #{$class}__input-box {
+      border-color: rgba($dark, 50%);
+    }
+
+    #{$class}__content {
+      display: block;
+    }
+
+    #{$class}__icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &_with-content-only {
+    #{$class}__content {
+      display: block;
+      position: inherit;
+      margin: 0;
+    }
+
+    #{$class}__input {
+      display: none;
+    }
+  }
+
+  @media (max-width: $xs) {
+    &__content {
+      left: -1.75rem;
+    }
+  }
+}

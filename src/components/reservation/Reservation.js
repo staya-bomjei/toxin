@@ -1,7 +1,8 @@
 import $ from 'jquery';
 
 import { choiceCountable, makeCurrency } from '../../libs/utils/utils';
-import { VALUE, DATE_FROM, DATE_TO } from '../dropdown/const';
+import { VALUE } from '../dropdown/const';
+import { DATE_FROM, DATE_TO } from '../datepicker/const';
 
 import {
   PRICE,

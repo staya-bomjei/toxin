@@ -2,10 +2,13 @@ import $ from 'jquery';
 
 import LibsDatepicker from '../../libs/datepicker/Datepicker';
 
-import Dropdown from './Dropdown';
 import {
+  VALUE_CHANGED,
+  INPUTS_SELECTOR,
+  CONTENT_SELECTOR,
+  INPUT_BOX_SELECTOR,
   TEXT_SELECTOR,
-  DROPDOWN_OPEN,
+  DATEPICKER_OPEN,
   IS_SPLIT,
   IS_RANGE,
   SELECTED,
@@ -13,9 +16,12 @@ import {
   DATE_TO,
 } from './const';
 
-class Datepicker extends Dropdown {
+class Datepicker {
   constructor($component) {
-    super($component);
+    this.$component = $component;
+    this.valueChanged = $component.attr(VALUE_CHANGED);
+    this.$inputs = $(INPUTS_SELECTOR, $component);
+    this.$content = $(CONTENT_SELECTOR, $component);
     this.texts = $(TEXT_SELECTOR, this.$component);
     this.isSplit = this.$component.attr(IS_SPLIT) !== undefined;
     this.isRange = this.$component.attr(IS_RANGE) !== undefined;
@@ -23,14 +29,38 @@ class Datepicker extends Dropdown {
   }
 
   init() {
-    super.init();
-
     const selected = JSON.parse(this.$component.attr(SELECTED));
     this.datepicker.selectDate(selected);
+
+    this._attachEventHandlers();
+  }
+
+  _attachEventHandlers() {
+    $(document).on('click', (event) => this._handleOutOfComponentClick(event));
+    this.$inputs.on('click', (event) => this._handleInputsClick(event));
   }
 
   _handleAcceptButtonClick() {
-    this.$component.removeClass(DROPDOWN_OPEN);
+    this.$component.removeClass(DATEPICKER_OPEN);
+  }
+
+  _handleOutOfComponentClick({ target }) {
+    if (this.$component.has(target).length === 0) {
+      this.$component.removeClass(DATEPICKER_OPEN);
+    }
+  }
+
+  _handleInputsClick({ target }) {
+    const $target = $(target);
+    if ($target.closest(INPUT_BOX_SELECTOR).length !== 0) {
+      this.$component.toggleClass(DATEPICKER_OPEN);
+    }
+  }
+
+  _triggerValueChanged() {
+    if (this.valueChanged) {
+      $(document).trigger(this.valueChanged);
+    }
   }
 
   _createCalendar() {

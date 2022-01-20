@@ -3,6 +3,7 @@ extends ../../page-layouts/page-base/page-base
 include ../../components/header/header
 include ../../components/footer/footer
 include ../../components/dropdown/dropdown
+include ../../components/datepicker/datepicker
 include ../../components/range-slider/range-slider
 include ../../components/checkbox/checkbox
 include ../../components/checkbox-list/checkbox-list
@@ -37,7 +38,7 @@ append main
     .search-room__content
       .search-room__filter
         .search-room__dropdowns
-          +dropdown(filter.dates)
+          +datepicker(filter.dates)
           +dropdown(filter.guests)
 
         +range-slider(filter.priceRange)

@@ -1,4 +1,5 @@
 include ../dropdown/dropdown
+include ../datepicker/datepicker
 include ../button/button
 
 //-
@@ -13,10 +14,9 @@ mixin find-number(options = {})
     h2.find-number__title Найдём номера под ваши пожелания
 
     .find-number__datepicker
-      +dropdown({ 
+      +datepicker({ 
         title: ['прибытие', 'выезд'],
         placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], 
-        type: 'datepicker',
         isRange: true,
         isSplit: true
       })
