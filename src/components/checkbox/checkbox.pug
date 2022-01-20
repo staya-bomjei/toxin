@@ -15,14 +15,15 @@ mixin checkbox(options = {})
     const classes = [];
     if (richTitle) classes.push('checkbox_variant_rich');
 
-  label.checkbox(class = classes)
-    input.checkbox__input(type = 'checkbox' checked = isChecked)
-    span.checkbox__mark
-    if richTitle
-      span.checkbox__rich-container
-        span.checkbox__title= richTitle
+  .checkbox(class = classes)
+    label.checkbox__label
+      input.checkbox__input(type = 'checkbox' checked = isChecked)
+      span.checkbox__mark
+      if richTitle
+        span.checkbox__rich-container
+          span.checkbox__title= richTitle
+          span.checkbox__text
+            +text({ text })
+      else
         span.checkbox__text
           +text({ text })
-    else
-      span.checkbox__text
-        +text({ text })
