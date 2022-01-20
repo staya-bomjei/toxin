@@ -106,13 +106,16 @@
     margin: 0 auto;
     width: 100%;
 
-    #{$class}__inner-wrapper:first-child {
-      display: flex;
-      justify-content: center;
-      margin: 0;
+    #{$class}__inner-wrapper {
+      &:first-child {
+        grid-template-columns: 1fr;
+        margin: 0;
+      }
     }
 
     #{$class}__about {
+      justify-self: center;
+
       & > * {
         margin-bottom: 0;
       }
