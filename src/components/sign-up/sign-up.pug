@@ -18,7 +18,7 @@ mixin sign-up()
 
     .sign-up__row
       +text-field({ title: 'данные для входа в сервис', placeholder: 'Email' })
-      +text-field({ placeholder: 'Пароль', isPassword: true })
+      +text-field({ placeholder: 'Пароль', htmlType: 'password' })
       +toggle-button({ text: 'Получать спецпредложения' })
 
     +button({ text: 'перейти к оплате', type: 'arrow', href: 'error-page' })

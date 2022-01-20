@@ -4,8 +4,8 @@
   options.placeholder - placeholder текстового поля
   options.value - изначальное значение текстового поля
   options.type - тип поля ввода: 'default' | 'mask' | 'subscription'
+  options.htmlType - html тип инпута, 'text' | 'password'
   options.isHovered - если true, то элемент всегда будет отображаться в состоянии hovered
-  options.isPassword - если true, то текст будет отображаться шариками
 mixin text-field(options = {})
   -
     const {
@@ -13,9 +13,9 @@ mixin text-field(options = {})
       condition = '',
       placeholder = '',
       value = '',
-      isHovered = false,
       type = 'default',
-      isPassword = false,
+      htmlType = 'text',
+      isHovered = false,
     } = options;
 
     const classes = [];
@@ -35,7 +35,7 @@ mixin text-field(options = {})
         class = inputClass
         placeholder = placeholder
         value = value
-        type = (isPassword) ? 'password' : 'text'
+        type = htmlType
       )
 
       if type === 'subscription'
