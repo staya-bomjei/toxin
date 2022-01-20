@@ -2,14 +2,6 @@ include ../button/button
 include ../menu/menu
 include ../logo/logo
 
-//-
-  options.menuItems - массив элементов меню
-  options.menuItems[0].text - текст элемента меню
-  options.menuItems[0].href - ссылка
-  options.menuItems[0].isBold - если true, то элемент будет выделен толстым шрифтом
-  options.menuItems[0].submenu - массив подменю
-  options.loggedIn - если true, то будет отображено имя options.userName, иначе кнопки для входа и регистрации
-  options.userName - имя авторизованного пользователя
 mixin header(options = {})
   -
     const {

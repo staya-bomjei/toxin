@@ -1,19 +1,5 @@
 include ../button/button
 
-//-
-  options.title - заголовок компонента, может быть массивом если isSplit true
-  options.placeholder - строка placeholder дропдауна, может быть массивом если isSplit true
-  options.maxLen - максимальное количество символов в инпуте, лишние будут отброшены
-  options.type - тип dropdown, допустимые значения: 'counter' | 'summator'
-  options.rows - массив объектов
-  options.rows[0].text - текст строки
-  options.rows[0].counter - значение счётчика этой строки
-  options.rows[0].countables - массив, содержащий три формы rows[0].text (например: ['кровать', 'кровати',
-    'кроватей']). Для 'summator', можно не указывать, но если указано, то данная строка будет подсчитываться отдельно
-  options.hasControls - если true, то в разделе контента у dropdown появятся две кнопки 'очистить' и 'принять'
-  options.countables - только для 'summator', массив, содержащий три формы подсчитываемого в dropdown 
-  options.isExpanded - если true, то dropdown будет изначально раскрыт
-  options.valueChanged - название триггера, который будет запускаться при изменении dropdown
 mixin dropdown(options = {})
   -
     const { 

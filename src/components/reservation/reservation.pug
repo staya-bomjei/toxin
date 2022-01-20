@@ -2,20 +2,6 @@ include ../dropdown/dropdown
 include ../datepicker/datepicker
 include ../button/button
 
-//-
-  options.id - id формы, должно быть уникальным на одной странице
-  options.number - номер отеля
-  options.type - тип отеля (например, 'люкс')
-  options.price - стоимость отеля за сутки
-  options.discount - размер скидки
-  options.postfix - валютный постфикс, по умолчанию '₽'
-  options.selectedDays - массив выбранных дней, например ["2019-08-14", "2019-08-19"]
-  options.rows - массив для создания dropdown
-  options.rows[0].text - текст строки
-  options.rows[0].counter - значение счётчика этой строки
-  options.rows[0].countables - массив, содержащий три формы rows[0].text
-    (например: ['кровать', 'кровати', 'кроватей'])
-  options.rows[0].additional - стоимость дополнительных расходов на один элемент 
 mixin reservation(options = {})
   -
     const {

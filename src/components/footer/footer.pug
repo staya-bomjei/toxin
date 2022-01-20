@@ -1,13 +1,6 @@
 include ../logo/logo
 include ../text-field/text-field
 
-//-
-  options.isMobile - если true, то футер всегда будет отображаться как для мобильников
-  options.items - массив разделов
-  options.items[0].text - название раздела
-  options.items[0].links - массив ссылок
-  options.items[0].links[0].text - текст ссылки
-  options.items[0].links[0].href - ссылка
 mixin footer(options = {})
   -
     const { isMobile = false, items = [] } = options;
