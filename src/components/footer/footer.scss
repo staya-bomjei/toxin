@@ -22,12 +22,12 @@
     }
   }
 
-  &__about,
-  &__subscription {
+  &__about {
     @include flex-layout(column, 1.125rem);
   }
 
-  &__list {
+  &__list,
+  &__subscription {
     @include flex-layout(column, 1.25rem);
   }
 
