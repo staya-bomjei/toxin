@@ -2,22 +2,22 @@
 @import '../../styles/variables';
 
 .radio-button {
-  display: flex;
-  align-items: flex-start;
-  cursor: pointer;
-  user-select: none;
-
   $class: &;
   $text-margin: 0.625rem;
   $marker-size: 1.25rem;
   $center-size: 0.75rem;
   $center-offset: math.div($marker-size - $center-size, 2) - 0.0625rem;
 
-  &__input {
-    opacity: 0;
+  &__label {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    user-select: none;
     cursor: pointer;
-    height: 0;
-    width: 0;
+  }
+
+  &__input {
+    display: none;
 
     &:checked {
       ~ #{$class}__text {

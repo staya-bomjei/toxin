@@ -185,12 +185,12 @@
   "radioButtons": {
     "man": {
       "text": "Мужчина",
-      "group": "gender",
+      "name": "gender",
       "isChecked": true
     },
     "woman": {
       "text": "Женщина",
-      "group": "gender"
+      "name": "gender"
     }
   },
   "toggleButtons": {

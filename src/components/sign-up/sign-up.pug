@@ -11,8 +11,8 @@ mixin sign-up()
       +text-field({ placeholder: 'Имя' })
       +text-field({ placeholder: 'Фамилия' })
       .sign-up__genders
-        +radio-button({ text: 'Мужчина', group: 'gender', isChecked: true })
-        +radio-button({ text: 'Женщина', group: 'gender' })
+        +radio-button({ text: 'Мужчина', name: 'gender', isChecked: true })
+        +radio-button({ text: 'Женщина', name: 'gender' })
 
     +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
 
