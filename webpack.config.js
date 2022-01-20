@@ -109,6 +109,7 @@ module.exports = (env) => {
 
   const devConfig = {
     mode: 'development',
+    devtool: 'source-map',
     devServer: {
       port: 4200,
       open: '/index.html',
