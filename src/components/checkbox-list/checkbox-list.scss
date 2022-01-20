@@ -32,7 +32,7 @@
     }
   }
 
-  &__list {
+  &__content {
     display: none;
     position: absolute;
     padding-left: 0;
@@ -52,7 +52,7 @@
       transform: rotate(180deg) translateY(50%);
     }
 
-    #{$class}__list {
+    #{$class}__content {
       display: grid;
       grid-row-gap: 0.625rem;
     }

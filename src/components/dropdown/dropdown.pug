@@ -8,14 +8,14 @@ mixin dropdown(options = {})
       rows = [], 
       maxLen = 100,
       type = 'counter',
-      isExpanded = false,
+      isOpen = false,
       hasControls = false, 
       countables = [], 
       valueChanged, 
     } = options;
 
     const classes = [];
-    if (isExpanded) classes.push('dropdown_open');
+    if (isOpen) classes.push('dropdown_open');
 
   .dropdown.js-dropdown(
     class = classes

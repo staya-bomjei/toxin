@@ -50,7 +50,7 @@
         "title": "dropdown",
         "condition": "expanded",
         "placeholder": "Выберете комплектацию",
-        "isExpanded": true,
+        "isOpen": true,
         "rows": [
           {
             "text": "спальни",
@@ -97,7 +97,7 @@
           "title": "dropdown",
           "placeholder": "Сколько гостей",
           "hasControls": true,
-          "isExpanded": true,
+          "isOpen": true,
           "type": "summator",
           "countables": ["гость", "гостя", "гостей"],
           "rows": [
@@ -119,7 +119,7 @@
           "title": "dropdown",
           "placeholder": "Сколько гостей",
           "hasControls": true,
-          "isExpanded": true,
+          "isOpen": true,
           "type": "summator",
           "countables": ["гость", "гостя", "гостей"],
           "rows": [
@@ -274,29 +274,11 @@
     "default": {
       "text": "expandable checkbox list",
       "list": [
-        {
-          "text": "Завтрак"
-        },
-        {
-          "text": "Письменный стол"
-        },
-        {
-          "text": "Стул для кормления"
-        },
-        {
-          "text": "Кроватка"
-        },
-        {
-          "text": "Телевизор"
-        },
-        {
-          "text": "Шампунь"
-        }
       ]
     },
     "expanded": {
       "text": "expandable checkbox list",
-      "isExpanded": true,
+      "isOpen": true,
       "list": [
         {
           "text": "Завтрак"

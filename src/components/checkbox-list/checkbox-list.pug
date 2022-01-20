@@ -6,16 +6,14 @@ mixin checkbox-list(options = {})
       text = '',
       list = [],
       isOpen = false,
-      isExpanded = false
     } = options;
 
     let classes = [];
     if (isOpen) classes.push('checkbox-list_open');
-    if (isExpanded) classes.push('checkbox-list_open');
 
   .checkbox-list.js-checkbox-list(class = classes)
     button.checkbox-list__button.js-checkbox-list__button(type = 'button')= text
-    ul.checkbox-list__list.js-checkbox-list__list
+    ul.checkbox-list__content
       each initObj in list
         li.checkbox-list__item
           +checkbox(initObj)
