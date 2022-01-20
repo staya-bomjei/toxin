@@ -1,19 +1,21 @@
 @import '../../styles/variables';
 
 .toggle-button {
-  display: flex;
-  align-items: flex-start;
-  user-select: none;
-
   $class: &;
   $marker-width: 2.5rem;
   $marker-height: 1.25rem;
   $center-size: 0.75rem;
 
+  &__label {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-start;
+    user-select: none;
+    cursor: pointer;
+  }
+
   &__input {
-    opacity: 0;
-    height: 0;
-    width: 0;
+    display: none;
 
     &:checked {
       ~ #{$class}__mark {
@@ -33,7 +35,6 @@
     width: $marker-width;
     border: $border-width solid rgba($dark, 25%);
     border-radius: $marker-height;
-    cursor: pointer;
 
     &::after {
       content: '';
@@ -53,7 +54,6 @@
 
     line-height: 1.5rem;
     margin-left: 0.625rem;
-    cursor: pointer;
     position: relative;
     bottom: 0.25rem;
   }

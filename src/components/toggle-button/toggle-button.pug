@@ -4,7 +4,8 @@
 mixin toggle-button(options = {})
   - const { text = '', isChecked = false } = options;
 
-  label.toggle-button
-    input.toggle-button__input(type = 'checkbox' checked = isChecked)
-    span.toggle-button__mark
-    span.toggle-button__text= text
+  .toggle-button
+    label.toggle-button__label
+      input.toggle-button__input(type = 'checkbox' checked = isChecked)
+      span.toggle-button__mark
+      span.toggle-button__text= text
