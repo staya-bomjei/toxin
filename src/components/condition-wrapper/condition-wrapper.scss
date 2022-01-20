@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.condition-wrapper {
+  position: relative;
+
+  &__text {
+    @extend %label;
+
+    font-weight: normal;
+    color: rgba($dark, 50%);
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

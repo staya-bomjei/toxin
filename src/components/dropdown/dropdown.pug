@@ -2,7 +2,6 @@ include ../button/button
 
 //-
   options.title - заголовок компонента, может быть массивом если isSplit true
-  options.condition - текст, показывающий в каком состоянии находится компонент, может быть массивом если isSplit true
   options.placeholder - строка placeholder дропдауна, может быть массивом если isSplit true
   options.maxLen - максимальное количество символов в инпуте, лишние будут отброшены
   options.type - тип dropdown, допустимые значения: 'counter' | 'summator' | 'datepicker'
@@ -24,7 +23,6 @@ mixin dropdown(options = {})
   -
     const { 
       title = '',
-      condition = '',
       placeholder = '',
       rows = [], 
       maxLen = 100,
@@ -39,12 +37,11 @@ mixin dropdown(options = {})
       valueChanged, 
     } = options;
 
-    let buttons = [{ title, condition, placeholder }];
+    let buttons = [{ title, placeholder }];
     if (isSplit) {
       buttons = [{}, {}];
       buttons.forEach((button, index) => {
         button.title = (typeof title === 'string') ? title : title[index];
-        button.condition = (typeof condition === 'string') ? condition : condition[index];
         button.placeholder = (typeof placeholder === 'string') ? placeholder : placeholder[index];
       });
     }
@@ -69,9 +66,7 @@ mixin dropdown(options = {})
     .dropdown__inputs.js-dropdown__inputs(class = (isSplit) ? 'dropdown__inputs_split' : null)
       each button in buttons 
         .dropdown__input
-          .dropdown__info
-            .dropdown__title= button.title
-            .dropdown__condition= button.condition
+          .dropdown__title= button.title
 
           .dropdown__input-box.js-dropdown__input-box
             input.dropdown__text.js-dropdown__text(type = text placeholder = button.placeholder readonly = true)

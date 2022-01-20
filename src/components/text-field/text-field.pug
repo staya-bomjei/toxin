@@ -1,6 +1,5 @@
 //-
   options.title - заголовок компонента
-  options.condition - текст, показывающий в каком состоянии находится компонент
   options.placeholder - placeholder текстового поля
   options.value - изначальное значение текстового поля
   options.type - тип поля ввода: 'default' | 'mask' | 'subscription'
@@ -10,7 +9,6 @@ mixin text-field(options = {})
   -
     const {
       title = '',
-      condition = '',
       placeholder = '',
       value = '',
       type = 'default',
@@ -25,10 +23,8 @@ mixin text-field(options = {})
     const inputClass = (type === 'mask') ? 'js-text-field__input' : null;
 
   .text-field(class = classes)
-    if title || condition
-      .text-field__info
-        .text-field__title= title
-        .text-field__condition= condition
+    if title
+      .text-field__title= title
 
     .text-field__input-wrapper
       input.text-field__input(

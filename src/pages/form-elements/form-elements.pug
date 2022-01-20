@@ -14,6 +14,7 @@ include ../../components/checkbox-list/checkbox-list
 include ../../components/bullet-list/bullet-list
 include ../../components/advantage/advantage
 include ../../components/comment/comment
+include ../../components/condition-wrapper/condition-wrapper
 
 append variables
   -
@@ -46,8 +47,10 @@ block main
       .form-elements__column.form-elements__column_number_1
         .form-elements__wrapper
           .form-elements__text-inputs
-            +text-field(textFields.default)
-            +text-field(textFields.hover)
+            +condition-wrapper({ text: 'default' })
+              +text-field(textFields.default)
+            +condition-wrapper({ text: 'hover / focus' })
+              +text-field(textFields.hover)
             +dropdown(dropdowns.summator.default)
             .form-elements__masked-text-field
               +text-field(textFields.masked)
@@ -116,8 +119,10 @@ block main
     .form-elements__row.form-elements__row_size_small
       .form-elements__column.form-elements__column_number_1
         .form-elements__dropdowns
-          +dropdown(dropdowns.default.default)
-          +dropdown(dropdowns.default.expanded)
+          +condition-wrapper({ text: 'default' })
+            +dropdown(dropdowns.default.default)
+          +condition-wrapper({ text: 'expanded' })
+            +dropdown(dropdowns.default.expanded)
 
       .form-elements__column.form-elements__column_number_2
         .form-elements__wrapper

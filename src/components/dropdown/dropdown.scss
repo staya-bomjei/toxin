@@ -7,21 +7,10 @@
   $border-radius: 0.25rem;
   $button-size: 1.875rem;
 
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.3125rem;
-  }
-
   &__title {
     @extend %label;
-  }
 
-  &__condition {
-    @extend %label;
-
-    font-weight: normal;
-    color: rgba($dark, 50%);
+    margin-bottom: 0.3125rem;
   }
 
   &__inputs {
@@ -184,7 +173,6 @@
       margin: 0;
     }
 
-    #{$class}__info,
     #{$class}__input {
       display: none;
     }

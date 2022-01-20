@@ -5,21 +5,10 @@
 
   $class: &;
 
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.3125rem;
-  }
-
   &__title {
     @extend %label;
-  }
 
-  &__condition {
-    @extend %label;
-
-    font-weight: normal;
-    color: rgba($dark, 50%);
+    margin-bottom: 0.3125rem;
   }
 
   &__input-wrapper {

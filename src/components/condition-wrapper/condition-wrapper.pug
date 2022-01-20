@@ -1,0 +1,9 @@
+//-
+  options.text - текст состояния
+  Примечание: блок ожидает содержимое
+mixin condition-wrapper(options = {})
+  - const { text } = options;
+
+  .condition-wrapper
+    .condition-wrapper__text= text
+    block
