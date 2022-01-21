@@ -3,7 +3,7 @@ mixin range-slider(options = {})
     const {
       min,
       max,
-      step = 0.1,
+      step = 1,
       values = [],
       text = '',
       note = '',
@@ -14,33 +14,23 @@ mixin range-slider(options = {})
       values.push(min, max);
     }
 
-    const leftValue = (((values[0] - min) / (max - min))) * 100;
-    const rightValue = (((values[1] - min) / (max - min))) * 100;
-
-  .range-slider.js-range-slider(data-postfix = postfix, data-min = min, data-max = max)
+  .range-slider.js-range-slider(
+    data-postfix = postfix
+    data-min = min
+    data-max = max
+    data-step = step
+    data-from = values[0]
+    data-to = values[1]
+  )
     .range-slider__info
       .range-slider__text= text
       .range-slider__output.js-range-slider__output
 
     .range-slider__slider
-      input.range-slider__input.js-range-slider__input(
-        type = 'range'
-        min = 0
-        max = 100
-        value = leftValue
-        step = step
-      )
-      input.range-slider__input.js-range-slider__input(
-        type = 'range'
-        min = 0
-        max = 100
-        value = rightValue
-        step = step
-      )
-      .range-slider__track
+      .range-slider__track.js-range-slider__track
         .range-slider__progress.js-range-slider__progress
-      .range-slider__thumb.js-range-slider__thumb
-      .range-slider__thumb.js-range-slider__thumb
+        .range-slider__thumb.js-range-slider__thumb
+        .range-slider__thumb.js-range-slider__thumb
 
     if note
       .range-slider__note= note

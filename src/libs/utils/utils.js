@@ -59,8 +59,31 @@ function makeCurrency(number, postfix = '', locale = 'ru') {
   return `${number.toLocaleString(locale)}${postfix}`;
 }
 
+function toFixed(number, fixedNumbers) {
+  return Number(number.toFixed(fixedNumbers));
+}
+
+function calcNearestStepValue(value, step, base, fixedNumbers = 12) {
+  if (step < 0) {
+    throw new Error('Step can\'t be less than zero');
+  }
+
+  const basedValue = value - base;
+  if (basedValue % step === 0) return value;
+
+  let minCorrectValue = Math.trunc(basedValue / step) * step + base;
+  minCorrectValue = toFixed(minCorrectValue, fixedNumbers);
+  const minDifference = value - minCorrectValue;
+  let maxCorrectValue = (Math.trunc(basedValue / step) + 1) * step + base;
+  maxCorrectValue = toFixed(maxCorrectValue, fixedNumbers);
+  const maxDifference = maxCorrectValue - value;
+
+  return (minDifference < maxDifference) ? minCorrectValue : maxCorrectValue;
+}
+
 export {
   choiceCountable,
   timeAgo,
   makeCurrency,
+  calcNearestStepValue,
 };
