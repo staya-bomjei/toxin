@@ -13,6 +13,11 @@ mixin reservation(options = {})
       postfix = '₽',
       selectedDays = [],
       rows,
+      totalTitle = 'Итого',
+      discountTitle = 'Сбор за услуги: скидка',
+      perDayTitle = 'в сутки',
+      additionalTitle = 'Сбор за дополнительные услуги',
+      info = 'i',
     } = options;
     
     const datepickerValueChanged = `datepicker-value-changed-${id}`;
@@ -45,7 +50,7 @@ mixin reservation(options = {})
       span.reservation__price
         strong.reservation__price-value= makeCurrency(price, postfix)
         span &nbsp;
-        span.reservation__price-per-day в сутки
+        span.reservation__price-per-day= perDayTitle
 
     .reservation__datepicker.js-reservation__datepicker
       +datepicker({ 
@@ -69,19 +74,19 @@ mixin reservation(options = {})
       })
 
     .reservation__calculator
-      .reservation__rent.js-reservation__rent= `${makeCurrency(price, postfix)} x 4 суток`
-      .reservation__rent-total.js-reservation__rent-total 39 960₽
-      .reservation__discount= `Сбор за услуги: скидка ${makeCurrency(discount, postfix)}`
-      span.reservation__i i
+      .reservation__rent.js-reservation__rent
+      .reservation__rent-total.js-reservation__rent-total
+      .reservation__discount= `${discountTitle} ${makeCurrency(discount, postfix)}`
+      span.reservation__i= info
       .reservation__discount-total 0#{postfix}
-      .reservation__additional Сбор за дополнительные услуги
-      span.reservation__i i
+      .reservation__additional= additionalTitle
+      span.reservation__i= info
       .reservation__additional-total.js-reservation__additional-total
 
     .reservation__total
-      | Итого
+      | #{totalTitle}
       span.reservation__dashed-underline
-      .reservation__total-cost.js-reservation__total-cost 38 081₽
+      .reservation__total-cost.js-reservation__total-cost
 
     .reservation__reserve-button
       +button({ text: 'забронировать', type: 'arrow', href: 'error-page' })

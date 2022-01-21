@@ -8,7 +8,8 @@ mixin datepicker(options = {})
       isSplit = false,
       isContentOnly = false,
       selected = [],
-      valueChanged, 
+      valueChanged,
+      icon = 'expand_more',
     } = options;
 
     let buttons = [{ title, placeholder }];
@@ -37,6 +38,6 @@ mixin datepicker(options = {})
           .datepicker__title= button.title
           .datepicker__input-box.js-datepicker__input-box
             input.datepicker__text.js-datepicker__text(type = text placeholder = button.placeholder readonly = true)
-            .datepicker__icon expand_more
+            .datepicker__icon= icon
 
     .datepicker__content.js-datepicker__content

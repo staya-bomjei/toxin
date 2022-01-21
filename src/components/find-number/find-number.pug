@@ -3,21 +3,25 @@ include ../datepicker/datepicker
 include ../button/button
 
 mixin find-number(options = {})
-  - const { rows = [] } = options;
+  -
+    const {
+      rows = [],
+      title = 'Найдём номера под ваши пожелания',
+    } = options;
 
   form.find-number
-    h2.find-number__title Найдём номера под ваши пожелания
+    h2.find-number__title= title
 
     .find-number__datepicker
-      +datepicker({ 
+      +datepicker({
         title: ['прибытие', 'выезд'],
         placeholder: ['ДД.ММ.ГГГГ', 'ДД.ММ.ГГГГ'], 
         isRange: true,
-        isSplit: true
+        isSplit: true,
       })
 
     .find-number__guests-dropdown
-      +dropdown({ 
+      +dropdown({
         title: 'гости',
         placeholder: 'Сколько гостей',
         rows,

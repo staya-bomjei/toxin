@@ -4,7 +4,9 @@ mixin pagination(options = {})
       initState = 1,
       itemsCounter = 180,
       itemsPerPage = 12,
-      postfix = ''
+      postfix = '',
+      prevIcon = 'arrow_back',
+      nextIcon = 'arrow_forward',
     } = options;
 
   .pagination.js-pagination(
@@ -14,9 +16,9 @@ mixin pagination(options = {})
     data-postfix = postfix
   )
     .pagination__buttons
-      .pagination__prev.js-pagination__prev arrow_back
+      .pagination__prev.js-pagination__prev= prevIcon
       - for (let i = 0; i < 7; i++)
         .pagination__number.js-pagination__number
-      .pagination__next.js-pagination__next arrow_forward
+      .pagination__next.js-pagination__next= nextIcon
 
     .pagination__text.js-pagination__text

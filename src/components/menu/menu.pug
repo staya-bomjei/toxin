@@ -1,6 +1,6 @@
 mixin menu(options = {})
   -
-    const { isSubmenu = false, items = [] } = options;
+    const { isSubmenu = false, items = [], icon = 'expand_more' } = options;
     const menuClass = (isSubmenu) ? 'menu__submenu' : 'menu';
     const itemClass = (isSubmenu) ? 'menu__subitem' : 'menu__item';
   
@@ -12,7 +12,7 @@ mixin menu(options = {})
           href = `${item.href}.html`
         )= item.text
           if item.submenu
-            span.menu__expand-more expand_more
+            span.menu__expand-more= icon
 
         if item.submenu
           +menu({ isSubmenu: true, items: item.submenu })

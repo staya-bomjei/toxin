@@ -12,6 +12,9 @@ mixin room-thumbnail(options = {})
       reviews = 0,
       type = '',
       href = 'error-page',
+      icon = 'expand_more',
+      perDayTitle = 'в сутки',
+      reviewsTitle = 'Отзывов',
     } = options;
 
     const { makeCurrency } = require('../../libs/utils/utils.js');
@@ -28,10 +31,10 @@ mixin room-thumbnail(options = {})
         )
 
       .room-thumbnail__prev.js-room-thumbnail__prev
-        span.room-thumbnail__icon expand_more
+        span.room-thumbnail__icon= icon
 
       .room-thumbnail__next.js-room-thumbnail__next
-        span.room-thumbnail__icon expand_more
+        span.room-thumbnail__icon= icon
 
       .room-thumbnail__buttons
         each image in images
@@ -46,7 +49,7 @@ mixin room-thumbnail(options = {})
 
         .room-thumbnail__price
           strong.room-thumbnail__price-value= makeCurrency(price, postfix)
-          span.room-thumbnail__price-per-day &nbsp;в сутки
+          span.room-thumbnail__price-per-day &nbsp;#{perDayTitle}
 
       .room-thumbnail__underline
 
@@ -54,4 +57,4 @@ mixin room-thumbnail(options = {})
         +rate-button({ rate })
         span.room-thumbnail__reviews
           strong= reviews
-          span &nbsp;Отзывов
+          span &nbsp;#{reviewsTitle}

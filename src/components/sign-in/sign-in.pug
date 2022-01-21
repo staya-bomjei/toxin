@@ -3,9 +3,15 @@ include ../radio-button/radio-button
 include ../toggle-button/toggle-button
 include ../button/button
 
-mixin sign-in()
+mixin sign-in(options = {})
+  -
+    const {
+      title = 'Войти',
+      hasAccountTitle = 'Нет аккаунта на Toxin?',
+    } = options;
+
   form.sign-in
-    h2.sign-in__title Войти
+    h2.sign-in__title= title
     .sign-in__row
       +text-field({ placeholder: 'Email' })
       +text-field({ placeholder: 'Пароль', htmlType: 'password' })
@@ -13,5 +19,5 @@ mixin sign-in()
     +button({ text: 'войти', type: 'arrow', href: 'sign-in-page' })
 
     .sign-in__has-account
-      .sign-in__label Нет аккаунта на Toxin?
+      .sign-in__label= hasAccountTitle
       +button({ text: 'Создать', type: 'border', href: 'registration' })

@@ -11,7 +11,10 @@ mixin dropdown(options = {})
       isOpen = false,
       hasControls = false, 
       countables = [], 
-      valueChanged, 
+      valueChanged,
+      icon= 'expand_more',
+      clearText = 'очистить',
+      acceptText = 'применить',
     } = options;
 
     const classes = [];
@@ -29,7 +32,7 @@ mixin dropdown(options = {})
       .dropdown__title= title
       .dropdown__input-box.js-dropdown__input-box
         input.dropdown__text.js-dropdown__text(type = "text" placeholder = placeholder readonly = true)
-        .dropdown__icon expand_more
+        .dropdown__icon= icon
 
     .dropdown__content.js-dropdown__content
       each row in rows
@@ -43,7 +46,7 @@ mixin dropdown(options = {})
       if hasControls
         .dropdown__control-buttons
           .dropdown__clear-button.js-dropdown__clear-button
-            +button({ text: 'очистить'})
+            +button({ text: clearText })
 
           .dropdown__accept-button.js-dropdown__accept-button
-            +button({ text: 'применить'})
+            +button({ text: acceptText })

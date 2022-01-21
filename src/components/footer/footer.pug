@@ -6,6 +6,7 @@ mixin footer(options = {})
     const {
       about = '',
       subscription = '',
+      subscriptionTitle = 'подписка',
       copyrights = '',
       isMobile = false,
       items = [],
@@ -29,7 +30,7 @@ mixin footer(options = {})
               a.footer__link(href = `${link.href}.html`)= link.text
 
       section.footer__subscription
-        h3.footer__title подписка
+        h3.footer__title= subscriptionTitle
         span.footer__subscription-text= subscription
         +text-field({ type: 'subscription', placeholder: 'Email' })
 

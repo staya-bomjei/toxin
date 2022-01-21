@@ -3,9 +3,15 @@ include ../radio-button/radio-button
 include ../toggle-button/toggle-button
 include ../button/button
 
-mixin sign-up()
+mixin sign-up(options = {})
+  -
+    const {
+      title = 'Регистрация аккаунта',
+      hasAccountTitle = 'Уже есть аккаунт на Toxin?',
+    } = options;
+
   form.sign-up
-    h2.sign-up__title Регистрация аккаунта
+    h2.sign-up__title= title
 
     .sign-up__row
       +text-field({ placeholder: 'Имя' })
@@ -24,5 +30,5 @@ mixin sign-up()
     +button({ text: 'перейти к оплате', type: 'arrow', href: 'error-page' })
 
     .sign-up__has-account
-      .sign-up__label Уже есть аккаунт на Toxin?
+      .sign-up__label= hasAccountTitle
       +button({ text: 'войти', type: 'border', href: 'sign-in-page' })

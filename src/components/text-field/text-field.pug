@@ -7,6 +7,7 @@ mixin text-field(options = {})
       type = 'default',
       htmlType = 'text',
       isHovered = false,
+      icon = 'arrow_forward',
     } = options;
 
     const classes = [];
@@ -28,4 +29,4 @@ mixin text-field(options = {})
       )
 
       if type === 'subscription'
-        span.text-field__icon arrow_forward
+        span.text-field__icon= icon
