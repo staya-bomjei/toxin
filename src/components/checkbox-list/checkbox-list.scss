@@ -2,6 +2,7 @@
 
 .checkbox-list {
   position: relative;
+  user-select: none;
 
   $class: &;
 
