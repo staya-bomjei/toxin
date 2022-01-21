@@ -20,12 +20,16 @@ class Header {
   }
 
   _attachEventHandlers() {
-    this.$burgerButton.on('click', this._handleBurgerButtonClick);
+    const { $burgerButton } = this;
+
+    $burgerButton.on('click', this._handleBurgerButtonClick);
   }
 
   _handleBurgerButtonClick() {
-    this.$burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
-    this.$info.toggleClass(INFO_MOBILE_EXPANDED);
+    const { $burgerButton, $info } = this;
+
+    $burgerButton.toggleClass(BURGER_BUTTON_ACTIVE);
+    $info.toggleClass(INFO_MOBILE_EXPANDED);
   }
 }
 

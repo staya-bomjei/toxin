@@ -17,11 +17,15 @@ class CheckboxList {
   }
 
   _attachEventHandlers() {
-    this.$button.on('click', this._handleButtonClick);
+    const { $button } = this;
+
+    $button.on('click', this._handleButtonClick);
   }
 
   _handleButtonClick() {
-    this.$component.toggleClass(CHECKBOX_LIST_OPEN);
+    const { $component } = this;
+
+    $component.toggleClass(CHECKBOX_LIST_OPEN);
   }
 }
 

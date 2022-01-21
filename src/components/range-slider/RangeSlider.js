@@ -8,7 +8,6 @@ import {
   TRACK_SELECTOR,
   THUMB_SELECTOR,
   THUMB_ABOVE,
-  THUMB_BELOW,
   POSTFIX,
   MIN,
   MAX,
@@ -33,11 +32,12 @@ class RangeSlider {
   }
 
   init() {
-    const thumbs = Array.from($(THUMB_SELECTOR, this.$component));
+    const { $component } = this;
+    const thumbs = Array.from($(THUMB_SELECTOR, $component));
     [this.$leftThumb, this.$rightThumb] = thumbs.map((thumb) => $(thumb));
 
-    const from = Number(this.$component.attr(INIT_FROM));
-    const to = Number(this.$component.attr(INIT_TO));
+    const from = Number($component.attr(INIT_FROM));
+    const to = Number($component.attr(INIT_TO));
     this._setPosition(this._valueToPosition(from), true);
     this._setPosition(this._valueToPosition(to), false);
 
@@ -122,18 +122,19 @@ class RangeSlider {
 
     if (this.positionLeft === MAX_POSITION) {
       this.$leftThumb.addClass(THUMB_ABOVE);
-      this.$rightThumb.addClass(THUMB_BELOW);
+      this.$rightThumb.removeClass(THUMB_ABOVE);
     } else if (this.positionLeft === MIN_POSITION) {
-      this.$leftThumb.addClass(THUMB_BELOW);
+      this.$leftThumb.removeClass(THUMB_ABOVE);
       this.$rightThumb.addClass(THUMB_ABOVE);
     }
   }
 
   _updateOutput() {
+    const { postfix } = this;
     const from = this._getValue(true);
     const to = this._getValue(false);
-    const currencyFrom = makeCurrency(from, this.postfix);
-    const currencyTo = makeCurrency(to, this.postfix);
+    const currencyFrom = makeCurrency(from, postfix);
+    const currencyTo = makeCurrency(to, postfix);
 
     this.$output.html(`${currencyFrom} - ${currencyTo}`);
   }
@@ -143,12 +144,15 @@ class RangeSlider {
     const positionRight = this._getPosition(false);
     const width = Math.abs(positionLeft - positionRight);
 
-    this.$progress.css('width', `${width}%`);
-    this.$progress.css('left', `${positionLeft}%`);
+    const { $progress } = this;
+    $progress.css('width', `${width}%`);
+    $progress.css('left', `${positionLeft}%`);
   }
 
   _isLeftThumb(thumbEl) {
-    return thumbEl === this.$leftThumb[0];
+    const { $leftThumb } = this;
+
+    return thumbEl === $leftThumb[0];
   }
 
   _getValue(isLeftThumb) {
@@ -156,25 +160,33 @@ class RangeSlider {
   }
 
   _getPosition(isLeftThumb) {
-    return (isLeftThumb) ? this.positionLeft : this.positionRight;
+    const { positionLeft, positionRight } = this;
+
+    return (isLeftThumb) ? positionLeft : positionRight;
   }
 
   _setPosition(position, isLeftThumb) {
+    const { $leftThumb, $rightThumb } = this;
+
     if (isLeftThumb) {
       this.positionLeft = position;
-      this.$leftThumb.css('left', `${position}%`);
+      $leftThumb.css('left', `${position}%`);
     } else {
       this.positionRight = position;
-      this.$rightThumb.css('left', `${position}%`);
+      $rightThumb.css('left', `${position}%`);
     }
   }
 
   _positionToValue(position) {
-    return Math.round(((this.max - this.min) * position) / 100 + this.min);
+    const { max, min } = this;
+
+    return Math.round(((max - min) * position) / 100 + min);
   }
 
   _valueToPosition(value) {
-    return ((value - this.min) / (this.max - this.min)) * 100;
+    const { max, min } = this;
+
+    return ((value - min) / (max - min)) * 100;
   }
 }
 

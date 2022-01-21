@@ -24,12 +24,14 @@ class Counter extends Dropdown {
     super($component);
     this.maxLen = Number($component.attr(MAX_LEN));
     this.hasControls = $component.has(HAS_CONTROLS) !== undefined;
-    this.$text = $(TEXT_SELECTOR, this.$component);
+    this.$text = $(TEXT_SELECTOR, $component);
     this.rows = this._getRows();
   }
 
   init() {
-    if (this.hasControls) {
+    const { hasControls } = this;
+
+    if (hasControls) {
       this._initControls();
     }
 
@@ -42,26 +44,37 @@ class Counter extends Dropdown {
   }
 
   _initControls() {
-    this.$clear = this.$component.find(CLEAR_BUTTON_SELECTOR);
-    this.$accept = this.$component.find(ACCEPT_BUTTON_SELECTOR);
+    const { $component } = this;
+
+    this.$clear = $component.find(CLEAR_BUTTON_SELECTOR);
+    this.$accept = $component.find(ACCEPT_BUTTON_SELECTOR);
   }
 
   _attachEventHandlers() {
     super._attachEventHandlers();
 
-    if (this.hasControls) {
-      this.$clear.on('click', this._handleClearButtonClick);
-      this.$accept.on('click', this._handleAcceptButtonClick);
+    const {
+      hasControls,
+      rows,
+      $clear,
+      $accept,
+    } = this;
+
+    if (hasControls) {
+      $clear.on('click', this._handleClearButtonClick);
+      $accept.on('click', this._handleAcceptButtonClick);
     }
 
-    this.rows.forEach((row) => {
+    rows.forEach((row) => {
       row.$minus.on('click', this._handleMinusClick);
       row.$plus.on('click', this._handlePlusClick);
     });
   }
 
   _handleClearButtonClick() {
-    this.rows.forEach((row) => {
+    const { rows } = this;
+
+    rows.forEach((row) => {
       row.$minus.removeClass(MINUS_ACTIVE);
       row.$counter.html(0);
     });
@@ -70,11 +83,13 @@ class Counter extends Dropdown {
   }
 
   _handleAcceptButtonClick() {
-    this.$component.removeClass(DROPDOWN_OPEN);
+    const { $component } = this;
+
+    $component.removeClass(DROPDOWN_OPEN);
   }
 
-  _handleMinusClick(event) {
-    const $minus = $(event.target);
+  _handleMinusClick({ target }) {
+    const $minus = $(target);
     const $counter = $minus.siblings(COUNTER_SELECTOR);
     const counter = Number($counter.html());
 
@@ -86,8 +101,8 @@ class Counter extends Dropdown {
     this._update();
   }
 
-  _handlePlusClick(event) {
-    const $plus = $(event.target);
+  _handlePlusClick({ target }) {
+    const $plus = $(target);
     const $minus = $plus.siblings(MINUS_SELECTOR);
     const $counter = $plus.siblings(COUNTER_SELECTOR);
     const counter = Number($counter.html());
@@ -102,13 +117,16 @@ class Counter extends Dropdown {
   }
 
   _setText(string) {
-    let text = string.substring(0, this.maxLen);
-    if (string.length >= this.maxLen) text += '...';
-    this.$text.val(text);
+    const { maxLen, $text } = this;
+
+    let text = string.substring(0, maxLen);
+    if (string.length >= maxLen) text += '...';
+    $text.val(text);
   }
 
   _getRows() {
-    const rows = Array.from($(ROW_SELECTOR, this.$component));
+    const { $component } = this;
+    const rows = Array.from($(ROW_SELECTOR, $component));
 
     return rows.map((row) => {
       const $row = $(row);
@@ -128,7 +146,9 @@ class Counter extends Dropdown {
   }
 
   _areAllCountersZero() {
-    return this.rows.every((row) => Number(row.$counter.html()) === 0);
+    const { rows } = this;
+
+    return rows.every((row) => Number(row.$counter.html()) === 0);
   }
 
   _update() {
@@ -147,23 +167,31 @@ class Counter extends Dropdown {
   }
 
   _updateValue() {
-    this.$component.attr(VALUE, this._calcDropdownValue());
+    const { $component } = this;
+
+    $component.attr(VALUE, this._calcDropdownValue());
   }
 
   _updateClearButtonVisibility() {
+    const { $clear } = this;
+
     if (this._areAllCountersZero()) {
-      this.$clear.hide();
+      $clear.hide();
     } else {
-      this.$clear.show();
+      $clear.show();
     }
   }
 
   _calcDropdownValue() {
-    return this.rows.map((row) => Number(row.$counter.html()));
+    const { rows } = this;
+
+    return rows.map((row) => Number(row.$counter.html()));
   }
 
   _calcDropdownText() {
-    return this.rows
+    const { rows } = this;
+
+    return rows
       .map((row) => {
         const counter = Number(row.$counter.html());
         if (counter === 0) return '';

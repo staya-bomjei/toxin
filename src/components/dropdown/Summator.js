@@ -6,7 +6,7 @@ import { COUNTABLES } from './const';
 class Summator extends Counter {
   constructor($component) {
     super($component);
-    this.countables = JSON.parse(this.$component.attr(COUNTABLES));
+    this.countables = JSON.parse($component.attr(COUNTABLES));
   }
 
   _sumAllDropdownCountables() {
@@ -16,9 +16,10 @@ class Summator extends Counter {
   }
 
   _calcDropdownText() {
+    const { rows, countables } = this;
     const sum = this._sumAllDropdownCountables();
-    const value = (sum) ? `${sum} ${choiceCountable(sum, this.countables)}` : '';
-    const counters = this.rows
+    const value = (sum) ? `${sum} ${choiceCountable(sum, countables)}` : '';
+    const counters = rows
       .filter((row) => row.countables !== null)
       .map((row) => {
         const counter = Number(row.$counter.html());

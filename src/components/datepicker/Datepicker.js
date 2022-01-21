@@ -22,15 +22,16 @@ class Datepicker {
     this.valueChanged = $component.attr(VALUE_CHANGED);
     this.$inputs = $(INPUTS_SELECTOR, $component);
     this.$content = $(CONTENT_SELECTOR, $component);
-    this.texts = $(TEXT_SELECTOR, this.$component);
-    this.isSplit = this.$component.attr(IS_SPLIT) !== undefined;
-    this.isRange = this.$component.attr(IS_RANGE) !== undefined;
+    this.texts = $(TEXT_SELECTOR, $component);
+    this.isSplit = $component.attr(IS_SPLIT) !== undefined;
+    this.isRange = $component.attr(IS_RANGE) !== undefined;
     this.datepicker = this._createCalendar();
   }
 
   init() {
     const selected = JSON.parse(this.$component.attr(SELECTED));
-    this.datepicker.selectDate(selected);
+    const { datepicker } = this;
+    datepicker.selectDate(selected);
 
     this._handleOutOfComponentClick = this._handleOutOfComponentClick.bind(this);
     this._handleInputsClick = this._handleInputsClick.bind(this);
@@ -38,44 +39,61 @@ class Datepicker {
   }
 
   _attachEventHandlers() {
+    const { $inputs } = this;
+
     $(document).on('click', this._handleOutOfComponentClick);
-    this.$inputs.on('click', this._handleInputsClick);
+    $inputs.on('click', this._handleInputsClick);
   }
 
   _handleAcceptButtonClick() {
-    this.$component.removeClass(DATEPICKER_OPEN);
+    const { $component } = this;
+
+    $component.removeClass(DATEPICKER_OPEN);
   }
 
   _handleOutOfComponentClick({ target }) {
-    if (this.$component.has(target).length === 0) {
-      this.$component.removeClass(DATEPICKER_OPEN);
+    const { $component } = this;
+
+    if ($component.has(target).length === 0) {
+      $component.removeClass(DATEPICKER_OPEN);
     }
   }
 
   _handleInputsClick({ target }) {
+    const { $component } = this;
     const $target = $(target);
+
     if ($target.closest(INPUT_BOX_SELECTOR).length !== 0) {
-      this.$component.toggleClass(DATEPICKER_OPEN);
+      $component.toggleClass(DATEPICKER_OPEN);
     }
   }
 
   _triggerValueChanged() {
-    if (this.valueChanged) {
-      $(document).trigger(this.valueChanged);
+    const { valueChanged } = this;
+
+    if (valueChanged) {
+      $(document).trigger(valueChanged);
     }
   }
 
   _createCalendar() {
+    const {
+      $component,
+      $content,
+      texts,
+      isSplit,
+      isRange,
+    } = this;
+
     const options = {
-      $component: this.$component,
-      $content: this.$content,
-      texts: this.texts,
-      isDatepicker: this.isDatepicker,
-      isSplit: this.isSplit,
-      range: this.isRange,
+      $component,
+      $content,
+      texts,
+      isSplit,
+      range: isRange,
       triggerValueChanged: () => this._triggerValueChanged(),
       onAcceptButtonClick: () => this._handleAcceptButtonClick(),
-      altField: this.texts[0],
+      altField: texts[0],
       DATE_FROM,
       DATE_TO,
     };

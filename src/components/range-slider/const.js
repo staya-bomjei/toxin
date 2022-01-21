@@ -5,7 +5,6 @@ const TRACK_SELECTOR = '.js-range-slider__track';
 const THUMB_SELECTOR = '.js-range-slider__thumb';
 
 const THUMB_ABOVE = 'range-slider__thumb_z-index_above';
-const THUMB_BELOW = 'range-slider__thumb_z-index_below';
 
 const POSTFIX = 'data-postfix';
 const MIN = 'data-min';
@@ -23,7 +22,6 @@ export {
   TRACK_SELECTOR,
   THUMB_SELECTOR,
   THUMB_ABOVE,
-  THUMB_BELOW,
   POSTFIX,
   MIN,
   MAX,

@@ -22,23 +22,31 @@ class Dropdown {
   }
 
   _attachEventHandlers() {
+    const { $inputBox } = this;
+
     $(document).on('click', this._handleOutOfComponentClick);
-    this.$inputBox.on('click', this._handleInputBoxClick);
+    $inputBox.on('click', this._handleInputBoxClick);
   }
 
   _handleOutOfComponentClick({ target }) {
-    if (this.$component.has(target).length === 0) {
-      this.$component.removeClass(DROPDOWN_OPEN);
+    const { $component } = this;
+
+    if ($component.has(target).length === 0) {
+      $component.removeClass(DROPDOWN_OPEN);
     }
   }
 
   _handleInputBoxClick() {
-    this.$component.toggleClass(DROPDOWN_OPEN);
+    const { $component } = this;
+
+    $component.toggleClass(DROPDOWN_OPEN);
   }
 
   _triggerValueChanged() {
-    if (this.valueChanged) {
-      $(document).trigger(this.valueChanged);
+    const { valueChanged } = this;
+
+    if (valueChanged) {
+      $(document).trigger(valueChanged);
     }
   }
 }
