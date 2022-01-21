@@ -42,12 +42,13 @@ class RangeSlider {
     this._setPosition(this._valueToPosition(to), false);
 
     this._update();
+    this._handleThumbPointerDown = this._handleThumbPointerDown.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$leftThumb.on('pointerdown', (event) => this._handleThumbPointerDown(event));
-    this.$rightThumb.on('pointerdown', (event) => this._handleThumbPointerDown(event));
+    this.$leftThumb.on('pointerdown', this._handleThumbPointerDown);
+    this.$rightThumb.on('pointerdown', this._handleThumbPointerDown);
 
     this.$leftThumb[0].ondragstart = null;
     this.$rightThumb[0].ondragstart = null;

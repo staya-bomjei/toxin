@@ -33,6 +33,10 @@ class Counter extends Dropdown {
       this._initControls();
     }
 
+    this._handleClearButtonClick = this._handleClearButtonClick.bind(this);
+    this._handleAcceptButtonClick = this._handleAcceptButtonClick.bind(this);
+    this._handleMinusClick = this._handleMinusClick.bind(this);
+    this._handlePlusClick = this._handlePlusClick.bind(this);
     super.init();
     this._update();
   }
@@ -46,13 +50,13 @@ class Counter extends Dropdown {
     super._attachEventHandlers();
 
     if (this.hasControls) {
-      this.$clear.on('click', () => this._handleClearButtonClick());
-      this.$accept.on('click', (event) => this._handleAcceptButtonClick(event));
+      this.$clear.on('click', this._handleClearButtonClick);
+      this.$accept.on('click', this._handleAcceptButtonClick);
     }
 
     this.rows.forEach((row) => {
-      row.$minus.on('click', () => this._handleMinusClick(row.$minus, row.$counter));
-      row.$plus.on('click', () => this._handlePlusClick(row.$minus, row.$counter));
+      row.$minus.on('click', this._handleMinusClick);
+      row.$plus.on('click', this._handlePlusClick);
     });
   }
 
@@ -69,7 +73,9 @@ class Counter extends Dropdown {
     this.$component.removeClass(DROPDOWN_OPEN);
   }
 
-  _handleMinusClick($minus, $counter) {
+  _handleMinusClick(event) {
+    const $minus = $(event.target);
+    const $counter = $minus.siblings(COUNTER_SELECTOR);
     const counter = Number($counter.html());
 
     if (counter === 0) return;
@@ -80,7 +86,10 @@ class Counter extends Dropdown {
     this._update();
   }
 
-  _handlePlusClick($minus, $counter) {
+  _handlePlusClick(event) {
+    const $plus = $(event.target);
+    const $minus = $plus.siblings(MINUS_SELECTOR);
+    const $counter = $plus.siblings(COUNTER_SELECTOR);
     const counter = Number($counter.html());
 
     if (counter === 0) {

@@ -16,12 +16,14 @@ class Dropdown {
   }
 
   init() {
+    this._handleOutOfComponentClick = this._handleOutOfComponentClick.bind(this);
+    this._handleInputBoxClick = this._handleInputBoxClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    $(document).on('click', (event) => this._handleOutOfComponentClick(event));
-    this.$inputBox.on('click', () => this._handleInputBoxClick());
+    $(document).on('click', this._handleOutOfComponentClick);
+    this.$inputBox.on('click', this._handleInputBoxClick);
   }
 
   _handleOutOfComponentClick({ target }) {

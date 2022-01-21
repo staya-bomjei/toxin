@@ -12,11 +12,12 @@ class CheckboxList {
   }
 
   init() {
+    this._handleButtonClick = this._handleButtonClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$button.on('click', () => this._handleButtonClick());
+    this.$button.on('click', this._handleButtonClick);
   }
 
   _handleButtonClick() {

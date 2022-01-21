@@ -29,14 +29,17 @@ class Pagination {
     this.pageNumber = 0;
     const initState = Number(this.$component.attr(INIT_STATE));
     this._updateState(initState);
+    this._handlePrevButtonClick = this._handlePrevButtonClick.bind(this);
+    this._handleNextButtonClick = this._handleNextButtonClick.bind(this);
+    this._handleNumberButtonClick = this._handleNumberButtonClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$prev.on('click', () => this._handlePrevButtonClick());
-    this.$next.on('click', () => this._handleNextButtonClick());
+    this.$prev.on('click', this._handlePrevButtonClick);
+    this.$next.on('click', this._handleNextButtonClick);
     this.buttons.forEach(($button) => {
-      $button.on('click', (event) => this._handleNumberButtonClick(event));
+      $button.on('click', this._handleNumberButtonClick);
     });
   }
 

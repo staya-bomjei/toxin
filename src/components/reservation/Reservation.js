@@ -38,12 +38,14 @@ class Reservation {
 
   init() {
     this._update();
+    this._handleDatepickerValueChanged = this._handleDatepickerValueChanged.bind(this);
+    this._handleGuestsValueChanged = this._handleGuestsValueChanged.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    $(document).on(this.datepickerValueChanged, () => this._handleDatepickerValueChanged());
-    $(document).on(this.guestsValueChanged, () => this._handleGuestsValueChanged());
+    $(document).on(this.datepickerValueChanged, this._handleDatepickerValueChanged);
+    $(document).on(this.guestsValueChanged, this._handleGuestsValueChanged);
   }
 
   _handleDatepickerValueChanged() {

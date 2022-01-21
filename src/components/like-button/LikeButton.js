@@ -16,11 +16,12 @@ class LikeButton {
   }
 
   init() {
+    this._handleComponentClick = this._handleComponentClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$component.on('click', () => this._handleComponentClick());
+    this.$component.on('click', this._handleComponentClick);
   }
 
   _handleComponentClick() {

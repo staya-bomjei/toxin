@@ -15,11 +15,12 @@ class Header {
   }
 
   init() {
+    this._handleBurgerButtonClick = this._handleBurgerButtonClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$burgerButton.on('click', () => this._handleBurgerButtonClick());
+    this.$burgerButton.on('click', this._handleBurgerButtonClick);
   }
 
   _handleBurgerButtonClick() {

@@ -7,6 +7,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'plugin:fsd/all',
   ],
   parserOptions: {
     ecmaVersion: 11,

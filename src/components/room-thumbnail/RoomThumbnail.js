@@ -14,22 +14,26 @@ class RoomThumbnail {
   constructor($component) {
     this.$component = $component;
     this.selected = Number($component.attr(SELECTED));
-    this.images = Array.from($(IMAGE_SELECTOR, $component)).map((item) => $(item));
-    this.buttons = Array.from($(BUTTON_SELECTOR, $component)).map((item) => $(item));
     this.$prev = $(PREV_SELECTOR, $component);
     this.$next = $(NEXT_SELECTOR, $component);
   }
 
   init() {
+    this.images = Array.from($(IMAGE_SELECTOR, this.$component)).map((item) => $(item));
+    this.buttons = Array.from($(BUTTON_SELECTOR, this.$component)).map((item) => $(item));
+
     this._selectImage(this.selected);
+    this._handlePrevClick = this._handlePrevClick.bind(this);
+    this._handleNextClick = this._handleNextClick.bind(this);
+    this._handleButtonClick = this._handleButtonClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$prev.on('click', () => this._handlePrevClick());
-    this.$next.on('click', () => this._handleNextClick());
+    this.$prev.on('click', this._handlePrevClick);
+    this.$next.on('click', this._handleNextClick);
     this.buttons.forEach(($button) => {
-      $button.on('click', (event) => this._handleButtonClick(event));
+      $button.on('click', this._handleButtonClick);
     });
   }
 

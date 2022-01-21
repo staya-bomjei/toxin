@@ -32,12 +32,14 @@ class Datepicker {
     const selected = JSON.parse(this.$component.attr(SELECTED));
     this.datepicker.selectDate(selected);
 
+    this._handleOutOfComponentClick = this._handleOutOfComponentClick.bind(this);
+    this._handleInputsClick = this._handleInputsClick.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    $(document).on('click', (event) => this._handleOutOfComponentClick(event));
-    this.$inputs.on('click', (event) => this._handleInputsClick(event));
+    $(document).on('click', this._handleOutOfComponentClick);
+    this.$inputs.on('click', this._handleInputsClick);
   }
 
   _handleAcceptButtonClick() {

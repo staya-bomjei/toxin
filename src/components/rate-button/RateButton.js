@@ -16,16 +16,19 @@ class RateButton {
 
   init() {
     this._setState(this.rate);
+    this._handleStarClick = this._handleStarClick.bind(this);
+    this._handleStarHover = this._handleStarHover.bind(this);
+    this._handleComponentMouseOut = this._handleComponentMouseOut.bind(this);
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
     this.stars.forEach(($star) => {
       $star
-        .on('click', (event) => this._handleStarClick(event))
-        .on('mouseover', (event) => this._handleStarHover(event));
+        .on('click', this._handleStarClick)
+        .on('mouseover', this._handleStarHover);
     });
-    this.$component.on('mouseout', () => this._setState(this.rate));
+    this.$component.on('mouseout', this._handleComponentMouseOut);
   }
 
   _handleStarClick(event) {
@@ -43,6 +46,10 @@ class RateButton {
     const star = event.target;
     const rate = this._getStarRate(star);
     this._setState(rate, false);
+  }
+
+  _handleComponentMouseOut() {
+    this._setState(this.rate);
   }
 
   _setState(rate, isChanging = true) {
