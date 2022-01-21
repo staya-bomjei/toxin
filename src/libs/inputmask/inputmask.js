@@ -13,7 +13,9 @@ class Inputmask {
   }
 
   init() {
-    this.outsideInputmask.mask(this.$input);
+    const { outsideInputmask, $input } = this;
+
+    outsideInputmask.mask($input);
   }
 }
 

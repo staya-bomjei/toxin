@@ -74,14 +74,11 @@
     transform: translate(-50%, -50%);
     cursor: pointer;
     touch-action: none;
+    z-index: $thumb-z-index;
 
     &_z-index {
       &_above {
         z-index: $thumb-z-index + 1;
-      }
-
-      &_below {
-        z-index: $thumb-z-index;
       }
     }
   }

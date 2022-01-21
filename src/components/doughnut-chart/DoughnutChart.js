@@ -30,9 +30,10 @@ class DoughnutChart {
       return this._createCanvasGradient(color);
     });
 
+    const { ctx, counters } = this;
     const options = {
-      ctx: this.ctx,
-      counters: this.counters,
+      ctx,
+      counters,
       colors,
     };
 
@@ -40,19 +41,22 @@ class DoughnutChart {
   }
 
   _paintDots() {
-    this.$dots.each((index, dot) => {
-      if (typeof this.colors[index] === 'string') {
-        $(dot).css('background', this.colors[index]);
+    const { $dots, colors } = this;
+
+    $dots.each((index, dot) => {
+      if (typeof colors[index] === 'string') {
+        $(dot).css('background', colors[index]);
       } else {
-        const stops = this.colors[index].stops.map((stop) => `${stop.color} ${stop.percent}%`);
-        const color = `linear-gradient(${this.colors[index].direction}deg, ${stops.join(', ')})`;
+        const stops = colors[index].stops.map((stop) => `${stop.color} ${stop.percent}%`);
+        const color = `linear-gradient(${colors[index].direction}deg, ${stops.join(', ')})`;
         $(dot).css('background', color);
       }
     });
   }
 
   _createCanvasGradient({ direction, stops }) {
-    const width = this.$chart.width();
+    const { $chart, ctx } = this;
+    const width = $chart.width();
     const canAng = direction - 90;
     const ang = (canAng - 90) * (Math.PI / 180);
     const hypt = width / Math.cos(ang);
@@ -65,7 +69,7 @@ class DoughnutChart {
     const botX = width + Math.cos(Math.PI / 2 + ang) * len;
     const botY = width + Math.sin(Math.PI / 2 + ang) * len;
 
-    const gradient = this.ctx.createLinearGradient(topX, topY, botX, botY);
+    const gradient = ctx.createLinearGradient(topX, topY, botX, botY);
     stops.forEach((stop) => gradient.addColorStop(stop.percent / 100, stop.color));
 
     return gradient;

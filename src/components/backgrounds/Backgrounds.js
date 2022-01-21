@@ -27,55 +27,75 @@ class Backgrounds {
     this._setImageVisibility(0, true);
     this._setImagesAnimationDuration();
 
-    if (this.images.length > 1) {
+    if ($images.length > 1) {
       this._startAnimationLoop();
     }
   }
 
   async _startAnimationLoop() {
-    const imagesCounter = this.images.length;
+    const {
+      images: {
+        length: imagesCounter,
+      },
+      delayMS,
+    } = this;
     this.imageIndex = 0;
-    this.nextImageIndex = (this.imageIndex + 1) % imagesCounter;
+    this.nextImageIndex = 1;
 
     setInterval(async () => {
-      this._setImageZIndex(this.imageIndex, ABOVE);
-      this._setImageZIndex(this.nextImageIndex, BELOW);
-      this._setImageVisibility(this.nextImageIndex, true);
-      this._playImageAnimation(this.imageIndex);
-      await this._stopImageAnimation(this.imageIndex);
+      const {
+        nextImageIndex,
+        imageIndex,
+      } = this;
 
-      this.imageIndex = this.nextImageIndex;
-      this.nextImageIndex = (this.imageIndex + 1) % imagesCounter;
-    }, this.delayMS);
+      this._setImageZIndex(imageIndex, ABOVE);
+      this._setImageZIndex(nextImageIndex, BELOW);
+      this._setImageVisibility(nextImageIndex, true);
+      this._playImageAnimation(imageIndex);
+      await this._stopImageAnimation(imageIndex);
+
+      this.imageIndex = nextImageIndex;
+      this.nextImageIndex = (nextImageIndex + 1) % imagesCounter;
+    }, delayMS);
   }
 
   _setImageVisibility(index, visibility) {
+    const { images } = this;
+
     if (visibility) {
-      this.images[index].addClass(IMAGE_VISIBLE);
+      images[index].addClass(IMAGE_VISIBLE);
     } else {
-      this.images[index].removeClass(IMAGE_VISIBLE);
+      images[index].removeClass(IMAGE_VISIBLE);
     }
   }
 
   _setImagesAnimationDuration() {
-    this.images.forEach(($image) => {
-      $image.css('animation-duration', `${this.duration}s`);
+    const { images, duration } = this;
+
+    images.forEach(($image) => {
+      $image.css('animation-duration', `${duration}s`);
     });
   }
 
   _setImageZIndex(index, zIndex) {
-    this.images[index].css('z-index', zIndex);
+    const { images } = this;
+
+    images[index].css('z-index', zIndex);
   }
 
   _playImageAnimation(index) {
-    this.images[index].addClass(IMAGE_FADE);
+    const { images } = this;
+
+    images[index].addClass(IMAGE_FADE);
   }
 
   async _stopImageAnimation(index) {
+    const { images, durationMS } = this;
+
     setTimeout(() => {
-      this.images[index].removeClass(IMAGE_FADE);
-      this.images[index].removeClass(IMAGE_VISIBLE);
-    }, this.durationMS);
+      images[index].removeClass(IMAGE_FADE);
+      images[index].removeClass(IMAGE_VISIBLE);
+    }, durationMS);
   }
 }
 

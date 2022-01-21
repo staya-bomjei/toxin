@@ -18,10 +18,12 @@ class Chart {
   }
 
   _createData() {
+    const { counters, colors } = this;
+
     return {
       datasets: [{
-        data: this.counters,
-        backgroundColor: this.colors,
+        data: counters,
+        backgroundColor: colors,
       }],
     };
   }

@@ -68,21 +68,24 @@ class Datepicker {
   }
 
   _setValues(first, second) {
+    const { $component, DATE_FROM, DATE_TO } = this;
     const firstString = Datepicker.dateToString(first);
     const secondString = Datepicker.dateToString(second);
 
-    this.$component.attr(this.DATE_FROM, firstString);
-    this.$component.attr(this.DATE_TO, secondString);
+    $component.attr(DATE_FROM, firstString);
+    $component.attr(DATE_TO, secondString);
   }
 
   _setTexts(first, second) {
-    if (!this.isSplit) return;
+    const { isSplit, texts } = this;
+
+    if (!isSplit) return;
 
     const firstString = Datepicker.dateToString(first, 'ru');
     const secondString = Datepicker.dateToString(second, 'ru');
 
-    $(this.texts[0]).val(firstString);
-    $(this.texts[1]).val(secondString);
+    $(texts[0]).val(firstString);
+    $(texts[1]).val(secondString);
   }
 
   _onCellSelect({ date, datepicker }) {
@@ -101,9 +104,11 @@ class Datepicker {
   }
 
   _onClearCalendarClick(datepicker) {
+    const { isSplit, texts } = this;
+
     datepicker.clear();
-    if (this.isSplit) {
-      $(this.texts[1]).val('');
+    if (isSplit) {
+      $(texts[1]).val('');
     }
   }
 
@@ -113,12 +118,13 @@ class Datepicker {
   }
 
   _updateClearButtonVisibility(datepicker) {
+    const { $clear } = this;
     const hasSelectedDates = datepicker.selectedDates.length !== 0;
 
     if (hasSelectedDates) {
-      this.$clear.show();
+      $clear.show();
     } else {
-      this.$clear.hide();
+      $clear.hide();
     }
   }
 

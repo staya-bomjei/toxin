@@ -21,30 +21,40 @@ class LikeButton {
   }
 
   _attachEventHandlers() {
-    this.$component.on('click', this._handleComponentClick);
+    const { $component } = this;
+
+    $component.on('click', this._handleComponentClick);
   }
 
   _handleComponentClick() {
+    const { $component, $icon } = this;
+
     if (this._isLiked()) {
       this._setCounter(this._getCounter() - 1);
-      this.$icon.html(ICON_UNLIKED);
+      $icon.html(ICON_UNLIKED);
     } else {
       this._setCounter(this._getCounter() + 1);
-      this.$icon.html(ICON_LIKED);
+      $icon.html(ICON_LIKED);
     }
-    this.$component.toggleClass(BUTTON_LIKED);
+    $component.toggleClass(BUTTON_LIKED);
   }
 
   _isLiked() {
-    return this.$component.hasClass(BUTTON_LIKED);
+    const { $component } = this;
+
+    return $component.hasClass(BUTTON_LIKED);
   }
 
   _getCounter() {
-    return Number(this.$counter.html());
+    const { $counter } = this;
+
+    return Number($counter.html());
   }
 
   _setCounter(counter) {
-    this.$counter.html(counter);
+    const { $counter } = this;
+
+    $counter.html(counter);
   }
 }
 

@@ -44,8 +44,10 @@ class Reservation {
   }
 
   _attachEventHandlers() {
-    $(document).on(this.datepickerValueChanged, this._handleDatepickerValueChanged);
-    $(document).on(this.guestsValueChanged, this._handleGuestsValueChanged);
+    const { datepickerValueChanged, guestsValueChanged } = this;
+
+    $(document).on(datepickerValueChanged, this._handleDatepickerValueChanged);
+    $(document).on(guestsValueChanged, this._handleGuestsValueChanged);
   }
 
   _handleDatepickerValueChanged() {
@@ -63,45 +65,57 @@ class Reservation {
   }
 
   _updateRent() {
-    const priceCurrency = makeCurrency(this.price, this.postfix);
+    const {
+      price,
+      postfix,
+      $rent,
+      $rentTotal,
+    } = this;
+    const priceCurrency = makeCurrency(price, postfix);
     const days = this._countDays();
     const dayCountable = choiceCountable(days, ['сутки', 'суток', 'суток']);
-    this.$rent.html(`${priceCurrency} x ${days} ${dayCountable}`);
+    $rent.html(`${priceCurrency} x ${days} ${dayCountable}`);
 
-    const rentTotalCurrency = makeCurrency(this.price * days, this.postfix);
-    this.$rentTotal.html(rentTotalCurrency);
+    const rentTotalCurrency = makeCurrency(price * days, postfix);
+    $rentTotal.html(rentTotalCurrency);
   }
 
   _updateAdditional() {
-    const additionalTotalCurrency = makeCurrency(this._calcAdditional(), this.postfix);
-    this.$additionalTotal.html(additionalTotalCurrency);
+    const { postfix, $additionalTotal } = this;
+    const additionalTotalCurrency = makeCurrency(this._calcAdditional(), postfix);
+    $additionalTotal.html(additionalTotalCurrency);
   }
 
   _updateTotalCost() {
-    const totalCostCurrency = makeCurrency(this._calcTotalCost(), this.postfix);
-    this.$totalCost.html(totalCostCurrency);
+    const { postfix, $totalCost } = this;
+    const totalCostCurrency = makeCurrency(this._calcTotalCost(), postfix);
+    $totalCost.html(totalCostCurrency);
   }
 
   _countDays() {
-    const msFrom = Date.parse(this.$datepicker.attr(DATE_FROM));
-    const msTo = Date.parse(this.$datepicker.attr(DATE_TO));
+    const { $datepicker } = this;
+    const msFrom = Date.parse($datepicker.attr(DATE_FROM));
+    const msTo = Date.parse($datepicker.attr(DATE_TO));
     const msPerDay = 1000 * 60 * 60 * 24;
     return (msTo - msFrom) / msPerDay - 1;
   }
 
   _calcAdditional() {
-    return this.$guests.attr(VALUE)
+    const { $guests, additionals } = this;
+    return $guests.attr(VALUE)
       .split(',')
       .map((item) => Number(item))
       .reduce((sum, guestCounter, index) => (
-        sum + guestCounter * this.additionals[index]
+        sum + guestCounter * additionals[index]
       ), 0);
   }
 
   _calcTotalCost() {
+    const { price, discount } = this;
     const days = this._countDays();
     const additional = this._calcAdditional();
-    return this.price * days - this.discount + additional;
+
+    return price * days - discount + additional;
   }
 }
 
