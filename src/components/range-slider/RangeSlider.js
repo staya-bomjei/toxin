@@ -78,7 +78,7 @@ class RangeSlider {
     const rightThumbPosition = this._getPosition(false);
     const oldPosition = (isLeftThumb) ? leftThumbPosition : rightThumbPosition;
     const constraint = (isLeftThumb) ? rightThumbPosition : leftThumbPosition;
-    let newPosition = this.calcNearestPosition(event);
+    let newPosition = this._calcNearestPosition(event);
 
     const needToSetConstraint = ((isLeftThumb && newPosition > constraint)
       || (!isLeftThumb && newPosition < constraint))
@@ -94,12 +94,14 @@ class RangeSlider {
     }
   }
 
-  calcNearestPosition(event) {
+  _calcNearestPosition(event) {
     const [trackEl] = this.$track;
     const trackRect = trackEl.getBoundingClientRect();
-    const pageCoord = event.clientX;
-    const trackOffset = trackRect.left;
-    const trackLength = trackRect.width;
+    const { clientX: pageCoord } = event;
+    const {
+      left: trackOffset,
+      width: trackLength,
+    } = trackRect;
 
     let nearestPosition = ((pageCoord - trackOffset) / trackLength) * 100;
     nearestPosition = Math.max(nearestPosition, MIN_POSITION);
@@ -173,18 +175,6 @@ class RangeSlider {
 
   _valueToPosition(value) {
     return ((value - this.min) / (this.max - this.min)) * 100;
-  }
-
-  _setZIndexes(valueLeft, valueRight) {
-    if (valueLeft !== valueRight) return;
-
-    if (valueLeft === MIN_POSITION) {
-      this.$leftThumb.addClass(THUMB_BELOW);
-      this.$rightThumb.addClass(THUMB_ABOVE);
-    } else if (valueLeft === MAX_POSITION) {
-      this.$leftThumb.addClass(THUMB_ABOVE);
-      this.$rightThumb.addClass(THUMB_BELOW);
-    }
   }
 }
 
