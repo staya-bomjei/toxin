@@ -10,6 +10,7 @@ mixin reservation(options = {})
       type = '',
       price = 0,
       discount = 0,
+      serviceCharge = 0,
       postfix = '₽',
       selectedDays = [],
       rows,
@@ -19,23 +20,22 @@ mixin reservation(options = {})
       additionalTitle = 'Сбор за дополнительные услуги',
       info = 'i',
     } = options;
-    
+
     const datepickerValueChanged = `datepicker-value-changed-${id}`;
     const guestsValueChanged = `guests-value-changed-${id}`;
-
     const dropdownRows = rows.map((row) => ({
       text: row.text,
       counter: row.counter,
       countables: row.countables,
     }));
-
     const additionals = rows.map((row) => row.additional);
-
+    const totalServiceCharge = (serviceCharge >= discount) ? serviceCharge - discount : 0;
     const { makeCurrency } = require('../../libs/utils/utils.js');
 
   form.reservation.js-reservation(
     data-price = price
     data-discount = discount
+    data-service-charge = serviceCharge
     data-postfix = postfix
     data-datepicker-value-changed = datepickerValueChanged
     data-guests-value-changed = guestsValueChanged
@@ -78,7 +78,7 @@ mixin reservation(options = {})
       .reservation__rent-total.js-reservation__rent-total
       .reservation__discount= `${discountTitle} ${makeCurrency(discount, postfix)}`
       span.reservation__i= info
-      .reservation__discount-total 0#{postfix}
+      .reservation__service-charge= makeCurrency(totalServiceCharge, postfix)
       .reservation__additional= additionalTitle
       span.reservation__i= info
       .reservation__additional-total.js-reservation__additional-total

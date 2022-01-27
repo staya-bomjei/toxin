@@ -7,6 +7,7 @@ import { DATE_FROM, DATE_TO } from '../datepicker/const';
 import {
   PRICE,
   DISCOUNT,
+  SERVICE_CHARGE,
   POSTFIX,
   DATEPICKER_SELECTOR,
   GUESTS_SELECTOR,
@@ -24,6 +25,7 @@ class Reservation {
     this.$component = $component;
     this.price = Number($component.attr(PRICE));
     this.discount = Number($component.attr(DISCOUNT));
+    this.serviceCharge = Number($component.attr(SERVICE_CHARGE));
     this.postfix = $component.attr(POSTFIX);
     this.datepickerValueChanged = $component.attr(DATEPICKER_VALUE_CHANGED);
     this.guestsValueChanged = $component.attr(GUESTS_VALUE_CHANGED);
@@ -111,11 +113,11 @@ class Reservation {
   }
 
   _calcTotalCost() {
-    const { price, discount } = this;
+    const { price, discount, serviceCharge } = this;
     const days = this._countDays();
     const additional = this._calcAdditional();
 
-    return price * days - discount + additional;
+    return price * days - discount + serviceCharge + additional;
   }
 }
 

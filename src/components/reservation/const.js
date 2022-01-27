@@ -11,6 +11,7 @@ const TOTAL_COST_SELECTOR = '.js-reservation__total-cost';
 
 const PRICE = 'data-price';
 const DISCOUNT = 'data-discount';
+const SERVICE_CHARGE = 'data-service-charge';
 const POSTFIX = 'data-postfix';
 const DATEPICKER_VALUE_CHANGED = 'data-datepicker-value-changed';
 const GUESTS_VALUE_CHANGED = 'data-guests-value-changed';
@@ -26,6 +27,7 @@ export {
   TOTAL_COST_SELECTOR,
   PRICE,
   DISCOUNT,
+  SERVICE_CHARGE,
   POSTFIX,
   DATEPICKER_VALUE_CHANGED,
   GUESTS_VALUE_CHANGED,
