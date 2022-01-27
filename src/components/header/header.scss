@@ -166,6 +166,13 @@
     }
   }
 
+  @media (max-width: calc($content-width + 2.5rem)) {
+    &__inner-wrapper {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
+  }
+
   @media (max-width: $md) {
     @include mobile;
   }

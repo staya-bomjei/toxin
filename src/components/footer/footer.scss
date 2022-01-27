@@ -145,6 +145,13 @@
     }
   }
 
+  @media (max-width: calc($content-width + 2.5rem)) {
+    &__inner-wrapper {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
   @media (max-width: $md) {
     @include mobile;
   }

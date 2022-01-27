@@ -31,7 +31,7 @@
     left: 6px;
   }
 
-  @media (max-width: $content-width + 2.5rem) {
+  @media (max-width: calc($content-width + 2.5rem)) {
     &__content {
       padding-left: 2.5rem;
       padding-right: 2.5rem;

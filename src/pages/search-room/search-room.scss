@@ -57,7 +57,7 @@
     justify-content: center;
   }
 
-  @media (max-width: $content-width + 2.5rem) {
+  @media (max-width: calc($content-width + 2.5rem)) {
     &__content {
       margin-left: 2.5rem;
       margin-right: 2.5rem;
