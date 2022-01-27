@@ -11,7 +11,7 @@
     min-height: 51.875rem;
     max-width: $content-width;
     margin: 0 auto;
-    padding: 4.375rem 0 1.125rem;
+    padding: 4.375rem 0 1.25rem;
   }
 
   &__find-number {
@@ -25,8 +25,10 @@
   &__label {
     @extend %default-text;
 
+    position: relative;
     text-align: right;
     flex: 0 0 auto;
+    left: 6px;
   }
 
   @media (max-width: $content-width + 2.5rem) {

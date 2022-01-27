@@ -4,13 +4,20 @@ include ../../components/header/header
 include ../../components/footer/footer
 include ../../components/backgrounds/backgrounds
 include ../../components/find-number/find-number
+include ../../components/text/text
 
 append variables
   -
     const title = 'Landing page';
     const description = 'Отель Toxin, здесь вы можете подобрать себе номер в отеле по вкусу!';
     const keywords = 'Toxin, Main, главная страница, подобрать номер, отель, снять жильё';
-    const { header, footer, form, backgrounds } = htmlWebpackPlugin.options.getData();
+    const {
+      header,
+      footer,
+      form,
+      backgrounds,
+      label,
+    } = htmlWebpackPlugin.options.getData();
 
     // получение ссылок на изображения в собранном проекте
     backgrounds.images.forEach((image) => image.path = require(`./img/${image.path}`))
@@ -29,9 +36,7 @@ append main
       .landing-page__spacing
 
       .landing-page__label
-        | Лучшие номера для вашей работы,
-        br
-        | отдыха и просто вдохновения
+        +text({ text: label })
 
 
 append footer
