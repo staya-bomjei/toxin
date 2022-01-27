@@ -94,10 +94,4 @@
       display: none;
     }
   }
-
-  @media (max-width: $xs) {
-    &__content {
-      left: -1.75rem;
-    }
-  }
 }
