@@ -42,7 +42,21 @@
           },
           {
               "text": "Соглашение 2",
-              "href": "error-page"
+              "href": "error-page",
+              "submenu": [
+                {
+                  "text": "Соглашение 1",
+                  "href": "error-page"
+                },
+                {
+                  "text": "Соглашение 2",
+                  "href": "error-page"
+                },
+                {
+                  "text": "Соглашение 3",
+                  "href": "error-page"
+                }
+              ]
           },
           {
               "text": "Соглашение 3",

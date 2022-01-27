@@ -10,11 +10,28 @@
   $class: &;
   $item-width: 5rem;
 
-  &__item,
-  &__subitem {
+  &__item {
     display: flex;
     position: relative;
-    background: white;
+    background: $background;
+
+    &_active {
+      & > #{$class}__submenu {
+        display: block;
+      }
+
+      & > #{$class}__link {
+        & > #{$class}__expand-more {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  & > &__item {
+    &:not(:last-child) {
+      margin-right: 1.3125rem;
+    }
   }
 
   &__link {
@@ -24,10 +41,16 @@
     align-items: flex-start;
     text-decoration: none;
     white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
 
     &_bold {
       font-weight: bold;
       color: rgba($dark, 75%);
+    }
+
+    &:hover {
+      background-color: #f4f4f6;
     }
   }
 
@@ -35,9 +58,19 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    top: calc(100%);
+    top: calc(100% + 1.25rem);
     position: absolute;
     display: none;
+    z-index: $z-expanded;
+
+    & > #{$class}__item {
+      padding: 0.625rem;
+
+      #{$class}__submenu {
+        top: 0;
+        left: calc(100%);
+      }
+    }
   }
 
   &__expand-more {
@@ -50,51 +83,25 @@
     cursor: pointer;
   }
 
-  &__item:not(:last-child) {
-    margin-right: 1.3125rem;
-  }
-
-  &__subitem > &__expand-more {
-    transform: rotate(-90deg);
-  }
-
-  &__subitem > &__submenu {
-    top: 0;
-    left: calc(100%);
-  }
-
-  &__item:hover,
-  &__subitem:hover {
-    & > #{$class}__submenu {
-      display: block;
-    }
-  }
-
   @media (max-width: $md) {
     & {
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
 
-    &__item,
-    &__subitem {
-      width: 100%;
-      margin: 0.625rem;
+    &__item {
       display: flex;
       flex-direction: column;
-    }
+      padding: 0.625rem;
 
-    &__item:not(:last-child) {
-      margin-right: 0.625rem;
+      &:not(:last-child) {
+        margin-right: 0.625rem;
+      }
     }
 
     &__submenu {
       position: initial;
-    }
-
-    &__link {
-      width: 100%;
-      justify-content: space-between;
     }
   }
 }

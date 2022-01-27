@@ -2,17 +2,19 @@ mixin menu(options = {})
   -
     const { isSubmenu = false, items = [], icon = 'expand_more' } = options;
     const menuClass = (isSubmenu) ? 'menu__submenu' : 'menu';
-    const itemClass = (isSubmenu) ? 'menu__subitem' : 'menu__item';
+    const itemClass = 'menu__item';
   
-  ul(class = menuClass)
+  ul(class = (isSubmenu) ? menuClass : [menuClass, `js-${menuClass}`])
     each item in items
-      li(class = itemClass)
-        a.menu__link(
-          class = (item.isBold) ? 'menu__link_bold' : null
-          href = `${item.href}.html`
-        )= item.text
-          if item.submenu
+      li(class = [itemClass, `js-${itemClass}`])
+        if item.submenu
+          span.menu__link= item.text
             span.menu__expand-more= icon
+        else
+          a.menu__link(
+            class = (item.isBold) ? 'menu__link_bold' : null
+            href = `${item.href}.html`
+          )= item.text
 
         if item.submenu
           +menu({ isSubmenu: true, items: item.submenu })
