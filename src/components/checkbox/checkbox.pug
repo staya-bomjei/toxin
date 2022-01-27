@@ -8,6 +8,7 @@ mixin checkbox(options = {})
       richTitle,
     } = options;
 
+    const title = (richTitle) ? richTitle : text;
     const classes = [];
     if (richTitle) classes.push('checkbox_variant_rich');
 
@@ -15,11 +16,8 @@ mixin checkbox(options = {})
     label.checkbox__label
       input.checkbox__input(type = 'checkbox' checked = isChecked)
       span.checkbox__mark
-      if richTitle
-        span.checkbox__rich-container
-          span.checkbox__title= richTitle
-          span.checkbox__text
-            +text({ text })
-      else
-        span.checkbox__text
-          +text({ text })
+      span.checkbox__title
+        +text({ text: title })
+    if richTitle
+      .checkbox__description
+        +text({ text })

@@ -14,7 +14,6 @@
   &__input {
     width: 0;
     height: 0;
-    position: absolute;
 
     &:checked {
       ~ #{$class}__mark {
@@ -51,21 +50,7 @@
     }
   }
 
-  &__rich-container {
-    display: flex;
-    flex-direction: column;
-    margin-left: $text-margin;
-  }
-
   &__title {
-    @extend %default-text;
-
-    font-weight: bold;
-    line-height: 1.125rem;
-    margin-bottom: 0.3125rem;
-  }
-
-  &__text {
     @extend %default-text;
 
     color: rgba($dark, 50%);
@@ -73,12 +58,20 @@
     margin-left: $text-margin;
   }
 
+  &__description {
+    @extend %default-text;
+
+    color: rgba($dark, 50%);
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    margin: 0.25rem 0 0 1.875rem;
+  }
+
   &_variant {
     &_rich {
-      #{$class}__text {
-        font-size: 0.75rem;
-        line-height: 0.875rem;
-        margin: 0;
+      #{$class}__title {
+        font-weight: bold;
+        line-height: 1.125rem;
       }
     }
   }
