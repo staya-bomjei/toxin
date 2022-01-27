@@ -38,6 +38,12 @@
     }
   }
 
+  @media (max-width: $sm) {
+    &__content {
+      min-height: 35rem;
+    }
+  }
+
   @media (max-width: $xs) {
     &__content {
       padding-left: 0;
