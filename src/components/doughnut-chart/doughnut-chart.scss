@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .doughnut-chart {
-  $chart-size: 7.5rem;
+  $chart-size: 7.625rem;
   $dot-size: 0.625rem;
   $dot-margin: 0.3125rem;
 
@@ -37,6 +37,7 @@
   }
 
   &__legend {
+    position: relative;
     list-style: none;
     padding: 0;
     margin: 0;

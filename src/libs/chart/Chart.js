@@ -31,7 +31,7 @@ class Chart {
   static createOutsideOptions() {
     return {
       cutout: '89%',
-      radius: 60,
+      radius: 62,
       borderWidth: 2,
       aspectRatio: 1,
       responsive: true,

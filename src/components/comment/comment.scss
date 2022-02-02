@@ -11,7 +11,9 @@
   &__user-image {
     width: $icon-size;
     height: $icon-size;
-    clip-path: circle(50%);
+    border-radius: 50%;
+    border: 0.125rem solid $background;
+    filter: drop-shadow($tiny-shadow);
   }
 
   &__user-name {
@@ -29,5 +31,6 @@
 
   &__like-button {
     justify-self: center;
+    margin-top: 0.125rem;
   }
 }
