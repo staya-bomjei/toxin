@@ -7,7 +7,7 @@ mixin sign-up(options = {})
   -
     const {
       title = 'Регистрация аккаунта',
-      hasAccountTitle = 'Уже есть аккаунт на Toxin?',
+      hasAccountTitle = 'Уже есть аккаунт на Toxin',
     } = options;
 
   form.sign-up
@@ -20,7 +20,8 @@ mixin sign-up(options = {})
         +radio-button({ text: 'Мужчина', name: 'gender', isChecked: true })
         +radio-button({ text: 'Женщина', name: 'gender' })
 
-    +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
+    .sign-up__birthday
+      +text-field({ title: 'дата рождения', placeholder: 'ДД.ММ.ГГГГ', type: 'mask' })
 
     .sign-up__row
       +text-field({ title: 'данные для входа в сервис', placeholder: 'Email' })

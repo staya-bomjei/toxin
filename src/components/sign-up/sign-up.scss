@@ -4,7 +4,7 @@
   @extend %form;
 
   display: grid;
-  grid-row-gap: 1.375rem;
+  grid-row-gap: 1.25rem;
   max-width: 23.75rem;
 
   &__title {
@@ -22,6 +22,10 @@
     & > *:not(:last-of-type) {
       margin-right: 1.25rem;
     }
+  }
+
+  &__birthday {
+    margin-top: 0.3125rem;
   }
 
   &__has-account {
