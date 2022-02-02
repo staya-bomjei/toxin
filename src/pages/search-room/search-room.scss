@@ -42,7 +42,7 @@
   &__title {
     @extend %title;
 
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.375rem;
   }
 
   &__numbers {
@@ -55,6 +55,7 @@
   &__pagination {
     display: flex;
     justify-content: center;
+    margin-right: 0.875rem;
   }
 
   @media (max-width: calc($content-width + 2.5rem)) {

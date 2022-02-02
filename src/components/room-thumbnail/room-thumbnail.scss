@@ -127,6 +127,8 @@
 
   &__number {
     @extend %item-title;
+
+    line-height: 1rem;
   }
 
   &__type {
