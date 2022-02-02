@@ -22,6 +22,7 @@ append variables
       rules,
       cancel,
       form,
+      titles,
     } = htmlWebpackPlugin.options.getData();
 
     const { choiceCountable } = require('../../libs/utils/utils');
@@ -47,17 +48,17 @@ append main
       .room-details__wrapper
         .room-details__info
           .room-details__wrapper.room-details__wrapper_small
-            h3.room-details__item-title Сведения о номере
+            h3.room-details__item-title= titles.advantages
             .room-details__advantages
               each advantage in advantages
                 +advantage(advantage)
 
           .room-details__wrapper
-            h3.room-details__item-title.room-details__item-title_variant_impression Впечатления от номера
+            h3.room-details__item-title.room-details__item-title_variant_impression= titles.impression
             +doughnut-chart(chart)
 
           .room-details__wrapper
-            h3.room-details__item-title Отзывы посетителей номера
+            h3.room-details__item-title= titles.comments
               span.room-details__comments-counter= commentCounter
             .room-details__comments
               each comment in comments
@@ -65,11 +66,11 @@ append main
 
           .room-details__wrapper.room-details__wrapper_smaller
             .room-details__rules-title
-              h3.room-details__item-title Правила
+              h3.room-details__item-title= titles.rules
             +bullet-list(rules)
 
           .room-details__wrapper.room-details__wrapper_wide
-            h3.room-details__item-title Отмена
+            h3.room-details__item-title= titles.cancel
             .room-details__text= cancel
 
       .room-details__reservation

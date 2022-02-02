@@ -503,5 +503,10 @@
     "itemsCounter": 180,
     "itemsPerPage": 12,
     "postfix": "вариантов аренды"
+  },
+  "titles": {
+    "rules": "правила дома",
+    "availability": "доступность",
+    "numbers": "Номера, которые мы для вас подобрали"
   }
 }
