@@ -43,6 +43,10 @@
     margin: 0;
     margin-left: $dot-size + $dot-margin;
     align-self: end;
+
+    @media (max-width: $xs) {
+      margin-left: 0;
+    }
   }
 
   &__label {
