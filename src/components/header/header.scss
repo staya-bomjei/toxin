@@ -83,6 +83,11 @@
     align-items: center;
     max-width: $content-width;
     width: 100%;
+
+    @media (max-width: calc($content-width + 2.5rem)) {
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
   }
 
   &__logo {
@@ -163,13 +168,6 @@
   &_theme {
     &_mobile {
       @include mobile;
-    }
-  }
-
-  @media (max-width: calc($content-width + 2.5rem)) {
-    &__inner-wrapper {
-      margin-left: 2.5rem;
-      margin-right: 2.5rem;
     }
   }
 

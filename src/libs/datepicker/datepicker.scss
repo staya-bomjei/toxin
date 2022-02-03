@@ -64,6 +64,11 @@
       grid-template-columns: repeat(7, $cell-size);
       grid-auto-rows: $cell-size;
       margin: 0;
+
+      @media (max-width: $xs) {
+        grid-template-columns: repeat(7, var(--adp-day-cell-width));
+        grid-auto-rows: var(--adp-day-cell-height);
+      }
     }
 
     &--day-name {
@@ -73,12 +78,22 @@
       color: $purple;
       width: $cell-size;
       height: $cell-size;
+
+      @media (max-width: $xs) {
+        width: auto;
+        height: auto;
+      }
     }
 
     &--cells {
       &.-days- {
         grid-template-columns: repeat(7, $cell-size);
         grid-auto-rows: $cell-size;
+
+        @media (max-width: $xs) {
+          grid-template-columns: repeat(7, var(--adp-day-cell-width));
+          grid-auto-rows: var(--adp-day-cell-height);
+        }
       }
     }
   }
@@ -209,24 +224,5 @@
 
   @media (max-width: $xs) {
     width: 100%;
-
-    &-body {
-      &--day-names {
-        grid-template-columns: repeat(7, var(--adp-day-cell-width));
-        grid-auto-rows: var(--adp-day-cell-height);
-      }
-
-      &--day-name {
-        width: auto;
-        height: auto;
-      }
-
-      &--cells {
-        &.-days- {
-          grid-template-columns: repeat(7, var(--adp-day-cell-width));
-          grid-auto-rows: var(--adp-day-cell-height);
-        }
-      }
-    }
   }
 }

@@ -13,16 +13,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: $xs) {
+      margin: 0 0.25rem;
+    }
   }
 
   &__form {
     width: 100%;
     max-width: 23.75rem;
-  }
-
-  @media (max-width: $xs) {
-    &__content {
-      margin: 0 0.25rem;
-    }
   }
 }

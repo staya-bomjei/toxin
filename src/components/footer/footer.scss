@@ -20,6 +20,11 @@
       grid-template-columns: 1fr 2.45fr 1fr;
       margin: 6.25rem 0;
     }
+
+    @media (max-width: calc($content-width + 2.5rem)) {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
   }
 
   &__about {
@@ -142,13 +147,6 @@
   &_theme {
     &_mobile {
       @include mobile;
-    }
-  }
-
-  @media (max-width: calc($content-width + 2.5rem)) {
-    &__inner-wrapper {
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
     }
   }
 

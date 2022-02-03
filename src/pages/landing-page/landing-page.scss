@@ -12,10 +12,28 @@
     max-width: $content-width;
     margin: 0 auto;
     padding: 4.375rem 0 1.25rem;
+
+    @media (max-width: calc($content-width + 2.5rem)) {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    @media (max-width: $sm) {
+      min-height: 35rem;
+    }
+
+    @media (max-width: $xs) {
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
   }
 
   &__find-number {
     flex: 0 0 auto;
+
+    @media (max-width: $xs) {
+      margin: 0 auto;
+    }
   }
 
   &__spacing {
@@ -29,32 +47,8 @@
     text-align: right;
     flex: 0 0 auto;
     left: 6px;
-  }
 
-  @media (max-width: calc($content-width + 2.5rem)) {
-    &__content {
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-    }
-  }
-
-  @media (max-width: $sm) {
-    &__content {
-      min-height: 35rem;
-    }
-  }
-
-  @media (max-width: $xs) {
-    &__content {
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
-    }
-
-    &__find-number {
-      margin: 0 auto;
-    }
-
-    &__label {
+    @media (max-width: $xs) {
       text-align: center;
     }
   }
