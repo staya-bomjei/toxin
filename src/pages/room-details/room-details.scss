@@ -63,7 +63,7 @@
     display: flex;
     max-width: $content-width;
     margin: 0 auto;
-    padding: 4.375rem 0;
+    padding: 4.375rem 0 4.5rem;
 
     @media (max-width: calc($content-width + 2.5rem)) {
       margin: 0 2.5rem;
@@ -128,10 +128,12 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 1.25rem;
+    line-height: 1.5rem;
 
     &_variant {
-      &_impression {
-        margin-bottom: 1.3125rem;
+      &_rules,
+      &_cancel {
+        margin-bottom: 1rem;
       }
     }
   }
@@ -150,7 +152,7 @@
 
   &__comments {
     display: grid;
-    grid-row-gap: 1.5rem;
+    grid-row-gap: 1.375rem;
   }
 
   &__text {
@@ -162,7 +164,7 @@
   }
 
   &__reservation {
-    margin-left: 4.375rem;
+    margin: -0.0625rem 0 0 4.375rem;
     width: 100%;
     max-width: 23.75rem;
 

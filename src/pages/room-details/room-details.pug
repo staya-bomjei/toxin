@@ -54,7 +54,7 @@ append main
                 +advantage(advantage)
 
           .room-details__wrapper
-            h3.room-details__item-title.room-details__item-title_variant_impression= titles.impression
+            h3.room-details__item-title= titles.impression
             +doughnut-chart(chart)
 
           .room-details__wrapper
@@ -66,11 +66,11 @@ append main
 
           .room-details__wrapper.room-details__wrapper_smaller
             .room-details__rules-title
-              h3.room-details__item-title= titles.rules
+              h3.room-details__item-title.room-details__item-title_variant_rules= titles.rules
             +bullet-list(rules)
 
           .room-details__wrapper.room-details__wrapper_wide
-            h3.room-details__item-title= titles.cancel
+            h3.room-details__item-title.room-details__item-title_variant_cancel= titles.cancel
             .room-details__text= cancel
 
       .room-details__reservation
