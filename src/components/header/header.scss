@@ -115,19 +115,19 @@
   @mixin mobile {
     padding: 1.25rem;
 
-    #{$class}__burger {
+    &__burger {
       display: block;
       justify-self: right;
     }
 
-    #{$class}__inner-wrapper {
+    &__inner-wrapper {
       width: 100%;
       min-width: 0;
       display: grid;
       grid-template-columns: auto auto;
     }
 
-    #{$class}__info {
+    &__info {
       flex-direction: column;
       grid-column: 1 / 3;
       display: none;
@@ -137,25 +137,25 @@
       }
     }
 
-    #{$class}__vertical-line {
+    &__vertical-line {
       height: 0;
       width: 100%;
       margin: 0;
       border-top: $border-width solid rgba($dark, 10%);
     }
 
-    #{$class}__user-name {
+    &__user-name {
       text-align: center;
       margin-top: 1.25rem;
     }
 
-    #{$class}__buttons {
+    &__buttons {
       @include flex-layout(column, 0.25rem);
 
       margin: 0;
     }
 
-    #{$class}__menu {
+    &__menu {
       width: 100%;
     }
   }
