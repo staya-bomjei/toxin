@@ -77,10 +77,10 @@ mixin reservation(options = {})
       .reservation__rent.js-reservation__rent
       .reservation__rent-total.js-reservation__rent-total
       .reservation__discount= `${discountTitle} ${makeCurrency(discount, postfix)}`
-      span.reservation__i= info
+      span.reservation__info-icon= info
       .reservation__service-charge= makeCurrency(totalServiceCharge, postfix)
       .reservation__additional= additionalTitle
-      span.reservation__i= info
+      span.reservation__info-icon= info
       .reservation__additional-total.js-reservation__additional-total
 
     .reservation__total
