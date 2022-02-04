@@ -4,11 +4,14 @@
   @extend %form;
 
   display: grid;
-  grid-row-gap: 1.3125rem;
+  grid-row-gap: 1.25rem;
   max-width: 23.75rem;
+  padding-bottom: 1.9375rem;
 
   &__title {
     @extend %title;
+
+    line-height: 1.875rem;
   }
 
   &__row {
@@ -35,5 +38,6 @@
     @extend %default-text;
 
     color: black;
+    line-height: 1.125rem;
   }
 }
