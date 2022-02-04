@@ -48,7 +48,7 @@
   &__content {
     display: none;
     position: absolute;
-    z-index: $z-expanded;
+    z-index: $z-expanded + 1;
     width: 100%;
     background-color: $background;
     border: $border-width solid rgba($dark, 50%);
