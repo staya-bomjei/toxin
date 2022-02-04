@@ -3,14 +3,17 @@ import $ from 'jquery';
 import Chart from '../../libs/chart/Chart';
 
 import {
+  CHART_WRAPPER_SELECTOR,
   CHART_SELECTOR,
   DOT_SELECTOR,
   ITEMS,
+  SIZE,
 } from './const';
 
 class DoughnutChart {
   constructor($component) {
     this.$component = $component;
+    this.$chartWrapper = $(CHART_WRAPPER_SELECTOR, $component);
     this.$chart = $(CHART_SELECTOR, $component);
     this.$dots = $(DOT_SELECTOR, $component);
     this.ctx = this.$chart[0].getContext('2d');
@@ -20,11 +23,15 @@ class DoughnutChart {
     const items = JSON.parse(this.$component.attr(ITEMS));
     this.counters = items.map((item) => item.counter);
     this.colors = items.map((item) => item.color);
-    this.chart = this._createChart(items);
+
+    const size = JSON.parse(this.$component.attr(SIZE));
+    this.$chartWrapper.css('width', size);
+    this.$chartWrapper.css('height', size);
+    this.chart = this._createChart(size / 2);
     this._paintDots();
   }
 
-  _createChart() {
+  _createChart(radius) {
     const colors = this.colors.map((color) => {
       if (typeof color === 'string') return color;
       return this._createCanvasGradient(color);
@@ -35,6 +42,7 @@ class DoughnutChart {
       ctx,
       counters,
       colors,
+      radius,
     };
 
     return new Chart(options);

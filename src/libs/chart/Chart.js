@@ -5,6 +5,7 @@ class Chart {
     this.ctx = options.ctx;
     this.counters = options.counters;
     this.colors = options.colors;
+    this.radius = options.radius;
 
     // в диаграмме на макете элементы должны быть отрисованы в обратном порядке
     this.counters.reverse();
@@ -14,7 +15,11 @@ class Chart {
     const data = this._createData();
     const outsideOptions = Chart.createOutsideOptions();
 
-    return new OutsideChart(this.ctx, { type, data, options: outsideOptions });
+    return new OutsideChart(this.ctx, {
+      type,
+      data,
+      options: { ...outsideOptions, radius: options.radius },
+    });
   }
 
   _createData() {
@@ -31,7 +36,6 @@ class Chart {
   static createOutsideOptions() {
     return {
       cutout: '89%',
-      radius: 62,
       borderWidth: 2,
       aspectRatio: 1,
       responsive: true,
