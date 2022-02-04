@@ -75,6 +75,10 @@
     text-decoration: none;
     line-height: 1.125rem;
     color: rgba($dark, 50%);
+
+    &:hover {
+      background-color: #f4f4f6;
+    }
   }
 
   &__subscription {
