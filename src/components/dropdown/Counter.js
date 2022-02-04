@@ -13,7 +13,9 @@ import {
   CLEAR_BUTTON_SELECTOR,
   ACCEPT_BUTTON_SELECTOR,
   MINUS_ACTIVE,
+  PLUS_ACTIVE,
   MAX_LEN,
+  CONSTRAINT,
   HAS_CONTROLS,
   ROW_COUNTABLES,
   VALUE,
@@ -23,16 +25,21 @@ class Counter extends Dropdown {
   constructor($component) {
     super($component);
     this.maxLen = Number($component.attr(MAX_LEN));
+    this.constraint = Number($component.attr(CONSTRAINT));
     this.hasControls = $component.has(HAS_CONTROLS) !== undefined;
     this.$text = $(TEXT_SELECTOR, $component);
     this.rows = this._getRows();
   }
 
   init() {
-    const { hasControls } = this;
+    const { hasControls, constraint } = this;
 
     if (hasControls) {
       this._initControls();
+    }
+
+    if (this._calcCountersSum() > constraint) {
+      this._setAllCounters(0);
     }
 
     this._handleClearButtonClick = this._handleClearButtonClick.bind(this);
@@ -72,13 +79,7 @@ class Counter extends Dropdown {
   }
 
   _handleClearButtonClick() {
-    const { rows } = this;
-
-    rows.forEach((row) => {
-      row.$minus.removeClass(MINUS_ACTIVE);
-      row.$counter.html(0);
-    });
-
+    this._setAllCounters(0);
     this._update();
   }
 
@@ -90,12 +91,11 @@ class Counter extends Dropdown {
 
   _handleMinusClick({ target }) {
     const $minus = $(target);
+    if (!$minus.hasClass(MINUS_ACTIVE)) return;
+
     const $counter = $minus.siblings(COUNTER_SELECTOR);
     const counter = Number($counter.html());
-
-    if (counter === 0) return;
     if (counter === 1) $minus.removeClass(MINUS_ACTIVE);
-
     $counter.html(counter - 1);
 
     this._update();
@@ -103,13 +103,12 @@ class Counter extends Dropdown {
 
   _handlePlusClick({ target }) {
     const $plus = $(target);
+    if (!$plus.hasClass(PLUS_ACTIVE)) return;
+
     const $minus = $plus.siblings(MINUS_SELECTOR);
     const $counter = $plus.siblings(COUNTER_SELECTOR);
     const counter = Number($counter.html());
-
-    if (counter === 0) {
-      $minus.addClass(MINUS_ACTIVE);
-    }
+    if (counter === 0) $minus.addClass(MINUS_ACTIVE);
 
     $counter.html(counter + 1);
 
@@ -151,10 +150,38 @@ class Counter extends Dropdown {
     return rows.every((row) => Number(row.$counter.html()) === 0);
   }
 
+  _calcCountersSum() {
+    const { rows } = this;
+
+    return rows.reduce((sum, row) => sum + Number(row.$counter.html()), 0);
+  }
+
+  _setAllCounters(value) {
+    const { rows } = this;
+
+    rows.forEach((row) => {
+      row.$minus.removeClass(MINUS_ACTIVE);
+      row.$counter.html(value);
+    });
+  }
+
+  _setAllPlusesActivity(isActive) {
+    const { rows } = this;
+
+    rows.forEach((row) => {
+      if (isActive) {
+        row.$plus.addClass(PLUS_ACTIVE);
+      } else {
+        row.$plus.removeClass(PLUS_ACTIVE);
+      }
+    });
+  }
+
   _update() {
     this._updateText();
     this._updateValue();
     this._updateClearButtonVisibility();
+    this._updatePlusButtonsActivity();
     this._triggerValueChanged();
   }
 
@@ -180,6 +207,13 @@ class Counter extends Dropdown {
     } else {
       $clear.show();
     }
+  }
+
+  _updatePlusButtonsActivity() {
+    const { constraint } = this;
+
+    const isActive = this._calcCountersSum() < constraint;
+    this._setAllPlusesActivity(isActive);
   }
 
   _calcDropdownValue() {

@@ -11,11 +11,13 @@ const PLUS_SELECTOR = '.js-dropdown__button-plus';
 
 const DROPDOWN_OPEN = 'dropdown_open';
 const MINUS_ACTIVE = 'dropdown__button-minus_active';
+const PLUS_ACTIVE = 'dropdown__button-plus_active';
 
 const PLACEHOLDER = 'data-placeholder';
 const VALUE_CHANGED = 'data-value-changed';
 const VALUE = 'data-value';
 const MAX_LEN = 'data-max-len';
+const CONSTRAINT = 'data-constraint';
 const HAS_CONTROLS = 'data-has-controls';
 const ROW_COUNTABLES = 'data-row-countables';
 const COUNTABLES = 'data-countables';
@@ -34,10 +36,12 @@ export {
   PLUS_SELECTOR,
   DROPDOWN_OPEN,
   MINUS_ACTIVE,
+  PLUS_ACTIVE,
   PLACEHOLDER,
   VALUE_CHANGED,
   VALUE,
   MAX_LEN,
+  CONSTRAINT,
   HAS_CONTROLS,
   ROW_COUNTABLES,
   COUNTABLES,

@@ -7,6 +7,7 @@ mixin dropdown(options = {})
       placeholder = '',
       rows = [], 
       maxLen = 100,
+      constraint = 10,
       type = 'counter',
       isOpen = false,
       hasControls = false, 
@@ -25,6 +26,7 @@ mixin dropdown(options = {})
     data-type = type
     data-value-changed = valueChanged
     data-max-len = maxLen
+    data-constraint = constraint
     data-has-controls = hasControls
     data-countables = (type === 'summator') ? countables : null
   )
