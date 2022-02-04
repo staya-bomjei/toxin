@@ -1,16 +1,20 @@
-@mixin font($name, $style, $weight, $isBlock: false) {
-  $suffix: 'Regular';
+@mixin font($name, $path-name, $style, $weight, $isBlock: false) {
+  $suffix: 'regular';
+  $cap-suffix: 'Regular';
 
   @if $style == bold {
-    $suffix: 'Bold';
+    $suffix: 'bold';
+    $cap-suffix: 'Bold';
   }
 
   @font-face {
     font-family: $name;
     src:
-      url('../assets/fonts/#{$name}-#{$suffix}.woff') format('woff'),
-      url('../assets/fonts/#{$name}-#{$suffix}.ttf') format('truetype'),
-      url('../assets/fonts/#{$name}-#{$suffix}.svg') format('svg');
+      local($name),
+      local('#{$name}-#{$cap-suffix}'),
+      url('../assets/fonts/#{$path-name}-#{$suffix}.woff') format('woff'),
+      url('../assets/fonts/#{$path-name}-#{$suffix}.ttf') format('truetype'),
+      url('../assets/fonts/#{$path-name}-#{$suffix}.svg') format('svg');
     font-style: $style;
     font-weight: $weight;
 
@@ -20,6 +24,6 @@
   }
 }
 
-@include font('Montserrat', normal, 400);
-@include font('Montserrat', bold, 700);
-@include font('MaterialIcons', normal, 400, true);
+@include font('Montserrat', 'montserrat', normal, 400);
+@include font('Montserrat', 'montserrat', bold, 700);
+@include font('MaterialIcons', 'material-icons', normal, 400, true);
