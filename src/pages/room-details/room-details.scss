@@ -9,50 +9,35 @@
   $class: &;
 
   &__images {
-    // если поставить 100%, то объемлющий контейнер будет рассчитывать
-    // свою высоту в зависимости от размера содержащихся в этом контейнере
-    // изображений, а при 99999px он будет рассчитывать свой размер в
-    // зависимости от размеров этого контейнера
-    height: 99999px;
-    max-height: 30.25rem;
+    display: grid;
+    grid-template-columns: 68% 32%;
+    grid-template-rows: repeat(2, 15.125rem);
     max-width: $xl;
     margin: 0 auto;
 
-    &::after {
-      content: '';
-      display: block;
-      height: 0;
-      clear: both;
+    @media (max-width: $sm) {
+      grid-template-rows: repeat(2, 10rem);
     }
 
-    @media (max-width: $sm) {
-      max-height: 20rem;
+    @media (max-width: $md) {
+      grid-template-columns: 1fr;
     }
 
     @media (max-width: $xs) {
-      max-height: 15rem;
+      grid-template-rows: repeat(2, 7.5rem);
     }
   }
 
   &__image {
-    float: left;
-    width: 32%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
 
     &:first-child {
-      width: 68%;
-    }
-
-    &:not(:first-child) {
-      height: 50%;
+      grid-row: 1 / 3;
     }
 
     @media (max-width: $md) {
-      &:first-child {
-        width: 100%;
-      }
-
       &:not(:first-child) {
         display: none;
       }
