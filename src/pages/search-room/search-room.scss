@@ -37,6 +37,10 @@
     @media (max-width: $sm) {
       margin: 0;
     }
+
+    @media (max-width: $sm) {
+      margin-bottom: 1.25rem;
+    }
   }
 
   &__dropdowns {
