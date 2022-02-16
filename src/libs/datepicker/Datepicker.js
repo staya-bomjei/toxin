@@ -88,13 +88,13 @@ class Datepicker {
     $(texts[1]).val(secondString);
   }
 
-  _onCellSelect({ date, datepicker }) {
+  _onCellSelect({ datepicker }) {
     const [first, second] = datepicker.selectedDates;
     const oneDateSelected = datepicker.selectedDates.length === 1;
     const twoDatesSelected = datepicker.selectedDates.length === 2;
 
     if (oneDateSelected) {
-      Datepicker.fixFocusDisplay(date, datepicker);
+      Datepicker.fixFocusDisplay(first, datepicker);
       this._setState(first, '');
     } else if (twoDatesSelected) {
       this._setState(first, second);
