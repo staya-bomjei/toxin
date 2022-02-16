@@ -131,6 +131,7 @@
         position: relative;
         font-weight: bold;
         color: white;
+        background: $primary-gradient-25;
 
         &::after {
           content: '';
