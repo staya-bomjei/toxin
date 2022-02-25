@@ -1,7 +1,7 @@
 # toxin
 
 ## Описание проекта
-Второе задание из обучающей программы MetaLamp.
+Второе задание из обучающей программы MetaLamp. [Задание 2.  Практика вёрстки.](https://coda.io/@metalamp/education/front-end-2#_luMCy)
 
 Проект представляет из себя вёрстку страниц из [**макета**](https://www.figma.com/file/MumYcKVk9RkKZEG6dR5E3A/) средствами шаблонизаторов [**SCSS**](https://sass-lang.com/documentation) и [**Pug**](https://pugjs.org/api/getting-started.html) и с соблюдением [**БЭМ-методологии**](https://ru.bem.info/), и придерживаясь стайлгайдов от AirBnB по [**JavaScript**](https://github.com/airbnb/javascript) и [**SCSS**](https://github.com/airbnb/css).
 
