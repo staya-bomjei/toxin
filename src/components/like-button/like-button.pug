@@ -10,6 +10,6 @@ mixin like-button(options = {})
     const classes = [];
     if (isLiked) classes.push('like-button_liked');
 
-  .like-button.js-like-button(class = classes)
+  button.like-button.js-like-button(class = classes type = "button")
     .like-button__icon.js-like-button__icon= icon
     .like-button__counter.js-like-button__counter= counter
