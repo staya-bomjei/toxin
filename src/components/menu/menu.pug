@@ -13,7 +13,7 @@ mixin menu(options = {})
         else
           a.menu__link(
             class = (item.isBold) ? 'menu__link_bold' : null
-            href = `${item.href}.html`
+            href = item.href
           )= item.text
 
         if item.submenu

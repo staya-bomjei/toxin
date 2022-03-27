@@ -18,6 +18,6 @@ mixin button(options = {})
     if (type === 'arrow') classes.push('button_arrowed');
 
   if href
-    a.button(class = classes href = `${href}.html`)= text
+    a.button(class = classes href = href)= text
   else
     button.button(class = classes type = htmlType)= text

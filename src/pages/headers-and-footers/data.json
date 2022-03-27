@@ -7,49 +7,49 @@
         {
            "text": "О нас",
            "isBold": true,
-           "href": "error-page"
+           "href": "error-page.html"
         },
         {
            "text": "Услуги",
-           "href": "error-page",
+           "href": "error-page.html",
            "submenu": [
             {
                "text": "Услуга 1",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Услуга 2",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Услуга 3",
-               "href": "error-page"
+               "href": "error-page.html"
             }
           ]
         },
         {
            "text": "Вакансии",
-           "href": "error-page"
+           "href": "error-page.html"
         },
         {
            "text": "Новости",
-           "href": "error-page"
+           "href": "error-page.html"
         },
         {
            "text": "Соглашения",
-           "href": "error-page",
+           "href": "error-page.html",
            "submenu": [
             {
                "text": "Соглашение 1",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Соглашение 2",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Соглашение 3",
-               "href": "error-page"
+               "href": "error-page.html"
             }
           ]
         }
@@ -61,49 +61,49 @@
         {
            "text": "О нас",
            "isBold": true,
-           "href": "error-page"
+           "href": "error-page.html"
         },
         {
            "text": "Услуги",
-           "href": "error-page",
+           "href": "error-page.html",
            "submenu": [
             {
                "text": "Услуга 1",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Услуга 2",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Услуга 3",
-               "href": "error-page"
+               "href": "error-page.html"
             }
           ]
         },
         {
            "text": "Вакансии",
-           "href": "error-page"
+           "href": "error-page.html"
         },
         {
            "text": "Новости",
-           "href": "error-page"
+           "href": "error-page.html"
         },
         {
            "text": "Соглашения",
-           "href": "error-page",
+           "href": "error-page.html",
            "submenu": [
             {
                "text": "Соглашение 1",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Соглашение 2",
-               "href": "error-page"
+               "href": "error-page.html"
             },
             {
                "text": "Соглашение 3",
-               "href": "error-page"
+               "href": "error-page.html"
             }
           ]
         }
@@ -119,27 +119,27 @@
         {
           "text": "навигация",
           "links": [
-            { "text": "О нас", "href": "error-page" },
-            { "text": "Новости", "href": "error-page" },
-            { "text": "Служба поддержки", "href": "error-page" },
-            { "text": "Услуги", "href": "error-page" }
+            { "text": "О нас", "href": "error-page.html" },
+            { "text": "Новости", "href": "error-page.html" },
+            { "text": "Служба поддержки", "href": "error-page.html" },
+            { "text": "Услуги", "href": "error-page.html" }
           ]
         },
         {
           "text": "о нас",
           "links": [
-            { "text": "О сервисе", "href": "error-page" },
-            { "text": "Наша команда", "href": "error-page" },
-            { "text": "Вакансии", "href": "error-page" },
-            { "text": "Инвесторы", "href": "error-page" }
+            { "text": "О сервисе", "href": "error-page.html" },
+            { "text": "Наша команда", "href": "error-page.html" },
+            { "text": "Вакансии", "href": "error-page.html" },
+            { "text": "Инвесторы", "href": "error-page.html" }
           ]
         },
         {
           "text": "служба поддержки",
           "links": [
-            { "text": "Соглашения", "href": "error-page" },
-            { "text": "Сообщества", "href": "error-page" },
-            { "text": "Связь с нами", "href": "error-page" }
+            { "text": "Соглашения", "href": "error-page.html" },
+            { "text": "Сообщества", "href": "error-page.html" },
+            { "text": "Связь с нами", "href": "error-page.html" }
           ]
         }
       ]
@@ -153,27 +153,27 @@
         {
           "text": "навигация",
           "links": [
-            { "text": "О нас", "href": "error-page" },
-            { "text": "Новости", "href": "error-page" },
-            { "text": "Служба поддержки", "href": "error-page" },
-            { "text": "Услуги", "href": "error-page" }
+            { "text": "О нас", "href": "error-page.html" },
+            { "text": "Новости", "href": "error-page.html" },
+            { "text": "Служба поддержки", "href": "error-page.html" },
+            { "text": "Услуги", "href": "error-page.html" }
           ]
         },
         {
           "text": "о нас",
           "links": [
-            { "text": "О сервисе", "href": "error-page" },
-            { "text": "Наша команда", "href": "error-page" },
-            { "text": "Вакансии", "href": "error-page" },
-            { "text": "Инвесторы", "href": "error-page" }
+            { "text": "О сервисе", "href": "error-page.html" },
+            { "text": "Наша команда", "href": "error-page.html" },
+            { "text": "Вакансии", "href": "error-page.html" },
+            { "text": "Инвесторы", "href": "error-page.html" }
           ]
         },
         {
           "text": "служба поддержки",
           "links": [
-            { "text": "Соглашения", "href": "error-page" },
-            { "text": "Сообщества", "href": "error-page" },
-            { "text": "Связь с нами", "href": "error-page" }
+            { "text": "Соглашения", "href": "error-page.html" },
+            { "text": "Сообщества", "href": "error-page.html" },
+            { "text": "Связь с нами", "href": "error-page.html" }
           ]
         }
       ]

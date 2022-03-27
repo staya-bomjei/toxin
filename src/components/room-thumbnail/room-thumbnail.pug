@@ -11,7 +11,7 @@ mixin room-thumbnail(options = {})
       postfix = '₽',
       reviews = 0,
       type = '',
-      href = 'error-page',
+      href = 'error-page.html',
       icon = 'expand_more',
       perDayTitle = 'в сутки',
       reviewsTitle = 'Отзывов',
@@ -42,7 +42,7 @@ mixin room-thumbnail(options = {})
 
     .room-thumbnail__info
       .room-thumbnail__row
-        a.room-thumbnail__number-info(href = `${href}.html`)
+        a.room-thumbnail__number-info(href = href)
           span.room-thumbnail__n №&nbsp;
           span.room-thumbnail__number= number
           span.room-thumbnail__type= type

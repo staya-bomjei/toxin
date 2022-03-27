@@ -2,47 +2,47 @@
   "uiList": [
     {
       "text": "Colors & Type",
-      "href": "colors-and-type"
+      "href": "colors-and-type.html"
     },
     {
       "text": "Form Elements",
-      "href": "form-elements"
+      "href": "form-elements.html"
     },
     {
       "text": "Cards",
-      "href": "cards"
+      "href": "cards.html"
     },
     {
       "text": "Headers & Footers",
-      "href": "headers-and-footers"
+      "href": "headers-and-footers.html"
     }
   ],
   "pagesList": [
     {
       "text": "Landing Page",
-      "href": "landing-page"
+      "href": "landing-page.html"
     },
     {
       "text": "Search room",
-      "href": "search-room"
+      "href": "search-room.html"
     },
     {
       "text": "Room details",
-      "href": "room-details"
+      "href": "room-details.html"
     },
     {
       "text": "Registration",
-      "href": "registration"
+      "href": "registration.html"
     },
     {
       "text": "Sign In",
-      "href": "sign-in-page"
+      "href": "sign-in-page.html"
     }
   ],
   "othersList": [
     {
       "text": "Error Page",
-      "href": "error-page"
+      "href": "error-page.html"
     }
   ]
 }

@@ -4,49 +4,49 @@
     "menuItems": [
       {
           "text": "О нас",
-          "href": "error-page"
+          "href": "error-page.html"
       },
       {
           "text": "Услуги",
-          "href": "error-page",
+          "href": "error-page.html",
           "submenu": [
           {
               "text": "Услуга 1",
-              "href": "error-page"
+              "href": "error-page.html"
           },
           {
               "text": "Услуга 2",
-              "href": "error-page"
+              "href": "error-page.html"
           },
           {
               "text": "Услуга 3",
-              "href": "error-page"
+              "href": "error-page.html"
           }
         ]
       },
       {
           "text": "Вакансии",
-          "href": "error-page"
+          "href": "error-page.html"
       },
       {
           "text": "Новости",
-          "href": "error-page"
+          "href": "error-page.html"
       },
       {
           "text": "Соглашения",
-          "href": "error-page",
+          "href": "error-page.html",
           "submenu": [
           {
               "text": "Соглашение 1",
-              "href": "error-page"
+              "href": "error-page.html"
           },
           {
               "text": "Соглашение 2",
-              "href": "error-page"
+              "href": "error-page.html"
           },
           {
               "text": "Соглашение 3",
-              "href": "error-page"
+              "href": "error-page.html"
           }
         ]
       }
@@ -60,27 +60,27 @@
       {
         "text": "навигация",
         "links": [
-          { "text": "О нас", "href": "error-page" },
-          { "text": "Новости", "href": "error-page" },
-          { "text": "Служба поддержки", "href": "error-page" },
-          { "text": "Услуги", "href": "error-page" }
+          { "text": "О нас", "href": "error-page.html" },
+          { "text": "Новости", "href": "error-page.html" },
+          { "text": "Служба поддержки", "href": "error-page.html" },
+          { "text": "Услуги", "href": "error-page.html" }
         ]
       },
       {
         "text": "о нас",
         "links": [
-          { "text": "О сервисе", "href": "error-page" },
-          { "text": "Наша команда", "href": "error-page" },
-          { "text": "Вакансии", "href": "error-page" },
-          { "text": "Инвесторы", "href": "error-page" }
+          { "text": "О сервисе", "href": "error-page.html" },
+          { "text": "Наша команда", "href": "error-page.html" },
+          { "text": "Вакансии", "href": "error-page.html" },
+          { "text": "Инвесторы", "href": "error-page.html" }
         ]
       },
       {
         "text": "служба поддержки",
         "links": [
-          { "text": "Соглашения", "href": "error-page" },
-          { "text": "Сообщества", "href": "error-page" },
-          { "text": "Связь с нами", "href": "error-page" }
+          { "text": "Соглашения", "href": "error-page.html" },
+          { "text": "Сообщества", "href": "error-page.html" },
+          { "text": "Связь с нами", "href": "error-page.html" }
         ]
       }
     ]
@@ -197,7 +197,7 @@
   },
   "numbers": [
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 5,
       "number": 888,
       "price": 9990,
@@ -223,7 +223,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 4,
       "number": 840,
       "price": 9990,
@@ -248,7 +248,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 3,
       "number": 980,
       "price": 8500,
@@ -274,7 +274,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 5,
       "number": 856,
       "price": 7300,
@@ -299,7 +299,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 4,
       "number": 740,
       "price": 6000,
@@ -324,7 +324,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 3,
       "number": 982,
       "price": 5800,
@@ -349,7 +349,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 5,
       "number": 678,
       "price": 5500,
@@ -374,7 +374,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 4,
       "number": 450,
       "price": 5300,
@@ -399,7 +399,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 3,
       "number": 350,
       "price": 5000,
@@ -424,7 +424,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 5,
       "number": 666,
       "price": 5000,
@@ -449,7 +449,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 3,
       "number": 444,
       "price": 5000,
@@ -474,7 +474,7 @@
       ]
     },
     {
-      "href": "room-details",
+      "href": "room-details.html",
       "rate": 3,
       "number": 352,
       "price": 5000,

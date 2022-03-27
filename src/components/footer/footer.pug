@@ -27,7 +27,7 @@ mixin footer(options = {})
           section.footer__list
             h3.footer__title= item.text
             each link in item.links
-              a.footer__link(href = `${link.href}.html`)= link.text
+              a.footer__link(href = link.href)= link.text
 
       section.footer__subscription
         h3.footer__title= subscriptionTitle
