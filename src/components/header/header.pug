@@ -23,7 +23,6 @@ mixin header(options = {})
           +menu({ items: menuItems })
 
         if loggedIn
-          .header__vertical-line
           .header__user-name= userName
         else
           .header__buttons

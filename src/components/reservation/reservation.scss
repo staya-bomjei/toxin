@@ -87,10 +87,17 @@
     margin-top: 0.625rem;
   }
 
-  &__dashed-underline {
-    display: inline-block;
-    width: 100%;
-    border-bottom: $border-width dashed rgba($dark, 25%);
+  &__total-title {
+    display: inline-flex;
+    align-items: baseline;
+    flex-grow: 2;
+
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      border-bottom: $border-width dashed rgba($dark, 25%);
+    }
   }
 
   &__total-cost {

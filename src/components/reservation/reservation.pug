@@ -84,8 +84,7 @@ mixin reservation(options = {})
       .reservation__additional-total.js-reservation__additional-total
 
     .reservation__total
-      | #{totalTitle}
-      span.reservation__dashed-underline
+      .reservation__total-title #{totalTitle}
       .reservation__total-cost.js-reservation__total-cost
 
     .reservation__reserve-button

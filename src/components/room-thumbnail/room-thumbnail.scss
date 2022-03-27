@@ -112,6 +112,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &:not(:last-child) {
+      padding-bottom: 0.625rem;
+      margin-bottom: 0.5rem;
+      border-bottom: $border-width solid rgba($dark, 10%);
+    }
   }
 
   &__number-info {
@@ -148,13 +154,5 @@
 
   &__price-per-day {
     font-size: 0.75rem;
-  }
-
-  &__underline {
-    border: none;
-    border-top: $border-width solid rgba($dark, 10%);
-    margin: 0;
-    margin-top: 0.625rem;
-    margin-bottom: 0.5rem;
   }
 }

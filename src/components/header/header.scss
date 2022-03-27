@@ -100,14 +100,21 @@
     align-items: center;
   }
 
-  &__vertical-line {
-    height: 1.875rem;
-    margin: 0 1.25rem;
-    border-right: $border-width solid rgba($dark, 10%);
-  }
-
   &__user-name {
     @extend %default-text;
+
+    position: relative;
+    margin-left: calc(2.5rem + $border-width);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -1.25rem;
+      height: 1.875rem;
+      transform: translateY(-50%);
+      border-right: $border-width solid rgba($dark, 10%);
+    }
   }
 
   &__buttons {
@@ -142,16 +149,16 @@
       }
     }
 
-    &__vertical-line {
-      height: 0;
-      width: 100%;
-      margin: 0;
-      border-top: $border-width solid rgba($dark, 10%);
-    }
-
     &__user-name {
       text-align: center;
+      padding-top: 1.25rem;
+      margin-left: 0;
       margin-top: 1.25rem;
+      border-top: $border-width solid rgba($dark, 10%);
+
+      &::before {
+        display: none;
+      }
     }
 
     &__buttons {

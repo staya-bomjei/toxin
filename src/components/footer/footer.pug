@@ -16,36 +16,34 @@ mixin footer(options = {})
     if (isMobile) classes.push('footer_theme_mobile');
 
   .footer(class = classes)
-    .footer__inner-wrapper
-      section.footer__about
-        .header__logo
-          +logo()
-        span.footer__about-text= about
+    .footer__info
+      .footer__info-wrapper
+        section.footer__about
+          .header__logo
+            +logo()
+          span.footer__about-text= about
 
-      nav.footer__navigation
-        each item in items
-          section.footer__list
-            h3.footer__title= item.text
-            each link in item.links
-              a.footer__link(href = link.href)= link.text
+        nav.footer__navigation
+          each item in items
+            section.footer__list
+              h3.footer__title= item.text
+              each link in item.links
+                a.footer__link(href = link.href)= link.text
 
-      section.footer__subscription
-        h3.footer__title= subscriptionTitle
-        span.footer__subscription-text= subscription
-        +text-field({ type: 'subscription', placeholder: 'Email' })
+        section.footer__subscription
+          h3.footer__title= subscriptionTitle
+          span.footer__subscription-text= subscription
+          +text-field({ type: 'subscription', placeholder: 'Email' })
 
-    .footer__underline
+    .footer__copyrights
+      .footer__copyrights-text= copyrights
 
-    .footer__inner-wrapper
-      .footer__copyrights
-        .footer__copyrights-text= copyrights
+      .footer__media
+        a.footer__twitter(href = 'error-page.html')
+          img(src = require('../../components/footer/img/twitter.svg') alt = "twitter")
 
-        .footer__media
-          a.footer__twitter(href = 'error-page.html')
-            img(src = require('../../components/footer/img/twitter.svg') alt = "twitter")
+        a.footer__facebook(href = 'error-page.html')
+          img(src = require('../../components/footer/img/facebook-square.svg') alt = "facebook")
 
-          a.footer__facebook(href = 'error-page.html')
-            img(src = require('../../components/footer/img/facebook-square.svg') alt = "facebook")
-
-          a.footer__instagram(href = 'error-page.html')
-            img(src = require('../../components/footer/img/instagram-square.svg') alt = "instagram")
+        a.footer__instagram(href = 'error-page.html')
+          img(src = require('../../components/footer/img/instagram-square.svg') alt = "instagram")

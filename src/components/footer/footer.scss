@@ -3,6 +3,7 @@
 
 .footer {
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -11,15 +12,17 @@
 
   $class: &;
 
-  &__inner-wrapper {
-    max-width: $content-width;
+  &__info {
     width: 100%;
+    border-bottom: $border-width solid rgba($dark, 10%);
+  }
 
-    &:first-child {
-      display: grid;
-      grid-template-columns: 1fr 2.45fr 1fr;
-      margin: 6.25rem 0;
-    }
+  &__info-wrapper {
+    width: 100%;
+    max-width: $content-width;
+    display: grid;
+    grid-template-columns: 1fr 2.45fr 1fr;
+    margin: 6.25rem auto;
 
     @media (max-width: calc($content-width + 2.5rem)) {
       padding-left: 2.5rem;
@@ -39,11 +42,6 @@
   &__about-text,
   &__subscription-text {
     @extend %default-text;
-  }
-
-  &__underline {
-    width: 100%;
-    border-bottom: $border-width solid rgba($dark, 10%);
   }
 
   &__navigation {
@@ -86,6 +84,8 @@
   }
 
   &__copyrights {
+    width: 100%;
+    max-width: $content-width;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,14 +114,16 @@
     margin: 0 auto;
     width: 100%;
 
-    &__inner-wrapper {
-      &:first-child {
-        grid-template-columns: 1fr;
-        margin: 0;
-      }
+    #{$class}__info {
+      border: none;
     }
 
-    &__about {
+    #{$class}__info-wrapper {
+      grid-template-columns: 1fr;
+      margin: 0;
+    }
+
+    #{$class}__about {
       justify-self: center;
 
       & > * {
@@ -129,20 +131,19 @@
       }
     }
 
-    &__underline,
-    &__navigation,
-    &__subscription,
-    &__about-text {
+    #{$class}__navigation,
+    #{$class}__subscription,
+    #{$class}__about-text {
       display: none;
     }
 
-    &__copyrights {
+    #{$class}__copyrights {
       flex-direction: column;
       justify-content: center;
       padding: 1.25rem 0 0;
     }
 
-    &__copyrights-text {
+    #{$class}__copyrights-text {
       margin-bottom: 1.25rem;
       text-align: center;
     }
